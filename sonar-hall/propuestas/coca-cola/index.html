@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <!-- SEO & OG mejorados -->
+  <title>Sonar Hall × Coca-Cola | Partnership Estratégico 2026</title>
+  <meta name="description" content="Propuesta de alianza entre Sonar Hall Molière y Coca-Cola. Exclusividad total de bebidas en el hub de entretenimiento premium de la CDMX. Confidencial 2026.">
+  <meta property="og:title" content="Sonar Hall × Coca-Cola | Partnership 2026">
+  <meta property="og:description" content="El hub de entretenimiento premium de Polanco. 5,000 aficionados. 30+ eventos AAA anuales. Exclusividad total + Naming Rights.">
+  <meta property="og:image" content="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&q=80&w=1200">
+  <meta property="og:url" content="https://baus.ceo/sonar-hall/propuestas/coca-cola/">
+  <meta property="og:type" content="website">
+  <meta name="robots" content="noindex, nofollow"> <!-- Propuesta confidencial -->
+
+  <!-- Fuentes Premium -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;900&display=swap" rel="stylesheet">
+
+  <style>
+    /* ============================================
+       SISTEMA DE DISEÑO — UI/UX PRO MAX
+       Product Type: Entertainment / Venue B2B
+       Style: Dark Glassmorphism + Brutalist Typography
+       Color System: Semantic Tokens
+       Spacing: 8dp rhythm
+    ============================================ */
+
+    :root {
+      /* Color Tokens — Semánticos */
+      --color-brand:       #F40009;
+      --color-brand-dim:   rgba(244, 0, 9, 0.15);
+      --color-brand-glow:  rgba(244, 0, 9, 0.35);
+      --color-surface-0:   #030303;
+      --color-surface-1:   #080808;
+      --color-surface-2:   rgba(255, 255, 255, 0.03);
+      --color-surface-3:   rgba(255, 255, 255, 0.06);
+      --color-border:      rgba(255, 255, 255, 0.07);
+      --color-border-hover:rgba(244, 0, 9, 0.45);
+      --color-text-primary: #FFFFFF;
+      --color-text-secondary: rgba(255, 255, 255, 0.55);
+      --color-text-muted:  rgba(255, 255, 255, 0.25);
+      --color-on-brand:    #FFFFFF;
+
+      /* Spacing — 8dp rhythm */
+      --space-1: 4px;
+      --space-2: 8px;
+      --space-3: 12px;
+      --space-4: 16px;
+      --space-5: 24px;
+      --space-6: 32px;
+      --space-7: 48px;
+      --space-8: 64px;
+      --space-9: 96px;
+      --space-10: 128px;
+      --space-11: 160px;
+
+      /* Typography Scale */
+      --text-xs:   0.625rem;   /* 10px */
+      --text-sm:   0.75rem;    /* 12px */
+      --text-base: 1rem;       /* 16px min body */
+      --text-lg:   1.125rem;   /* 18px */
+      --text-xl:   1.5rem;     /* 24px */
+      --text-2xl:  2rem;       /* 32px */
+      --text-3xl:  3rem;       /* 48px */
+      --text-4xl:  4.5rem;     /* 72px */
+      --text-hero: clamp(4rem, 12vw, 11rem);
+
+      /* Elevación / Z-index */
+      --z-base:    0;
+      --z-above:   10;
+      --z-floating:20;
+      --z-nav:     40;
+      --z-overlay: 100;
+
+      /* Animaciones */
+      --duration-fast:   150ms;
+      --duration-mid:    250ms;
+      --duration-slow:   400ms;
+      --ease-out:        cubic-bezier(0.16, 1, 0.3, 1);
+      --ease-in:         cubic-bezier(0.4, 0, 1, 1);
+    }
+
+    /* Reset & Base */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; font-size: 16px; }
+
+    body {
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+      background-color: var(--color-surface-0);
+      color: var(--color-text-primary);
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      overflow-x: hidden;
+      line-height: 1.6;
+    }
+
+    /* Accesibilidad: Skip Link */
+    .skip-link {
+      position: absolute;
+      top: -100px;
+      left: var(--space-4);
+      background: var(--color-brand);
+      color: var(--color-on-brand);
+      padding: var(--space-2) var(--space-5);
+      border-radius: 4px;
+      font-weight: 700;
+      font-size: var(--text-sm);
+      text-decoration: none;
+      z-index: var(--z-overlay);
+      transition: top var(--duration-fast);
+    }
+    .skip-link:focus { top: var(--space-4); }
+
+    /* Focus styles — Accesibilidad CRÍTICA */
+    :focus-visible {
+      outline: 2px solid var(--color-brand);
+      outline-offset: 3px;
+      border-radius: 2px;
+    }
+
+    img { display: block; max-width: 100%; }
+    a { color: inherit; text-decoration: none; }
+
+    /* ============================
+       NAVEGACIÓN
+    ============================ */
+    .nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: var(--z-nav);
+      padding: var(--space-5) var(--space-8);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(3, 3, 3, 0.6);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--color-border);
+      transition: background var(--duration-mid);
+    }
+    .nav--scrolled { background: rgba(3, 3, 3, 0.92); }
+
+    .nav__logo {
+      font-size: 1.25rem;
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+    .nav__logo span { font-weight: 300; color: var(--color-text-muted); }
+
+    .nav__links {
+      display: flex;
+      align-items: center;
+      gap: var(--space-8);
+      list-style: none;
+    }
+    @media (max-width: 767px) { .nav__links { display: none; } }
+
+    .nav__link {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--color-text-secondary);
+      transition: color var(--duration-fast);
+    }
+    .nav__link:hover, .nav__link[aria-current="page"] { color: var(--color-brand); }
+
+    .nav__cta {
+      display: inline-flex;
+      align-items: center;
+      padding: var(--space-3) var(--space-6);
+      background: var(--color-text-primary);
+      color: var(--color-surface-0);
+      font-size: var(--text-xs);
+      font-weight: 900;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      border: 2px solid transparent;
+      transition: background var(--duration-mid), color var(--duration-mid), border-color var(--duration-mid);
+      min-height: 44px; /* Touch target */
+    }
+    .nav__cta:hover {
+      background: var(--color-brand);
+      color: var(--color-on-brand);
+    }
+
+    /* ============================
+       HERO
+    ============================ */
+    .hero {
+      position: relative;
+      min-height: 100svh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .hero__bg {
+      position: absolute; inset: 0;
+      z-index: var(--z-base);
+    }
+    .hero__img {
+      width: 100%; height: 100%;
+      object-fit: cover;
+      opacity: 0.25;
+      filter: grayscale(1);
+      transition: opacity 1s, filter 1s;
+    }
+    .hero__gradient {
+      position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(3,3,3,0.1) 0%, rgba(3,3,3,0.6) 60%, rgba(3,3,3,1) 100%);
+    }
+
+    /* Orbs de luz — efecto premium Apple-style */
+    .hero__orb {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      pointer-events: none;
+      animation: orbPulse 8s ease-in-out infinite alternate;
+    }
+    .hero__orb--red {
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(244,0,9,0.18) 0%, transparent 70%);
+      top: -150px; right: -150px;
+    }
+    .hero__orb--dark {
+      width: 400px; height: 400px;
+      background: radial-gradient(circle, rgba(244,0,9,0.08) 0%, transparent 70%);
+      bottom: 100px; left: -100px;
+      animation-delay: -4s;
+    }
+    @keyframes orbPulse {
+      from { opacity: 0.6; transform: scale(1); }
+      to   { opacity: 1;   transform: scale(1.15); }
+    }
+
+    .hero__content {
+      position: relative;
+      z-index: var(--z-above);
+      text-align: center;
+      padding: var(--space-8) var(--space-5);
+      max-width: 1200px;
+      margin: 0 auto;
+      padding-top: 120px;
+    }
+
+    .hero__eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-4);
+      margin-bottom: var(--space-7);
+    }
+    .hero__eyebrow-line {
+      width: 32px; height: 1px;
+      background: var(--color-brand);
+    }
+    .hero__eyebrow-label {
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--color-brand);
+    }
+
+    .hero__headline {
+      font-size: var(--text-hero);
+      font-weight: 900;
+      letter-spacing: -0.05em;
+      line-height: 0.88;
+      text-transform: uppercase;
+      font-style: italic;
+      margin-bottom: var(--space-7);
+    }
+    .hero__headline-outline {
+      -webkit-text-stroke: 1px rgba(255,255,255,0.7);
+      color: transparent;
+    }
+
+    .hero__lockup {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--space-8);
+      flex-wrap: wrap;
+      margin-top: var(--space-10);
+    }
+    .hero__brand-name {
+      font-size: var(--text-2xl);
+      font-weight: 900;
+      font-style: italic;
+      letter-spacing: -0.04em;
+    }
+    .hero__separator {
+      font-size: var(--text-xl);
+      color: var(--color-text-muted);
+      font-weight: 300;
+    }
+    .hero__logo {
+      height: 44px;
+      width: auto;
+      filter: brightness(0) invert(1);
+    }
+
+    /* Scroll indicator */
+    .hero__scroll {
+      position: absolute;
+      bottom: var(--space-7);
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: var(--z-above);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: var(--space-2);
+    }
+    .hero__scroll-line {
+      width: 1px; height: 48px;
+      background: linear-gradient(to bottom, transparent, var(--color-brand));
+      animation: scrollLine 2s ease-in-out infinite;
+    }
+    .hero__scroll-label {
+      font-size: var(--text-xs);
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      font-weight: 600;
+    }
+    @keyframes scrollLine {
+      0%, 100% { opacity: 0.3; transform: scaleY(0.6); transform-origin: top; }
+      50%       { opacity: 1;   transform: scaleY(1);   transform-origin: top; }
+    }
+
+    /* ============================
+       SECCIONES — BASE
+    ============================ */
+    .section {
+      padding: var(--space-9) var(--space-8);  /* 96px vertical (era 160px) */
+    }
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+    }
+    .section-eyebrow {
+      font-size: 0.7rem;
+      font-weight: 900;
+      letter-spacing: 0.35em;
+      text-transform: uppercase;
+      color: var(--color-brand);
+      margin-bottom: var(--space-5);
+    }
+    .section-title {
+      font-size: clamp(2.5rem, 6vw, 5rem);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      line-height: 0.92;
+      text-transform: uppercase;
+      font-style: italic;
+    }
+
+    /* Reveal animation — IntersectionObserver */
+    .reveal {
+      opacity: 0;
+      transform: translateY(32px);
+      transition: opacity var(--duration-slow) var(--ease-out),
+                  transform var(--duration-slow) var(--ease-out);
+    }
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    .reveal--delay-1 { transition-delay: 80ms; }
+    .reveal--delay-2 { transition-delay: 160ms; }
+    .reveal--delay-3 { transition-delay: 240ms; }
+
+    /* prefers-reduced-motion */
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+      }
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; }
+    }
+
+    /* ============================
+       OVERVIEW
+    ============================ */
+    /* Overview más compacto — cabe en un viewport */
+    .overview { background: var(--color-surface-0); }
+    .overview__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-8);
+      align-items: center;
+    }
+    @media (max-width: 900px) {
+      .overview__grid { grid-template-columns: 1fr; }
+    }
+
+    .overview__body {
+      font-size: var(--text-base);  /* 16px en vez de 18px */
+      color: var(--color-text-secondary);
+      line-height: 1.65;
+      margin-bottom: var(--space-4);
+      font-weight: 300;
+    }
+    .overview__body strong {
+      color: var(--color-text-primary);
+      font-weight: 600;
+    }
+    .overview__highlight {
+      color: var(--color-brand);
+      font-style: italic;
+      font-weight: 700;
+    }
+
+    /* Stats Grid — más compacto */
+    .stats {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-5) var(--space-5);
+      margin-top: var(--space-6);
+    }
+    .stat {
+      border-left: 2px solid var(--color-border);
+      padding-left: var(--space-4);
+      transition: border-color var(--duration-mid);
+    }
+    .stat:first-child { border-color: var(--color-brand); }
+    .stat:hover { border-color: var(--color-brand); }
+    .stat__value {
+      font-size: var(--text-3xl);  /* era text-4xl (72px), ahora 48px */
+      font-weight: 900;
+      font-style: italic;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      font-variant-numeric: tabular-nums;
+    }
+    .stat__label {
+      font-size: var(--text-xs);
+      font-weight: 700;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      margin-top: var(--space-1);
+    }
+
+    /* Image card */
+    .glass-card {
+      background: var(--color-surface-2);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid var(--color-border);
+      border-radius: 16px;
+      overflow: hidden;
+      transition: border-color var(--duration-slow) var(--ease-out),
+                  transform var(--duration-slow) var(--ease-out),
+                  background var(--duration-slow) var(--ease-out);
+    }
+    .glass-card:hover {
+      border-color: var(--color-border-hover);
+      background: var(--color-surface-3);
+      transform: translateY(-6px);
+    }
+    @keyframes colorReveal {
+      0%   { filter: grayscale(1) contrast(1.1) brightness(0.85); }
+      35%  { filter: grayscale(1) contrast(1.1) brightness(0.85); } /* pausa en BN */
+      65%  { filter: grayscale(0) contrast(1.0) saturate(1.2) brightness(1); } /* color pleno */
+      85%  { filter: grayscale(0) contrast(1.0) saturate(1.2) brightness(1); } /* pausa en color */
+      100% { filter: grayscale(1) contrast(1.1) brightness(0.85); } /* regresa a BN */
+    }
+    .glass-card img {
+      width: 100%;
+      aspect-ratio: 4/3;
+      object-fit: cover;
+      animation: colorReveal 14s cubic-bezier(0.45, 0, 0.55, 1) infinite;
+      transition: transform 0.7s var(--ease-out);
+    }
+    .glass-card:hover img {
+      animation-play-state: paused;
+      filter: grayscale(0) saturate(1.3) contrast(1.05);
+      transform: scale(1.04);
+    }
+
+    /* ============================
+       MARQUEE
+    ============================ */
+    .marquee-wrap {
+      overflow: hidden;
+      background: var(--color-brand);
+      padding: var(--space-8) 0;  /* más padding vertical para compensar el skew */
+      transform: skewY(-2deg);
+      margin: var(--space-9) 0;
+    }
+    .marquee-inner {
+      display: flex;
+      width: max-content;
+      animation: marquee 30s linear infinite;
+      transform: skewY(2deg) translateY(0); /* compensación sin recortar */
+      padding: var(--space-2) 0;
+    }
+    .marquee-inner:hover { animation-play-state: paused; }
+    .marquee-group {
+      display: flex;
+      align-items: center;
+      gap: var(--space-8);
+      padding-right: var(--space-8);
+    }
+    .marquee-item {
+      font-size: clamp(2rem, 4vw, 3.5rem); /* más grande para no cortarse */
+      font-weight: 900;
+      font-style: italic;
+      letter-spacing: -0.03em;
+      text-transform: uppercase;
+      white-space: nowrap;
+      color: var(--color-on-brand);
+      line-height: 1.1;
+    }
+    .marquee-dot {
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.4);
+      flex-shrink: 0;
+    }
+    @keyframes marquee {
+      from { transform: translateX(0) skewY(2deg); }
+      to   { transform: translateX(-50%) skewY(2deg); }
+    }
+
+    /* ============================
+       ESTRATEGIA (Integración)
+    ============================ */
+    .estrategia { background: var(--color-surface-1); }
+    .estrategia__header {
+      display: flex;
+      flex-direction: column;
+      gap: var(--space-4);
+      border-bottom: 1px solid var(--color-border);
+      padding-bottom: var(--space-7);
+      margin-bottom: var(--space-8);
+    }
+    @media (min-width: 768px) {
+      .estrategia__header {
+        flex-direction: row;
+        align-items: flex-end;
+        justify-content: space-between;
+      }
+    }
+
+    .estrategia__grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: var(--space-5);
+    }
+
+    .card {
+      background: var(--color-surface-2);
+      border: 1px solid var(--color-border);
+      padding: var(--space-8);
+      display: flex;
+      flex-direction: column;
+      min-height: 480px;
+      position: relative;
+      overflow: hidden;
+      transition: border-color var(--duration-slow) var(--ease-out),
+                  transform var(--duration-slow) var(--ease-out);
+    }
+    .card::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: var(--color-brand-dim);
+      opacity: 0;
+      transition: opacity var(--duration-slow);
+    }
+    .card:hover { border-color: var(--color-border-hover); transform: translateY(-4px); }
+    .card:hover::before { opacity: 1; }
+
+    .card__tag {
+      font-size: 0.75rem;    /* más visible — era 10px ahora 12px */
+      font-weight: 900;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--color-brand);
+      margin-bottom: var(--space-7);
+      position: relative;
+    }
+    .card__title {
+      font-size: var(--text-2xl);
+      font-weight: 900;
+      font-style: italic;
+      letter-spacing: -0.04em;
+      line-height: 1;
+      text-transform: uppercase;
+      margin-bottom: var(--space-5);
+      position: relative;
+    }
+    .card__body {
+      font-size: var(--text-base);
+      color: var(--color-text-secondary);
+      line-height: 1.65;
+      font-weight: 300;
+      position: relative;
+    }
+
+    /* Número decorativo */
+    .card__number {
+      position: absolute;
+      bottom: var(--space-6); right: var(--space-6);
+      font-size: 8rem;
+      font-weight: 900;
+      font-style: italic;
+      color: rgba(255,255,255,0.09); /* más contraste base */
+      line-height: 1;
+      letter-spacing: -0.05em;
+      pointer-events: none;
+      user-select: none;
+      transition: color var(--duration-slow) var(--ease-out);
+    }
+    .card:hover .card__number {
+      color: rgba(244, 0, 9, 0.22); /* se vuelve rojo sutil al hover */
+    }
+
+    /* ============================
+       INVERSIÓN
+    ============================ */
+    .inversion {
+      background: #FFFFFF;
+      color: #111111;
+    }
+    .inversion .section-eyebrow { color: var(--color-brand); }
+    .inversion__center { text-align: center; max-width: 860px; margin: 0 auto; }
+
+    .inversion__amount {
+      font-size: clamp(3.5rem, 10vw, 7rem);
+      font-weight: 900;
+      font-style: italic;
+      letter-spacing: -0.05em;
+      line-height: 1;
+      color: #111111;
+      margin: var(--space-7) 0 var(--space-4);
+    }
+    .inversion__amount-unit {
+      font-size: var(--text-xl);
+      font-weight: 400;
+      color: #888;
+      font-style: normal;
+    }
+    .inversion__sub {
+      font-size: var(--text-base);
+      font-weight: 700;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      font-style: italic;
+      color: #111;
+      margin-bottom: var(--space-5);
+    }
+    .inversion__badge {
+      display: inline-block;
+      padding: var(--space-2) var(--space-6);
+      background: #111111;
+      color: #FFF;
+      font-size: var(--text-xs);
+      font-weight: 900;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-10);
+    }
+
+    .inversion__grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--space-6) var(--space-10);
+      text-align: left;
+      border-top: 2px solid rgba(0,0,0,0.1);
+      padding-top: var(--space-8);
+      margin-bottom: var(--space-10);
+    }
+    @media (max-width: 640px) {
+      .inversion__grid { grid-template-columns: 1fr; }
+    }
+
+    .inversion__item {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--space-4);
+    }
+    .inversion__bullet {
+      width: 8px; height: 8px;
+      background: var(--color-brand);
+      flex-shrink: 0;
+      margin-top: 5px;
+      transition: transform var(--duration-mid);
+    }
+    .inversion__item:hover .inversion__bullet { transform: scale(1.5); }
+    .inversion__item-text {
+      font-size: var(--text-sm);
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      line-height: 1.5;
+      color: #111;
+    }
+
+    /* CTA */
+    .cta-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      padding: var(--space-5) var(--space-10);
+      background: var(--color-brand);
+      color: var(--color-on-brand);
+      font-size: var(--text-xs);
+      font-weight: 900;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      border: 2px solid transparent;
+      min-height: 56px; /* Touch target */
+      transition: background var(--duration-mid), color var(--duration-mid), border-color var(--duration-mid);
+      cursor: pointer;
+    }
+    .cta-btn:hover {
+      background: #111111;
+      color: #FFF;
+    }
+    .cta-btn:focus-visible {
+      outline: 3px solid var(--color-brand);
+      outline-offset: 4px;
+    }
+
+    /* ============================
+       FOOTER
+    ============================ */
+    .footer {
+      background: #010101;
+      border-top: 1px solid var(--color-border);
+      padding: var(--space-8) var(--space-8);
+      text-align: center;
+    }
+    .footer__name {
+      font-size: var(--text-xl);
+      font-weight: 900;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      margin-bottom: var(--space-3);
+    }
+    .footer__name span { color: var(--color-text-muted); font-weight: 300; }
+    .footer__name em { color: var(--color-brand); font-style: normal; padding: 0 var(--space-2); }
+    .footer__meta {
+      font-size: var(--text-xs);
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+      font-weight: 500;
+    }
+    .footer__confidential {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      margin-top: var(--space-4);
+      padding: var(--space-1) var(--space-3);
+      border: 1px solid var(--color-border);
+      font-size: 0.5625rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--color-text-muted);
+    }
+    .footer__confidential::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--color-brand);
+      border-radius: 50%;
+      animation: blink 2s ease-in-out infinite;
+    }
+    @keyframes blink {
+      0%, 100% { opacity: 1; } 50% { opacity: 0.2; }
+    }
+
+    /* ============================
+       PRINT
+    ============================ */
+    @media print {
+      .nav, .hero__scroll, .cta-btn, .no-print { display: none !important; }
+      body { background: #fff !important; color: #000 !important; }
+      .hero { min-height: auto; padding-top: var(--space-8); }
+      .hero__orb, .hero__bg { display: none; }
+      .hero__headline, .hero__brand-name { color: #000 !important; }
+      .glass-card, .card { border: 1px solid #ccc !important; background: #f9f9f9 !important; }
+      .marquee-wrap { animation: none; }
+      .reveal { opacity: 1; transform: none; }
+      .estrategia { background: #fff; }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Skip to main content — Accesibilidad WCAG -->
+  <a href="#main" class="skip-link">Saltar al contenido principal</a>
+
+  <!-- Navegación -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Navegación principal">
+    <div class="nav__logo" aria-label="Sonar Hall">SONAR <span>HALL</span></div>
+    <ul class="nav__links" role="list">
+      <li><a href="#overview" class="nav__link" id="link-overview">Overview</a></li>
+      <li><a href="#experiencias" class="nav__link" id="link-estrategia">Estrategia</a></li>
+      <li>
+        <a href="#inversion" class="nav__cta" aria-label="Ver propuesta corporativa y condiciones del acuerdo">
+          Propuesta Corporativa
+        </a>
+      </li>
+    </ul>
+  </nav>
+
+  <main id="main">
+
+    <!-- ============================
+         HERO
+    ============================ -->
+    <section class="hero" aria-labelledby="hero-title">
+      <div class="hero__bg" aria-hidden="true">
+        <img
+          src="https://images.unsplash.com/photo-1540039155733-5bb30b53aa14?auto=format&fit=crop&q=80&w=2000"
+          alt=""
+          class="hero__img"
+          loading="eager"
+          decoding="async"
+          width="2000"
+          height="1333">
+        <div class="hero__gradient"></div>
+        <div class="hero__orb hero__orb--red"></div>
+        <div class="hero__orb hero__orb--dark"></div>
+      </div>
+
+      <div class="hero__content">
+        <div class="hero__eyebrow" aria-label="Categoría: Official Beverage Partner">
+          <div class="hero__eyebrow-line" aria-hidden="true"></div>
+          <span class="hero__eyebrow-label">Official Beverage Partner</span>
+          <div class="hero__eyebrow-line" aria-hidden="true"></div>
+        </div>
+
+        <h1 id="hero-title" class="hero__headline">
+          La Ciudad <br>
+          <span class="hero__headline-outline" aria-label="que vibra">que vibra</span>
+        </h1>
+
+        <div class="hero__lockup">
+          <div class="hero__brand-name" aria-label="Sonar Hall">SONAR HALL</div>
+          <div class="hero__separator" aria-hidden="true">×</div>
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/c/ce/Coca-Cola_logo.svg"
+            alt="Coca-Cola"
+            class="hero__logo"
+            width="160"
+            height="44"
+            loading="eager">
+        </div>
+      </div>
+
+      <div class="hero__scroll no-print" aria-hidden="true">
+        <div class="hero__scroll-label">Scroll</div>
+        <div class="hero__scroll-line"></div>
+      </div>
+    </section>
+
+    <!-- ============================
+         OVERVIEW
+    ============================ -->
+    <section id="overview" class="section overview" aria-labelledby="overview-title">
+      <div class="container">
+        <div class="overview__grid">
+          <div>
+            <p class="section-eyebrow reveal">El Espacio</p>
+            <h2 id="overview-title" class="section-title reveal reveal--delay-1">
+              Ecosistema <br><span style="color: var(--color-brand)">Polanco</span>
+            </h2>
+            <p class="overview__body reveal reveal--delay-2" style="margin-top: var(--space-7)">
+              Localizado en <strong>Av. Moliere 328 (Polanco II Secc)</strong>, Sonar Hall es el hub de
+              entretenimiento con la infraestructura técnica "Plug & Play" más avanzada de la CDMX.
+            </p>
+            <p class="overview__body reveal reveal--delay-3">
+              Un espacio inmersivo 360° diseñado para eliminar fricciones y maximizar el consumo mediante
+              tecnología <span class="overview__highlight">Cashless</span> y Lockers Inteligentes.
+            </p>
+
+            <div class="stats" role="list" aria-label="Estadísticas clave del venue">
+              <div class="stat reveal" role="listitem">
+                <div class="stat__value" aria-label="5000 personas de capacidad máxima">5,000</div>
+                <div class="stat__label">Capacidad Máxima</div>
+              </div>
+              <div class="stat reveal reveal--delay-1" role="listitem">
+                <div class="stat__value" aria-label="Áreas VIP de Hospitality Exclusivo">VIP</div>
+                <div class="stat__label">Hospitality Exclusivo</div>
+              </div>
+              <div class="stat reveal reveal--delay-2" role="listitem">
+                <div class="stat__value" aria-label="30 o más eventos AAA anuales">30+</div>
+                <div class="stat__label">Eventos AAA Anuales</div>
+              </div>
+              <div class="stat reveal reveal--delay-3" role="listitem">
+                <div class="stat__value" aria-label="45,000 personas de asistencia anual estimada">45K</div>
+                <div class="stat__label">Asistencia Anual Est.</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="glass-card reveal reveal--delay-2">
+            <img
+              src="https://images.unsplash.com/photo-1514525253161-7a46d19cd819?auto=format&fit=crop&q=80&w=1000"
+              alt="Concierto en vivo en Sonar Hall — atmósfera inmersiva con iluminación de espectáculo"
+              width="1000"
+              height="750"
+              loading="lazy"
+              decoding="async">
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Marquee — aria-hidden para lectores de pantalla -->
+    <div class="marquee-wrap no-print" aria-hidden="true" role="presentation">
+      <div class="marquee-inner">
+        <!-- Grupo 1 -->
+        <div class="marquee-group">
+          <span class="marquee-item">Exclusividad Total</span>
+          <div class="marquee-dot"></div>
+          <span class="marquee-item">Refrescos</span>
+          <div class="marquee-dot"></div>
+          <span class="marquee-item">Aguas</span>
+          <div class="marquee-dot"></div>
+          <span class="marquee-item">Isotónicos</span>
+          <div class="marquee-dot"></div>
+          <span class="marquee-item">Mixers Premium</span>
+          <div class="marquee-dot"></div>
+          <span class="marquee-item">Pouring Rights</span>
+          <div class="marquee-dot"></div>
+        </div>
+        <!-- Grupo 2 — duplicado para loop infinito sin saltos -->
+        <div class="marquee-group" aria-hidden="true">
+          <span class="marquee-item">Exclusividad Total</span>
+          <div class="marquee-dot"></div>
+          <span class="marquee-item">Refrescos</span>
+          <div class="marquee-dot"></div>
+          <span class="marquee-item">Aguas</span>
+          <div class="marquee-dot"></div>
+          <span class="marquee-item">Isotónicos</span>
+          <div class="marquee-dot"></div>
+          <span class="marquee-item">Mixers Premium</span>
+          <div class="marquee-dot"></div>
+          <span class="marquee-item">Pouring Rights</span>
+          <div class="marquee-dot"></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ============================
+         ESTRATEGIA
+    ============================ -->
+    <section id="experiencias" class="section estrategia" aria-labelledby="estrategia-title">
+      <div class="container">
+        <div class="estrategia__header">
+          <div>
+            <p class="section-eyebrow reveal">Modelo de Integración</p>
+            <h2 id="estrategia-title" class="section-title reveal reveal--delay-1">
+              Estrategia de <br><span style="color: var(--color-brand)">Marca</span>
+            </h2>
+          </div>
+          <p class="overview__body reveal" style="max-width: 440px; align-self: flex-end;">
+            Puntos de contacto orgánicos que incentivan el ticket de consumo mediante ventas frictionless.
+          </p>
+        </div>
+
+        <div class="estrategia__grid">
+          <!-- Card 1 -->
+          <article class="card reveal">
+            <div class="card__tag">Naming Rights</div>
+            <h3 class="card__title">Food Court<br>Experience</h3>
+            <p class="card__body">El punto social pre-show. Diseñado para sampling masivo, operado enteramente con arquitectura tecnológica Cashless para maximizar el ticket de consumo per cápita.</p>
+            <div class="card__number" aria-hidden="true">01</div>
+          </article>
+
+          <!-- Card 2 -->
+          <article class="card reveal reveal--delay-1">
+            <div class="card__tag">VIP Hospitality</div>
+            <h3 class="card__title">Backstage<br>Lounge</h3>
+            <p class="card__body">Espacio premium para mixología de alto margen. Experiencia exclusiva para Key Influencers, prensa especializada y Meet & Greets de alto impacto.</p>
+            <div class="card__number" aria-hidden="true">02</div>
+          </article>
+
+          <!-- Card 3 -->
+          <article class="card reveal reveal--delay-2">
+            <div class="card__tag">Contenido Digital</div>
+            <h3 class="card__title">Coke Studio<br>Sessions</h3>
+            <p class="card__body">Aprovechando la infraestructura de Audio y Video residente, captura in-house de talentos AAA para distribución en plataformas globales y activaciones de marca.</p>
+            <div class="card__number" aria-hidden="true">03</div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============================
+         INVERSIÓN / THE ASK
+    ============================ -->
+    <section id="inversion" class="section inversion" aria-labelledby="inversion-title">
+      <div class="container inversion__center">
+        <p class="section-eyebrow reveal">El Acuerdo — The Ask</p>
+
+        <div class="inversion__amount reveal reveal--delay-1" aria-label="10 millones de pesos mexicanos de inversión anual">
+          10,000,000 <span class="inversion__amount-unit">MXN</span>
+        </div>
+        <p class="inversion__sub reveal reveal--delay-2">Inversión Anual Promedio + Dotación de Producto</p>
+        <div class="inversion__badge reveal reveal--delay-3" aria-label="Acuerdo multianual de 3 años">Acuerdo Multianual: 3 Años</div>
+
+        <div class="inversion__grid" role="list" aria-label="Derechos incluidos en el acuerdo">
+          <div class="inversion__item reveal" role="listitem">
+            <div class="inversion__bullet" aria-hidden="true"></div>
+            <p class="inversion__item-text">Exclusividad absoluta (Pouring Rights) en refrescos, aguas e isotónicos.</p>
+          </div>
+          <div class="inversion__item reveal reveal--delay-1" role="listitem">
+            <div class="inversion__bullet" aria-hidden="true"></div>
+            <p class="inversion__item-text">Naming Rights del "Food Court Experience" y el "VIP Lounge".</p>
+          </div>
+          <div class="inversion__item reveal reveal--delay-2" role="listitem">
+            <div class="inversion__bullet" aria-hidden="true"></div>
+            <p class="inversion__item-text">Explotación de infraestructura técnica para "Coke Studio Sessions".</p>
+          </div>
+          <div class="inversion__item reveal reveal--delay-3" role="listitem">
+            <div class="inversion__bullet" aria-hidden="true"></div>
+            <p class="inversion__item-text">Branding 360° On-Screen, Fan Cam interactiva y señalética digital.</p>
+          </div>
+        </div>
+
+        <div class="reveal no-print">
+          <a
+            href="mailto:corporativo@sonarhall.com?subject=Propuesta%20Coca-Cola%20x%20Sonar%20Hall%202026"
+            class="cta-btn"
+            aria-label="Iniciar negociación — enviar correo a corporativo@sonarhall.com">
+            Iniciar Negociación
+          </a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="footer__name" aria-label="Sonar Hall por Coca-Cola">
+      SONAR <span>HALL</span> <em>×</em> COCA-COLA
+    </div>
+    <p class="footer__meta">Av. Moliere 328, Polanco II Secc &bull; CDMX</p>
+    <div class="footer__confidential" role="status" aria-label="Documento confidencial 2026">
+      Propuesta Confidencial 2026
+    </div>
+  </footer>
+
+  <!-- ============================
+       JAVASCRIPT — IntersectionObserver
+       Accesibilidad: solo anima si no hay prefers-reduced-motion
+  ============================ -->
+  <script>
+    (function () {
+      'use strict';
+
+      // 1. Nav scroll effect
+      const nav = document.getElementById('nav');
+      const onScroll = () => {
+        nav.classList.toggle('nav--scrolled', window.scrollY > 60);
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+
+      // 2. Reveal on scroll — respeta prefers-reduced-motion
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+      if (!prefersReducedMotion) {
+        const reveals = document.querySelectorAll('.reveal');
+        const observer = new IntersectionObserver((entries) => {
+          entries.forEach(entry => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              observer.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+
+        reveals.forEach(el => observer.observe(el));
+      } else {
+        // Sin animación — mostrar todo de golpe
+        document.querySelectorAll('.reveal').forEach(el => el.classList.add('is-visible'));
+      }
+
+      // 3. Active nav links en scroll
+      const sections = document.querySelectorAll('section[id]');
+      const navLinks = { overview: document.getElementById('link-overview'), experiencias: document.getElementById('link-estrategia') };
+
+      const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          const id = entry.target.id;
+          const link = navLinks[id];
+          if (link) {
+            link.setAttribute('aria-current', entry.isIntersecting ? 'page' : 'false');
+          }
+        });
+      }, { threshold: 0.4 });
+
+      sections.forEach(section => sectionObserver.observe(section));
+
+    })();
+  </script>
+
+</body>
+</html>

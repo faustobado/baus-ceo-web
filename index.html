@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>BAUS | C-Level Hub</title>
+  <meta name="description" content="El ecosistema corporativo de Fausto Bado. Excelencia transnacional en medios, entretenimiento y consultoría estratégica.">
+  <meta property="og:title" content="BAUS | C-Level Hub">
+  <meta property="og:description" content="Excelencia transnacional en medios, entretenimiento y consultoría estratégica.">
+  <meta property="og:url" content="https://baus.ceo">
+  <meta property="og:type" content="website">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700;900&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --brand: #F40009;
+      --surface: #030303;
+      --text: #FFFFFF;
+      --muted: rgba(255,255,255,0.4);
+      --border: rgba(255,255,255,0.07);
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Inter', sans-serif; background: var(--surface); color: var(--text); -webkit-font-smoothing: antialiased; }
+    nav { padding: 32px 48px; display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid var(--border); }
+    .logo { font-size: 1.25rem; font-weight: 900; letter-spacing: -0.04em; text-transform: uppercase; }
+    .logo span { font-weight: 300; color: var(--muted); }
+    main { max-width: 1100px; margin: 0 auto; padding: 96px 48px; }
+    .eyebrow { font-size: 0.65rem; font-weight: 900; letter-spacing: 0.4em; text-transform: uppercase; color: var(--brand); margin-bottom: 24px; }
+    h1 { font-size: clamp(3rem, 8vw, 6rem); font-weight: 900; letter-spacing: -0.05em; line-height: 0.9; font-style: italic; text-transform: uppercase; margin-bottom: 32px; }
+    .subtitle { font-size: 1.125rem; color: var(--muted); font-weight: 300; max-width: 520px; line-height: 1.7; margin-bottom: 80px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1px; background: var(--border); border: 1px solid var(--border); }
+    .card { background: var(--surface); padding: 40px 32px; border: none; transition: background 0.3s; }
+    .card:hover { background: rgba(255,255,255,0.03); }
+    .card a { display: block; text-decoration: none; color: inherit; }
+    .card-tag { font-size: 0.6rem; font-weight: 900; letter-spacing: 0.35em; text-transform: uppercase; color: var(--brand); margin-bottom: 16px; }
+    .card-title { font-size: 1.25rem; font-weight: 900; font-style: italic; letter-spacing: -0.03em; text-transform: uppercase; margin-bottom: 12px; }
+    .card-body { font-size: 0.875rem; color: var(--muted); font-weight: 300; line-height: 1.6; margin-bottom: 24px; }
+    .card-link { font-size: 0.65rem; font-weight: 900; letter-spacing: 0.2em; text-transform: uppercase; color: var(--text); opacity: 0.5; transition: opacity 0.2s, color 0.2s; }
+    .card:hover .card-link { opacity: 1; color: var(--brand); }
+    footer { border-top: 1px solid var(--border); padding: 32px 48px; text-align: center; font-size: 0.65rem; color: var(--muted); letter-spacing: 0.3em; text-transform: uppercase; margin-top: 80px; }
+  </style>
+</head>
+<body>
+  <nav><div class="logo">BAUS <span>CEO</span></div></nav>
+  <main>
+    <p class="eyebrow">Global Orchestration</p>
+    <h1>El Ecosistema<br><span style="-webkit-text-stroke:1px rgba(255,255,255,0.4);color:transparent;">BAUS</span></h1>
+    <p class="subtitle">Excelencia transnacional en medios, entretenimiento y consultoría estratégica.</p>
+    <div class="grid">
+      <div class="card"><a href="/media-tech/">
+        <div class="card-tag">Media &amp; Technology</div>
+        <div class="card-title">Programmatic<br>&amp; AI</div>
+        <div class="card-body">Programmatic media, AI-driven marketing y aceleración de datos.</div>
+        <div class="card-link">Dashboard →</div>
+      </a></div>
+      <div class="card"><a href="/entertainment/">
+        <div class="card-tag">Global Entertainment</div>
+        <div class="card-title">Venues &amp;<br>Producción</div>
+        <div class="card-body">Promoción masiva, producción y venues estratégicos.</div>
+        <div class="card-link">Operations →</div>
+      </a></div>
+      <div class="card"><a href="/advisory/">
+        <div class="card-tag">Advisory &amp; Consulting</div>
+        <div class="card-title">Boutique<br>Digital Growth</div>
+        <div class="card-body">Consultoría boutique y visibilidad digital para líderes de nicho.</div>
+        <div class="card-link">Agencies →</div>
+      </a></div>
+    </div>
+  </main>
+  <footer>© 2026 BAUS Solutions | Fausto Bado — CEO</footer>
+</body>
+</html>
