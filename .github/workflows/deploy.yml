@@ -28,8 +28,11 @@ jobs:
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
         log-level: verbose
-        # Evita borrar configuraciones propias de Hostinger si las hay
         exclude: |
           **/.git*
           **/.git*/**
           **/README.md
+          assets/**
+          script.js
+          style.css
+          .ftp-deploy-sync-state.json
