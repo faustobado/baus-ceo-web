@@ -1,0 +1,35 @@
+name: Despliegue Corporativo Automático Hostinger 🚀
+
+on:
+  push:
+    branches:
+      - main
+    # Ignorar cambios que no sean código web para no gastar ancho de banda
+    paths-ignore:
+      - 'README.md'
+      - '.gitignore'
+      - '.DS_Store'
+
+jobs:
+  web-deploy:
+    name: 🎉 Deploy Hostinger (BAUS.CEO)
+    runs-on: ubuntu-latest
+    steps:
+    - name: 🚚 Obtener el código fuente de GitHub
+      uses: actions/checkout@v4
+      with:
+        fetch-depth: 0
+    
+    - name: 📂 Sincronización Automática FTP
+      uses: SamKirkland/FTP-Deploy-Action@v4.3.3
+      with:
+        # Estas variables deben ser creadas en GitHub -> Settings -> Secrets
+        server: ${{ secrets.FTP_SERVER }}
+        username: ${{ secrets.FTP_USERNAME }}
+        password: ${{ secrets.FTP_PASSWORD }}
+        log-level: verbose
+        # Evita borrar configuraciones propias de Hostinger si las hay
+        exclude: |
+          **/.git*
+          **/.git*/**
+          **/README.md
