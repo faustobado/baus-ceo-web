@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Propuesta Comercial - Renata Gonzalez</title>
+    <!-- Usaremos Oswald para los Bold Headers (como Bebas) y Roboto para textos -->
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;500;600&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { counter-reset: page-count; }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            background-color: #2c2c2c;
+        }
+
+        .document-wrapper {
+            width: 100%;
+            max-width: 900px;
+            background: white;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            margin: 20px auto;
+        }
+
+        .page {
+            position: relative;
+            width: 100%;
+            /* 2000 height / 1545 width = 129.449% ratio for the PNGs */
+            padding-bottom: 129.449%;
+            background-size: cover;
+            background-position: center;
+            overflow: hidden;
+            border-bottom: 1px solid #ccc;
+            counter-increment: page-count; /* Incrementar contador por hoja */
+        }
+        
+        /* Creador del texto de paginación automático */
+        .page::after {
+            content: "PÁG " counter(page-count);
+            position: absolute;
+            bottom: 2%;
+            right: 4%;
+            font-family: 'Oswald', sans-serif;
+            font-size: 15px;
+            font-weight: 500;
+            color: #3b3a39; /* Gris corporativo */
+            background: rgba(255, 255, 255, 0.75);
+            padding: 4px 10px;
+            border-radius: 4px;
+            z-index: 100;
+        }
+        
+        @media print {
+            .document-wrapper { box-shadow: none; margin: 0; width: 100%; max-width: 100%; }
+            .page { page-break-after: always; border: none; }
+            body { background: white; }
+        }
+
+        /* 
+         * PARCHES Y SUPERPOSICIONES
+         * Dado que el Canva se exportó con la Header de "Renata Gonzalez"
+         * quemado en las imágenes, colocamos un parche gris oscuro encima.
+         */
+        .header-patch {
+            position: absolute;
+            top: 2.2%;
+            right: 0%;
+            width: 35%;
+            height: 9%;
+            background-color: #3b3a39; /* Gris oscuro del canvas */
+            z-index: 10;
+        }
+
+        .header-text {
+            position: absolute;
+            top: 3.5%;
+            right: 8%;
+            z-index: 20;
+            color: white;
+            font-family: 'Oswald', sans-serif;
+            font-size: 1.3vw;
+            line-height: 1.4;
+            text-align: right;
+        }
+
+        .header-text span {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+        }
+
+        @media (min-width: 900px) {
+            .header-text { font-size: 11.5px; }
+        }
+
+        /* PARCHE GIGANTE PARA TAPAR LA TABLA DE CANVA POR COMPLETO */
+        .wipeout-patch {
+            position: absolute;
+            top: 17%;
+            left: 10%;
+            width: 80%;
+            height: 60%;
+            background-color: #f1f2f2; /* Color gris muy claro del fondo de Canva */
+            z-index: 15;
+            /* Le ponemos un padding suave para disimular */
+            box-shadow: 0 0 20px 20px #f1f2f2;
+        }
+
+        /* CONTENEDOR MAESTRO DE LA TABLA DINÁMICA */
+        .dynamic-table-container {
+            position: absolute;
+            top: 17.5%;
+            left: 10.6%;
+            width: 78.8%;
+            z-index: 20;
+            display: flex;
+            flex-direction: column;
+            gap: 25px; /* Define la separación exacta entre la tabla principal y los totales */
+        }
+
+        /* SUPERPOSICIÓN DE LA TABLA SÓLIDA */
+        .table-overlay {
+            background: #ffffff; 
+            border: 2px solid #3c3b3b;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'Oswald', sans-serif;
+            color: #333;
+        }
+
+        th, td {
+            text-align: center;
+            vertical-align: middle;
+            font-size: 15px; 
+            padding: 12px 10px;
+            border: 1px solid #3c3b3b; 
+        }
+
+        th {
+            background-color: #3b3a39;
+            color: white;
+            font-weight: 500;
+            letter-spacing: 1px;
+            padding: 16px 10px;
+        }
+
+        tr:nth-child(even) td { background-color: #f0f0f0; }
+        tr:nth-child(odd) td { background-color: #ffffff; }
+        
+        .td-no { width: 9%; }
+        .td-desc { width: 33%; text-align: center; }
+        .td-cant { width: 19%; text-align: center; }
+        .td-precio { width: 19.5%; text-align: center; }
+        .td-total { width: 19.5%; text-align: center; }
+
+        .price { font-family: 'Roboto', sans-serif; font-weight: 500; font-size: 14px;}
+
+        /* Bloque de Subtotales sólido */
+        .totals-block {
+            display: flex;
+            flex-direction: column;
+            font-family: 'Oswald', sans-serif;
+            border: 2px solid #3c3b3b;
+            background: #ffffff;
+        }
+
+        .total-row {
+            display: flex;
+            align-items: center;
+            font-size: 17px;
+            border-bottom: 1px solid #3c3b3b;
+            padding: 12px 0;
+        }
+
+        .total-row:nth-child(even) { background-color: #f0f0f0; }
+        
+        .total-row.dark-row {
+            background-color: #3b3a39;
+            color: white;
+            border-bottom: none;
+        }
+
+        .total-label {
+            width: 80.5%;
+            text-align: right;
+            padding-right: 3%;
+            font-weight: 500;
+            border-right: 1px solid #3c3b3b;
+        }
+        
+        .dark-row .total-label { border-right: 1px solid white; }
+
+        .total-number {
+            width: 19.5%;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+        }
+
+        /* SECCIÓN DE NOTAS DE LA PÁGINA 2 */
+        .notes-section {
+            position: absolute;
+            top: 73%;
+            left: 10.6%;
+            width: 78.8%;
+            z-index: 20;
+            font-family: 'Oswald', sans-serif;
+            color: #1a1a1a;
+        }
+
+        .notes-section h2 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .notes-section ul {
+            font-family: 'Roboto', sans-serif;
+            font-weight: 400;
+            font-size: 14.5px;
+            line-height: 1.5;
+            padding-left: 20px;
+            margin: 0;
+            color: #333;
+        }
+
+        .notes-section li { margin-bottom: 6px; }
+
+        .total-number.final {
+            color: white; 
+            margin-top: 2px;
+        }
+
+        /* MAQUETACIÓN PÁGINA 3 (TÉRMINOS OPERATIVOS) */
+        .page-3-layout {
+            position: absolute;
+            top: 15%;
+            left: 9.5%;
+            width: 81%;
+            height: 80%;
+            z-index: 20;
+            display: flex;
+            justify-content: space-between;
+            font-family: 'Roboto', sans-serif;
+            color: #333;
+            font-size: 13.5px;
+            line-height: 1.45;
+        }
+
+        .column-left { width: 48%; }
+        .column-right { width: 48%; }
+
+        h3.section-title {
+            font-family: 'Oswald', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            text-transform: uppercase;
+            margin: 25px 0 10px 0;
+            color: #1a1a1a;
+        }
+        
+        h3.section-title.top-title { margin-top: 0; }
+
+        h4.sub-title {
+            font-family: 'Oswald', sans-serif;
+            font-weight: 600;
+            font-size: 15px;
+            margin: 15px 0 5px 0;
+            text-transform: uppercase;
+        }
+
+        .page-3-layout ul {
+            padding-left: 20px;
+            margin: 0 0 15px 0;
+        }
+
+        .page-3-layout li { margin-bottom: 5px; }
+        .page-3-layout p { margin: 5px 0 15px 0; }
+        .legal-note { font-size: 12.5px; margin-top: 25px !important; }
+
+    </style>
+</head>
+<body>
+
+<div class="document-wrapper">
+
+    <!-- PAGINA 1: PORTADA -->
+    <div class="page" style="background-image: url('images/1.png');">
+        <!-- Portada limpia, no tocamos nada, es pura imagen 1.png -->
+    </div>
+
+    <!-- PAGINA 2: COTIZACIÓN (LA TABLA) -->
+    <div class="page" style="background-image: url('images/2.png');">
+        
+        <!-- PARCHE PARA OCULTAR TEXTO QUEMADO DEL CLIENTE VIEJO -->
+        <div class="header-patch"></div>
+
+        <!-- TEXTOS INYECTADOS MODERNAMENTE -->
+        <div class="header-text">
+            FECHA: <span>10 de Agosto, 2026</span><br>
+            ASUNTO: <span>Cotización SONAR Hall</span><br>
+            PROYECTO: <span>Cena de fin de año 2026</span><br>
+            CLIENTE: <span>Renata Gonzalez</span>
+        </div>
+
+        <!-- PARCHE ENORME PARA BORRAR LA TABLA VIEJA DEL FONDO -->
+        <div class="wipeout-patch"></div>
+
+        <!-- CONTENEDOR FLUIDO QUE UNE LAS TABLAS -->
+        <div class="dynamic-table-container">
+            <!-- TABLA PRINCIPAL -->
+            <div class="table-overlay">
+                <table>
+                    <thead>
+                        <tr>
+                            <th class="td-no">NO.</th>
+                            <th class="td-desc">DESCRIPCIÓN</th>
+                            <th class="td-cant">CANTIDAD</th>
+                            <th class="td-precio">PRECIO</th>
+                            <th class="td-total">TOTAL</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        
+        <tr>
+            <td class="td-no">1</td>
+            <td class="td-desc">Día de montaje (24hrs)</td>
+            <td class="td-cant">2</td>
+            <td class="td-precio price">$140,000</td>
+            <td class="td-total price">$280,000</td>
+        </tr>
+        <tr>
+            <td class="td-no">2</td>
+            <td class="td-desc">Día de evento principal</td>
+            <td class="td-cant">1</td>
+            <td class="td-precio price">$350,000</td>
+            <td class="td-total price">$350,000</td>
+        </tr>
+        <tr>
+            <td class="td-no">3</td>
+            <td class="td-desc">Día de desmontaje (12 hrs)</td>
+            <td class="td-cant">1</td>
+            <td class="td-precio price">$80,000</td>
+            <td class="td-total price">$80,000</td>
+        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- TOTALES -->
+            <div class="totals-block">
+                <div class="total-row">
+                    <div class="total-label">SUBTOTAL</div>
+                    <div class="total-number">$710,000</div>
+                </div>
+                <div class="total-row">
+                    <div class="total-label">IVA</div>
+                    <div class="total-number">$113,600</div>
+                </div>
+                <div class="total-row dark-row">
+                    <div class="total-label">TOTAL</div>
+                    <div class="total-number final">$823,600</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- SECCIÓN DE NOTAS INFERIORES -->
+        <div class="notes-section">
+            <h2>Notas:</h2>
+            <ul>
+                <li>Los días de montaje y desmontaje solo incluyen la apertura del venue, todos los demás requerimientos de la producción serán cubiertos por la casa productora.</li>
+<li>El costo sólo incluye 1 guardia de seguridad en la puerta principal.</li>
+<li>Para poder apartar el venue se requiere un anticipo del 50%.</li>
+<li>Si no se contrata un día adicional de desmontaje, el venue deberá entregarse completamente libere el día lunes a las 11:59 pm, considerando que el evento concluye el domingo.</li>
+<li>Puntos de colgado sujetos al diseño.</li>
+
+            </ul>
+        </div>
+    </div>
+
+    <!-- PAGINA 3 (ANTES ERA LA 4): TÉRMINOS OPERATIVOS SOBRE LIENZO LIMPIO -->
+    <div class="page" style="background-image: url('images/4.png');">
+        <div class="header-patch"></div>
+        <div class="header-text">
+            FECHA: <span>10 de Agosto, 2026</span><br>
+            ASUNTO: <span>Cotización SONAR Hall</span><br>
+            PROYECTO: <span>Cena de fin de año 2026</span><br>
+            CLIENTE: <span>Renata Gonzalez</span>
+        </div>
+
+        <div class="page-3-layout">
+            <!-- COLUMNA IZQUIERDA -->
+            <div class="column-left">
+                <h3 class="section-title top-title">NOTAS</h3>
+                
+                <h4 class="sub-title">INSTALACIONES Y SERVICIOS</h4>
+                <ul style="list-style-type: disc;">
+                    <li>Área de cocina</li>
+                    <li>Baños para asistentes</li>
+                    <li>Baños de servicio</li>
+                    <li>Espacio para banquete y proveedores</li>
+                    <li>Consumibles para baños</li>
+                    <li>Accesorios para guardarropa</li>
+                </ul>
+
+                <h4 class="sub-title">PERSONAL</h4>
+                <ul style="list-style-type: disc;">
+                    <li>Asistente privado para evento</li>
+                    <li>Personal de servicios para baños y guardarropa</li>
+                    <li>Personal de mantenimiento general</li>
+                    <li>1 guardia de seguridad en la entrada principal</li>
+                </ul>
+
+                <h4 class="sub-title">SERVICIOS EXCLUIDOS DE LA RENTA, ENTRE OTROS:</h4>
+                <ul style="list-style-type: disc;">
+                    <li>Sistema de calefacción</li>
+                    <li>Valet parking</li>
+                    <li>Arreglos florales</li>
+                    <li>Banquete</li>
+                    <li>Días extra de montaje</li>
+                    <li>Meseros</li>
+                    <li>Música de cualquier tipo</li>
+                    <li>Tarimas</li>
+                </ul>
+
+                <h3 class="section-title">CONDICIONES DE PAGO</h3>
+                <h4 class="sub-title">ANTICIPO</h4>
+                <ul style="list-style-type: disc;">
+                    <li>Se debe hacer un pago del 50% como anticipo (30 días antes) para apartar la fecha, el cual incluye IVA y puede pagarse en terminal en las instalaciones, transferencia o depósito. Este anticipo se descontará del costo total.</li>
+                </ul>
+
+                <h4 class="sub-title">LIQUIDACIÓN</h4>
+                <ul style="list-style-type: disc;">
+                    <li>El saldo restante, más IVA, debe pagarse preferentemente 10 días naturales antes del evento, mediante terminal en FA5, transferencia o depósito.</li>
+                </ul>
+
+                <h4 class="sub-title">DEPÓSITO EN GARANTÍA</h4>
+                <ul style="list-style-type: disc;">
+                    <li>Para proteger las instalaciones, se solicita un depósito que no genera IVA ni factura. Puede pagarse por terminal, transferencia o depósito, y será devuelto tras la revisión posterior al evento, siempre que no haya daños.</li>
+                </ul>
+
+                <p class="legal-note">La devolución vía terminal puede tardar hasta 5 días hábiles y vía transferencia o depósito hasta 15 días hábiles. En caso de daños, se facturará el costo de reparación más IVA, descontando el depósito en garantía.</p>
+            </div>
+
+            <!-- COLUMNA DERECHA -->
+            <div class="column-right">
+                <h3 class="section-title top-title">HORARIOS</h3>
+                <ul style="list-style-type: disc;">
+                    <li>Se entrega el venue limpio a las 5:00 AM, hora en la que podrán entrar todos los proveedores.</li>
+<li>El evento deberá terminar a las 2:00 AM del día siguiente. En caso de requerir horas extras se podrá solicitar (máximo 1 hora extra), solo en caso de que esté disponible el venue.</li>
+<li>El desmontaje deberá realizarse al término del evento y tendrán 4 horas aproximadamente para entregar el salón limpio.</li>
+
+                </ul>
+
+                <p><b>TODOS</b> los eventos deben tener el expediente completo firmado antes del evento, sin el expediente no se puede hacer el evento. Deben firma:</p>
+                <ul style="list-style-type: disc;">
+                    <li>Costo arrendamiento</li>
+                    <li>Pasos a seguir y reglamento</li>
+                </ul>
+
+                <h3 class="section-title">COSAS A CONSIDERAR</h3>
+                <ul style="list-style-type: disc;">
+                    <li>NO incluye permisos de espectáculo ni SACM.</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <!-- PÁGINAS 5, 6, 7 y 8... -->
+    <!-- (El generador de Python inyectará automáticamente las páginas restantes del 5 al 8) -->
+    
+            <div class="page" style="background-image: url('images/5.png');">
+                <div class="header-patch"></div>
+                <div class="header-text">
+                    FECHA: <span>10 de Agosto, 2026</span><br>
+                    ASUNTO: <span>Cotización SONAR Hall</span><br>
+                    PROYECTO: <span>Cena de fin de año 2026</span><br>
+                    CLIENTE: <span>Renata Gonzalez</span>
+                </div>
+            </div>
+            
+            <div class="page" style="background-image: url('images/6.png');">
+                <div class="header-patch"></div>
+                <div class="header-text">
+                    FECHA: <span>10 de Agosto, 2026</span><br>
+                    ASUNTO: <span>Cotización SONAR Hall</span><br>
+                    PROYECTO: <span>Cena de fin de año 2026</span><br>
+                    CLIENTE: <span>Renata Gonzalez</span>
+                </div>
+            </div>
+            
+            <div class="page" style="background-image: url('images/8.png');">
+                <div class="header-patch"></div>
+                <div class="header-text">
+                    FECHA: <span>10 de Agosto, 2026</span><br>
+                    ASUNTO: <span>Cotización SONAR Hall</span><br>
+                    PROYECTO: <span>Cena de fin de año 2026</span><br>
+                    CLIENTE: <span>Renata Gonzalez</span>
+                </div>
+            </div>
+            
+
+</div>
+
+</body>
+</html>
