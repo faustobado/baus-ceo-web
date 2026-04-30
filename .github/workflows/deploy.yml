@@ -27,6 +27,7 @@ jobs:
         server: ${{ secrets.FTP_SERVER }}
         username: ${{ secrets.FTP_USERNAME }}
         password: ${{ secrets.FTP_PASSWORD }}
+        state-name: .ftp-deploy-sync-state-v2.json
         log-level: verbose
         exclude: |
           **/.git*
