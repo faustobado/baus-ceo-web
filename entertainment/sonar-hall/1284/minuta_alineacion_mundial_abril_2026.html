@@ -1,0 +1,381 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Minuta de Alineación: Sonar Hall</title>
+    <style>
+      /* Base Styles */
+      @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap");
+
+      body {
+        font-family:
+          "Inter",
+          -apple-system,
+          BlinkMacSystemFont,
+          "Segoe UI",
+          Roboto,
+          Helvetica,
+          Arial,
+          sans-serif;
+        background-color: #f0f2f5;
+        color: #121212;
+        margin: 0;
+        padding: 40px 20px;
+        line-height: 1.6;
+      }
+
+      /* WOW Animations & Glassmorphism Premium Standard */
+      :root {
+        --sonar-black: #121212;
+        --sonar-green: #2ecc71;
+        --sonar-blue: #3498db;
+        --sonar-grey: #f8f9fa;
+        --sonar-border: #e0e0e0;
+        --sonar-red: #e74c3c;
+        --sonar-accent: #f39c12;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      .bg-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(
+          135deg,
+          rgba(240, 242, 245, 0.7) 0%,
+          rgba(255, 255, 255, 0.4) 100%
+        );
+        z-index: -1;
+      }
+
+      .container {
+        max-width: 900px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(24px);
+        -webkit-backdrop-filter: blur(24px);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+        padding: 50px;
+        border-radius: 20px;
+        box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+        animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      .header {
+        border-bottom: 2px solid var(--sonar-black);
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-end;
+      }
+
+      .header-text h1 {
+        font-size: 26px;
+        margin: 0 0 10px 0;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+      }
+
+      .meta-info {
+        font-size: 14px;
+        color: #555;
+      }
+
+      .meta-info strong {
+        color: var(--sonar-black);
+      }
+
+      .section-title {
+        font-size: 20px;
+        font-weight: bold;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        color: var(--sonar-black);
+        border-bottom: 1px solid var(--sonar-border);
+        padding-bottom: 5px;
+      }
+
+      .alert-box {
+        background: rgba(231, 76, 60, 0.08);
+        border-left: 4px solid var(--sonar-red);
+        padding: 20px;
+        border-radius: 4px;
+        margin-bottom: 30px;
+      }
+
+      .alert-box h4 {
+        margin: 0 0 10px 0;
+        color: var(--sonar-red);
+        font-size: 16px;
+        text-transform: uppercase;
+      }
+
+      ul {
+        padding-left: 20px;
+      }
+
+      li {
+        margin-bottom: 12px;
+      }
+
+      .next-steps-table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+      }
+
+      .next-steps-table th,
+      .next-steps-table td {
+        padding: 14px 15px;
+        text-align: left;
+        border-bottom: 1px solid var(--sonar-border);
+      }
+
+      .next-steps-table th {
+        background-color: var(--sonar-grey);
+        font-weight: 600;
+        color: var(--sonar-black);
+      }
+
+      /* App-like Hover Effects for Tables */
+      tbody tr {
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+      }
+      tbody tr:hover {
+        background-color: #ffffff;
+        transform: translateY(-2px) scale(1.002);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+        border-radius: 8px;
+        position: relative;
+        z-index: 10;
+      }
+
+      .badge {
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 700;
+        color: white;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        display: inline-block;
+      }
+
+      .bg-black {
+        background-color: var(--sonar-black);
+      }
+      .bg-red {
+        background-color: var(--sonar-red);
+      }
+      .bg-green {
+        background-color: var(--sonar-green);
+      }
+      .bg-accent {
+        background-color: var(--sonar-accent);
+      }
+
+      /* Staggered animation for table rows */
+      tbody tr:nth-child(1) {
+        animation: fadeUp 0.6s forwards 0.2s;
+        opacity: 0;
+      }
+      tbody tr:nth-child(2) {
+        animation: fadeUp 0.6s forwards 0.3s;
+        opacity: 0;
+      }
+      tbody tr:nth-child(3) {
+        animation: fadeUp 0.6s forwards 0.4s;
+        opacity: 0;
+      }
+      tbody tr:nth-child(4) {
+        animation: fadeUp 0.6s forwards 0.5s;
+        opacity: 0;
+      }
+      tbody tr:nth-child(5) {
+        animation: fadeUp 0.6s forwards 0.6s;
+        opacity: 0;
+      }
+      tbody tr:nth-child(6) {
+        animation: fadeUp 0.6s forwards 0.7s;
+        opacity: 0;
+      }
+
+      @media print {
+        body {
+          background: white;
+          padding: 0;
+        }
+        .container {
+          box-shadow: none;
+          border: none;
+          padding: 0;
+          animation: none;
+        }
+        .bg-overlay {
+          display: none;
+        }
+        .alert-box {
+          border: 1px solid #ddd;
+          border-left: 4px solid var(--sonar-red);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="bg-overlay"></div>
+    <div class="container">
+      <div class="header">
+        <div class="header-text">
+          <h1>Minuta de Alineación Estratégica</h1>
+          <div class="meta-info">
+            Proyecto:
+            <strong
+              >Foro Polanco Sonar Hall (The Match Lounge & Operación
+              General)</strong
+            >
+          </div>
+        </div>
+        <div class="meta-info" style="text-align: right">
+          <div>Fecha: <strong>30 de Abril, 2026</strong></div>
+        </div>
+      </div>
+
+      <div class="alert-box">
+        <h4>Aviso de Sensibilidad Operativa</h4>
+        <p style="margin: 0">
+          Esta sesión tuvo como objetivo principal re-alinear de urgencia el
+          entendimiento del <strong>Modelo de Negocio</strong> que Alex aprobó.
+          Es crítico que todo el equipo comprenda que cualquier desviación en el
+          uso de boleteras no autorizadas (ej. Fever), requieren aprobación
+          explícita por parte de Alex y Sam/Robert, y pone en riesgo el acuerdo
+          principal del venue y la relación de confianza.
+        </p>
+      </div>
+
+      <div class="section-title">Asistentes</div>
+      <ul>
+        <li>Robert Romm</li>
+        <li>Sammantha</li>
+        <li>Pipo Alvarado</li>
+        <li>Andrea</li>
+        <li>Fausto Bado</li>
+      </ul>
+
+      <div class="section-title">Contexto y Acuerdos Principales</div>
+      <ul>
+        <li>
+          <strong>Definición del Negocio (In-house vs Rentas):</strong> Se
+          aclaró enfáticamente por parte de Robert que
+          <strong
+            >Foro Polanco Sonar Hall no es un venue que se deba enfocar
+            principalmente para rentarse o sub-arrendarse a promotores
+            externos</strong
+          >
+          (como Looloo o Funk). El negocio estructurado y vendido a Alex
+          requiere que la operación sea interna in-house ("monopolizar el
+          evento"): se operan barras, central, venue y boletaje
+          (obligatoriamente Ticketmaster).
+        </li>
+        <li>
+          <strong>Tiempos de Reacción:</strong> Ante la espera de 5 meses sin
+          eventos in-house, se exige dejar de priorizar eventos de relleno
+          (rentas) y enfocar recursos en traer talento que opere bajo la
+          estructura principal.
+        </li>
+        <li>
+          <strong>Proyecto "The Match Lounge" (Mundial):</strong> Se da luz
+          verde a la iniciativa presentada por Andrea para el Mundial. Este
+          proyecto se operará in-house (operando barras y alianzas con
+          restaurantes en lobby) como la primera gran demostración operativa
+          para Alex.
+        </li>
+      </ul>
+
+      <div class="section-title">Siguientes Pasos (Action Items)</div>
+      <table class="next-steps-table">
+        <thead>
+          <tr>
+            <th>Punto de Acción</th>
+            <th>Responsable</th>
+            <th>Estatus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <strong>1. Presentación Oficial "The Match Lounge"</strong
+              ><br />Andrea debe bajar la versión final de la presentación
+              creativa y operativa del Mundial. Esto es indispensable para salir
+              urgentemente a vender a marcas y patrocinadores (Scotiabank, etc).
+            </td>
+            <td>Andrea / Daniel / Pipo</td>
+            <td><span class="badge bg-red">URGENTE</span></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>2. Estatus Evento Marcos Valle</strong><br />Definir
+              inmediatamente si el evento se puede cambiar de boletera
+              Ticketmaster o si debe bajarse definitivamente para evitar
+              conflictos y multas con TM.
+            </td>
+            <td>Ramón</td>
+            <td><span class="badge bg-red">URGENTE</span></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>3. Viabilidad Evento "Flow" ($3.6 MDP)</strong><br />Se
+              debe revisar caso a caso ("case by case") si este evento, por la
+              magnitud del revenue (Renta de equipo/audio/AYB), puede avanzar
+              bajo un esquema de ventana autorizada. Requiere P&L oficial y
+              autorización expresa de Alex.
+            </td>
+            <td>Pipo</td>
+            <td><span class="badge bg-accent">REVISIÓN</span></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>4. Cotización "Mentiras el Musical"</strong><br />Evaluar
+              viabilidad, costos y disponibilidad para traer la obra el domingo
+              27 de junio (Día de la marcha PRIDE), identificando que sería un
+              éxito garantizado.
+            </td>
+            <td>Pipo / Sam</td>
+            <td><span class="badge bg-green">PROSPECTO</span></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>5. Cierre de Marcas en Conjunto (Mundial)</strong
+              ><br />Ataque comercial conjunto para cerrar patrocinios de
+              Cerveceras, Bancos, etc., para el Mundial en los próximos 41 días.
+            </td>
+            <td>Todos</td>
+            <td><span class="badge bg-black">EN CURSO</span></td>
+          </tr>
+          <tr>
+            <td>
+              <strong>6. Pipeline de Talentos "In-House"</strong><br />Se debe
+              entregar la lista concreta de DJs que pueden venir a tocar bajo el
+              modelo de negocio propio "In-house", dejando en segundo plano a
+              los eventos donde solo se renta el espacio.
+            </td>
+            <td>Pipo</td>
+            <td><span class="badge bg-black">EN CURSO</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </body>
+</html>
