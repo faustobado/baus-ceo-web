@@ -1,0 +1,503 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>SONAR - Reporte Ejecutivo de Eventos On-Going</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --sonar-black: #121212;
+        --sonar-green: #2ecc71;
+        --sonar-blue: #3498db;
+        --sonar-grey: #f8f9fa;
+        --sonar-border: #e0e0e0;
+      }
+
+      body {
+        font-family: "Outfit", sans-serif;
+        background-color: #f0f2f5;
+        background-image: url("file:///Users/faustobado/Documents/Antigravity%20All/BAUS_CORPORATE/00_TEMPLATES/Proposal_Engine/PPTA_SONAR_TEMPLATE_VACIO_FOTOGRAFIAS/4.png");
+        background-size: cover;
+        background-attachment: fixed;
+        background-position: center;
+        margin: 0;
+        padding: 30px;
+        color: var(--sonar-black);
+      }
+
+      .container {
+        max-width: 1100px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.93);
+        padding: 40px;
+        border-radius: 12px;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 2px solid var(--sonar-black);
+        padding-bottom: 20px;
+        margin-bottom: 30px;
+      }
+
+      .header-title h1 {
+        margin: 0;
+        font-size: 28px;
+        letter-spacing: -0.5px;
+        text-transform: uppercase;
+      }
+
+      .header-title p {
+        margin: 5px 0 0;
+        color: #666;
+        font-size: 14px;
+      }
+
+      .status-header {
+        text-align: right;
+      }
+
+      .badge-ongoing {
+        background: var(--sonar-black);
+        color: white;
+        padding: 6px 14px;
+        border-radius: 20px;
+        font-size: 12px;
+        font-weight: 600;
+      }
+
+      .section-header {
+        background: #f1f3f5;
+        padding: 10px 15px;
+        border-radius: 6px;
+        font-weight: 700;
+        font-size: 14px;
+        margin: 25px 0 15px;
+        display: flex;
+        align-items: center;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+      }
+
+      .section-header.confirmed {
+        border-left: 5px solid var(--sonar-green);
+        color: #1e7e34;
+      }
+
+      .section-header.advanced {
+        border-left: 5px solid var(--sonar-blue);
+        color: #1b4f72;
+      }
+
+      .section-header.ongoing {
+        border-left: 5px solid #95a5a6;
+        color: #2c3e50;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+      }
+
+      th {
+        text-align: left;
+        padding: 12px;
+        color: #888;
+        border-bottom: 1px solid var(--sonar-border);
+        font-weight: 500;
+      }
+
+      td {
+        padding: 14px 12px;
+        border-bottom: 1px solid #f2f2f2;
+      }
+
+      .event-name {
+        font-weight: 700;
+        font-size: 14px;
+      }
+
+      .promotor {
+        color: #777;
+        font-size: 11px;
+        margin-top: 2px;
+      }
+
+      .metric {
+        font-weight: 600;
+        color: #1a1a1a;
+      }
+
+      .date-cell {
+        font-family: monospace;
+        font-weight: 600;
+        color: #e67e22;
+      }
+
+      .status-dot {
+        height: 8px;
+        width: 8px;
+        border-radius: 50%;
+        display: inline-block;
+        margin-right: 8px;
+      }
+
+      @media print {
+        @page {
+          margin: 0.8cm;
+        }
+        body {
+          background-color: white !important;
+          background-image: url("file:///Users/faustobado/Documents/Antigravity%20All/BAUS_CORPORATE/00_TEMPLATES/Proposal_Engine/PPTA_SONAR_TEMPLATE_VACIO_FOTOGRAFIAS/4.png") !important;
+          background-size: cover !important;
+          -webkit-print-color-adjust: exact;
+          print-color-adjust: exact;
+          padding: 0;
+        }
+        .container {
+          background: rgba(255, 255, 255, 0.93) !important;
+          box-shadow: none;
+          border: none;
+          max-width: 100%;
+          padding: 10px !important;
+        }
+        header {
+          padding-bottom: 5px;
+          margin-bottom: 10px;
+        }
+        .header-title h1 {
+          font-size: 20px;
+        }
+        .header-title p {
+          font-size: 11px;
+        }
+        .section-header {
+          margin: 10px 0 5px;
+          padding: 4px 10px;
+          font-size: 11px;
+        }
+        th {
+          padding: 4px 6px !important;
+          font-size: 10px !important;
+        }
+        td {
+          padding: 3px 6px !important;
+        }
+        .event-name {
+          font-size: 11px !important;
+        }
+        .promotor {
+          font-size: 9px !important;
+        }
+        .metric, .date-cell {
+          font-size: 11px !important;
+        }
+        .badge-ongoing {
+          padding: 4px 10px;
+          font-size: 10px;
+        }
+        footer {
+          margin-top: 10px !important;
+          padding-top: 10px !important;
+        }
+        .no-print {
+          display: none;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="header-title">
+          <h1>Reporte de Operaciones Sonar</h1>
+          <p>Resumen de cierres, negociaciones y prospección actual</p>
+        </div>
+        <div class="status-header">
+          <span class="badge-ongoing">ESTADO: ON-GOING</span>
+          <p style="font-size: 12px; color: #999; margin-top: 8px">
+            Corte: 29 Abr 2026
+          </p>
+        </div>
+      </header>
+
+      <!-- CONFIRMADOS -->
+      <div class="section-header confirmed">
+        <span class="status-dot" style="background: var(--sonar-green)"></span>
+        Confirmados
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th width="25%">Evento / Promotor</th>
+            <th width="15%">Fecha</th>
+            <th width="15%">Renta</th>
+            <th width="15%">Taquilla</th>
+            <th width="15%">Barra</th>
+            <th width="15%">Estatus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="event-name">WATCH PARTIES MUNDIAL</div>
+              <div class="promotor">Sonar</div>
+            </td>
+            <td class="date-cell">JUNIO - JULIO</td>
+            <td
+              class="metric"
+              colspan="3"
+              style="text-align: center; color: #555"
+            >
+              Partidos de mayor interés
+            </td>
+            <td>
+              <span style="color: var(--sonar-green); font-weight: 700"
+                >CONFIRMADO</span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="event-name">MARCOS VALLE</div>
+              <div class="promotor">Dorado</div>
+            </td>
+            <td class="date-cell">08/07/2026</td>
+            <td class="metric">$190,000</td>
+            <td class="metric">10%</td>
+            <td class="metric">60%</td>
+            <td>
+              <span style="color: var(--sonar-green); font-weight: 700"
+                >CONFIRMADO</span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="event-name">FLOW</div>
+              <div class="promotor">Rojo</div>
+            </td>
+            <td class="date-cell">22/07/2026</td>
+            <td class="metric">$350,000</td>
+            <td class="metric">18%</td>
+            <td class="metric">90%</td>
+            <td>
+              <span style="color: var(--sonar-green); font-weight: 700"
+                >CONFIRMADO</span
+              >
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="event-name">WHO MADE WHO</div>
+              <div class="promotor">TBC</div>
+            </td>
+            <td class="date-cell">26 SEP</td>
+            <td class="metric">TBC</td>
+            <td class="metric">TBC</td>
+            <td class="metric">TBC</td>
+            <td>
+              <span style="color: var(--sonar-green); font-weight: 700"
+                >CONFIRMADO</span
+              >
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- FASE FINAL -->
+      <div class="section-header advanced">
+        <span class="status-dot" style="background: var(--sonar-blue)"></span>
+        Fase Final / Próximos a Confirmar (Verdes)
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th width="25%">Actividad</th>
+            <th width="25%">Fecha Evento</th>
+            <th width="25%">Responsable</th>
+            <th width="25%">Probabilidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="event-name">CANIRAC</div></td>
+            <td class="date-cell">26-28 AGOSTO</td>
+            <td>RAMON</td>
+            <td class="metric">90%</td>
+          </tr>
+          <tr>
+            <td><div class="event-name">MOCHAKK</div></td>
+            <td class="date-cell">24 SEP</td>
+            <td>PIPO / RAMON</td>
+            <td class="metric">95%</td>
+          </tr>
+          <tr>
+            <td><div class="event-name">KOLSCH</div></td>
+            <td class="date-cell">3 OCT</td>
+            <td>DORADO</td>
+            <td class="metric">95%</td>
+          </tr>
+          <tr>
+            <td><div class="event-name">BRESH</div></td>
+            <td class="date-cell">31 OCT</td>
+            <td>MORRIS</td>
+            <td class="metric">90%</td>
+          </tr>
+          <tr>
+            <td><div class="event-name">ADAM BEYER</div></td>
+            <td class="date-cell">12 DIC</td>
+            <td>DORADO</td>
+            <td class="metric">90%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- EN NEGOCIACIÓN / PROSPECCIÓN (Ordenado cronológicamente) -->
+      <div class="section-header ongoing">
+        <span class="status-dot" style="background: #95a5a6"></span>
+        En Negociación / Prospección (Blancos/Amarillos)
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th width="25%">Actividad</th>
+            <th width="25%">Fecha Evento</th>
+            <th width="25%">Responsable</th>
+            <th width="25%">Observaciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="event-name">GOB. GUANAJUATO</div></td>
+            <td class="date-cell">(10,11,12),(23,24,25) JUNIO</td>
+            <td>INDIGO</td>
+            <td>Renta</td>
+          </tr>
+          <tr>
+            <td><div class="event-name">CUMBIA SOUND MACHINE</div></td>
+            <td class="date-cell">11/06/2026</td>
+            <td>SAM</td>
+            <td>Propuesta Enviada</td>
+          </tr>
+          <tr>
+            <td><div class="event-name">CONCIERTO DE LA W SOUND</div></td>
+            <td class="date-cell">17/06/2026</td>
+            <td>PIPO</td>
+            <td>Renta</td>
+          </tr>
+          <tr>
+            <td><div class="event-name">ANIVERSARIO PHONIQUE</div></td>
+            <td class="date-cell">19/06/2026</td>
+            <td>DANIEL</td>
+            <td>Renta</td>
+          </tr>
+          <tr>
+            <td><div class="event-name">LANE 8</div></td>
+            <td class="date-cell">26/06/2026</td>
+            <td>RAMON</td>
+            <td>Renta</td>
+          </tr>
+          <tr>
+            <td><div class="event-name">ANTOR</div></td>
+            <td class="date-cell">10/07/2026</td>
+            <td>RAMON</td>
+            <td>Show</td>
+          </tr>
+          <tr>
+            <td><div class="event-name">WEVBOOST</div></td>
+            <td class="date-cell">13/07/2026</td>
+            <td>ANDREA</td>
+            <td>Renta</td>
+          </tr>
+          <tr>
+            <td><div class="event-name">BUDO FIGHT</div></td>
+            <td class="date-cell">01/08/2026</td>
+            <td>SAM</td>
+            <td>Renta</td>
+          </tr>
+          <tr>
+            <td><div class="event-name">LEGUES CUP</div></td>
+            <td class="date-cell">04-09 AGOSTO</td>
+            <td>INDIGO</td>
+            <td>Renta</td>
+          </tr>
+          <tr>
+            <td><div class="event-name">NETFLIX</div></td>
+            <td class="date-cell">24-28 AGOSTO</td>
+            <td>DANIEL</td>
+            <td>Renta</td>
+          </tr>
+          <tr>
+            <td><div class="event-name">MEZONTLE</div></td>
+            <td class="date-cell">29/08/2026</td>
+            <td>DANIEL</td>
+            <td>Renta</td>
+          </tr>
+          <tr>
+            <td><div class="event-name">LOST NIGHTS</div></td>
+            <td class="date-cell">5 SEP</td>
+            <td>RAMON</td>
+            <td>Renta</td>
+          </tr>
+          <tr>
+            <td><div class="event-name">MONOLINK</div></td>
+            <td class="date-cell">1,2,3 OCT</td>
+            <td>RAMON</td>
+            <td>Show</td>
+          </tr>
+          <tr>
+            <td><div class="event-name">MAKI PRODUCCIONES</div></td>
+            <td class="date-cell">7,8,9 OCT</td>
+            <td>RAMON</td>
+            <td>Renta</td>
+          </tr>
+          <tr>
+            <td><div class="event-name">ADRIATIQUE</div></td>
+            <td class="date-cell">29-31 OCT</td>
+            <td>RAMON</td>
+            <td>Show</td>
+          </tr>
+          <tr>
+            <td><div class="event-name">MAESTRO DOBEL</div></td>
+            <td class="date-cell">29-2 NOV</td>
+            <td>PIPO</td>
+            <td>Renta</td>
+          </tr>
+          <tr>
+            <td><div class="event-name">WIVBOOST</div></td>
+            <td class="date-cell">9-10 NOV</td>
+            <td>ANDREA</td>
+            <td>Renta</td>
+          </tr>
+          <tr>
+            <td><div class="event-name">SLEPING WITH SIRENS</div></td>
+            <td class="date-cell">19 DIC</td>
+            <td>PIPO</td>
+            <td>Renta</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <footer
+        style="
+          margin-top: 30px;
+          text-align: center;
+          border-top: 1px solid #eee;
+          padding-top: 20px;
+        "
+      >
+        <p style="font-size: 11px; color: #aaa; margin: 0">
+          Generado para Dirección General | Sonar | BAUS Holding Group
+        </p>
+      </footer>
+    </div>
+  </body>
+</html>

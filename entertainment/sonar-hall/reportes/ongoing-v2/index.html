@@ -1,0 +1,717 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SONAR - Reporte Ejecutivo de Eventos On-Going v2</title>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --sonar-black: #121212;
+        --sonar-green: #2ecc71;
+        --sonar-blue: #3498db;
+        --sonar-grey: #f8f9fa;
+        --sonar-border: #e0e0e0;
+        --spacing-unit: 8px;
+        --transition-micro: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+        --transition-normal: 300ms cubic-bezier(0.4, 0, 0.2, 1);
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html, body {
+        margin: 0;
+        padding: 0;
+        height: 100%;
+      }
+
+      body {
+        font-family: "Outfit", sans-serif;
+        background: linear-gradient(135deg, #f0f2f5 0%, #e8eaef 100%);
+        background-attachment: fixed;
+        background-image:
+          url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23121212' fill-opacity='0.02'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+        background-color: #f0f2f5;
+        margin: 0;
+        padding: calc(var(--spacing-unit) * 4);
+        color: var(--sonar-black);
+        min-height: 100vh;
+      }
+
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        background: rgba(255, 255, 255, 0.95);
+        backdrop-filter: blur(10px);
+        -webkit-backdrop-filter: blur(10px);
+        padding: calc(var(--spacing-unit) * 5);
+        border-radius: 16px;
+        box-shadow: 0 20px 60px rgba(18, 18, 18, 0.12),
+                    0 1px 3px rgba(0, 0, 0, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.6);
+      }
+
+      header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: calc(var(--spacing-unit) * 4);
+        border-bottom: 2px solid var(--sonar-black);
+        padding-bottom: calc(var(--spacing-unit) * 2);
+        margin-bottom: calc(var(--spacing-unit) * 4);
+      }
+
+      .header-title h1 {
+        margin: 0 0 calc(var(--spacing-unit) * 1) 0;
+        font-size: clamp(24px, 5vw, 32px);
+        font-weight: 700;
+        letter-spacing: -0.8px;
+        text-transform: uppercase;
+        background: linear-gradient(135deg, var(--sonar-black) 0%, #333333 100%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        background-clip: text;
+      }
+
+      .header-title p {
+        margin: 0;
+        color: #666666;
+        font-size: 14px;
+        font-weight: 400;
+        letter-spacing: 0.3px;
+      }
+
+      .status-header {
+        text-align: right;
+        display: flex;
+        flex-direction: column;
+        gap: calc(var(--spacing-unit) * 1);
+        align-items: flex-end;
+      }
+
+      .badge-ongoing {
+        background: linear-gradient(135deg, var(--sonar-black) 0%, #2a2a2a 100%);
+        color: white;
+        padding: calc(var(--spacing-unit) * 0.75) calc(var(--spacing-unit) * 1.75);
+        border-radius: 24px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        text-transform: uppercase;
+        box-shadow: 0 4px 12px rgba(18, 18, 18, 0.15);
+        transition: all var(--transition-micro);
+      }
+
+      .badge-ongoing:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(18, 18, 18, 0.2);
+      }
+
+      .status-header > p {
+        font-size: 12px;
+        color: #999999;
+        margin: 0;
+        font-weight: 500;
+      }
+
+      .section-header {
+        background: linear-gradient(135deg, #f8f9fa 0%, #f0f3f7 100%);
+        padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 2);
+        border-radius: 10px;
+        font-weight: 700;
+        font-size: 13px;
+        margin: calc(var(--spacing-unit) * 3) 0 calc(var(--spacing-unit) * 2) 0;
+        display: flex;
+        align-items: center;
+        gap: calc(var(--spacing-unit) * 1.5);
+        text-transform: uppercase;
+        letter-spacing: 0.6px;
+        border-left: 6px solid #999999;
+        transition: all var(--transition-micro);
+      }
+
+      .section-header:hover {
+        transform: translateX(4px);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.06);
+      }
+
+      .section-header.confirmed {
+        border-left-color: var(--sonar-green);
+        color: #1e7e34;
+        background: linear-gradient(135deg, rgba(46, 204, 113, 0.08) 0%, rgba(46, 204, 113, 0.04) 100%);
+      }
+
+      .section-header.advanced {
+        border-left-color: var(--sonar-blue);
+        color: #1b4f72;
+        background: linear-gradient(135deg, rgba(52, 152, 219, 0.08) 0%, rgba(52, 152, 219, 0.04) 100%);
+      }
+
+      .section-header.ongoing {
+        border-left-color: #95a5a6;
+        color: #2c3e50;
+        background: linear-gradient(135deg, rgba(149, 165, 166, 0.06) 0%, rgba(149, 165, 166, 0.02) 100%);
+      }
+
+      .icon-dot {
+        width: 12px;
+        height: 12px;
+        border-radius: 50%;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 8px;
+        font-weight: 700;
+        color: white;
+      }
+
+      .icon-dot.confirmed::before {
+        content: "✓";
+        color: var(--sonar-green);
+      }
+
+      .icon-dot.advanced::before {
+        content: "▲";
+        color: var(--sonar-blue);
+      }
+
+      .icon-dot.ongoing::before {
+        content: "◈";
+        color: #95a5a6;
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+        font-size: 13px;
+        margin-bottom: calc(var(--spacing-unit) * 2);
+      }
+
+      thead {
+        background: linear-gradient(135deg, #f8f9fa 0%, #f3f4f6 100%);
+      }
+
+      th {
+        text-align: left;
+        padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 1.5);
+        color: #666666;
+        border-bottom: 2px solid #e0e0e0;
+        font-weight: 600;
+        letter-spacing: 0.3px;
+        font-size: 12px;
+        text-transform: uppercase;
+      }
+
+      tbody tr {
+        transition: all var(--transition-micro);
+        border-bottom: 1px solid #f2f2f2;
+      }
+
+      tbody tr:hover {
+        background-color: rgba(46, 204, 113, 0.02);
+      }
+
+      td {
+        padding: calc(var(--spacing-unit) * 1.5) calc(var(--spacing-unit) * 1.5);
+        vertical-align: middle;
+      }
+
+      .event-name {
+        font-weight: 700;
+        font-size: 14px;
+        color: var(--sonar-black);
+        letter-spacing: -0.2px;
+      }
+
+      .promotor {
+        color: #888888;
+        font-size: 12px;
+        margin-top: calc(var(--spacing-unit) * 0.5);
+        font-weight: 500;
+      }
+
+      .metric {
+        font-weight: 700;
+        color: var(--sonar-black);
+        font-size: 13px;
+        font-family: "Courier New", monospace;
+        letter-spacing: -0.3px;
+      }
+
+      .date-cell {
+        font-family: "Courier New", monospace;
+        font-weight: 700;
+        color: #e67e22;
+        font-size: 12px;
+        letter-spacing: 0.5px;
+      }
+
+      .status-badge {
+        display: inline-block;
+        padding: calc(var(--spacing-unit) * 0.5) calc(var(--spacing-unit) * 1.25);
+        border-radius: 16px;
+        font-size: 11px;
+        font-weight: 700;
+        letter-spacing: 0.3px;
+        transition: all var(--transition-micro);
+      }
+
+      .status-badge.confirmed {
+        background: linear-gradient(135deg, rgba(46, 204, 113, 0.15) 0%, rgba(46, 204, 113, 0.05) 100%);
+        color: var(--sonar-green);
+        border: 1px solid rgba(46, 204, 113, 0.3);
+      }
+
+      .status-badge.confirmed:hover {
+        background: linear-gradient(135deg, rgba(46, 204, 113, 0.25) 0%, rgba(46, 204, 113, 0.1) 100%);
+        transform: scale(1.05);
+      }
+
+      .status-badge.pending {
+        background: linear-gradient(135deg, rgba(230, 126, 34, 0.15) 0%, rgba(230, 126, 34, 0.05) 100%);
+        color: #e67e22;
+        border: 1px solid rgba(230, 126, 34, 0.3);
+      }
+
+      footer {
+        margin-top: calc(var(--spacing-unit) * 4);
+        text-align: center;
+        border-top: 1px solid #e0e0e0;
+        padding-top: calc(var(--spacing-unit) * 2.5);
+        animation: fadeInUp 600ms ease-out;
+      }
+
+      footer p {
+        font-size: 11px;
+        color: #aaaaaa;
+        margin: 0;
+        font-weight: 500;
+        letter-spacing: 0.3px;
+      }
+
+      @keyframes fadeInUp {
+        from {
+          opacity: 0;
+          transform: translateY(10px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      tbody tr {
+        animation: fadeInUp 500ms ease-out backwards;
+      }
+
+      tbody tr:nth-child(1) { animation-delay: 100ms; }
+      tbody tr:nth-child(2) { animation-delay: 150ms; }
+      tbody tr:nth-child(3) { animation-delay: 200ms; }
+      tbody tr:nth-child(n+4) { animation-delay: 250ms; }
+
+      @media (max-width: 768px) {
+        .container {
+          padding: calc(var(--spacing-unit) * 3);
+        }
+
+        header {
+          flex-direction: column;
+          align-items: flex-start;
+          gap: calc(var(--spacing-unit) * 2);
+        }
+
+        .status-header {
+          align-items: flex-start;
+        }
+
+        .header-title h1 {
+          font-size: 24px;
+        }
+
+        table {
+          font-size: 12px;
+        }
+
+        th, td {
+          padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 1);
+        }
+
+        .promotor {
+          font-size: 11px;
+        }
+
+        .section-header {
+          font-size: 12px;
+          padding: calc(var(--spacing-unit) * 1) calc(var(--spacing-unit) * 1.5);
+        }
+      }
+
+      @media print {
+        @page {
+          margin: 0.8cm;
+        }
+
+        body {
+          background: white !important;
+          padding: 0;
+        }
+
+        .container {
+          background: white !important;
+          backdrop-filter: none !important;
+          -webkit-backdrop-filter: none !important;
+          box-shadow: none;
+          border: none;
+          padding: calc(var(--spacing-unit) * 1.5) !important;
+          max-width: 100%;
+        }
+
+        header {
+          padding-bottom: calc(var(--spacing-unit) * 1);
+          margin-bottom: calc(var(--spacing-unit) * 2);
+        }
+
+        .header-title h1 {
+          font-size: 20px;
+        }
+
+        .header-title p {
+          font-size: 11px;
+        }
+
+        .section-header {
+          margin: calc(var(--spacing-unit) * 1.5) 0 calc(var(--spacing-unit) * 1) 0;
+          padding: calc(var(--spacing-unit) * 0.75) calc(var(--spacing-unit) * 1.25);
+          font-size: 11px;
+        }
+
+        th {
+          padding: calc(var(--spacing-unit) * 0.5) calc(var(--spacing-unit) * 0.75) !important;
+          font-size: 9px !important;
+        }
+
+        td {
+          padding: calc(var(--spacing-unit) * 0.5) calc(var(--spacing-unit) * 0.75) !important;
+        }
+
+        .event-name {
+          font-size: 11px !important;
+        }
+
+        .promotor {
+          font-size: 9px !important;
+        }
+
+        .metric, .date-cell {
+          font-size: 10px !important;
+        }
+
+        .badge-ongoing {
+          padding: calc(var(--spacing-unit) * 0.5) calc(var(--spacing-unit) * 1);
+          font-size: 9px;
+        }
+
+        .status-badge {
+          font-size: 10px;
+          padding: calc(var(--spacing-unit) * 0.25) calc(var(--spacing-unit) * 0.75);
+        }
+
+        footer {
+          margin-top: calc(var(--spacing-unit) * 2) !important;
+          padding-top: calc(var(--spacing-unit) * 1.5) !important;
+        }
+
+        footer p {
+          font-size: 10px;
+        }
+
+        tbody tr {
+          animation: none !important;
+        }
+
+        tbody tr:hover {
+          background-color: transparent !important;
+        }
+
+        .section-header:hover {
+          transform: none !important;
+          box-shadow: none !important;
+        }
+
+        .badge-ongoing:hover {
+          transform: none !important;
+          box-shadow: none !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <header>
+        <div class="header-title">
+          <h1>Reporte de Operaciones Sonar</h1>
+          <p>Resumen de cierres, negociaciones y prospección actual</p>
+        </div>
+        <div class="status-header">
+          <span class="badge-ongoing">Estado: On-Going</span>
+          <p>Corte: 29 Abr 2026</p>
+        </div>
+      </header>
+
+      <!-- CONFIRMADOS -->
+      <div class="section-header confirmed">
+        <span class="icon-dot confirmed"></span>
+        Confirmados
+      </div>
+      <table role="table" aria-label="Eventos confirmados">
+        <thead>
+          <tr>
+            <th scope="col">Evento / Promotor</th>
+            <th scope="col">Fecha</th>
+            <th scope="col">Renta</th>
+            <th scope="col">Taquilla</th>
+            <th scope="col">Barra</th>
+            <th scope="col">Estatus</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <div class="event-name">Watch Parties Mundial</div>
+              <div class="promotor">Sonar</div>
+            </td>
+            <td class="date-cell">Junio - Julio</td>
+            <td class="metric" colspan="3" style="text-align: center; color: #666">
+              Partidos de mayor interés
+            </td>
+            <td>
+              <span class="status-badge confirmed">Confirmado</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="event-name">Marcos Valle</div>
+              <div class="promotor">Dorado</div>
+            </td>
+            <td class="date-cell">08/07/2026</td>
+            <td class="metric">$190,000</td>
+            <td class="metric">10%</td>
+            <td class="metric">60%</td>
+            <td>
+              <span class="status-badge confirmed">Confirmado</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="event-name">Flow</div>
+              <div class="promotor">Rojo</div>
+            </td>
+            <td class="date-cell">22/07/2026</td>
+            <td class="metric">$350,000</td>
+            <td class="metric">18%</td>
+            <td class="metric">90%</td>
+            <td>
+              <span class="status-badge confirmed">Confirmado</span>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <div class="event-name">Who Made Who</div>
+              <div class="promotor">TBC</div>
+            </td>
+            <td class="date-cell">26 SEP</td>
+            <td class="metric">TBC</td>
+            <td class="metric">TBC</td>
+            <td class="metric">TBC</td>
+            <td>
+              <span class="status-badge confirmed">Confirmado</span>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- FASE FINAL -->
+      <div class="section-header advanced">
+        <span class="icon-dot advanced"></span>
+        Fase Final / Próximos a Confirmar
+      </div>
+      <table role="table" aria-label="Eventos en fase final">
+        <thead>
+          <tr>
+            <th scope="col">Actividad</th>
+            <th scope="col">Fecha Evento</th>
+            <th scope="col">Responsable</th>
+            <th scope="col">Probabilidad</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="event-name">Canirac</div></td>
+            <td class="date-cell">26-28 Agosto</td>
+            <td>Ramón</td>
+            <td class="metric">90%</td>
+          </tr>
+          <tr>
+            <td><div class="event-name">Mochakk</div></td>
+            <td class="date-cell">24 Sep</td>
+            <td>Pipo / Ramón</td>
+            <td class="metric">95%</td>
+          </tr>
+          <tr>
+            <td><div class="event-name">Kölsch</div></td>
+            <td class="date-cell">3 Oct</td>
+            <td>Dorado</td>
+            <td class="metric">95%</td>
+          </tr>
+          <tr>
+            <td><div class="event-name">Bresh</div></td>
+            <td class="date-cell">31 Oct</td>
+            <td>Morris</td>
+            <td class="metric">90%</td>
+          </tr>
+          <tr>
+            <td><div class="event-name">Adam Beyer</div></td>
+            <td class="date-cell">12 Dic</td>
+            <td>Dorado</td>
+            <td class="metric">90%</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <!-- EN NEGOCIACIÓN / PROSPECCIÓN -->
+      <div class="section-header ongoing">
+        <span class="icon-dot ongoing"></span>
+        En Negociación / Prospección
+      </div>
+      <table role="table" aria-label="Eventos en negociación">
+        <thead>
+          <tr>
+            <th scope="col">Actividad</th>
+            <th scope="col">Fecha Evento</th>
+            <th scope="col">Responsable</th>
+            <th scope="col">Observaciones</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><div class="event-name">Gob. Guanajuato</div></td>
+            <td class="date-cell">(10,11,12),(23,24,25) Jun</td>
+            <td>Índigo</td>
+            <td><span class="status-badge pending">Renta</span></td>
+          </tr>
+          <tr>
+            <td><div class="event-name">Cumbia Sound Machine</div></td>
+            <td class="date-cell">11/06/2026</td>
+            <td>Sam</td>
+            <td><span class="status-badge pending">Propuesta Enviada</span></td>
+          </tr>
+          <tr>
+            <td><div class="event-name">Concierto de la W Sound</div></td>
+            <td class="date-cell">17/06/2026</td>
+            <td>Pipo</td>
+            <td><span class="status-badge pending">Renta</span></td>
+          </tr>
+          <tr>
+            <td><div class="event-name">Aniversario Phonique</div></td>
+            <td class="date-cell">19/06/2026</td>
+            <td>Daniel</td>
+            <td><span class="status-badge pending">Renta</span></td>
+          </tr>
+          <tr>
+            <td><div class="event-name">Lane 8</div></td>
+            <td class="date-cell">26/06/2026</td>
+            <td>Ramón</td>
+            <td><span class="status-badge pending">Renta</span></td>
+          </tr>
+          <tr>
+            <td><div class="event-name">Antor</div></td>
+            <td class="date-cell">10/07/2026</td>
+            <td>Ramón</td>
+            <td><span class="status-badge pending">Show</span></td>
+          </tr>
+          <tr>
+            <td><div class="event-name">Wevboost</div></td>
+            <td class="date-cell">13/07/2026</td>
+            <td>Andrea</td>
+            <td><span class="status-badge pending">Renta</span></td>
+          </tr>
+          <tr>
+            <td><div class="event-name">Budo Fight</div></td>
+            <td class="date-cell">01/08/2026</td>
+            <td>Sam</td>
+            <td><span class="status-badge pending">Renta</span></td>
+          </tr>
+          <tr>
+            <td><div class="event-name">Legues Cup</div></td>
+            <td class="date-cell">04-09 Agosto</td>
+            <td>Índigo</td>
+            <td><span class="status-badge pending">Renta</span></td>
+          </tr>
+          <tr>
+            <td><div class="event-name">Netflix</div></td>
+            <td class="date-cell">24-28 Agosto</td>
+            <td>Daniel</td>
+            <td><span class="status-badge pending">Renta</span></td>
+          </tr>
+          <tr>
+            <td><div class="event-name">Mezontle</div></td>
+            <td class="date-cell">29/08/2026</td>
+            <td>Daniel</td>
+            <td><span class="status-badge pending">Renta</span></td>
+          </tr>
+          <tr>
+            <td><div class="event-name">Lost Nights</div></td>
+            <td class="date-cell">5 Sep</td>
+            <td>Ramón</td>
+            <td><span class="status-badge pending">Renta</span></td>
+          </tr>
+          <tr>
+            <td><div class="event-name">Monolink</div></td>
+            <td class="date-cell">1,2,3 Oct</td>
+            <td>Ramón</td>
+            <td><span class="status-badge pending">Show</span></td>
+          </tr>
+          <tr>
+            <td><div class="event-name">Maki Producciones</div></td>
+            <td class="date-cell">7,8,9 Oct</td>
+            <td>Ramón</td>
+            <td><span class="status-badge pending">Renta</span></td>
+          </tr>
+          <tr>
+            <td><div class="event-name">Adriatique</div></td>
+            <td class="date-cell">29-31 Oct</td>
+            <td>Ramón</td>
+            <td><span class="status-badge pending">Show</span></td>
+          </tr>
+          <tr>
+            <td><div class="event-name">Maestro Dobel</div></td>
+            <td class="date-cell">29-2 Nov</td>
+            <td>Pipo</td>
+            <td><span class="status-badge pending">Renta</span></td>
+          </tr>
+          <tr>
+            <td><div class="event-name">Wivboost</div></td>
+            <td class="date-cell">9-10 Nov</td>
+            <td>Andrea</td>
+            <td><span class="status-badge pending">Renta</span></td>
+          </tr>
+          <tr>
+            <td><div class="event-name">Sleeping With Sirens</div></td>
+            <td class="date-cell">19 Dic</td>
+            <td>Pipo</td>
+            <td><span class="status-badge pending">Renta</span></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <footer>
+        <p>Generado para Dirección General | Sonar | BAUS Holding Group</p>
+      </footer>
+    </div>
+  </body>
+</html>
