@@ -1,14 +1,14 @@
 name: Despliegue Corporativo Automático Hostinger 🚀
 
 # Deshabilitado — activar cuando tengas secrets FTP configurados en GitHub
-on: {}
-# push:
-#   branches:
-#     - main
-#   paths-ignore:
-#     - 'README.md'
-#     - '.gitignore'
-#     - '.DS_Store'
+on:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - 'README.md'
+      - '.gitignore'
+      - '.DS_Store'
 
 jobs:
   web-deploy:
