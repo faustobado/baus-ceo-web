@@ -41,7 +41,7 @@
   </style>
 </head>
 <body>
-  <nav><div class="logo">BAUS <span>CEO</span></div></nav>
+  <nav><div class="logo">BAUS <span onclick="openCockpit()" style="cursor:pointer;" title="System Access">CEO</span></div></nav>
   <main>
     <p class="eyebrow">Global Orchestration</p>
     <h1>El Ecosistema<br><span style="-webkit-text-stroke:1px rgba(255,255,255,0.4);color:transparent;">BAUS</span></h1>
@@ -68,5 +68,39 @@
     </div>
   </main>
   <footer>© 2026 BAUS Solutions | Fausto Bado — CEO</footer>
+
+  <!-- Hidden CEO Cockpit Modal -->
+  <div id="ceo-cockpit" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: 9999; background: rgba(0,0,0,0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); justify-content: center; align-items: flex-start; padding-top: 10vh; overflow-y: auto;">
+    <div style="width: 100%; max-width: 600px; background: #0a0a0a; border: 1px solid rgba(255,255,255,0.1); border-radius: 16px; padding: 40px; box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5); position: relative;">
+      <button onclick="closeCockpit()" style="position: absolute; top: 24px; right: 24px; background: transparent; border: none; color: rgba(255,255,255,0.5); font-size: 2rem; cursor: pointer; transition: color 0.3s;" onmouseover="this.style.color='white'" onmouseout="this.style.color='rgba(255,255,255,0.5)'">&times;</button>
+      
+      <h2 style="font-size: 2rem; font-weight: 900; font-style: italic; letter-spacing: -0.05em; text-transform: uppercase; margin-bottom: 8px;">CEO Cockpit</h2>
+      <p style="color: rgba(255,255,255,0.4); font-size: 0.9rem; margin-bottom: 40px;">Acceso restringido a reportes y activos confidenciales.</p>
+      
+      <div id="cockpit-content"></div>
+    </div>
+  </div>
+
+  <script>
+    function openCockpit() {
+      const pwd = prompt("Enter C-Level Passcode:");
+      if (pwd === "baus2026") {
+        const encodedData = "PGRpdiBzdHlsZT0ibWFyZ2luLWJvdHRvbTogMjRweDsiPgogIDxkaXYgc3R5bGU9ImZvbnQtc2l6ZTogMC43NXJlbTsgY29sb3I6ICNGNDAwMDk7IGZvbnQtd2VpZ2h0OiA5MDA7IGxldHRlci1zcGFjaW5nOiAwLjJlbTsgdGV4dC10cmFuc2Zvcm06IHVwcGVyY2FzZTsgbWFyZ2luLWJvdHRvbTogMTJweDsiPkVudGVydGFpbm1lbnQ8L2Rpdj4KICA8YSBocmVmPSIvZW50ZXJ0YWlubWVudC9zb25hci1oYWxsLzg0NTIvb25nb2luZy12Mi8iIHN0eWxlPSJkaXNwbGF5OmJsb2NrOyBwYWRkaW5nOiAxNnB4IDI0cHg7IGJhY2tncm91bmQ6IHJnYmEoMjU1LDI1NSwyNTUsMC4wMyk7IGJvcmRlci1yYWRpdXM6OHB4OyB0ZXh0LWRlY29yYXRpb246bm9uZTsgY29sb3I6IHdoaXRlOyBtYXJnaW4tYm90dG9tOiA4cHg7IGJvcmRlcjogMXB4IHNvbGlkIHJnYmEoMjU1LDI1NSwyNTUsMC4wNSk7IHRyYW5zaXRpb246IGJhY2tncm91bmQgMC4zczsiIG9ubW91c2VvdmVyPSJ0aGlzLnN0eWxlLmJhY2tncm91bmQ9J3JnYmEoMjU1LDI1NSwyNTUsMC4wOCknIiBvbm1vdXNlb3V0PSJ0aGlzLnN0eWxlLmJhY2tncm91bmQ9J3JnYmEoMjU1LDI1NSwyNTUsMC4wMyknIj4KICAgIDxkaXYgc3R5bGU9ImZvbnQtd2VpZ2h0OiA3MDA7IGZvbnQtc2l6ZTogMS4xcmVtOyBtYXJnaW4tYm90dG9tOiA0cHg7Ij5Tb25hciBIYWxsIHwgU3RhdHVzIFJlcG9ydCB2MjwvZGl2PgogICAgPGRpdiBzdHlsZT0iZm9udC1zaXplOiAwLjg1cmVtOyBjb2xvcjogcmdiYSgyNTUsMjU1LDI1NSwwLjQpOyBmb250LXdlaWdodDogMzAwOyI+UmVwb3J0ZSBlamVjdXRpdm8gZGUgb3BlcmFjaW9uZXMsIHByb3NwZWNjacOzbiB5IGNvbmZpcm1hZG9zLjwvZGl2PgogIDwvYT4KPC9kaXY+CjxkaXYgc3R5bGU9Im1hcmdpbi1ib3R0b206IDI0cHg7Ij4KICA8ZGl2IHN0eWxlPSJmb250LXNpemU6IDAuNzVyZW07IGNvbG9yOiAjRjQwMDA5OyBmb250LXdlaWdodDogOTAwOyBsZXR0ZXItc3BhY2luZzogMC4yZW07IHRleHQtdHJhbnNmb3JtOiB1cHBlcmNhc2U7IG1hcmdpbi1ib3R0b206IDEycHg7Ij5NZWRpYSAmIFRlY2hub2xvZ3k8L2Rpdj4KICA8ZGl2IHN0eWxlPSJwYWRkaW5nOiAxNnB4IDI0cHg7IGJhY2tncm91bmQ6IHJnYmEoMjU1LDI1NSwyNTUsMC4wMSk7IGJvcmRlci1yYWRpdXM6IDhweDsgY29sb3I6IHJnYmEoMjU1LDI1NSwyNTUsMC4yKTsgYm9yZGVyOiAxcHggZGFzaGVkIHJnYmEoMjU1LDI1NSwyNTUsMC4wNSk7Ij4KICAgIDxkaXYgc3R5bGU9ImZvbnQtd2VpZ2h0OiA3MDA7IGZvbnQtc2l6ZTogMS4xcmVtOyBtYXJnaW4tYm90dG9tOiA0cHg7Ij5WaWFtZWRpYSBEYXNoYm9hcmQ8L2Rpdj4KICAgIDxkaXYgc3R5bGU9ImZvbnQtc2l6ZTogMC44NXJlbTsgZm9udC13ZWlnaHQ6IDMwMDsiPihQcsOzeGltYW1lbnRlKTwvZGl2PgogIDwvZGl2Pgo8L2Rpdj4=";
+        document.getElementById('cockpit-content').innerHTML = atob(encodedData);
+        document.getElementById('ceo-cockpit').style.display = 'flex';
+        // Prevent body scroll
+        document.body.style.overflow = 'hidden';
+      } else if (pwd !== null) {
+        alert("Acceso denegado.");
+      }
+    }
+
+    function closeCockpit() {
+      document.getElementById('ceo-cockpit').style.display = 'none';
+      document.body.style.overflow = 'auto';
+      // Clear DOM contents for security after closing
+      setTimeout(() => { document.getElementById('cockpit-content').innerHTML = ''; }, 300);
+    }
+  </script>
 </body>
 </html>
