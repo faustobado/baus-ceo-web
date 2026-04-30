@@ -1,14 +1,14 @@
 name: Despliegue Corporativo Automático Hostinger 🚀
 
-on:
-  push:
-    branches:
-      - main
-    # Ignorar cambios que no sean código web para no gastar ancho de banda
-    paths-ignore:
-      - 'README.md'
-      - '.gitignore'
-      - '.DS_Store'
+# Deshabilitado — activar cuando tengas secrets FTP configurados en GitHub
+on: {}
+# push:
+#   branches:
+#     - main
+#   paths-ignore:
+#     - 'README.md'
+#     - '.gitignore'
+#     - '.DS_Store'
 
 jobs:
   web-deploy:
