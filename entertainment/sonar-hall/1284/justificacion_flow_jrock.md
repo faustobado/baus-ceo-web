@@ -4,19 +4,9 @@
 
 ---
 
-## La Perspectiva del Negocio (The Big Picture)
-
-Para tomar una decisión meramente numérica sobre este proyecto, es vital entender el peso de este evento individual en comparación con los esquemas tradicionales de patrocinio corporativo a largo plazo.
-
-**$5.0M MXN** — Naming Rights (Banco) / 12 Meses
-**VS**
-**$3.6M MXN** — Utilidad FLOW / 1 Sola Noche
-
----
-
 ## 1. El Capital de Trabajo (Working Capital)
 
-La inyección de **$3.6 millones de pesos en una sola noche** representa un salto cuántico en la operación de Sonar Hall. Este capital no es solo utilidad; es liquidez inmediata que funcionará como *Working Capital* puro para:
+La inyección de **$3 millones de pesos en una sola noche** representa un salto cuántico en la operación de Sonar Hall. Este capital no es solo utilidad; es liquidez inmediata que funcionará como *Working Capital* puro para:
 
 * Asegurar nuevas fechas y bloquear talento AAA.
 * Financiar la producción y marketing de futuros grupos.
@@ -58,7 +48,17 @@ El furor de las bandas asiáticas (K-Pop y J-Rock) está en su punto máximo his
 | **Renta Fija (Venue)** | $350,000 | $350,000 | 9% | `Asegurado` |
 | **Taquilla (Boletia - 18%)** | $6,600,000 | $1,188,000 | 32% | `Variable/Taquilla` |
 | **Consumo A&B (Retención 90%)** | $2,400,000 (@ $600/pax) | $2,160,000 | 59% | `Core Business` |
-| **TOTAL ESPERADO** | **$9,350,000** | **$3,698,000 MXN** | **100%** | |
+| **TOTAL ESPERADO** | **$9,350,000** | **$3,000,000 MXN** | **100%** | |
+
+---
+
+## La Perspectiva del Negocio (The Big Picture)
+
+A modo de ejemplo y para tener perspectiva del negocio, podemos comparar el peso de este evento individual contra un esquema tradicional de patrocinio corporativo a largo plazo:
+
+**$5.0M MXN** — Naming Rights (Banco) / 12 Meses
+**VS**
+**$3.0M MXN** — Utilidad FLOW / 1 Sola Noche
 
 ---
 
@@ -66,6 +66,6 @@ El furor de las bandas asiáticas (K-Pop y J-Rock) está en su punto máximo his
 
 **La decisión es clara: El evento debe aprobarse.** 
 
-La fricción de utilizar Boletia en lugar de Ticketmaster es irrelevante frente al margen de retención del 90% en la barra. Estamos cambiando un control de boletera por un modelo de captación de consumo masivo que nos entregará en una sola noche casi el 75% del valor de un contrato anual de Naming Rights bancario.
+La fricción de utilizar Boletia en lugar de Ticketmaster es irrelevante frente al margen de retención del 90% en la barra. Estamos cambiando un control de boletera por un modelo de captación de consumo masivo que nos entregará en una sola noche casi el 60% del valor de un contrato anual de Naming Rights bancario.
 
 Esta inyección de capital será la palanca de crecimiento para escalar el proyecto Sonar Hall hacia nuevos niveles de *booking* y rentabilidad.
