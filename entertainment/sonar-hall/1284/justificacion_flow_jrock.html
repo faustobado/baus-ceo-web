@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Análisis de Oportunidad y Justificación: FLOW (J-ROCK) en Sonar Hall</title>
+    <style>
+        /* WOW Animations & Glassmorphism Premium Standard */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&family=Outfit:wght@400;700;900&display=swap');
+
+        :root {
+            --sonar-black: #0f1115;
+            --sonar-green: #00e5ff; /* Cyberpunk cyan to match the anime vibe */
+            --sonar-accent: #ff0055; /* Neon pink for high contrast */
+            --sonar-blue: #3498db;
+            --sonar-grey: #f8f9fa;
+            --sonar-text: #2c3e50;
+            --sonar-border: #e0e0e0;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--sonar-text);
+            margin: 0;
+            padding: 40px 20px;
+            background-color: var(--sonar-black); /* Dark mode base */
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(0, 229, 255, 0.08), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(255, 0, 85, 0.08), transparent 25%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        .bg-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(15,17,21,0.95) 0%, rgba(25,28,34,0.9) 100%);
+            z-index: -1;
+        }
+
+        h1, h2, h3, h4 {
+            font-family: 'Outfit', sans-serif;
+            color: #ffffff;
+            margin-top: 0;
+        }
+
+        /* Glassmorphism Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            background: rgba(30, 34, 42, 0.7);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            padding: 50px;
+            border-radius: 24px;
+            box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 30px;
+        }
+
+        .header h1 {
+            font-size: 3rem;
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+            background: linear-gradient(90deg, var(--sonar-green), var(--sonar-accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 10px;
+        }
+
+        .header p.subtitle {
+            color: #a0aab2;
+            font-size: 1.2rem;
+            font-weight: 300;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+
+        .card {
+            background: rgba(255, 255, 255, 0.03);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 30px;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(0, 229, 255, 0.3);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+        }
+
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 4px; height: 100%;
+            background: var(--sonar-green);
+        }
+
+        .card.accent-red::before {
+            background: var(--sonar-accent);
+        }
+
+        .card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .card p, .card li {
+            color: #c4cdd5;
+            line-height: 1.6;
+            font-size: 1.05rem;
+        }
+
+        .card ul {
+            padding-left: 20px;
+        }
+
+        .highlight-metric {
+            font-size: 3rem;
+            font-weight: 900;
+            color: #ffffff;
+            margin: 10px 0;
+            font-family: 'Outfit', sans-serif;
+        }
+
+        .highlight-metric span {
+            font-size: 1rem;
+            color: #a0aab2;
+            font-weight: 400;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: block;
+        }
+
+        .comparison-box {
+            background: linear-gradient(135deg, rgba(0, 229, 255, 0.1), rgba(255, 0, 85, 0.1));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            padding: 40px;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .comparison-box h2 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+        }
+
+        .comparison-grid {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin-top: 30px;
+        }
+
+        .vs-badge {
+            background: var(--sonar-black);
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 30px;
+            font-weight: 800;
+            font-family: 'Outfit', sans-serif;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .table-container {
+            width: 100%;
+            border-radius: 12px;
+            overflow: hidden;
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            text-align: left;
+        }
+
+        th, td {
+            padding: 16px 20px;
+            color: #e0e0e0;
+        }
+
+        th {
+            background: rgba(0, 0, 0, 0.4);
+            font-family: 'Outfit', sans-serif;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.85rem;
+            color: var(--sonar-green);
+        }
+
+        tr {
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        /* App-like Hover Effects for Tables */
+        tbody tr {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+        }
+
+        tbody tr:nth-child(1) { animation-delay: 0.6s; }
+        tbody tr:nth-child(2) { animation-delay: 0.7s; }
+        tbody tr:nth-child(3) { animation-delay: 0.8s; }
+        tbody tr:nth-child(4) { animation-delay: 0.9s; }
+
+        tbody tr:hover {
+            background-color: rgba(255, 255, 255, 0.05);
+            transform: translateY(-2px);
+        }
+
+        .tag {
+            display: inline-block;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+        }
+
+        .tag-green { background: rgba(0, 229, 255, 0.1); color: var(--sonar-green); border: 1px solid rgba(0, 229, 255, 0.3); }
+        .tag-red { background: rgba(255, 0, 85, 0.1); color: var(--sonar-accent); border: 1px solid rgba(255, 0, 85, 0.3); }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes pulseBadge {
+            0% { box-shadow: 0 0 0 0 rgba(0, 229, 255, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(0, 229, 255, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 229, 255, 0); }
+        }
+
+        .pulse-text {
+            color: var(--sonar-green);
+            animation: pulseBadge 2.5s infinite;
+            border-radius: 50%;
+        }
+
+        .conclusion {
+            background: rgba(0, 229, 255, 0.05);
+            border-left: 4px solid var(--sonar-green);
+            padding: 30px;
+            border-radius: 0 12px 12px 0;
+            margin-top: 40px;
+        }
+        
+        .conclusion p {
+            color: #c4cdd5;
+            font-size: 1.1rem;
+            line-height: 1.7;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="bg-overlay"></div>
+
+<div class="container">
+    <div class="header">
+        <h1>Justificación Estratégica: FLOW</h1>
+        <p class="subtitle">Análisis de viabilidad para el evento de J-Rock en Sonar Hall y justificación comercial frente a Ticketmaster</p>
+    </div>
+
+    <!-- COMPARISON SECTION -->
+    <div class="comparison-box">
+        <h2>La Perspectiva del Negocio (The Big Picture)</h2>
+        <p style="color: #c4cdd5; max-width: 800px; margin: 0 auto; font-size: 1.1rem; line-height: 1.6;">
+            Para tomar una decisión meramente numérica sobre este proyecto, es vital entender el peso de este evento individual en comparación con los esquemas tradicionales de patrocinio corporativo a largo plazo.
+        </p>
+        
+        <div class="comparison-grid">
+            <div>
+                <div class="highlight-metric" style="color: #a0aab2;">
+                    $5.0M <small>MXN</small>
+                    <span>Naming Rights (Banco) / 12 Meses</span>
+                </div>
+            </div>
+            
+            <div class="vs-badge">VS</div>
+            
+            <div>
+                <div class="highlight-metric" style="color: var(--sonar-green); text-shadow: 0 0 20px rgba(0, 229, 255, 0.4);">
+                    $3.6M <small>MXN</small>
+                    <span>Utilidad FLOW / 1 Sola Noche</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="grid">
+        <!-- THE OPPORTUNITY -->
+        <div class="card">
+            <h3>1. El Capital de Trabajo (Working Capital)</h3>
+            <p>La inyección de <strong>$3.6 millones de pesos en una sola noche</strong> representa un salto cuántico en la operación de Sonar Hall. Este capital no es solo utilidad; es liquidez inmediata que funcionará como <em>Working Capital</em> puro para:</p>
+            <ul>
+                <li>Asegurar nuevas fechas y bloquear talento AAA.</li>
+                <li>Financiar la producción y marketing de futuros grupos.</li>
+                <li>Reducir el riesgo financiero en eventos de menor margen.</li>
+                <li>Reinvertir en infraestructura de A&B para acelerar la rentabilidad por cabeza.</li>
+            </ul>
+            <p>Es un acelerador de negocio que justifica cualquier excepción operativa.</p>
+        </div>
+
+        <!-- THE BOLETIA EXCEPTION -->
+        <div class="card accent-red">
+            <h3>2. La Excepción: Boletia vs. Ticketmaster</h3>
+            <p>Sabemos que mover este evento fuera del ecosistema Ticketmaster es un "gran tema". Sin embargo, el análisis financiero dicta que <strong>la taquilla no es el verdadero negocio aquí</strong>.</p>
+            <ul>
+                <li><strong>El Pilar es la Barra:</strong> Sonar retiene el <strong>90% de la barra</strong>. Esto significa una utilidad directa conservadora de $2,160,000 MXN solo en consumo (A&B).</li>
+                <li><strong>Comisión Aceptable:</strong> Aunque se use Boletia, Sonar retiene el 18% de la venta de boletos ($1.18M MXN).</li>
+            </ul>
+            <p>Conceder la boletera al promotor (Boletia) es una concesión estratégica y táctica que desbloquea el 90% de retención del consumo de 4,000 fanáticos con un Ticket Promedio de $1,650 MXN.</p>
+        </div>
+
+        <!-- THE GLOBAL PHENOMENON -->
+        <div class="card">
+            <h3>3. El Fenómeno Global: FLOW y el J-Rock</h3>
+            <p>FLOW no es una banda de nicho, es un monstruo de la cultura pop global. Formados en 1998, los hermanos Kōshi y Take han creado la banda sonora de la Generación Otaku.</p>
+            <ul>
+                <li><strong>Impacto Anime:</strong> Son mundialmente famosos por interpretar temas de apertura para megahits globales como <em>Naruto</em> ("GO!!!", "Sign") y <em>Code Geass</em> ("Colors").</li>
+                <li><strong>Fidelidad Absoluta:</strong> La comunidad otaku/anime es una de las de mayor crecimiento y poder adquisitivo actualmente. Están dispuestos a pagar tickets premium (VIP a $2,300) y consumir mercancía y bebidas.</li>
+            </ul>
+        </div>
+
+        <!-- THE LATAM MARKET -->
+        <div class="card">
+            <h3>4. La Oportunidad en el Mercado Mexicano</h3>
+            <p>El furor de las bandas asiáticas (K-Pop y J-Rock) está en su punto máximo histórico de moda y consumo.</p>
+            <ul>
+                <li><strong>Giras Agotadas:</strong> México es considerado la "segunda casa" de FLOW en LatAm. Sus giras anteriores han sido Sold Out absolutos.</li>
+                <li><strong>Gira 2026:</strong> Están realizando su gira mundial "NARUTO THE ROCK" y su propio "FLOW THE FESTIVAL".</li>
+                <li><strong>Riesgo Mitigado:</strong> Al ser un mercado con una demanda tan inelástica y fanática, el aforo base de 4,000 personas (e incluso su ampliación) está prácticamente garantizado.</li>
+            </ul>
+        </div>
+    </div>
+
+    <!-- FINANCIAL SUMMARY TABLE -->
+    <h2 style="margin-top: 40px; font-size: 1.8rem; border-bottom: 1px solid rgba(255,255,255,0.1); padding-bottom: 15px;">Resumen Financiero (Escenario Conservador)</h2>
+    <div class="table-container">
+        <table>
+            <thead>
+                <tr>
+                    <th>Concepto de Ingreso</th>
+                    <th>Venta Total Proyectada</th>
+                    <th>Ingreso / Utilidad Sonar</th>
+                    <th>% del Negocio Sonar</th>
+                    <th>Estatus</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Renta Fija (Venue)</strong></td>
+                    <td>$350,000</td>
+                    <td>$350,000</td>
+                    <td>9%</td>
+                    <td><span class="tag tag-green">Asegurado</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Taquilla (Boletia - 18%)</strong></td>
+                    <td>$6,600,000</td>
+                    <td>$1,188,000</td>
+                    <td>32%</td>
+                    <td><span class="tag tag-red">Variable/Taquilla</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Consumo A&B (Retención 90%)</strong></td>
+                    <td>$2,400,000 <small>(@ $600/pax)</small></td>
+                    <td>$2,160,000</td>
+                    <td>59%</td>
+                    <td><span class="tag tag-green">Core Business</span></td>
+                </tr>
+                <tr style="background: rgba(0, 229, 255, 0.05);">
+                    <td><h3 style="margin:0; color: #fff;">TOTAL ESPERADO</h3></td>
+                    <td><h3 style="margin:0; color: #fff;">$9,350,000</h3></td>
+                    <td><h3 style="margin:0; color: var(--sonar-green);">$3,698,000 MXN</h3></td>
+                    <td><h3 style="margin:0; color: #fff;">100%</h3></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <!-- CONCLUSION -->
+    <div class="conclusion">
+        <h2 style="color: #fff; margin-bottom: 15px; display: flex; align-items: center; gap: 10px;">
+            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="var(--sonar-green)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 11.08V12a10 10 10 0 1 1-5.93-9.14"></path><polyline points="22 4 12 14.01 9 11.01"></polyline></svg>
+            Veredicto Ejecutivo
+        </h2>
+        <p>
+            <strong>La decisión es clara: El evento debe aprobarse.</strong> La fricción de utilizar Boletia en lugar de Ticketmaster es irrelevante frente al margen de retención del 90% en la barra. Estamos cambiando un control de boletera por un modelo de captación de consumo masivo que nos entregará en una sola noche casi el 75% del valor de un contrato anual de Naming Rights bancario.
+        </p>
+        <p>
+            Esta inyección de capital será la palanca de crecimiento para escalar el proyecto Sonar Hall hacia nuevos niveles de <em>booking</em> y rentabilidad.
+        </p>
+    </div>
+
+</div>
+
+</body>
+</html>
