@@ -1,298 +1,400 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Sonar Hall | Business Fact Sheet: FLOW</title>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap"
+      rel="stylesheet"
+    />
     <style>
-        :root {
-            --bg-color: #0f1115;
-            --primary: #00d2ff;
-            --secondary: #3a7bd5;
-            --text-light: #f4f4f5;
-            --text-muted: #a1a1aa;
-            --card-bg: rgba(255, 255, 255, 0.03);
-            --card-border: rgba(255, 255, 255, 0.08);
-        }
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Outfit', sans-serif;
-        }
+      :root {
+        --bg-color: #0f1115;
+        --primary: #00d2ff;
+        --secondary: #3a7bd5;
+        --text-light: #f4f4f5;
+        --text-muted: #a1a1aa;
+        --card-bg: rgba(255, 255, 255, 0.03);
+        --card-border: rgba(255, 255, 255, 0.08);
+      }
 
-        body {
-            background-color: var(--bg-color);
-            color: var(--text-light);
-            line-height: 1.6;
-            background-image: 
-                radial-gradient(circle at 15% 50%, rgba(58, 123, 213, 0.15), transparent 25%),
-                radial-gradient(circle at 85% 30%, rgba(0, 210, 255, 0.15), transparent 25%);
-            min-height: 100vh;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: "Outfit", sans-serif;
+      }
 
-        .container {
-            max-width: 1000px;
-            margin: 0 auto;
-            padding: 40px 20px;
-        }
+      body {
+        background-color: var(--bg-color);
+        color: var(--text-light);
+        line-height: 1.6;
+        background-image:
+          radial-gradient(
+            circle at 15% 50%,
+            rgba(58, 123, 213, 0.15),
+            transparent 25%
+          ),
+          radial-gradient(
+            circle at 85% 30%,
+            rgba(0, 210, 255, 0.15),
+            transparent 25%
+          );
+        min-height: 100vh;
+      }
 
-        header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
+      .container {
+        max-width: 1000px;
+        margin: 0 auto;
+        padding: 40px 20px;
+      }
 
-        .subtitle {
-            color: var(--primary);
-            font-weight: 600;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-            display: block;
-        }
+      header {
+        text-align: center;
+        margin-bottom: 50px;
+      }
 
-        h1 {
-            font-size: 3rem;
-            font-weight: 800;
-            background: linear-gradient(to right, #fff, #a1a1aa);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            margin-bottom: 20px;
-        }
+      .subtitle {
+        color: var(--primary);
+        font-weight: 600;
+        letter-spacing: 2px;
+        text-transform: uppercase;
+        font-size: 0.9rem;
+        margin-bottom: 10px;
+        display: block;
+      }
 
-        .hero-image {
-            width: 100%;
-            height: 400px;
-            object-fit: cover;
-            border-radius: 20px;
-            margin-bottom: 40px;
-            box-shadow: 0 20px 40px rgba(0,0,0,0.5);
-            border: 1px solid var(--card-border);
-            position: relative;
-        }
-        
-        .image-container {
-            position: relative;
-        }
-        
-        .image-caption {
-            position: absolute;
-            bottom: 60px;
-            left: 30px;
-            background: rgba(0,0,0,0.6);
-            backdrop-filter: blur(10px);
-            padding: 10px 20px;
-            border-radius: 8px;
-            font-weight: 600;
-            border: 1px solid rgba(255,255,255,0.1);
-        }
+      h1 {
+        font-size: 3rem;
+        font-weight: 800;
+        background: linear-gradient(to right, #fff, #a1a1aa);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 20px;
+      }
 
+      .hero-image {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+        border-radius: 20px;
+        margin-bottom: 40px;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.5);
+        border: 1px solid var(--card-border);
+        position: relative;
+      }
+
+      .image-container {
+        position: relative;
+      }
+
+      .image-caption {
+        position: absolute;
+        bottom: 60px;
+        left: 30px;
+        background: rgba(0, 0, 0, 0.6);
+        backdrop-filter: blur(10px);
+        padding: 10px 20px;
+        border-radius: 8px;
+        font-weight: 600;
+        border: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin-bottom: 30px;
+      }
+
+      .card {
+        background: var(--card-bg);
+        border: 1px solid var(--card-border);
+        border-radius: 16px;
+        padding: 30px;
+        backdrop-filter: blur(10px);
+        transition: transform 0.3s ease;
+      }
+
+      .card:hover {
+        transform: translateY(-5px);
+        border-color: rgba(0, 210, 255, 0.3);
+      }
+
+      .card h3 {
+        font-size: 1.5rem;
+        margin-bottom: 15px;
+        color: #fff;
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .stat-group {
+        margin-top: 20px;
+        padding-top: 20px;
+        border-top: 1px solid var(--card-border);
+      }
+
+      .stat {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 10px;
+      }
+
+      .stat-label {
+        color: var(--text-muted);
+      }
+
+      .stat-value {
+        font-weight: 600;
+        color: var(--primary);
+      }
+
+      .highlight-box {
+        background: linear-gradient(
+          135deg,
+          rgba(58, 123, 213, 0.1) 0%,
+          rgba(0, 210, 255, 0.1) 100%
+        );
+        border-left: 4px solid var(--primary);
+        padding: 20px;
+        border-radius: 0 12px 12px 0;
+        margin: 30px 0;
+      }
+
+      .highlight-box h4 {
+        color: #fff;
+        margin-bottom: 10px;
+      }
+
+      .footer-verdict {
+        text-align: center;
+        margin-top: 50px;
+        padding: 30px;
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 16px;
+        border: 1px dashed rgba(255, 255, 255, 0.2);
+      }
+
+      .badge {
+        display: inline-block;
+        background: rgba(0, 210, 255, 0.2);
+        color: var(--primary);
+        padding: 5px 12px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-right: 10px;
+        margin-bottom: 10px;
+      }
+
+      @media (max-width: 768px) {
         .grid-2 {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 30px;
-            margin-bottom: 30px;
+          grid-template-columns: 1fr;
         }
-
-        .card {
-            background: var(--card-bg);
-            border: 1px solid var(--card-border);
-            border-radius: 16px;
-            padding: 30px;
-            backdrop-filter: blur(10px);
-            transition: transform 0.3s ease;
+        h1 {
+          font-size: 2.2rem;
         }
-
-        .card:hover {
-            transform: translateY(-5px);
-            border-color: rgba(0, 210, 255, 0.3);
+        .hero-image {
+          height: 250px;
         }
-
-        .card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 15px;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .stat-group {
-            margin-top: 20px;
-            padding-top: 20px;
-            border-top: 1px solid var(--card-border);
-        }
-
-        .stat {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 10px;
-        }
-
-        .stat-label {
-            color: var(--text-muted);
-        }
-
-        .stat-value {
-            font-weight: 600;
-            color: var(--primary);
-        }
-
-        .highlight-box {
-            background: linear-gradient(135deg, rgba(58,123,213,0.1) 0%, rgba(0,210,255,0.1) 100%);
-            border-left: 4px solid var(--primary);
-            padding: 20px;
-            border-radius: 0 12px 12px 0;
-            margin: 30px 0;
-        }
-
-        .highlight-box h4 {
-            color: #fff;
-            margin-bottom: 10px;
-        }
-
-        .footer-verdict {
-            text-align: center;
-            margin-top: 50px;
-            padding: 30px;
-            background: rgba(255,255,255,0.02);
-            border-radius: 16px;
-            border: 1px dashed rgba(255,255,255,0.2);
-        }
-        
-        .badge {
-            display: inline-block;
-            background: rgba(0, 210, 255, 0.2);
-            color: var(--primary);
-            padding: 5px 12px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            margin-right: 10px;
-            margin-bottom: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .grid-2 { grid-template-columns: 1fr; }
-            h1 { font-size: 2.2rem; }
-            .hero-image { height: 250px; }
-        }
+      }
     </style>
-</head>
-<body>
-
+  </head>
+  <body>
     <div class="container">
-        <header>
-            <span class="subtitle">Confidential Business Case</span>
-            <h1>Análisis de Talento: FLOW (J-Rock)</h1>
-            <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto;">Evaluación demográfica y proyecciones de consumo en barra para Sonar Hall.</p>
-        </header>
+      <header>
+        <span class="subtitle">Confidential Business Case</span>
+        <h1>Análisis de Talento: FLOW (J-Rock)</h1>
+        <p style="color: var(--text-muted); max-width: 600px; margin: 0 auto">
+          Evaluación demográfica y proyecciones de consumo en barra para Sonar
+          Hall.
+        </p>
+      </header>
 
-        <div class="image-container">
-            <img src="assets/flow_live.png" alt="FLOW Concert Vibe" class="hero-image">
-            <div class="image-caption">J-Rock Audience Demographics (A&B High Consumers)</div>
+      <div class="image-container">
+        <img
+          src="assets/flow_live.png"
+          alt="FLOW Concert Vibe"
+          class="hero-image"
+        />
+        <div class="image-caption">
+          J-Rock Audience Demographics (A&B High Consumers)
         </div>
+      </div>
 
-        <div class="highlight-box">
-            <h4>🚨 El Gran Diferenciador: No es K-Pop</h4>
-            <p>Existe la creencia de que el nicho asiático está compuesto solo por adolescentes. FLOW es una banda de <strong>Rock Japonés (J-Rock)</strong> que saltó a la fama mundial entre 2004 y 2010 por interpretar los temas principales del anime <em>Naruto</em>. Su base de fans hoy son <strong>adultos profesionistas (Millennials de 25 a 38 años)</strong> con alto poder adquisitivo y alta tendencia al consumo de alcohol.</p>
-        </div>
+      <div class="highlight-box">
+        <h4>🚨 El Gran Diferenciador: No es K-Pop</h4>
+        <p>
+          Existe la creencia de que el nicho asiático está compuesto solo por
+          adolescentes. FLOW es una banda de
+          <strong>Rock Japonés (J-Rock)</strong> que saltó a la fama mundial
+          entre 2004 y 2010 por interpretar los temas principales del anime
+          <em>Naruto</em>. Su base de fans hoy son
+          <strong>adultos profesionistas (Millennials de 25 a 38 años)</strong>
+          con alto poder adquisitivo y alta tendencia al consumo de alcohol.
+        </p>
+      </div>
 
-        <div class="grid-2">
-            <div class="card">
-                <h3>👥 Demografía & Audiencia</h3>
-                <p>El perfil de la audiencia define directamente la rentabilidad de las barras de Sonar Hall.</p>
-                
-                <div class="stat-group">
-                    <div class="stat">
-                        <span class="stat-label">Rango de Edad Core</span>
-                        <span class="stat-value">25 - 38 años</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-label">Poder Adquisitivo</span>
-                        <span class="stat-value">Medio-Alto (Profesionistas)</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-label">Perfil de Consumo A&B</span>
-                        <span class="stat-value">Cerveza / Destilados Fuertes</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-label">Ticket Promedio Estimado (Barra)</span>
-                        <span class="stat-value">$600 MXN</span>
-                    </div>
-                </div>
+      <div class="grid-2">
+        <div class="card">
+          <h3>👥 Demografía & Audiencia</h3>
+          <p>
+            El perfil de la audiencia define directamente la rentabilidad de las
+            barras de Sonar Hall.
+          </p>
+
+          <div class="stat-group">
+            <div class="stat">
+              <span class="stat-label">Rango de Edad Core</span>
+              <span class="stat-value">25 - 38 años</span>
             </div>
-
-            <div class="card">
-                <h3>📈 Tracción & Data (Spotify)</h3>
-                <p>Métricas que respaldan un aforo de 3,000 a 4,000 asistentes.</p>
-                
-                <div style="margin-top: 15px;">
-                    <span class="badge">Nostalgia Millennial</span>
-                    <span class="badge">Lealtad Extrema</span>
-                    <span class="badge">Nicho Rock/Gamer</span>
-                </div>
-
-                <div class="stat-group">
-                    <div class="stat">
-                        <span class="stat-label">Total Streams Globales</span>
-                        <span class="stat-value">+650 Millones</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-label">Posicionamiento en LatAm</span>
-                        <span class="stat-value">Top 3 Bandas de J-Rock</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-label">Riesgo para Sonar Hall</span>
-                        <span class="stat-value">Bajo (Fee absorbido x Promotor)</span>
-                    </div>
-                </div>
+            <div class="stat">
+              <span class="stat-label">Poder Adquisitivo</span>
+              <span class="stat-value">Medio-Alto (Profesionistas)</span>
             </div>
+            <div class="stat">
+              <span class="stat-label">Perfil de Consumo A&B</span>
+              <span class="stat-value">Cerveza / Destilados Fuertes</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Ticket Promedio Estimado (Barra)</span>
+              <span class="stat-value">$600 MXN</span>
+            </div>
+          </div>
         </div>
 
-        <div class="card" style="margin-bottom: 30px;">
-            <h3>💼 Resumen de Estructura de Negocio</h3>
-            <p style="color: var(--text-muted); margin-bottom: 20px;">En este modelo de negocio, Sonar Hall actúa como inmueble y operador de consumo, delegando el riesgo de la nómina artística al promotor externo.</p>
-            
-            <table style="width: 100%; border-collapse: collapse; text-align: left;">
-                <tr style="border-bottom: 1px solid var(--card-border);">
-                    <th style="padding: 15px 0; color: #fff;">Rubro</th>
-                    <th style="padding: 15px 0; color: #fff;">Acuerdo Sonar Hall</th>
-                    <th style="padding: 15px 0; color: #fff;">Responsable del Gasto</th>
-                </tr>
-                <tr style="border-bottom: 1px solid var(--card-border);">
-                    <td style="padding: 15px 0; color: var(--text-muted);">Renta del Venue</td>
-                    <td style="padding: 15px 0; color: var(--primary); font-weight: 600;">$350,000 MXN (Fijos)</td>
-                    <td style="padding: 15px 0; color: var(--text-muted);">Promotor</td>
-                </tr>
-                <tr style="border-bottom: 1px solid var(--card-border);">
-                    <td style="padding: 15px 0; color: var(--text-muted);">Taquilla (General y VIP)</td>
-                    <td style="padding: 15px 0; color: var(--primary); font-weight: 600;">18% de Venta Bruta</td>
-                    <td style="padding: 15px 0; color: var(--text-muted);">NA (Comisión Directa)</td>
-                </tr>
-                <tr style="border-bottom: 1px solid var(--card-border);">
-                    <td style="padding: 15px 0; color: var(--text-muted);">Barras (A&B)</td>
-                    <td style="padding: 15px 0; color: var(--primary); font-weight: 600;">90% de la Utilidad Neta*</td>
-                    <td style="padding: 15px 0; color: var(--text-muted);">Operación Sonar</td>
-                </tr>
-                <tr>
-                    <td style="padding: 15px 0; color: var(--text-muted);">Talento (Banda) y Rider</td>
-                    <td style="padding: 15px 0; color: var(--primary); font-weight: 600;">$0 MXN (Riesgo Nulo)</td>
-                    <td style="padding: 15px 0; color: var(--text-muted);">Promotor Absorbe 100%</td>
-                </tr>
-            </table>
-            <p style="font-size: 0.8rem; color: #666; margin-top: 15px;">*Utilidad calculada asumiendo un 30% de costo operativo sobre la venta bruta.</p>
-        </div>
+        <div class="card">
+          <h3>📈 Tracción & Data (Spotify)</h3>
+          <p>Métricas que respaldan un aforo de 3,000 a 4,000 asistentes.</p>
 
-        <div class="footer-verdict">
-            <h3 style="color: #fff; margin-bottom: 10px;">Veredicto de Viabilidad</h3>
-            <p>La combinación de un público de entre 25-38 años (con alto nivel de consumo en barra), más la eliminación del riesgo financiero del talento (absorbido por el promotor), convierte esta fecha en una oportunidad de rentabilidad máxima con exposición nula para los socios de Sonar Hall.</p>
-        </div>
+          <div style="margin-top: 15px">
+            <span class="badge">Nostalgia Millennial</span>
+            <span class="badge">Lealtad Extrema</span>
+            <span class="badge">Nicho Rock/Gamer</span>
+          </div>
 
+          <div class="stat-group">
+            <div class="stat">
+              <span class="stat-label">Total Streams Globales</span>
+              <span class="stat-value">+650 Millones</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Posicionamiento en LatAm</span>
+              <span class="stat-value">Top 3 Bandas de J-Rock</span>
+            </div>
+            <div class="stat">
+              <span class="stat-label">Riesgo para Sonar Hall</span>
+              <span class="stat-value">Bajo (Fee absorbido x Promotor)</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card" style="margin-bottom: 30px">
+        <h3>💼 Resumen de Estructura de Negocio</h3>
+        <p style="color: var(--text-muted); margin-bottom: 20px">
+          En este modelo de negocio, Sonar Hall actúa como inmueble y operador
+          de consumo, delegando el riesgo de la nómina artística al promotor
+          externo.
+        </p>
+
+        <table style="width: 100%; border-collapse: collapse; text-align: left">
+          <tr style="border-bottom: 1px solid var(--card-border)">
+            <th style="padding: 15px 0; color: #fff">Rubro</th>
+            <th style="padding: 15px 0; color: #fff">Acuerdo Sonar Hall</th>
+            <th style="padding: 15px 0; color: #fff">Responsable del Gasto</th>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--card-border)">
+            <td style="padding: 15px 0; color: var(--text-muted)">
+              Ingreso Renta Fija
+            </td>
+            <td
+              style="padding: 15px 0; color: var(--primary); font-weight: 600"
+            >
+              $350,000 MXN (Fijos)
+            </td>
+            <td style="padding: 15px 0; color: var(--text-muted)">Pagado por Promotor</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--card-border)">
+            <td style="padding: 15px 0; color: var(--text-muted)">
+              Gastos Venue (Rider, Seg, Limp)
+            </td>
+            <td
+              style="padding: 15px 0; color: #ff4757; font-weight: 600"
+            >
+              -$200,000 MXN (Aprox)
+            </td>
+            <td style="padding: 15px 0; color: var(--text-muted)">Absorbido por Sonar</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--card-border); background: rgba(0, 210, 255, 0.05);">
+            <td style="padding: 15px 10px; color: var(--text-light); font-weight: 600;">
+              Utilidad Neta Renta
+            </td>
+            <td
+              style="padding: 15px 10px; color: var(--primary); font-weight: 800"
+            >
+              $150,000 MXN
+            </td>
+            <td style="padding: 15px 10px; color: var(--text-muted)">Garantizado</td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--card-border)">
+            <td style="padding: 15px 0; color: var(--text-muted)">
+              Taquilla (General y VIP)
+            </td>
+            <td
+              style="padding: 15px 0; color: var(--primary); font-weight: 600"
+            >
+              18% de Venta Bruta
+            </td>
+            <td style="padding: 15px 0; color: var(--text-muted)">
+              NA (Comisión Directa)
+            </td>
+          </tr>
+          <tr style="border-bottom: 1px solid var(--card-border)">
+            <td style="padding: 15px 0; color: var(--text-muted)">
+              Barras (A&B)
+            </td>
+            <td
+              style="padding: 15px 0; color: var(--primary); font-weight: 600"
+            >
+              90% de la Utilidad Neta*
+            </td>
+            <td style="padding: 15px 0; color: var(--text-muted)">
+              Operación Sonar
+            </td>
+          </tr>
+          <tr>
+            <td style="padding: 15px 0; color: var(--text-muted)">
+              Talento (Banda)
+            </td>
+            <td
+              style="padding: 15px 0; color: var(--primary); font-weight: 600"
+            >
+              $0 MXN (Riesgo Nulo)
+            </td>
+            <td style="padding: 15px 0; color: var(--text-muted)">
+              Promotor Absorbe 100%
+            </td>
+          </tr>
+        </table>
+        <p style="font-size: 0.8rem; color: #666; margin-top: 15px">
+          *Utilidad calculada asumiendo un 30% de costo operativo sobre la venta
+          bruta.
+        </p>
+      </div>
+
+      <div class="footer-verdict">
+        <h3 style="color: #fff; margin-bottom: 10px">
+          Veredicto de Viabilidad
+        </h3>
+        <p>
+          La combinación de un público de entre 25-38 años (con alto nivel de
+          consumo en barra), sumado a que la renta fija ($350k) cubre holgadamente nuestros gastos operativos y de rider técnico (~$200k), asegura un margen de utilidad piso de $150k. Esto, aunado a la taquilla (18%) y barra (63%), lo convierte en un negocio de máxima rentabilidad y nulo riesgo de pérdida de capital para Sonar Hall.
+        </p>
+      </div>
     </div>
-
-</body>
+  </body>
 </html>
