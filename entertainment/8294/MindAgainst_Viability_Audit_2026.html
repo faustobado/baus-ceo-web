@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auditoría de Viabilidad: Mind Against México 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sonar-black: #121212;
+            --sonar-green: #2ecc71;
+            --sonar-blue: #3498db;
+            --sonar-grey: #f8f9fa;
+            --sonar-border: #e0e0e0;
+            --text-main: #333;
+            --text-light: #666;
+            --accent: #ff4757;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* WOW Animations & Glassmorphism Premium Standard */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes pulseBadge {
+            0% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(46, 204, 113, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+        }
+
+        @keyframes glowDot {
+            0% { box-shadow: 0 0 0 0 currentColor; }
+            70% { box-shadow: 0 0 0 5px rgba(0, 0, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); }
+        }
+
+        /* Backgrounds */
+        .bg-image {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1514525253161-7a46d19cd819?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            z-index: -2;
+            filter: grayscale(40%) brightness(0.4);
+        }
+
+        .bg-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(18,18,18,0.85) 0%, rgba(30,30,30,0.7) 100%);
+            z-index: -1;
+        }
+
+        /* Glassmorphism Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            padding: 60px 80px;
+            border-radius: 24px;
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5);
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--sonar-black);
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            animation: slideInLeft 0.8s ease forwards;
+        }
+
+        .subtitle {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            font-weight: 400;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--sonar-blue);
+            border-bottom: 2px solid var(--sonar-blue);
+            padding-bottom: 12px;
+            margin-top: 60px;
+            margin-bottom: 30px;
+            animation: slideInLeft 0.8s ease forwards;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: var(--sonar-black);
+            margin-top: 40px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            color: #444;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 40px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+            background: white;
+        }
+
+        th {
+            background: var(--sonar-black);
+            color: white;
+            font-weight: 600;
+            padding: 20px 24px;
+            text-align: left;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 18px 24px;
+            border-bottom: 1px solid var(--sonar-border);
+            color: var(--text-main);
+            font-size: 1.05rem;
+        }
+
+        /* App-like Hover Effects for Tables */
+        tbody tr {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+        }
+
+        tbody tr:nth-child(1) { animation-delay: 0.2s; }
+        tbody tr:nth-child(2) { animation-delay: 0.3s; }
+        tbody tr:nth-child(3) { animation-delay: 0.4s; }
+        tbody tr:nth-child(4) { animation-delay: 0.5s; }
+        tbody tr:nth-child(n+5) { animation-delay: 0.6s; }
+
+        tbody tr:hover {
+            background-color: var(--sonar-grey);
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            z-index: 10;
+            position: relative;
+        }
+
+        tbody tr:hover td {
+            border-bottom-color: transparent;
+        }
+
+        tbody tr:hover td:first-child { border-top-left-radius: 8px; border-bottom-left-radius: 8px; }
+        tbody tr:hover td:last-child { border-top-right-radius: 8px; border-bottom-right-radius: 8px; }
+
+        /* Badges */
+        .badge {
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        .badge-success { background: rgba(46, 204, 113, 0.15); color: #27ae60; }
+        .badge-warning { background: rgba(241, 196, 15, 0.15); color: #d35400; }
+        .badge-danger { background: rgba(231, 76, 60, 0.15); color: #c0392b; }
+        .badge-info { background: rgba(52, 152, 219, 0.15); color: #2980b9; }
+        .badge-ongoing {
+            animation: pulseBadge 2.5s infinite;
+            background: var(--sonar-green);
+            color: white;
+            box-shadow: 0 4px 10px rgba(46, 204, 113, 0.4);
+        }
+
+        /* Verdict Box */
+        .verdict-box {
+            background: linear-gradient(135deg, var(--sonar-black) 0%, #1a252f 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 60px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+            position: relative;
+            overflow: hidden;
+            animation: fadeUp 1s forwards;
+            animation-delay: 0.5s;
+            opacity: 0;
+        }
+
+        .verdict-box::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(45deg);
+        }
+
+        .verdict-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: var(--sonar-green);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .verdict-title .status-dot {
+            width: 20px;
+            height: 20px;
+            background-color: var(--sonar-green);
+            border-radius: 50%;
+            display: inline-block;
+            animation: glowDot 3s infinite;
+            box-shadow: 0 0 15px var(--sonar-green);
+        }
+
+        .verdict-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .metric-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--sonar-border);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            border-color: var(--sonar-blue);
+        }
+
+        .metric-value {
+            font-size: 2.8rem;
+            font-weight: 800;
+            color: var(--sonar-blue);
+            margin-bottom: 10px;
+            background: -webkit-linear-gradient(45deg, var(--sonar-blue), #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .metric-label {
+            font-size: 1rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        .highlight-text {
+            font-weight: 600;
+            color: var(--sonar-black);
+            background: rgba(52, 152, 219, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 40px 25px; }
+            h1 { font-size: 2.2rem; }
+            table { display: block; overflow-x: auto; white-space: nowrap; }
+            .verdict-title { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-image"></div>
+    <div class="bg-overlay"></div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Auditoría de Viabilidad y Estrategia de Booking</h1>
+            <p class="subtitle"><strong>Mind Against en Ciudad de México para la Temporada 2026</strong> <br> El mercado de la música electrónica en la Ciudad de México se ha consolidado como el epicentro del melodic techno en América Latina.</p>
+        </div>
+
+        <p>La presente auditoría analiza la viabilidad comercial, logística y estratégica de contratar al dúo italiano Mind Against (Alessandro y Federico Fognini) para una serie de presentaciones en la capital mexicana durante 2026. Este análisis se fundamenta en su trayectoria en territorio nacional, su posicionamiento dentro de Afterlife y HABITAT, y la demanda acumulada tras la reconfiguración de eventos masivos en la metrópoli.</p>
+
+        <h2>1. Enrutamiento Estratégico y Logística Internacional 2026</h2>
+        <p>El calendario global de Mind Against para 2026 prioriza la eficiencia regional y la participación en festivales de gran escala. La ventana de oportunidad más crítica se identifica en el primer trimestre del año ("Americas Window").</p>
+        
+        <h3>1.1 Identificación de Ventanas de Oportunidad Regional</h3>
+        <p>El dúo se presentará en Río de Janeiro el 3 de enero de 2026 y luego el 24 de enero en Los Ángeles. Esta brecha de tres semanas representa el <span class="highlight-text">momento óptimo para una incursión en México</span>, minimizando los costos de traslado transatlántico. Además, su presentación b2b con Argy en Ultra Miami (marzo 2026) eleva su valor de mercado regional.</p>
+
+        <h3>1.2 Clasificación de Gira y Estatus Artístico</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha Clave 2026</th>
+                    <th>Ciudad / Evento</th>
+                    <th>Región</th>
+                    <th>Estatus de Gira</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>3 de enero</td>
+                    <td>Río de Janeiro (MAM)</td>
+                    <td>Brasil</td>
+                    <td><span class="badge badge-success">Arena / Museo</span></td>
+                </tr>
+                <tr>
+                    <td>24 de enero</td>
+                    <td>Los Ángeles (Reframe)</td>
+                    <td>USA</td>
+                    <td><span class="badge badge-info">Show Especial</span></td>
+                </tr>
+                <tr>
+                    <td>27-29 de marzo</td>
+                    <td>Ultra Miami (b2b Argy)</td>
+                    <td>USA</td>
+                    <td><span class="badge badge-warning">Festival Masivo</span></td>
+                </tr>
+                <tr>
+                    <td>Mayo</td>
+                    <td>Extrema Outdoor / Cercle</td>
+                    <td>Europa</td>
+                    <td><span class="badge badge-info">Festival Boutique</span></td>
+                </tr>
+                <tr>
+                    <td>Julio</td>
+                    <td>Tomorrowland / Audioriver</td>
+                    <td>Europa</td>
+                    <td><span class="badge badge-warning">Festival Masivo</span></td>
+                </tr>
+                <tr>
+                    <td>22 de agosto</td>
+                    <td>Estadio GNP Seguros (Anyma)</td>
+                    <td>México</td>
+                    <td><span class="badge badge-success">Estadio (Soporte)</span></td>
+                </tr>
+                <tr>
+                    <td>7-8 de noviembre</td>
+                    <td>Ultra México</td>
+                    <td>México</td>
+                    <td><span class="badge badge-warning">Festival Masivo</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>2. Validación de Aforo y Recinto Sugerido en CDMX</h2>
+        <p>La elección del recinto debe equilibrar la mística del género con la rentabilidad comercial. Opciones evaluadas:</p>
+        <ul>
+            <li><strong>Auditorio BlackBerry (3,000 pax):</strong> Sería un "Sold Out" garantizado en horas, pero limitado para las necesidades de producción visual inmersiva.</li>
+            <li><strong>Pepsi Center WTC (8,000 pax):</strong> <span class="highlight-text">Recinto ideal.</span> Permite pista amplia y zonas VIP elevadas, fundamentales para el modelo de negocio del techno melódico.</li>
+            <li><strong>Auditorio Nacional (10,000 pax):</strong> Inadecuado por el formato de asientos fijos.</li>
+            <li><strong>Palacio de los Deportes (17,000 - 20,000 pax):</strong> Solo viable bajo concepto Afterlife o en conjunto con otros nombres de peso.</li>
+        </ul>
+
+        <h2>3. Auditoría de Viralidad y Audiencia</h2>
+        <p>Mind Against es un proyecto de Catálogo y Prestigio con crecimiento orgánico, cimentado en producciones atemporales ("Astral", "Gravity").</p>
+
+        <h3>3.1 Nivel de Sold-Out y Fidelidad</h3>
+        <p>El interés es excepcionalmente alto. Su set en Cercle superó 1 millón de vistas en 4 horas. En CDMX, el aforo de clubes (ej. LooLoo Studio) ha quedado pequeño, generando demanda insatisfecha masiva.</p>
+
+        <h3>3.2 El "Buyer Persona": Segmentación y Consumo</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Variable</th>
+                    <th>Perfil del Espectador</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Rango de Edad</strong></td>
+                    <td>25 a 45 años (Millennials y Gen X)</td>
+                </tr>
+                <tr>
+                    <td><strong>Nivel Socioeconómico</strong></td>
+                    <td>AB y C+ (Alta capacidad de gasto en boletos VIP)</td>
+                </tr>
+                <tr>
+                    <td><strong>Zonas Geográficas</strong></td>
+                    <td>Roma, Condesa, Polanco, Juárez, Santa Fe</td>
+                </tr>
+                <tr>
+                    <td><strong>Hábitos de Consumo</strong></td>
+                    <td>Usuarios premium de streaming, mixología, moda minimalista y viajes de lujo</td>
+                </tr>
+                <tr>
+                    <td><strong>Comportamiento Digital</strong></td>
+                    <td>Consumidores de sets largos (YouTube/SoundCloud); validación social en Instagram</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>4. Data y Redes: Análisis de Métricas en Tiempo Real</h2>
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-value">616K+</div>
+                <div class="metric-label">Oyentes Mensuales (Spotify)</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">2.9M</div>
+                <div class="metric-label">Vistas YouTube ("Gravity")</div>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">152K+</div>
+                <div class="metric-label">Seguidores Instagram</div>
+            </div>
+        </div>
+
+        <h2>5. Promotor y Exclusividad</h2>
+        <p>El panorama está marcado por <strong>OCESA / Live Nation</strong> (eventos masivos / Afterlife), <strong>Zamna Entertainment</strong> (socio principal en sureste) y promotores independientes para fechas en formato club. Globalmente son representados por agencias con alto peso en el mercado norteamericano (relación Live Nation/AEG).</p>
+
+        <h2>6. Match de Patrocinios: Sinergia de Estilo de Vida</h2>
+        <ul>
+            <li><strong>Automotriz de Lujo (BMW/Audi/Volvo):</strong> Para audiencias de 30-45 años interesadas en vanguardia y diseño (EVs).</li>
+            <li><strong>Bebidas Espirituosas (Tequila Casa Dragones / Mezcal Clase Azul):</strong> Conexión intrínseca con el consumo VIP premium y servicio de botella.</li>
+            <li><strong>Tecnología y Fintech (Amex/Nubank/Apple):</strong> Preventas exclusivas y tecnología cashless.</li>
+        </ul>
+
+        <h2>7. Análisis de Precedentes: Impacto de Afterlife 2025</h2>
+        <p>La cancelación del Afterlife Festival en mayo 2025 (30,000 fans afectados) ha generado un <strong>"Efecto Rebote"</strong>. Existe una demanda acumulada masiva; un show individual de Mind Against será percibido como la "revancha", permitiendo establecer precios de boletos por encima de la media del mercado.</p>
+
+        <h2>8. Consideraciones de Producción y Rider Técnico</h2>
+        <p><strong>Audiovisuales:</strong> Sistemas de clase mundial (Funktion-One o d&b), pantallas LED de gran formato, servidores de video tipo Disguise y estructuras arquitectónicas brutalistas.<br>
+        <strong>Costos Estimados:</strong> Producción Pepsi Center ($50k - $100k USD) + Fee Artista ($30k - $50k USD).</p>
+
+        <h2>9. Análisis Comparativo: CDMX vs. Resto de México</h2>
+        <p>La Ciudad de México es el mercado más "puro" para Mind Against, donde prima el enfoque artístico técnico sobre la fiesta puramente hedonista (a diferencia de Tulum o Monterrey).</p>
+
+        <h2>10. Conclusiones y Recomendaciones</h2>
+        <p>Mind Against es uno de los actos más seguros para 2026. Hay baja exposición al riesgo por la demanda reprimida de 2025. <strong>Recomendación:</strong> Ejecutar en enero 2026, usar el Pepsi Center, enfocar marketing en la marca HABITAT/Afterlife y asegurar patrocinios automotriz/bebidas premium.</p>
+
+        <h2>11. TABLA EJECUTIVA DE RESUMEN</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Categoría</th>
+                    <th>Detalle Clave</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Aforo Sugerido</strong></td>
+                    <td>8,000 pax (Recinto: Pepsi Center WTC)</td>
+                </tr>
+                <tr>
+                    <td><strong>Status 2026</strong></td>
+                    <td>En Gira / Ventanas en Enero, Marzo y Noviembre (Ultra)</td>
+                </tr>
+                <tr>
+                    <td><strong>Viralidad</strong></td>
+                    <td>Media (Prestigio de Catálogo sobre tendencias efímeras)</td>
+                </tr>
+                <tr>
+                    <td><strong>Audiencia Core</strong></td>
+                    <td>25-45 años, NSE AB/C+, Predominante masculino/mixto sofisticado</td>
+                </tr>
+                <tr>
+                    <td><strong>Promotor Histórico</strong></td>
+                    <td>Zamna Entertainment / LooLoo / OCESA</td>
+                </tr>
+                <tr>
+                    <td><strong>Potencial Comercial</strong></td>
+                    <td>Muy Alto (Fuerte interés de sponsors de lujo y lifestyle)</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="verdict-box">
+            <div class="verdict-title">
+                <span class="status-dot"></span>
+                Veredicto: CONTRATAR
+                <span class="status-dot"></span>
+            </div>
+            <div class="verdict-text">
+                Alta viabilidad y demanda reprimida. Este análisis asegura que la contratación de Mind Against no solo cumpla con objetivos artísticos, sino que también garantice la sostenibilidad financiera para el ciclo 2026 en el mercado de la Ciudad de México.
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
