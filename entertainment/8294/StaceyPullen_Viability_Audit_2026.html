@@ -1,0 +1,580 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Auditoría de Viabilidad: Stacey Pullen México 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --sonar-black: #121212;
+            --sonar-green: #2ecc71;
+            --sonar-blue: #3498db;
+            --sonar-grey: #f8f9fa;
+            --sonar-border: #e0e0e0;
+            --text-main: #333;
+            --text-light: #666;
+            --accent: #ff4757;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            margin: 0;
+            padding: 40px 20px;
+            color: var(--text-main);
+            line-height: 1.6;
+        }
+
+        /* WOW Animations & Glassmorphism Premium Standard */
+        @keyframes fadeUp {
+            from { opacity: 0; transform: translateY(40px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideInLeft {
+            from { opacity: 0; transform: translateX(-30px); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        @keyframes pulseBadge {
+            0% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(46, 204, 113, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(46, 204, 113, 0); }
+        }
+
+        @keyframes glowDot {
+            0% { box-shadow: 0 0 0 0 currentColor; }
+            70% { box-shadow: 0 0 0 5px rgba(0, 0, 0, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(0, 0, 0, 0); }
+        }
+
+        /* Backgrounds */
+        .bg-image {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-image: url('https://images.unsplash.com/photo-1574169208507-84376144848b?ixlib=rb-4.0.3&auto=format&fit=crop&w=1920&q=80');
+            background-size: cover;
+            background-attachment: fixed;
+            background-position: center;
+            z-index: -2;
+            filter: grayscale(40%) brightness(0.4);
+        }
+
+        .bg-overlay {
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: linear-gradient(135deg, rgba(18,18,18,0.85) 0%, rgba(30,30,30,0.7) 100%);
+            z-index: -1;
+        }
+
+        /* Glassmorphism Container */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.92);
+            backdrop-filter: blur(24px);
+            -webkit-backdrop-filter: blur(24px);
+            border: 1px solid rgba(255, 255, 255, 0.6);
+            padding: 60px 80px;
+            border-radius: 24px;
+            box-shadow: 0 30px 60px -12px rgba(0, 0, 0, 0.5);
+            animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--sonar-black);
+            margin-bottom: 15px;
+            letter-spacing: -1px;
+            line-height: 1.2;
+            animation: slideInLeft 0.8s ease forwards;
+        }
+
+        .subtitle {
+            color: var(--text-light);
+            font-size: 1.2rem;
+            font-weight: 400;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        h2 {
+            font-size: 1.8rem;
+            color: var(--sonar-blue);
+            border-bottom: 2px solid var(--sonar-blue);
+            padding-bottom: 12px;
+            margin-top: 60px;
+            margin-bottom: 30px;
+            animation: slideInLeft 0.8s ease forwards;
+        }
+
+        h3 {
+            font-size: 1.4rem;
+            color: var(--sonar-black);
+            margin-top: 40px;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+
+        p {
+            font-size: 1.1rem;
+            margin-bottom: 24px;
+            color: #444;
+        }
+
+        /* Tables */
+        table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            margin: 40px 0;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.06);
+            background: white;
+        }
+
+        th {
+            background: var(--sonar-black);
+            color: white;
+            font-weight: 600;
+            padding: 20px 24px;
+            text-align: left;
+            text-transform: uppercase;
+            font-size: 0.95rem;
+            letter-spacing: 1px;
+        }
+
+        td {
+            padding: 18px 24px;
+            border-bottom: 1px solid var(--sonar-border);
+            color: var(--text-main);
+            font-size: 1.05rem;
+        }
+
+        /* App-like Hover Effects for Tables */
+        tbody tr {
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+            animation: fadeUp 0.6s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+        }
+
+        tbody tr:nth-child(1) { animation-delay: 0.2s; }
+        tbody tr:nth-child(2) { animation-delay: 0.3s; }
+        tbody tr:nth-child(3) { animation-delay: 0.4s; }
+        tbody tr:nth-child(4) { animation-delay: 0.5s; }
+        tbody tr:nth-child(n+5) { animation-delay: 0.6s; }
+
+        tbody tr:hover {
+            background-color: var(--sonar-grey);
+            transform: translateY(-4px) scale(1.01);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.1);
+            border-radius: 8px;
+            z-index: 10;
+            position: relative;
+        }
+
+        tbody tr:hover td {
+            border-bottom-color: transparent;
+        }
+
+        tbody tr:hover td:first-child { border-top-left-radius: 8px; border-bottom-left-radius: 8px; }
+        tbody tr:hover td:last-child { border-top-right-radius: 8px; border-bottom-right-radius: 8px; }
+
+        /* Badges */
+        .badge {
+            padding: 8px 16px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            display: inline-block;
+        }
+        
+        .badge-success { background: rgba(46, 204, 113, 0.15); color: #27ae60; }
+        .badge-warning { background: rgba(241, 196, 15, 0.15); color: #d35400; }
+        .badge-danger { background: rgba(231, 76, 60, 0.15); color: #c0392b; }
+        .badge-info { background: rgba(52, 152, 219, 0.15); color: #2980b9; }
+        .badge-ongoing {
+            animation: pulseBadge 2.5s infinite;
+            background: var(--sonar-green);
+            color: white;
+            box-shadow: 0 4px 10px rgba(46, 204, 113, 0.4);
+        }
+
+        /* Verdict Box */
+        .verdict-box {
+            background: linear-gradient(135deg, var(--sonar-black) 0%, #1a252f 100%);
+            color: white;
+            padding: 50px;
+            border-radius: 20px;
+            text-align: center;
+            margin-top: 60px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.25);
+            position: relative;
+            overflow: hidden;
+            animation: fadeUp 1s forwards;
+            animation-delay: 0.5s;
+            opacity: 0;
+        }
+
+        .verdict-box::before {
+            content: '';
+            position: absolute;
+            top: -50%; left: -50%; width: 200%; height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.05) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(45deg);
+        }
+
+        .verdict-title {
+            font-size: 2.5rem;
+            font-weight: 800;
+            margin-bottom: 25px;
+            color: var(--sonar-green);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 20px;
+        }
+
+        .verdict-title .status-dot {
+            width: 20px;
+            height: 20px;
+            background-color: var(--sonar-green);
+            border-radius: 50%;
+            display: inline-block;
+            animation: glowDot 3s infinite;
+            box-shadow: 0 0 15px var(--sonar-green);
+        }
+
+        .verdict-text {
+            font-size: 1.2rem;
+            line-height: 1.8;
+            opacity: 0.95;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        /* Metrics Grid */
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin: 40px 0;
+        }
+
+        .metric-card {
+            background: #ffffff;
+            padding: 30px;
+            border-radius: 16px;
+            text-align: center;
+            border: 1px solid var(--sonar-border);
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.03);
+        }
+
+        .metric-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+            border-color: var(--sonar-blue);
+        }
+
+        .metric-value {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--sonar-blue);
+            margin-bottom: 10px;
+            background: -webkit-linear-gradient(45deg, var(--sonar-blue), #9b59b6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .metric-label {
+            font-size: 1rem;
+            color: var(--text-light);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            font-weight: 600;
+        }
+
+        .highlight-text {
+            font-weight: 600;
+            color: var(--sonar-black);
+            background: rgba(52, 152, 219, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .container { padding: 40px 25px; }
+            h1 { font-size: 2.2rem; }
+            table { display: block; overflow-x: auto; white-space: nowrap; }
+            .verdict-title { font-size: 1.8rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="bg-image"></div>
+    <div class="bg-overlay"></div>
+
+    <div class="container">
+        <div class="header">
+            <h1>Auditoría de Viabilidad Estratégica</h1>
+            <p class="subtitle"><strong>Stacey Pullen – Ciudad de México 2026</strong> <br> Una figura emblemática de la segunda ola del techno de Detroit. Evaluación estratégica para un objetivo de 5,000 personas en la "capital mundial del streaming".</p>
+        </div>
+
+        <p>El mercado de la música electrónica en la CDMX se ha consolidado como un nodo crítico en el ecosistema de giras internacionales. Stacey Pullen actúa como un puente generacional entre la herencia histórica del género y las nuevas dinámicas de consumo digital. Este análisis desglosa la logística, el perfil del asistente y la infraestructura técnica disponible en 2026 para escalar su convocatoria a un aforo de 5,000 personas en un mercado fragmentado.</p>
+
+        <h2>1. Enrutamiento Estratégico y Logística Global 2026</h2>
+        <p>El calendario de Stacey Pullen para 2026 muestra una actividad intensiva en los EE. UU. durante el Q2 y Q3. La ventana más competitiva para la CDMX se sitúa inmediatamente <span class="highlight-text">después de su fecha en Miami (19 de junio)</span> o antes de su residencia en Ibiza (28 de julio).</p>
+        
+        <h3>Clasificación de la Gira: Arena/Club Hybrid</h3>
+        <p>Para el objetivo de 5,000 personas, Pullen debe ser presentado bajo un formato de "Arena Boutique" o "Showcase de Sello", alejándose del formato de club estándar para justificar la escala del aforo.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Fecha 2026</th>
+                    <th>Nodo Logístico</th>
+                    <th>Tipo de Evento</th>
+                    <th>Viabilidad CDMX</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>23 de mayo</td>
+                    <td>Detroit, MI (Movement)</td>
+                    <td>Festival (Headline)</td>
+                    <td><span class="badge badge-success">Alta (Inicio temp.)</span></td>
+                </tr>
+                <tr>
+                    <td>12 de junio</td>
+                    <td>Charlotte, NC (Music Yard)</td>
+                    <td>Open Air / Club</td>
+                    <td><span class="badge badge-warning">Media</span></td>
+                </tr>
+                <tr>
+                    <td>19 de junio</td>
+                    <td>Miami, FL (Jolene)</td>
+                    <td>Club Elite</td>
+                    <td><span class="badge badge-ongoing">Óptima (Ruta Directa)</span></td>
+                </tr>
+                <tr>
+                    <td>28 de julio</td>
+                    <td>Ibiza, ES (Amnesia)</td>
+                    <td>Residencia Arena</td>
+                    <td><span class="badge badge-danger">Baja (Costo transatlántico)</span></td>
+                </tr>
+                <tr>
+                    <td>5 de septiembre</td>
+                    <td>Chicago, IL (ARC Fest)</td>
+                    <td>Festival Masivo</td>
+                    <td><span class="badge badge-warning">Media</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>2. Validación de Aforo y Recinto Sugerido en CDMX</h2>
+        <p>La elección del lugar es determinante para la percepción de "exclusividad" y "éxito". Tras analizar opciones de 3,000 a 20,000 personas, <strong>Pepsi Center WTC emerge como la recomendación primaria</strong>.</p>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>Recinto</th>
+                    <th>Capacidad Max.</th>
+                    <th>Configuración 5k</th>
+                    <th>Perfil de Audio</th>
+                    <th>Decisión</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Auditorio BlackBerry</strong></td>
+                    <td>3,000</td>
+                    <td>No viable (Insuficiente)</td>
+                    <td>Excelente</td>
+                    <td><span class="badge badge-danger">Descartado</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Pepsi Center WTC</strong></td>
+                    <td>8,000</td>
+                    <td>Óptima (Modular)</td>
+                    <td>Superior (Digital)</td>
+                    <td><span class="badge badge-success">Seleccionado</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Auditorio Nacional</strong></td>
+                    <td>10,000</td>
+                    <td>Inadecuada (Asientos)</td>
+                    <td>Acústico</td>
+                    <td><span class="badge badge-danger">Descartado</span></td>
+                </tr>
+                <tr>
+                    <td><strong>Palacio de los Deportes</strong></td>
+                    <td>20,000</td>
+                    <td>Riesgosa (Excesiva)</td>
+                    <td>Difícil (Reverberancia)</td>
+                    <td><span class="badge badge-danger">Descartado</span></td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>3. Auditoría de Viralidad y Audiencia</h2>
+        <p>Stacey Pullen no es un artista "Viral" de tendencias efímeras, sino un artista de <strong>Catálogo y Fiel</strong>, pionero del sonido Detroit. El objetivo es capturar la audiencia purista y al mismo tiempo capitalizar a la juventud de "Trigger City" de la CDMX.</p>
+
+        <div class="metrics-grid">
+            <div class="metric-card">
+                <div class="metric-value">30-45 años</div>
+                <div class="metric-label">El Purista de Detroit (NSE A/B)</div>
+                <p style="margin-top: 10px; font-size: 0.9rem; color: #666;">Valora fidelidad de sonido y servicio VIP. Consumo de botellas premium.</p>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">22-29 años</div>
+                <div class="metric-label">Explorador de Tendencias (NSE C+)</div>
+                <p style="margin-top: 10px; font-size: 0.9rem; color: #666;">Descubrimiento por redes. Motor para el volumen masivo de 5k boletos.</p>
+            </div>
+            <div class="metric-card">
+                <div class="metric-value">18-24 años</div>
+                <div class="metric-label">Migrante de Festivales</div>
+                <p style="margin-top: 10px; font-size: 0.9rem; color: #666;">Leal al género sobre el artista. Convierte mediante narrativa visual.</p>
+            </div>
+        </div>
+
+        <h2>4. Análisis de Datos y Ecosistema Digital</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Plataforma</th>
+                    <th>Métrica Estimada</th>
+                    <th>Observación Estratégica</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Instagram</strong></td>
+                    <td>66.7K+ Seguidores</td>
+                    <td>Canal principal de comunicación directa y estilo de vida.</td>
+                </tr>
+                <tr>
+                    <td><strong>Spotify</strong></td>
+                    <td>~22K - 60K Oyentes Mensuales</td>
+                    <td>Alta concentración en Londres, Manchester y CDMX (Trigger City).</td>
+                </tr>
+                <tr>
+                    <td><strong>TikTok</strong></td>
+                    <td>Presencia Emergente</td>
+                    <td>Viralidad orgánica a través de clips de sets en vivo.</td>
+                </tr>
+                <tr>
+                    <td><strong>YouTube</strong></td>
+                    <td>Vistas Altas en Mixmag/Lab</td>
+                    <td>Referencia visual clave para la "validación de energía" del DJ.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>La discrepancia entre oyentes mensuales y el objetivo de 5k sugiere que el evento debe promocionarse como una <strong>"experiencia cultural" o "evento de ciudad"</strong>.</p>
+
+        <h2>5. Promotor, Exclusividad y Relaciones de Industria</h2>
+        <p>Pullen es representado por Hagi C. (Detroit Premiere Artists). Dada la necesidad de infraestructura de gran escala y comercialización masiva (Ticketmaster), <strong>OCESA / Live Nation</strong> emergen como socios estratégicos naturales (gestores del Pepsi Center), posiblemente bajo un modelo de co-promoción con agencias independientes para inyectar curaduría y "cool factor".</p>
+        <p><strong>Exclusividad:</strong> Asegurar cláusula de 3 meses en CDMX; se recomienda expandir la visita sumando Monterrey o Guadalajara para amortizar vuelos sin canibalizar.</p>
+
+        <h2>6. Match de Patrocinios y Estilo de Vida</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Marca Sugerida</th>
+                    <th>Tipo de Activación</th>
+                    <th>Objetivo de Marketing</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Jose Cuervo / Tequila 1800</strong></td>
+                    <td>Barra VIP / Coctelería de Autor</td>
+                    <td>Aumento de ticket promedio (Per cápita) en público A/B de 25-45 años.</td>
+                </tr>
+                <tr>
+                    <td><strong>Red Bull</strong></td>
+                    <td>Área de Experiencia Audiovisual</td>
+                    <td>Engagement con Gen Z y Millennial. Vínculo natural con historia del techno.</td>
+                </tr>
+                <tr>
+                    <td><strong>BMW / Volvo (EVs)</strong></td>
+                    <td>Exhibición de Líneas Eléctricas</td>
+                    <td>Estética futurista/máquinas alineada al estilo de vida A/B.</td>
+                </tr>
+                <tr>
+                    <td><strong>OXXO / Takis</strong></td>
+                    <td>Promoción Boletos / Sampling</td>
+                    <td>Visibilidad masiva en puntos de venta para empujar el aforo.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h2>7. Análisis Profundo Operativo y de Riesgos</h2>
+        <ul>
+            <li><strong>El Efecto "Trigger City":</strong> 5,000 personas en Pepsi Center generarán UGC masivo, operando como campaña global orgánica, justificando la alta inversión en producción técnica.</li>
+            <li><strong>Estructura de Costos:</strong> Pullen (artista de catálogo) ofrece honorarios estables, no inflados por tendencias. Con precio promedio de $1,100 MXN, el <strong>Break-Even se alcanza al 65% del aforo (3,250 boletos)</strong>. Mitigar el riesgo del 15% por tipo de cambio.</li>
+            <li><strong>Desafíos Técnicos:</strong> Rider exige sub-bass inmaculado y equipo de mezcla tope (Allen & Heath/Pioneer). Reconfigurar flujos del Pepsi Center (zonas "Cashless", carriles rápidos) para evitar fricciones en segmento premium.</li>
+        </ul>
+
+        <h2>8. Tabla Ejecutiva de Resumen y Veredicto</h2>
+        <table>
+            <thead>
+                <tr>
+                    <th>Categoría</th>
+                    <th>Detalle Estratégico</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><strong>Artista</strong></td>
+                    <td>Stacey Pullen (Detroit Techno) - Confirmado en Gira 2026.</td>
+                </tr>
+                <tr>
+                    <td><strong>Objetivo Aforo</strong></td>
+                    <td>5,000 personas (Sold Out) - Alta viabilidad con marketing mix.</td>
+                </tr>
+                <tr>
+                    <td><strong>Recinto Sugerido</strong></td>
+                    <td>Pepsi Center WTC (CDMX) - Óptimo por acústica y ubicación.</td>
+                </tr>
+                <tr>
+                    <td><strong>Logística 2026</strong></td>
+                    <td>Ventana ideal: Post-Miami (Junio) / Pre-Ibiza (Julio).</td>
+                </tr>
+                <tr>
+                    <td><strong>Perfil Audiencia</strong></td>
+                    <td>22-45 años, NSE A/B y C+ (Alto poder adquisitivo).</td>
+                </tr>
+                <tr>
+                    <td><strong>Promotor Sugerido</strong></td>
+                    <td>OCESA en alianza con Independiente (Estructura sólida + Cool factor).</td>
+                </tr>
+                <tr>
+                    <td><strong>Patrocinadores</strong></td>
+                    <td>Jose Cuervo, Red Bull, Volvo (Alineación lifestyle premium).</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="verdict-box">
+            <div class="verdict-title">
+                <span class="status-dot"></span>
+                Veredicto: PROCEDER CON OFERTA
+                <span class="status-dot"></span>
+            </div>
+            <div class="verdict-text">
+                Alta viabilidad y bajo riesgo comparado con modas pasajeras. La infraestructura del Pepsi Center WTC y la dinámica "Trigger City" de CDMX crean el entorno ideal para escalar a 5,000 personas. Priorizar ventana de finales de junio de 2026, amarrando sponsors premium para blindar rentabilidad. Stacey Pullen está posicionado para un hito masivo en su legado en México.
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
