@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Executive Handover | Sonar Hall</title>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-dark: #0a0a0f;
+            --accent-primary: #6366f1; /* Indigo/Purple */
+            --accent-secondary: #ec4899; /* Pink */
+            --glass-bg: rgba(255, 255, 255, 0.03);
+            --glass-border: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-muted: #94a3b8;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Outfit', sans-serif;
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            background-image: 
+                radial-gradient(circle at 15% 50%, rgba(99, 102, 241, 0.15), transparent 25%),
+                radial-gradient(circle at 85% 30%, rgba(236, 72, 153, 0.15), transparent 25%);
+            background-attachment: fixed;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 4rem 2rem;
+        }
+
+        header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            font-weight: 800;
+            margin-bottom: 0.5rem;
+            background: linear-gradient(to right, var(--text-main), var(--text-muted));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-muted);
+            font-weight: 300;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .glass-card {
+            background: var(--glass-bg);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 2.5rem;
+            backdrop-filter: blur(16px);
+            -webkit-backdrop-filter: blur(16px);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: fadeInUp 0.8s ease-out backwards;
+        }
+
+        .glass-card:hover {
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.05);
+            border-color: rgba(255, 255, 255, 0.15);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+        }
+
+        /* Staggered animations */
+        .glass-card:nth-child(1) { animation-delay: 0.1s; }
+        .glass-card:nth-child(2) { animation-delay: 0.2s; }
+        .glass-card:nth-child(3) { animation-delay: 0.3s; }
+        .glass-card:nth-child(4) { animation-delay: 0.4s; }
+
+        .card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1.5rem;
+            border-bottom: 1px solid var(--glass-border);
+            padding-bottom: 1rem;
+        }
+
+        .icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+        }
+
+        h2 {
+            font-size: 1.5rem;
+            margin: 0;
+            font-weight: 600;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        li {
+            margin-bottom: 1rem;
+        }
+
+        a {
+            color: var(--text-main);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            padding: 0.75rem 1rem;
+            background: rgba(255,255,255,0.02);
+            border-radius: 12px;
+            border: 1px solid transparent;
+            transition: all 0.3s ease;
+        }
+
+        a:hover {
+            background: rgba(255,255,255,0.08);
+            border-color: var(--glass-border);
+            transform: translateX(5px);
+        }
+
+        .tag {
+            font-size: 0.7rem;
+            padding: 2px 8px;
+            border-radius: 12px;
+            margin-left: auto;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .tag.finance { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+        .tag.audit { background: rgba(99, 102, 241, 0.2); color: #818cf8; }
+        .tag.commercial { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+        .tag.ops { background: rgba(236, 72, 153, 0.2); color: #f472b6; }
+
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .footer {
+            margin-top: 4rem;
+            text-align: center;
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--glass-border);
+            padding-top: 2rem;
+            animation: fadeInUp 1s ease-out 0.6s backwards;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>CEO Cockpit | Portfolio & Handover</h1>
+            <div class="subtitle">Sonar Hall Project Assets • May 2026</div>
+        </header>
+
+        <div class="grid">
+            <!-- P&L / Análisis Financiero -->
+            <div class="glass-card">
+                <div class="card-header">
+                    <span class="icon">📊</span>
+                    <h2>Inteligencia Financiera</h2>
+                </div>
+                <ul>
+                    <li>
+                        <a href="../1284/justificacion_flow_jrock.html" target="_blank">
+                            <span>Análisis Ejecutivo FLOW (J-Rock)</span>
+                            <span class="tag finance">HTML</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../1284/Proyeccion_FLOW_JROCK_SonarHall.xlsx" target="_blank">
+                            <span>P&L Dinámico FLOW</span>
+                            <span class="tag finance">XLSX</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../1284/deck_analisis_flow.html" target="_blank">
+                            <span>Deck de Proyección Financiera</span>
+                            <span class="tag finance">PITCH</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Viability Audits (Artistas) -->
+            <div class="glass-card">
+                <div class="card-header">
+                    <span class="icon">🎧</span>
+                    <h2>Auditorías de Artistas (Viability)</h2>
+                </div>
+                <ul>
+                    <li>
+                        <a href="../../8294/Tiesto_Viability_Audit_2026.html" target="_blank">
+                            <span>Tiësto México 2026</span>
+                            <span class="tag audit">A-LIST</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../8294/StaceyPullen_Viability_Audit_2026.html" target="_blank">
+                            <span>Stacey Pullen</span>
+                            <span class="tag audit">TECHNO</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../../8294/MindAgainst_Viability_Audit_2026.html" target="_blank">
+                            <span>Mind Against</span>
+                            <span class="tag audit">TECHNO</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Patrocinios y Comercial -->
+            <div class="glass-card">
+                <div class="card-header">
+                    <span class="icon">🤝</span>
+                    <h2>Propuestas Comerciales</h2>
+                </div>
+                <ul>
+                    <li>
+                        <a href="../7391/coca-cola/" target="_blank">
+                            <span>Coca-Cola (Activación)</span>
+                            <span class="tag commercial">SPONSOR</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../7391/ninja/" target="_blank">
+                            <span>Ninja (Naming Rights)</span>
+                            <span class="tag commercial">NAMING</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../7391/lgcy-v2/" target="_blank">
+                            <span>LGCY (Deck Comercial)</span>
+                            <span class="tag commercial">AGENCY</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Reportes Operativos -->
+            <div class="glass-card">
+                <div class="card-header">
+                    <span class="icon">📋</span>
+                    <h2>Gobernanza y Estatus</h2>
+                </div>
+                <ul>
+                    <li>
+                        <a href="../8452/ongoing-v2/Reporte_Estatus_SonarHall_Abril.html" target="_blank">
+                            <span>Pipeline de Estatus (Ongoing)</span>
+                            <span class="tag ops">REPORT</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="../1284/minuta_alineacion_mundial_abril_2026.html" target="_blank">
+                            <span>Acuerdos The Match / Mundial</span>
+                            <span class="tag ops">MINUTA</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Sistema desarrollado y estructurado bajo los lineamientos de BAUS Corporate Ecosystem.</p>
+            <p><strong>Uso exclusivo para transición y evaluación de viabilidad de eventos.</strong></p>
+        </div>
+    </div>
+</body>
+</html>
