@@ -1,0 +1,9 @@
+# macOS
+.DS_Store
+
+# Symlinks legibles locales (alias para Finder con descriptor humano).
+# El nombre real de la carpeta sigue siendo [NNNN]/ (URL opaca).
+# Estos atajos NO se sincronizan a GitHub ni a Hostinger — son solo para
+# que el CEO vea en Finder "8294 (Auditorías Artistas)" en vez de solo "8294".
+entertainment/*/[🎤💼📊📋🔄]*
+entertainment/**/[🎤💼📊📋🔄]*
