@@ -42,6 +42,12 @@ URL pública: `baus.ceo/entertainment/[unidad]/[NNNN]/[slug]/`
 - **Ejemplos:** Tablas de eventos confirmados, en negociación y prospectos (UI/UX Premium).
 - **URL:** `baus.ceo/entertainment/sonar-hall/8452/[version]/`
 
+## 📂 5108: Gobernanza y Comunicación con Socios
+**Propósito:** Decks ejecutivos, frameworks operativos y propuestas internas dirigidas a socios capitalistas (Celesta · Roberto · Sam · Gou). Material de alta sensibilidad — **no auto-publica**.
+- **Ejemplos:** Framework Operativo post-Indigo (22-may-2026), revisiones estratégicas con el Board, propuestas de re-estructuración de rol.
+- **URL:** `baus.ceo/entertainment/sonar-hall/5108/[slug]/`
+- ⚠️ **Sensibilidad:** contiene quotes textuales privados, montos, percepción de stakeholders. Requiere orden explícita para publicación pública.
+
 ---
 
 ## Crear una nueva categoría
@@ -52,4 +58,4 @@ Cualquier nueva categoría operativa (ej. Finanzas, Planos Técnicos, Permisos) 
 2. Registrarse aquí con propósito, ejemplos y URL.
 3. Crearse la estructura `[NNNN]/[slug]/{index.html,source.md,assets/}` desde el inicio.
 
-Categorías actuales reservadas: `1284, 3306, 7391, 8294, 8452`.
+Categorías actuales reservadas: `1284, 3306, 5108, 7391, 8294, 8452`.

@@ -1,0 +1,7 @@
+User-agent: *
+Disallow: /entertainment/sonar-hall/5108/
+Disallow: /entertainment/sonar-hall/8294/
+Disallow: /entertainment/sonar-hall/3306/
+Disallow: /entertainment/sonar-hall/1284/
+
+# Material interno con datos sensibles. No indexar.
