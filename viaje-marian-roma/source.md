@@ -1,4 +1,4 @@
-# Guía de Viaje y Itinerario de Marian: Roma y Costa Amalfitana
+# Guía de Viaje y Itinerario de Marian Amor: Roma y Costa Amalfitana
 *Preparado para el viaje de junio de 2026*
 
 Esta es la guía detallada de viaje diseñada especialmente para moverse de forma independiente, utilizando trenes y transporte público, con un presupuesto moderado y espacio para experiencias especiales.
@@ -6,7 +6,7 @@ Esta es la guía detallada de viaje diseñada especialmente para moverse de form
 ---
 
 ## 🌤️ Información General y Clima (Junio)
-* **Perfil de Viaje:** Diseñado especialmente para Marian (34 años), con alta energía y entusiasmo por recorrer a pie los destinos para absorber cada rincón. Se destacan retos de senderismo y rutas a pie.
+* **Perfil de Viaje:** Diseñado especialmente para Marian Amor (34 años), con alta energía y entusiasmo por recorrer a pie los destinos para absorber cada rincón. Se destacan retos de senderismo y rutas a pie.
 * **Clima:** En la primera mitad de junio, el clima es cálido y veraniego. En Roma las temperaturas oscilan entre **25°C y 30°C** durante el día, y refresca a unos **16°C** por la noche. En la Costa Amalfitana, la brisa marina suaviza el calor, manteniéndose entre **22°C y 27°C**.
 * **Equipaje:** Calzado muy cómodo (esencial para adoquines en Roma y las cuestas empinadas de Positano/Vesubio), sombrero, protector solar, botella de agua reutilizable (hay fuentes de agua potable gratis por todo Roma llamadas *Nasoni*).
 * **Dinero:** Tarjeta de crédito/débito contactless (ampliamente aceptada) y unos €50-100 en efectivo para pequeñas compras en zonas de costa o propinas.
