@@ -1,0 +1,1175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Buen Viaje | Itinerario Italia 2026</title>
+  <meta name="description" content="Guía interactiva de viaje para Roma, Sorrento, Capri, Positano y Pompeya. Diseñada para moverse en trenes y transporte público de forma independiente.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Playfair+Display:ital,wght@0,600;0,800;1,600&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg: #0B0D13;
+      --card-bg: rgba(20, 24, 38, 0.65);
+      --card-border: rgba(255, 255, 255, 0.08);
+      --text-main: #FFFFFF;
+      --text-muted: #A0A9C0;
+      
+      /* Acentos estacionales italianos */
+      --accent-terracotta: #E05A47;
+      --accent-lemon: #F4C430;
+      --accent-capri: #3498DB;
+      --accent-olive: #5B8266;
+      
+      --shadow: 0 12px 40px rgba(0, 0, 0, 0.4);
+      --blur: blur(20px);
+      --transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Outfit', sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      -webkit-font-smoothing: antialiased;
+      padding-bottom: 90px; /* Espacio para barra de navegación móvil */
+    }
+
+    /* Fondo decorativo con degradados */
+    .bg-blobs {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100vw;
+      height: 100vh;
+      z-index: -1;
+      overflow: hidden;
+      pointer-events: none;
+    }
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(120px);
+      opacity: 0.15;
+    }
+    .blob-1 {
+      top: -10%;
+      right: -10%;
+      width: 50vw;
+      height: 50vw;
+      background: var(--accent-terracotta);
+    }
+    .blob-2 {
+      bottom: -10%;
+      left: -10%;
+      width: 60vw;
+      height: 60vw;
+      background: var(--accent-capri);
+    }
+    .blob-3 {
+      top: 40%;
+      left: 20%;
+      width: 35vw;
+      height: 35vw;
+      background: var(--accent-lemon);
+      opacity: 0.08;
+    }
+
+    /* Container Principal */
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 24px 16px;
+    }
+
+    /* Cabecera / Hero */
+    header {
+      margin-bottom: 32px;
+      text-align: center;
+    }
+    .eyebrow {
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--accent-terracotta);
+      margin-bottom: 8px;
+    }
+    h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.25rem;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      line-height: 1.1;
+      margin-bottom: 12px;
+    }
+    h1 span {
+      font-style: italic;
+      font-weight: 600;
+      background: linear-gradient(120deg, var(--accent-terracotta), var(--accent-lemon));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    .subtitle {
+      font-size: 0.95rem;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    /* Quick Badge Info */
+    .quick-meta {
+      display: flex;
+      gap: 8px;
+      justify-content: center;
+      margin-top: 16px;
+      flex-wrap: wrap;
+    }
+    .badge {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      border-radius: 99px;
+      padding: 6px 14px;
+      font-size: 0.75rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .badge svg {
+      width: 14px;
+      height: 14px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+    }
+    .badge-weather {
+      color: var(--accent-lemon);
+    }
+    .badge-dates {
+      color: var(--accent-capri);
+    }
+
+    /* Widget de Colapso Rápido (General Tips) */
+    .quick-tips-widget {
+      background: var(--card-bg);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--card-border);
+      border-radius: 20px;
+      padding: 16px;
+      margin-bottom: 32px;
+      box-shadow: var(--shadow);
+    }
+    .tips-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      cursor: pointer;
+    }
+    .tips-title {
+      font-size: 0.95rem;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .tips-title svg {
+      width: 18px;
+      height: 18px;
+      stroke: var(--accent-terracotta);
+      stroke-width: 2;
+      fill: none;
+    }
+    .toggle-icon {
+      width: 20px;
+      height: 20px;
+      stroke: var(--text-muted);
+      stroke-width: 2;
+      fill: none;
+      transition: var(--transition);
+    }
+    .quick-tips-widget.open .toggle-icon {
+      transform: rotate(180deg);
+    }
+    .tips-content {
+      max-height: 0;
+      overflow: hidden;
+      transition: var(--transition);
+      opacity: 0;
+    }
+    .quick-tips-widget.open .tips-content {
+      max-height: 1200px;
+      opacity: 1;
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px solid var(--card-border);
+    }
+
+    .tips-grid {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .tip-item {
+      background: rgba(255, 255, 255, 0.03);
+      border-radius: 12px;
+      padding: 12px;
+    }
+    .tip-item-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .tip-item-title svg {
+      width: 14px;
+      height: 14px;
+      stroke-width: 2;
+      fill: none;
+    }
+    .tip-item p {
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      margin-bottom: 4px;
+    }
+    .tip-item p strong {
+      color: var(--text-main);
+    }
+
+    /* Pestañas de Navegación */
+    .tabs-wrapper {
+      position: relative;
+      margin-bottom: 24px;
+    }
+    .tabs-scroller {
+      display: flex;
+      gap: 8px;
+      overflow-x: auto;
+      scrollbar-width: none; /* Firefox */
+      padding: 4px 0;
+    }
+    .tabs-scroller::-webkit-scrollbar {
+      display: none; /* Chrome/Safari */
+    }
+    .tab-btn {
+      flex: 0 0 auto;
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      color: var(--text-muted);
+      border-radius: 99px;
+      padding: 10px 20px;
+      font-family: inherit;
+      font-size: 0.85rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .tab-btn span.day-num {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      opacity: 0.7;
+      margin-bottom: 2px;
+    }
+    .tab-btn.active {
+      background: var(--accent-terracotta);
+      border-color: var(--accent-terracotta);
+      color: #FFFFFF;
+      box-shadow: 0 4px 15px rgba(224, 90, 71, 0.4);
+    }
+    .tab-btn.active span.day-num {
+      opacity: 1;
+    }
+
+    /* Secciones de Itinerario */
+    .day-section {
+      display: none;
+      animation: fadeIn 0.4s ease forwards;
+    }
+    .day-section.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(12px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Banner / Foto del Día */
+    .day-banner {
+      position: relative;
+      height: 180px;
+      border-radius: 24px;
+      overflow: hidden;
+      margin-bottom: 24px;
+      box-shadow: var(--shadow);
+      border: 1px solid var(--card-border);
+    }
+    .day-banner img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .day-banner-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(11, 13, 19, 0.1) 20%, rgba(11, 13, 19, 0.9));
+    }
+    .day-banner-content {
+      position: absolute;
+      bottom: 16px;
+      left: 20px;
+      right: 20px;
+    }
+    .day-label {
+      font-size: 0.7rem;
+      font-weight: 700;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      color: var(--accent-lemon);
+      margin-bottom: 4px;
+    }
+    .day-title {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+
+    /* Tarjetas de Contenido */
+    .section-card {
+      background: var(--card-bg);
+      backdrop-filter: var(--blur);
+      -webkit-backdrop-filter: var(--blur);
+      border: 1px solid var(--card-border);
+      border-radius: 24px;
+      padding: 20px;
+      margin-bottom: 20px;
+      box-shadow: var(--shadow);
+    }
+    .section-card-title {
+      font-size: 1rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      margin-bottom: 16px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      border-bottom: 1px solid var(--card-border);
+      padding-bottom: 10px;
+    }
+    .section-card-title svg {
+      width: 18px;
+      height: 18px;
+      stroke-width: 2;
+      fill: none;
+    }
+
+    /* Lista de Lugares de Interés (Qué visitar) */
+    .place-list {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .place-item {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+    }
+    .place-marker {
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--card-border);
+      width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 700;
+      color: var(--accent-terracotta);
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .place-info {
+      flex: 1;
+    }
+    .place-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 2px;
+    }
+    .place-name {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    .place-map-btn {
+      font-size: 0.7rem;
+      font-weight: 500;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--accent-capri);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 4px;
+      transition: var(--transition);
+      background: rgba(52, 152, 219, 0.08);
+      padding: 4px 10px;
+      border-radius: 99px;
+      border: 1px solid rgba(52, 152, 219, 0.15);
+    }
+    .place-map-btn:hover {
+      background: rgba(52, 152, 219, 0.2);
+    }
+    .place-map-btn svg {
+      width: 10px;
+      height: 10px;
+      stroke: currentColor;
+      fill: none;
+    }
+    .place-desc {
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+
+    /* Caja de Logística / Transporte diario */
+    .logistics-box {
+      background: rgba(255, 255, 255, 0.03);
+      border-left: 3px solid var(--accent-capri);
+      border-radius: 0 12px 12px 0;
+      padding: 12px 16px;
+    }
+    .logistics-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--accent-capri);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .logistics-title svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+    }
+    .logistics-box p {
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      margin-bottom: 8px;
+    }
+    .logistics-box p:last-child {
+      margin-bottom: 0;
+    }
+    .logistics-box strong {
+      color: var(--text-main);
+    }
+
+    /* Caja de Comida diaria */
+    .food-box {
+      background: rgba(255, 255, 255, 0.03);
+      border-left: 3px solid var(--accent-lemon);
+      border-radius: 0 12px 12px 0;
+      padding: 12px 16px;
+    }
+    .food-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--accent-lemon);
+      margin-bottom: 6px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .food-title svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+    }
+    .food-box p {
+      font-size: 0.825rem;
+      color: var(--text-muted);
+      font-weight: 300;
+      margin-bottom: 8px;
+    }
+    .food-box p:last-child {
+      margin-bottom: 0;
+    }
+    .food-box strong {
+      color: var(--text-main);
+    }
+
+    /* Advertencias Cruciales (Vesubio, Vespa, etc) */
+    .warning-box {
+      background: rgba(224, 90, 71, 0.06);
+      border: 1px solid rgba(224, 90, 71, 0.2);
+      border-radius: 12px;
+      padding: 12px 16px;
+      margin-top: 12px;
+    }
+    .warning-title {
+      font-size: 0.85rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      color: var(--accent-terracotta);
+      margin-bottom: 4px;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    .warning-title svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+      fill: none;
+    }
+    .warning-box p {
+      font-size: 0.8rem;
+      color: var(--text-muted);
+      font-weight: 300;
+    }
+    .warning-box strong {
+      color: var(--text-main);
+    }
+
+    /* Barra de Navegación de Pie Fija (Móvil) */
+    .bottom-nav {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      background: rgba(11, 13, 19, 0.85);
+      backdrop-filter: blur(25px);
+      -webkit-backdrop-filter: blur(25px);
+      border-top: 1px solid var(--card-border);
+      display: flex;
+      justify-content: space-around;
+      padding: 10px 0 calc(10px + env(safe-area-inset-bottom));
+      z-index: 1000;
+    }
+    .nav-item {
+      background: transparent;
+      border: none;
+      color: var(--text-muted);
+      font-family: inherit;
+      font-size: 0.65rem;
+      font-weight: 500;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      cursor: pointer;
+      transition: var(--transition);
+      padding: 4px 12px;
+    }
+    .nav-item svg {
+      width: 20px;
+      height: 20px;
+      stroke: currentColor;
+      stroke-width: 2;
+      fill: none;
+      transition: var(--transition);
+    }
+    .nav-item.active {
+      color: var(--accent-terracotta);
+    }
+    .nav-item.active svg {
+      transform: translateY(-2px);
+    }
+
+    /* Footer */
+    footer {
+      text-align: center;
+      padding: 40px 16px 20px;
+      font-size: 0.75rem;
+      color: var(--text-muted);
+      opacity: 0.5;
+      font-weight: 300;
+      letter-spacing: 0.05em;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Fondos decorativos -->
+  <div class="bg-blobs">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+  </div>
+
+  <div class="container">
+    
+    <!-- Hero / Header -->
+    <header>
+      <p class="eyebrow">Italia 2026</p>
+      <h1>Buen Viaje, <span>Amiga</span></h1>
+      <p class="subtitle">Tu itinerario interactivo personalizado para Roma y la Costa de Campania</p>
+      
+      <div class="quick-meta">
+        <div class="badge badge-dates">
+          <svg viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+          6 - 11 de Junio
+        </div>
+        <div class="badge badge-weather">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="5"></circle><line x1="12" y1="1" x2="12" y2="3"></line><line x1="12" y1="21" x2="12" y2="23"></line><line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line><line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line><line x1="1" y1="12" x2="3" y2="12"></line><line x1="21" y1="12" x2="23" y2="12"></line><line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line><line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line></svg>
+          ☀️ 25°C - 30°C (Verano)
+        </div>
+      </div>
+    </header>
+
+    <!-- Widget de Consejos Generales -->
+    <div class="quick-tips-widget" id="quick-tips-widget">
+      <div class="tips-header" onclick="toggleTips()">
+        <span class="tips-title">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          Guía Rápida de Supervivencia (Toca para abrir)
+        </span>
+        <svg class="toggle-icon" viewBox="0 0 24 24"><polyline points="6 9 12 15 18 9"></polyline></svg>
+      </div>
+      
+      <div class="tips-content">
+        <div class="tips-grid">
+          <div class="tip-item">
+            <span class="tip-item-title" style="color: var(--accent-capri);">
+              <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2" ry="2"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+              Transporte Público
+            </span>
+            <p><strong>Roma (Metro/Bus):</strong> Usa tu tarjeta contactless o Apple/Google Pay directo en los torniquetes o validadores amarillos en autobuses. No necesitas comprar boleto físico.</p>
+            <p><strong>¡Clave! Sellar Boletos:</strong> Si usas boletos físicos, regístralos en la máquina al subir. **Sin sellar hay multas costosas (€50+)**.</p>
+            <p><strong>Campania Express:</strong> Tren directo Nápoles-Sorrento con aire acondicionado. Muy recomendado para viajar cómoda y segura con equipaje.</p>
+          </div>
+          
+          <div class="tip-item">
+            <span class="tip-item-title" style="color: var(--accent-lemon);">
+              <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+              Presupuesto &amp; Pagos
+            </span>
+            <p><strong>Tarjetas:</strong> Aceptadas en el 98% de lugares. Lleva €50 en efectivo para buses pequeños de la Costa o propinas.</p>
+            <p><strong>Agua Gratis:</strong> Llena tu botella en los *Nasoni* (fuentes públicas) de Roma. El agua está helada y es potable.</p>
+          </div>
+
+          <div class="tip-item">
+            <span class="tip-item-title" style="color: var(--accent-terracotta);">
+              <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+              Seguridad &amp; Equipaje
+            </span>
+            <p><strong>Cuidado:</strong> Viajas sola, mantente atenta en la Línea A de Roma y en el Bus 64. Cuida tu bolso.</p>
+            <p><strong>Zapatos:</strong> Los adoquines de Roma y las subidas empinadas de Positano requieren calzado plano con buen agarre.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Barra Superior de Navegación del Itinerario -->
+    <div class="tabs-wrapper">
+      <div class="tabs-scroller" id="tabs-scroller">
+        <button class="tab-btn active" onclick="showDay(1)">
+          <span class="day-num">Días 1-2</span>
+          Roma
+        </button>
+        <button class="tab-btn" onclick="showDay(3)">
+          <span class="day-num">Día 3</span>
+          Sorrento
+        </button>
+        <button class="tab-btn" onclick="showDay(4)">
+          <span class="day-num">Día 4</span>
+          Capri &amp; Positano
+        </button>
+        <button class="tab-btn" onclick="showDay(5)">
+          <span class="day-num">Día 5</span>
+          Pompeya &amp; Vesubio
+        </button>
+        <button class="tab-btn" onclick="showDay(6)">
+          <span class="day-num">Día 6</span>
+          Regreso
+        </button>
+      </div>
+    </div>
+
+    <!-- SECCIÓN: DÍAS 1 y 2 (ROMA & VATICANO) -->
+    <div id="day-1" class="day-section active">
+      <div class="day-banner">
+        <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=800&q=80" alt="Roma Coliseo">
+        <div class="day-banner-overlay"></div>
+        <div class="day-banner-content">
+          <p class="day-label">6 - 8 Junio • 2 Noches</p>
+          <h2 class="day-title">Roma y El Vaticano</h2>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h3 class="section-card-title" style="color: var(--accent-terracotta);">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          Qué Visitar (Imprescindibles)
+        </h3>
+        <div class="place-list">
+          <div class="place-item">
+            <span class="place-marker">1</span>
+            <div class="place-info">
+              <div class="place-header">
+                <span class="place-name">Coliseo y Foro Romano</span>
+                <a href="https://maps.google.com/?q=Colosseum,+Rome" target="_blank" class="place-map-btn">
+                  Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              </div>
+              <p class="place-desc">La cuna del Imperio Romano. Requiere comprar entradas online con anticipación.</p>
+            </div>
+          </div>
+          <div class="place-item">
+            <span class="place-marker">2</span>
+            <div class="place-info">
+              <div class="place-header">
+                <span class="place-name">Museos Vaticanos y Basílica</span>
+                <a href="https://maps.google.com/?q=Vatican+Museums,+Rome" target="_blank" class="place-map-btn">
+                  Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              </div>
+              <p class="place-desc">Contempla la Capilla Sixtina. Tip: La entrada a la Basílica de San Pedro es gratis, llega a las 7:00 AM para evitar 2 horas de fila.</p>
+            </div>
+          </div>
+          <div class="place-item">
+            <span class="place-marker">3</span>
+            <div class="place-info">
+              <div class="place-header">
+                <span class="place-name">Fontana di Trevi y Panteón</span>
+                <a href="https://maps.google.com/?q=Trevi+Fountain,+Rome" target="_blank" class="place-map-btn">
+                  Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              </div>
+              <p class="place-desc">Tira una moneda para volver a Roma. Para verla vacía, visítala muy temprano por la mañana o pasada la medianoche.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h3 class="section-card-title" style="color: var(--accent-capri);">
+          <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2" ry="2"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
+          Movilidad &amp; Tours
+        </h3>
+        <div class="logistics-box">
+          <span class="logistics-title">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+            Tours recomendados
+          </span>
+          <p>📌 **Free Walking Tour:** Haz uno en tu primer día para ubicarte geográficamente por el centro histórico (se reserva gratis en Civitatis y se da propina).</p>
+          <p>🚌 **Turibús (Hop-On/Off):** Ideal si quieres ver la ciudad desde las alturas y descansar de caminar (compañía *Big Bus*).</p>
+        </div>
+        
+        <div class="warning-box">
+          <span class="warning-title">
+            <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            Advertencia: ¿Renta de Vespa?
+          </span>
+          <p>Solo hazlo **si tienes experiencia previa conduciendo motos**. El tráfico romano es salvaje, caótico y los adoquines resbalan. Si te sientes cómoda, renta en **Bici &amp; Baci** (cerca de Termini). Si no, el Metro A te conecta excelente.</p>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h3 class="section-card-title" style="color: var(--accent-lemon);">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 8l-4 4h8z"></path></svg>
+          Gastronomía del Día
+        </h3>
+        <div class="food-box">
+          <span class="food-title">Gastronomía Romana</span>
+          <p>🍝 **Plato Fuerte:** Pasta Carbonara o Cacio e Pepe. Disfrútala en el bohemio barrio de **Trastevere** por la noche.</p>
+          <p>🍰 **Postre:** Tiramisú de **Pompi** (el rey del tiramisú, delicioso y económico).</p>
+          <p>🍦 **Gelato:** Prueba el helado de **Frigidarium**; pide que le pongan cobertura de chocolate crujiente (¡es gratis!).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN: DÍA 3 (TRAYECTO A SORRENTO) -->
+    <div id="day-3" class="day-section">
+      <div class="day-banner">
+        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80" alt="Sorrento">
+        <div class="day-banner-overlay"></div>
+        <div class="day-banner-content">
+          <p class="day-label">8 Junio • Día de Traslado</p>
+          <h2 class="day-title">Camino a Sorrento</h2>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h3 class="section-card-title" style="color: var(--accent-capri);">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          Cómo llegar (Paso a Paso)
+        </h3>
+        <div class="logistics-box">
+          <span class="logistics-title">
+            <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
+            Instrucciones de Ruta
+          </span>
+          <p>1. **Roma ➔ Nápoles:** Toma el tren de alta velocidad (**Italo** o **Frecciarossa**) desde Roma Termini hasta Napoli Centrale (1h 10m).</p>
+          <p>2. En Nápoles, desciende al nivel subterráneo y sigue los letreros de **"Circumvesuviana"**.</p>
+          <p>3. **Nápoles ➔ Sorrento:** Compra el boleto para el **Campania Express** (tiene aire acondicionado y maletero, €8-10, viaje rápido de 50 minutos) o el tren regional Circumvesuviana (más económico, sin aire acondicionado y suele ir muy lleno).</p>
+          <p>4. **¡Muy importante!** Valida tu billete físico en los torniquetes de Nápoles antes de abordar.</p>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h3 class="section-card-title" style="color: var(--accent-terracotta);">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          Qué Visitar en Sorrento
+        </h3>
+        <div class="place-list">
+          <div class="place-item">
+            <span class="place-marker">1</span>
+            <div class="place-info">
+              <div class="place-header">
+                <span class="place-name">Piazza Tasso</span>
+                <a href="https://maps.google.com/?q=Piazza+Tasso,+Sorrento" target="_blank" class="place-map-btn">
+                  Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              </div>
+              <p class="place-desc">El centro neurálgico de Sorrento. Llena de cafeterías al aire libre y tiendas pintorescas.</p>
+            </div>
+          </div>
+          <div class="place-item">
+            <span class="place-marker">2</span>
+            <div class="place-info">
+              <div class="place-header">
+                <span class="place-name">Villa Comunale</span>
+                <a href="https://maps.google.com/?q=Villa+Comunale,+Sorrento" target="_blank" class="place-map-btn">
+                  Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              </div>
+              <p class="place-desc">Un parque precioso con vistas inmejorables al Golfo de Nápoles y al Vesubio. El mejor punto para el atardecer.</p>
+            </div>
+          </div>
+          <div class="place-item">
+            <span class="place-marker">3</span>
+            <div class="place-info">
+              <div class="place-header">
+                <span class="place-name">Marina Grande</span>
+                <a href="https://maps.google.com/?q=Marina+Grande,+Sorrento" target="_blank" class="place-map-btn">
+                  Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              </div>
+              <p class="place-desc">Un puerto de pescadores tradicional, perfecto para comer pasta con mariscos frescos al borde del agua.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h3 class="section-card-title" style="color: var(--accent-lemon);">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 8l-4 4h8z"></path></svg>
+          Gastronomía del Día
+        </h3>
+        <div class="food-box">
+          <span class="food-title">Sabor a Sorrento</span>
+          <p>🍝 **Plato Fuerte:** Gnocchi alla Sorrentina (tomate, albahaca y mozzarella fresca fundida al horno).</p>
+          <p>🍋 **Bebida:** Limoncello (licor helado de limón). Al terminar de cenar es cortesía de la casa.</p>
+          <p>🍰 **Postre:** *Delizia al Limone* (pastelito esponjoso bañado en crema suave de limón).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN: DÍA 4 (POSITANO & CAPRI) -->
+    <div id="day-4" class="day-section">
+      <div class="day-banner">
+        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=800&q=80" alt="Capri y Positano">
+        <div class="day-banner-overlay"></div>
+        <div class="day-banner-content">
+          <p class="day-label">9 Junio • Costa y Mar</p>
+          <h2 class="day-title">Capri y Positano</h2>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h3 class="section-card-title" style="color: var(--accent-capri);">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          Logística del Día (Logística Marina)
+        </h3>
+        <div class="logistics-box">
+          <span class="logistics-title">Ruta del Día</span>
+          <p>🚢 **Mañana (Ferry Sorrento ➔ Capri):** Toma un ferry temprano (aprox. 8:30 AM) en el puerto de Sorrento hacia Capri (20 min). Compra boletos online en *Ferryhopper*.</p>
+          <p>🚢 **Tarde (Ferry Capri ➔ Positano):** A la 1:30 PM aprox, aborda un ferry directo de Capri a Positano (40 min). Tendrás vistas hermosas del acantilado.</p>
+          <p>🚌 / 🚢 **Regreso (Positano ➔ Sorrento):** Al final de la tarde, regresa a Sorrento. Lo mejor es tomar otro ferry (rápido y cómodo) o, si buscas ahorrar, toma el autobús **SITA Bus** (compra el boleto en el pueblo, ¡nunca a bordo!).</p>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h3 class="section-card-title" style="color: var(--accent-terracotta);">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          Actividades Recomendadas
+        </h3>
+        <div class="place-list">
+          <div class="place-item">
+            <span class="place-marker">C</span>
+            <div class="place-info">
+              <div class="place-header">
+                <span class="place-name">Capri: Telesilla Monte Solaro</span>
+                <a href="https://maps.google.com/?q=Monte+Solaro+Chairlift,+Anacapri" target="_blank" class="place-map-btn">
+                  Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              </div>
+              <p class="place-desc">Toma un bus pequeño desde el puerto hacia Anacapri y sube a la telesilla individual (*Seggiovia*) hacia el Monte Solaro. **La mejor panorámica de tu viaje.** Cuesta €12.</p>
+            </div>
+          </div>
+          <div class="place-item">
+            <span class="place-marker">P</span>
+            <div class="place-info">
+              <div class="place-header">
+                <span class="place-name">Positano: Descenso al Mar</span>
+                <a href="https://maps.google.com/?q=Spiaggia+Grande,+Positano" target="_blank" class="place-map-btn">
+                  Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              </div>
+              <p class="place-desc">Piérdete en las empinadas callejuelas llenas de flores de Positano bajando hasta la **Spiaggia Grande**. Usa zapatos cómodos y con buen agarre.</p>
+            </div>
+          </div>
+        </div>
+        
+        <div class="warning-box">
+          <span class="warning-title">
+            <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            Para el mareo
+          </span>
+          <p>Si eres propensa a marearte en barco, toma una pastilla de biodramina o similar antes de subir a los ferries, el oleaje del mar Tirreno puede ser movido en ocasiones.</p>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h3 class="section-card-title" style="color: var(--accent-lemon);">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 8l-4 4h8z"></path></svg>
+          Gastronomía del Día
+        </h3>
+        <div class="food-box">
+          <span class="food-title">Sabores Marinos</span>
+          <p>🥗 **Comida:** Ensalada Caprese (mozzarella di bufala, tomate de temporada, albahaca y aceite de oliva virgen extra).</p>
+          <p>🍋 **Postre:** Lemon Sorbet servido dentro de un limón gigante fresco, ideal para refrescarte del calor veraniego de la playa.</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN: DÍA 5 (POMPEYA & VESUBIO) -->
+    <div id="day-5" class="day-section">
+      <div class="day-banner">
+        <img src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=800&q=80" alt="Pompeya y Vesubio">
+        <div class="day-banner-overlay"></div>
+        <div class="day-banner-content">
+          <p class="day-label">10 Junio • Arqueología y Volcán</p>
+          <h2 class="day-title">Pompeya y Vesubio</h2>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h3 class="section-card-title" style="color: var(--accent-capri);">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          Logística y Transporte
+        </h3>
+        <div class="logistics-box">
+          <span class="logistics-title">Cómo Moverse</span>
+          <p>1. **Sorrento ➔ Pompeya:** Toma el tren **Circumvesuviana** desde la estación de Sorrento hasta **Pompei Scavi - Villa dei Misteri** (25 minutos). La entrada arqueológica está junto a la estación.</p>
+          <p>2. **Pompeya ➔ Vesubio:** Fuera de la estación de tren, toma el autobús **EAV** o la lanzadera **Vesuvius Express** que sube directamente a la base del volcán (40 minutos).</p>
+          <p>3. **Vesubio ➔ Sorrento:** Regresa en el mismo autobús a Pompeya y de ahí el tren Circumvesuviana a Sorrento.</p>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h3 class="section-card-title" style="color: var(--accent-terracotta);">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          Consejos del Día
+        </h3>
+        <div class="place-list">
+          <div class="place-item">
+            <span class="place-marker">1</span>
+            <div class="place-info">
+              <div class="place-header">
+                <span class="place-name">Ruinas de Pompeya</span>
+                <a href="https://maps.google.com/?q=Pompeii+Archaeological+Park" target="_blank" class="place-map-btn">
+                  Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              </div>
+              <p class="place-desc">Ciudad sepultada en el año 79 d.C. Recomiendo contratar un guía local oficial en la entrada (aprox €20-25 en grupo) para entender la historia.</p>
+            </div>
+          </div>
+          <div class="place-item">
+            <span class="place-marker">2</span>
+            <div class="place-info">
+              <div class="place-header">
+                <span class="place-name">Cráter del Monte Vesubio</span>
+                <a href="https://maps.google.com/?q=Mount+Vesuvius" target="_blank" class="place-map-btn">
+                  Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              </div>
+              <p class="place-desc">Caminata de 25 min cuesta arriba sobre ceniza volcánica (necesitas zapatos cerrados y ropa cómoda). Vistas impresionantes del cráter activo.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="warning-box">
+          <span class="warning-title">
+            <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+            ¡CRÍTICO! Boletos del Vesubio
+          </span>
+          <p>Las entradas para subir al cráter **deben comprarse online previamente en su web oficial**. Tienen hora exacta. No se venden arriba y no hay cobertura móvil en la cima para comprarlas al momento.</p>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h3 class="section-card-title" style="color: var(--accent-lemon);">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 8l-4 4h8z"></path></svg>
+          Postre Recomendado
+        </h3>
+        <div class="food-box">
+          <span class="food-title">Dulce Campano</span>
+          <p>🍰 **Postre:** Sfogliatella (hojaldre dulce crujiente relleno de crema de sémola y requesón aromatizado con naranja) o un **Babà al rum** (bizcocho esponjoso borracho de licor de ron).</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN: DÍA 6 (REGRESO A ROMA) -->
+    <div id="day-6" class="day-section">
+      <div class="day-banner">
+        <img src="https://images.unsplash.com/photo-1542820229-081e0c12af0b?auto=format&fit=crop&w=800&q=80" alt="Regreso a Roma">
+        <div class="day-banner-overlay"></div>
+        <div class="day-banner-content">
+          <p class="day-label">11 Junio • Regreso</p>
+          <h2 class="day-title">Retorno a Roma</h2>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h3 class="section-card-title" style="color: var(--accent-capri);">
+          <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+          Logística de Retorno
+        </h3>
+        <div class="logistics-box">
+          <span class="logistics-title">Sorrento ➔ Roma</span>
+          <p>1. Toma el tren **Circumvesuviana** o el **Campania Express** de Sorrento a Napoli Centrale (aprox 1 hora).</p>
+          <p>2. Transborda al tren de alta velocidad (**Italo** o **Frecciarossa**) rumbo a **Roma Termini** (1h 10m).</p>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h3 class="section-card-title" style="color: var(--accent-terracotta);">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
+          Tarde de Despedida en Roma
+        </h3>
+        <div class="place-list">
+          <div class="place-item">
+            <span class="place-marker">📍</span>
+            <div class="place-info">
+              <div class="place-header">
+                <span class="place-name">Giardino degli Aranci</span>
+                <a href="https://maps.google.com/?q=Orange+Garden,+Rome" target="_blank" class="place-map-btn">
+                  Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+                </a>
+              </div>
+              <p class="place-desc">Hermoso y romántico jardín de naranjos con una vista panorámica espectacular de los tejados de Roma. Cerca puedes ver el "ojo de la cerradura" de la Orden de Malta para ver la cúpula de San Pedro perfectamente enmarcada.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+      Hecho con ❤️ para un viaje increíble • BAUS CEO Systems 2026
+    </footer>
+
+  </div>
+
+  <!-- Barra Fija Inferior (Mobile Friendly) -->
+  <div class="bottom-nav">
+    <button class="nav-item active" id="nav-d1" onclick="showDay(1)">
+      <svg viewBox="0 0 24 24"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+      Roma
+    </button>
+    <button class="nav-item" id="nav-d3" onclick="showDay(3)">
+      <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect><line x1="8" y1="21" x2="16" y2="21"></line><line x1="12" y1="17" x2="12" y2="21"></line></svg>
+      Sorrento
+    </button>
+    <button class="nav-item" id="nav-d4" onclick="showDay(4)">
+      <svg viewBox="0 0 24 24"><path d="M12 22s-8-4.5-8-11.8A8 8 0 0 1 12 3a8 8 0 0 1 8 7.2c0 7.3-8 11.8-8 11.8z"></path><circle cx="12" cy="10" r="3"></circle></svg>
+      Costa
+    </button>
+    <button class="nav-item" id="nav-d5" onclick="showDay(5)">
+      <svg viewBox="0 0 24 24"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"></path><path d="M13.73 21a2 2 0 0 1-3.46 0"></path></svg>
+      Pompeya
+    </button>
+    <button class="nav-item" id="nav-d6" onclick="showDay(6)">
+      <svg viewBox="0 0 24 24"><polyline points="22 2 15 22 11 13 2 9 22 2"></polyline><polyline points="22 2 11 13"></polyline></svg>
+      Regreso
+    </button>
+  </div>
+
+  <script>
+    // Toggle para la sección de Consejos de Supervivencia
+    function toggleTips() {
+      const widget = document.getElementById('quick-tips-widget');
+      widget.classList.toggle('open');
+    }
+
+    // Cambiar de pestaña/día
+    function showDay(dayNum) {
+      // Ocultar todas las secciones
+      const sections = document.querySelectorAll('.day-section');
+      sections.forEach(sec => sec.classList.remove('active'));
+
+      // Mostrar la sección correspondiente
+      const activeSection = document.getElementById('day-' + (dayNum === 1 ? '1' : dayNum));
+      if (activeSection) {
+        activeSection.classList.add('active');
+      }
+
+      // Actualizar estado activo en la barra superior de botones
+      const tabButtons = document.querySelectorAll('.tab-btn');
+      tabButtons.forEach((btn, index) => {
+        // Mapeo índice de botón a día
+        const dayMap = [1, 3, 4, 5, 6];
+        if (dayMap[index] === dayNum) {
+          btn.classList.add('active');
+          // Centrar el botón activo en el scroller si es móvil
+          btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+        } else {
+          btn.classList.remove('active');
+        }
+      });
+
+      // Actualizar estado activo en la barra inferior (Bottom Nav)
+      const bottomNavItems = document.querySelectorAll('.nav-item');
+      bottomNavItems.forEach(item => item.classList.remove('active'));
+      const activeBottomItem = document.getElementById('nav-d' + dayNum);
+      if (activeBottomItem) {
+        activeBottomItem.classList.add('active');
+      }
+
+      // Scroll arriba al cambiar de pestaña
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  </script>
+</body>
+</html>
