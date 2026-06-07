@@ -1,4 +1,4 @@
-# Guía de Viaje y Itinerario: Roma y Costa Amalfitana
+# Guía de Viaje y Itinerario de Marian: Roma y Costa Amalfitana
 *Preparado para el viaje de junio de 2026*
 
 Esta es la guía detallada de viaje diseñada especialmente para moverse de forma independiente, utilizando trenes y transporte público, con un presupuesto moderado y espacio para experiencias especiales.
@@ -6,6 +6,7 @@ Esta es la guía detallada de viaje diseñada especialmente para moverse de form
 ---
 
 ## 🌤️ Información General y Clima (Junio)
+* **Perfil de Viaje:** Diseñado especialmente para Marian (34 años), con alta energía y entusiasmo por recorrer a pie los destinos para absorber cada rincón. Se destacan retos de senderismo y rutas a pie.
 * **Clima:** En la primera mitad de junio, el clima es cálido y veraniego. En Roma las temperaturas oscilan entre **25°C y 30°C** durante el día, y refresca a unos **16°C** por la noche. En la Costa Amalfitana, la brisa marina suaviza el calor, manteniéndose entre **22°C y 27°C**.
 * **Equipaje:** Calzado muy cómodo (esencial para adoquines en Roma y las cuestas empinadas de Positano/Vesubio), sombrero, protector solar, botella de agua reutilizable (hay fuentes de agua potable gratis por todo Roma llamadas *Nasoni*).
 * **Dinero:** Tarjeta de crédito/débito contactless (ampliamente aceptada) y unos €50-100 en efectivo para pequeñas compras en zonas de costa o propinas.
@@ -46,6 +47,7 @@ Esta es la guía detallada de viaje diseñada especialmente para moverse de form
 #### Actividades Recomendadas:
 * **Free Walking Tour:** Excelente para el primer día. Te da una introducción histórica por el centro. Se reserva online (se da propina de €10-15 al guía al final).
 * **Turibús (Hop-on Hop-off):** Ideal si quieres descansar las piernas y tener vistas panorámicas de la ciudad. Compañías como *Big Bus* o *City Sightseeing* son las mejores.
+* **Gran Ruta a Pie (High Energy):** Camina desde el Coliseo, cruza el Foro Boario, sube al Aventino para disfrutar del *Giardino degli Aranci*, y baja cruzando el Tíber hacia *Trastevere* (3.5 km repletos de belleza).
 * **Renta de Vespa:** **Solo si tienes experiencia previa en moto.** Roma tiene un tráfico muy denso, reglas de tránsito "flexibles" y calles adoquinadas (*sampietrini*) resbaladizas. Si te animas, agencias como *Bici & Baci* ofrecen buen servicio. Si no, camina o usa el metro.
 
 #### Comida y Bebida en Roma:
@@ -88,10 +90,12 @@ Esta es la guía detallada de viaje diseñada especialmente para moverse de form
 #### Qué hacer en Capri:
 * **Funicular:** Al llegar a Marina Grande, toma el Funicular que te sube al pueblo de Capri.
 * **Anacapri y Monte Solaro (Experiencia Extra):** Toma un microbús naranja a Anacapri y sube en la **Seggiovia (telesilla individual)** al Monte Solaro. Ofrece la vista más impresionante de 360° de toda la costa. Cuesta unos €12 y vale cada céntimo.
+* **Scala Fenicia (Caminata de Alta Energía):** Si deseas evitar el bus, puedes subir de Marina Grande a Anacapri por los 921 escalones antiguos de piedra tallados en el acantilado. Es empinado y exigente, pero increíble.
 * **Paseo en bote por la isla:** Puedes contratar un tour en lancha rápida de 1 hora en el puerto que te lleva alrededor de la isla y pasa por debajo de los icónicos *Faraglioni*.
 
 #### Qué hacer en Positano:
 * **Caminar hacia la playa:** Positano se recorre bajando por sus callejones peatonales llenos de bugambilias, tiendas de sandalias de cuero a medida y vestidos de lino.
+* **Sentiero degli Dei (Aventura Extra):** Si tienes unas 3 horas, camina por el *Sendero de los Dioses* (entre Bomerano y Nocelle). Es un sendero de trekking con la vista más famosa de los acantilados sobre el Tirreno, culminando en un descenso de 1,500 escalones hacia Positano.
 * **Spiaggia Grande:** La playa principal donde puedes tomar fotos espectaculares del pueblo apilado en la montaña.
 * **Disfrutar de un Lemon Sorbet:** Servido dentro de un limón gigante fresco de la Costa Amalfitana.
 
