@@ -13,23 +13,22 @@ Esta es la guía detallada de viaje diseñada especialmente para moverse de form
 
 ---
 
-## 🚇 Tips de Transporte Público Clave
+## 🚇 Tips de Transporte Público y Movilidad Clave
 
-### 1. En Roma (Metro y Autobús)
-* **Tap & Go (Recomendado):** Ya no necesitas comprar boletos físicos. Puedes acercar tu tarjeta bancaria contactless, Apple Pay o Google Pay directamente a los torniquetes del metro o a los lectores amarillos dentro de los autobuses.
-* **Boleto Físico (B.I.T.):** Cuesta **€1.50** y dura 100 minutos desde el primer sellado. 
-* **¡IMPORTANTE! Sellar el boleto:** Si compras un boleto de papel, debes introducirlo en las máquinas amarillas de validación al subir al autobús o antes de entrar al metro. **Llevar un boleto sin sellar equivale a no llevar boleto y las multas empiezan en €50.**
-* **Seguridad:** Los carteristas son comunes en la Línea A del metro y en el autobús 64 (que va al Vaticano). Mantén tu mochila al frente y pertenencias seguras.
+### 1. En Roma (Metro, Autobús y Taxis)
+* **Tap & Go (Recomendado):** Usa tu tarjeta bancaria contactless o Apple/Google Pay directamente en los torniquetes del metro o en los lectores amarillos dentro de los autobuses.
+* **Boleto Físico (B.I.T.):** Cuesta **€1.50** y dura 100 minutos. Debe introducirse en las máquinas amarillas de validación al subir al autobús o metro. **¡Llevar un boleto físico sin sellar equivale a una multa de €50+!**
+* **Taxis y Apps de Movilidad:**
+  - Para pedir un taxi oficial blanco a tarifa regulada (taxímetro), usa la app **FreeNow** o **itTaxi**. Es mucho más barato que Uber.
+  - **Uber en Roma:** Opera principalmente como *Uber Black* o *Uber Van* (vehículos NCC con licencia privada). Son muy caros.
+* **Seguridad:** Mantén tus pertenencias seguras y tu mochila al frente en la Línea A del metro y en el autobús 64.
 
-### 2. Trenes Regionales y de Alta Velocidad
-* **Alta Velocidad (Roma ➔ Nápoles):** Los trenes Frecciarossa (Trenitalia) o Italo viajan a 300 km/h y tardan solo 1h 10m. Se recomienda comprar estos boletos con anticipación para obtener tarifas moderadas.
-* **Circumvesuviana (Nápoles ➔ Sorrento ➔ Pompeya):** Es el tren regional que conecta la bahía. No tiene aire acondicionado y suele ir muy lleno. **Debes validar el boleto en las máquinas de la estación antes de bajar a los andenes.**
-* **Campania Express:** Una versión turística del Circumvesuviana que opera de abril a octubre. Tiene aire acondicionado, asientos garantizados y espacio para equipaje. Cuesta unos **€8-10** y vale totalmente la pena para el trayecto largo con maleta.
-
-### 3. SITA Bus (Costa Amalfitana)
-* Los autobuses de la línea SITA conectan Sorrento con Positano y Amalfi.
-* **No se pueden comprar boletos a bordo.** Debes comprarlos antes en estancos (*Tabacchi*, tiendas con una gran letra "T" afuera) o en la estación de Sorrento.
-* **Valida el boleto** en la máquina al subir al autobús.
+### 2. En la Costa (Sorrento, Capri y Positano)
+* **Campania Express:** La mejor opción para el trayecto Nápoles ➔ Sorrento si viajas con equipaje (€8-10, tiene aire acondicionado y maletero). Alternativamente, el tren regional **Circumvesuviana** cuesta unos €4 (suele ir lleno y sin AC). Recuerda sellar el boleto antes de bajar a los andenes.
+* **SITA Bus (Autobús Costero):** Conecta Sorrento con Positano y Amalfi. **No se pueden comprar boletos a bordo.** Debes comprarlos antes en estancos (*Tabacchi*) o en la estación de Sorrento y validarlos al subir.
+* **Ferries / Barcos rápidos (Recomendado):** La forma más rápida y hermosa de moverte entre Sorrento, Capri y Positano. Evitas el tráfico pesado de la carretera costera. Compra tus tickets con antelación en portales como *Ferryhopper* o directo en el puerto.
+* **Renta de Vespa/Scooter:** ¡La Costa Amalfitana es el lugar ideal para rentar moto! Da mucha libertad para recorrer la pintoresca carretera *SS163 (Amalfi Drive)* y permite estacionar fácilmente cerca de las playas de Positano. Agencias en Sorrento como *Jolly Rent* o *Sorrento Rent* son confiables. **¡Atención! La carretera es muy sinuosa y estrecha; se requiere experiencia previa en conducción.**
+* **Uber en la Costa:** **Uber y Cabify no operan en la Costa Amalfitana.** Los taxis locales tienen tarifas fijas muy elevadas (ej. €70-100 por un trayecto de Sorrento a Positano). La movilidad se resuelve mejor mediante ferries, buses SITA o rentando un scooter.
 
 ---
 
@@ -38,89 +37,89 @@ Esta es la guía detallada de viaje diseñada especialmente para moverse de form
 ### 🏛️ Día 1 y 2 (6-8 Junio): Roma y El Vaticano
 *Tu base está en un Airbnb en Roma. La ciudad eterna se descubre caminando.*
 
-#### Qué Visitar:
-* **El Coliseo y Foro Romano:** Los dos monumentos imperiales por excelencia. Imprescindible reservar entrada con semanas de anticipación.
-* **El Vaticano (Museos Vaticanos, Capilla Sixtina y Basílica de San Pedro):** Para la Basílica de San Pedro la entrada es gratuita pero la fila suele ser larga (conviene ir muy temprano, a las 7:00 AM). Para los Museos Vaticanos, reserva boleto online con hora fija.
-* **Centro Histórico:** Fontana di Trevi (visítala a medianoche o a las 6:30 AM para verla vacía), Panteón de Roma (arquitectura única), Piazza Navona y Plaza de España.
-* **Barrio de Trastevere:** Perfecto para pasear por la tarde-noche y cenar en un ambiente bohemio.
+#### 5-6 Lugares Turísticos del Destino:
+1. **Coliseo y Foro Romano:** Monumentos por excelencia del Imperio Romano. Requiere reserva previa online.
+2. **Museos Vaticanos y Capilla Sixtina:** Una de las colecciones de arte más grandes del mundo. Reserva con hora fija obligatoria.
+3. **Basílica de San Pedro:** La iglesia más emblemática de la cristiandad. Entrada gratuita (llega a las 7:00 AM para evitar filas).
+4. **Fontana di Trevi:** Espectacular fuente barroca. Visítala a medianoche para verla iluminada y sin multitudes.
+5. **Panteón de Roma:** Impresionante templo antiguo con la cúpula de hormigón no armado más grande del mundo.
+6. **Plaza de España (Piazza di Spagna):** Su famosa escalinata es ideal para sentarse a observar el ambiente urbano.
 
 #### Actividades Recomendadas:
-* **Free Walking Tour:** Excelente para el primer día. Te da una introducción histórica por el centro. Se reserva online (se da propina de €10-15 al guía al final).
-* **Turibús (Hop-on Hop-off):** Ideal si quieres descansar las piernas y tener vistas panorámicas de la ciudad. Compañías como *Big Bus* o *City Sightseeing* son las mejores.
+* **Free Walking Tour:** Excelente para el primer día por el centro histórico (se reserva online y se da propina).
+* **Turibús (Hop-on Hop-off):** Compañías como *Big Bus* o *City Sightseeing* son ideales para vistas panorámicas elevadas.
 * **Gran Ruta a Pie (High Energy):** Camina desde el Coliseo, cruza el Foro Boario, sube al Aventino para disfrutar del *Giardino degli Aranci*, y baja cruzando el Tíber hacia *Trastevere* (3.5 km repletos de belleza).
-* **Renta de Vespa:** **Solo si tienes experiencia previa en moto.** Roma tiene un tráfico muy denso, reglas de tránsito "flexibles" y calles adoquinadas (*sampietrini*) resbaladizas. Si te animas, agencias como *Bici & Baci* ofrecen buen servicio. Si no, camina o usa el metro.
 
-#### Comida y Bebida en Roma:
-* **Pasta Clásica:** Carbonara, Cacio e Pepe y Amatriciana.
-* **Pizza al Taglio:** Pizza al corte por peso, perfecta para un almuerzo rápido y económico (ej. *Bonci Pizzarium* o *Antico Forno Roscioli*).
-* **Postre:** Tiramisú de *Pompi* (cerca de Plaza de España) o un Gelato en *Frigidarium* (te bañan el helado en chocolate negro o blanco gratis).
-* **Bebida:** Aperol Spritz por la tarde en Trastevere, y Espresso (recuerda pedirlo y tomarlo de pie en la barra, ¡cuesta la mitad que en mesa!).
+#### Comida y Bebida Recomendada:
+* **Pasta Clásica:** Carbonara, Cacio e Pepe y Amatriciana (disfrútala en *Trastevere*).
+* **Pizza al Taglio:** Pizza al corte al peso (ej. *Bonci Pizzarium* o *Roscioli*).
+* **Postres:** Tiramisú de *Pompi* y Gelato en *Frigidarium* (pide cobertura de chocolate gratis).
+* **Bebidas:** Aperol Spritz por la tarde y Espresso de pie en la barra.
 
 ---
 
 ### 🍋 Día 3 (8 Junio): Trayecto a Sorrento
 *Traslado de Roma a la Costa de Campania.*
 
-#### Logística de Transporte:
-1. Toma el tren de alta velocidad **Italo** o **Frecciarossa** desde Roma Termini hasta Napoli Centrale (1h 10m).
-2. En Napoli Centrale, baja al nivel subterráneo siguiendo los letreros de "Circumvesuviana / Piazza Garibaldi".
-3. Compra el boleto para el **Campania Express** (si los horarios coinciden) o para el tren regional **Circumvesuviana** con destino a **Sorrento** (estación terminal, aprox. 1 hora de viaje).
-4. Camina o toma un taxi local a tu hotel en Sorrento.
+#### 5-6 Lugares Turísticos del Destino:
+1. **Piazza Tasso:** El corazón de Sorrento, rodeado de cafés y terrazas animadas.
+2. **Villa Comunale:** Parque público con el mejor mirador del Golfo de Nápoles y el Vesubio. Tiene un elevador directo al puerto.
+3. **Marina Grande:** Tradicional y pintoresco puerto de pescadores con restaurantes al borde del mar.
+4. **Claustro de San Francisco (Chiostro di San Francesco):** Tranquilo claustro medieval del siglo XIV cubierto de flores y enredaderas.
+5. **Vallone dei Mulini:** Una profunda garganta verde en pleno centro que alberga ruinas de molinos antiguos cubiertos de vegetación.
+6. **Bagni Regina Giovanna:** Ruinas de una antigua villa romana con una piscina natural de mar turquesa (caminata escénica o viaje en scooter de 3 km desde el centro).
 
-#### Qué Visitar en Sorrento:
-* **Piazza Tasso:** El corazón vibrante de Sorrento, ideal para tomar un café y observar a la gente.
-* **Villa Comunale:** Un hermoso parque con un mirador que ofrece vistas espectaculares del Golfo de Nápoles y el Monte Vesubio. Hay un elevador que te baja directo al puerto.
-* **Marina Grande:** Antiguo barrio de pescadores, con excelentes restaurantes rústicos al lado del mar.
-
-#### Comida y Bebida en Sorrento:
-* **Gnocchi alla Sorrentina:** Pasta con salsa de tomate, mozzarella derretida y albahaca fresca al horno.
-* **Limoncello:** El licor de limón local. Te ofrecerán una copita digestiva fría al terminar de cenar.
-* **Postre:** *Delizia al Limone* (un bizcocho suave bañado en crema de limón almibarada).
+#### Comida y Bebida Recomendada:
+* **Gnocchi alla Sorrentina:** Pasta de patata con salsa de tomate, albahaca y abundante mozzarella gratinada al horno.
+* **Limoncello:** Licor digestivo helado de limón local.
+* **Delizia al Limone:** Delicado bizcocho bañado en crema suave de limón.
 
 ---
 
-### 🏝️ Día 4 (9 Junio): Capri y Positano (Día de Costa)
-*Un día espectacular combinando isla y el pueblo vertical más famoso.*
+### 🏝️ Día 4 (9 Junio): Capri y Positano
+*Día espectacular combinando isla y costa.*
 
-#### Logística del Día:
-1. **Mañana (Capri):** Toma un ferry temprano (Hydrofoil) desde el puerto de Sorrento (Marina Piccola) hacia Capri (20-25 minutos). Reserva con antelación en *Ferryhopper* o directo en taquilla.
-2. **Tarde (Positano):** Toma un ferry directo desde el puerto de Capri hacia Positano (30-40 minutos). Esta ruta es sumamente escénica.
-3. **Regreso (A Sorrento):** Regresa de Positano a Sorrento en Ferry al atardecer (la opción más cómoda y rápida) o en el autobús **SITA Bus** (más barato, pero con curvas pronunciadas y filas largas en temporada).
+#### 5-6 Lugares Turísticos del Destino:
+1. **Telesilla Monte Solaro (Anacapri):** Telesilla individual al punto más alto de Capri con vistas de 360 grados.
+2. **Faraglioni:** Los tres icónicos gigantes de piedra caliza que sobresalen del mar en Capri.
+3. **Giardini di Augusto:** Jardines en Capri con terrazas floridas que ofrecen vistas panorámicas increíbles de los Faraglioni y la serpenteante Via Krupp.
+4. **Spiaggia Grande (Positano):** La famosa playa desde donde se contempla la icónica postal del pueblo de Positano.
+5. **Iglesia de Santa Maria Assunta:** Iglesia de cúpula de mayólica verde y amarilla en el corazón de Positano.
+6. **Fiordo di Furore:** Un estrecho cañón natural donde el mar se adentra formando una playa oculta bajo un puente de la carretera costera (ideal para llegar en scooter).
 
-#### Qué hacer en Capri:
-* **Funicular:** Al llegar a Marina Grande, toma el Funicular que te sube al pueblo de Capri.
-* **Anacapri y Monte Solaro (Experiencia Extra):** Toma un microbús naranja a Anacapri y sube en la **Seggiovia (telesilla individual)** al Monte Solaro. Ofrece la vista más impresionante de 360° de toda la costa. Cuesta unos €12 y vale cada céntimo.
-* **Scala Fenicia (Caminata de Alta Energía):** Si deseas evitar el bus, puedes subir de Marina Grande a Anacapri por los 921 escalones antiguos de piedra tallados en el acantilado. Es empinado y exigente, pero increíble.
-* **Paseo en bote por la isla:** Puedes contratar un tour en lancha rápida de 1 hora en el puerto que te lleva alrededor de la isla y pasa por debajo de los icónicos *Faraglioni*.
+#### Desafíos Físicos a Pie (High Energy):
+* **Scala Fenicia (Capri):** Sube desde el puerto de Marina Grande hasta Anacapri por los 921 escalones antiguos tallados en el acantilado.
+* **Sentiero degli Dei (Sendero de los Dioses):** Trekking de montaña de 3 horas entre Bomerano y Nocelle con vistas de infarto sobre el mar y Positano.
 
-#### Qué hacer en Positano:
-* **Caminar hacia la playa:** Positano se recorre bajando por sus callejones peatonales llenos de bugambilias, tiendas de sandalias de cuero a medida y vestidos de lino.
-* **Sentiero degli Dei (Aventura Extra):** Si tienes unas 3 horas, camina por el *Sendero de los Dioses* (entre Bomerano y Nocelle). Es un sendero de trekking con la vista más famosa de los acantilados sobre el Tirreno, culminando en un descenso de 1,500 escalones hacia Positano.
-* **Spiaggia Grande:** La playa principal donde puedes tomar fotos espectaculares del pueblo apilado en la montaña.
-* **Disfrutar de un Lemon Sorbet:** Servido dentro de un limón gigante fresco de la Costa Amalfitana.
+#### Comida y Bebida Recomendada:
+* **Ensalada Caprese:** Mozzarella de búfala fresca, tomates locales y albahaca.
+* **Lemon Sorbet:** Refrescante sorbete de limón servido dentro de un limón gigante fresco.
 
 ---
 
 ### 🌋 Día 5 (10 Junio): Pompeya y el Monte Vesubio
-*Historia arqueológica y naturaleza volcánica activa.*
+*Historia arqueológica y el coloso volcánico activo.*
 
-#### Logística del Día:
-1. Toma el tren **Circumvesuviana** desde Sorrento en dirección a Nápoles y bájate en la estación **Pompei Scavi - Villa dei Misteri** (20 minutos). La entrada al parque arqueológico está a unos pasos de la estación.
-2. Tras visitar las ruinas, toma el autobús oficial **EAV Bus** o la lanzadera **Vesuvius Express** que sale directo desde la plaza exterior de la estación de tren de Pompeya hacia el Parque Nacional del Vesubio.
-3. El autobús te dejará a una altitud de 1,000 metros. Desde ahí deberás caminar los últimos 200 metros de desnivel a pie hasta el borde del cráter.
-4. Regresa en el autobús a Pompeya y luego en el tren a Sorrento.
+#### 5-6 Lugares Turísticos del Destino:
+1. **Foro de Pompeya:** El centro político, comercial y religioso de la antigua ciudad romana.
+2. **Teatro Grande de Pompeya:** Espectacular teatro con capacidad para 5,000 espectadores construido en el siglo II a.C.
+3. **Villa de los Misterios (Villa dei Misteri):** Villa suburbana con frescos asombrosamente bien conservados que muestran ritos iniciáticos.
+4. **El Lupanar:** Antiguo prostíbulo romano decorado con frescos eróticos que ilustran los servicios ofrecidos.
+5. **Cráter del Vesubio:** Sendero que asciende a pie al borde del imponente cráter activo del volcán (1,281 m).
+6. **Templo de Apolo:** Uno de los santuarios más antiguos de Pompeya dedicado al dios del sol.
 
-#### Qué hacer y Tips Críticos:
-* **Pompeya:** Contrata un guía local certificado en la entrada (aprox. €20-25 por persona en grupo) o descarga una audioguía. Es enorme y con guía se entiende mucho mejor el estilo de vida romano de hace 2,000 años.
-* **¡CRÍTICO! Entradas del Vesubio:** Las entradas para subir al cráter del Vesubio **deben comprarse por internet con anticipación**. Tienen hora fija y no hay taquilla física en la cima. Tampoco hay señal de celular confiable arriba para comprarlas al momento.
-* **Senderismo:** El camino al cráter del Vesubio es empinado y arenoso (ceniza volcánica). Usa tenis o botas de caminata, no sandalias.
+#### Comida y Bebida Recomendada:
+* **Pastelería Napolitana:** Prueba la **Sfogliatella** (hojaldre dulce crujiente relleno de ricotta y naranja) o un **Babà al rum** esponjoso.
+* **Bebidas:** Exprime limones locales para una soda de limón fresca.
 
 ---
 
 ### 🚄 Día 6 (11 Junio): Regreso a Roma
-*Cierre del viaje.*
+*Cierre de viaje y despedida.*
 
-#### Logística:
-1. Toma el tren Circumvesuviana o Campania Express de Sorrento a Napoli Centrale.
-2. Toma el tren de alta velocidad de Nápoles a Roma Termini.
-3. Tarde de compras de último minuto en Roma (Via del Corso o cercanías) o visita a algún rincón pendiente (como el mirador del *Giardino de los Naranjos*).
+#### 5-6 Lugares Turísticos del Destino:
+1. **Giardino degli Aranci (Jardín de los Naranjos):** Parque con un mirador romántico y panorámico de Roma.
+2. **Cerradura de Malta:** El ojo de la cerradura de la Villa del Priorato de Malta que encuadra perfectamente la cúpula de San Pedro.
+3. **Castel Sant'Angelo:** Fortaleza papal a orillas del Tíber conectada por un puente con hermosas esculturas de ángeles.
+4. **Piazza Navona:** Majestuosa plaza barroca que alberga la Fuente de los Cuatro Ríos de Bernini.
+5. **Trastevere:** El barrio medieval con más encanto de Roma, perfecto para pasear por el día y cenar por la noche.

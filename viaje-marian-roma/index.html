@@ -206,7 +206,7 @@
       opacity: 0;
     }
     .quick-tips-widget.open .tips-content {
-      max-height: 1200px;
+      max-height: 1400px;
       opacity: 1;
       margin-top: 16px;
       padding-top: 16px;
@@ -311,48 +311,80 @@
       to { opacity: 1; transform: translateY(0); }
     }
 
-    /* Banner / Foto del Día */
-    .day-banner {
+    /* Estilos del Carrusel Fotográfico */
+    .carousel {
       position: relative;
-      height: 180px;
-      border-radius: 24px;
+      width: 100%;
       overflow: hidden;
-      margin-bottom: 24px;
+      border-radius: 24px;
       box-shadow: var(--shadow);
       border: 1px solid var(--card-border);
     }
-    .day-banner img {
+    .day-banner.carousel {
+      height: 200px;
+      margin-bottom: 24px;
+    }
+    .carousel-track {
+      display: flex;
+      width: 100%;
+      height: 100%;
+      transition: transform 0.45s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .carousel-slide {
+      flex: 0 0 100%;
+      width: 100%;
+      height: 100%;
+      position: relative;
+    }
+    .carousel-slide img {
       width: 100%;
       height: 100%;
       object-fit: cover;
     }
-    .day-banner-overlay {
+    .carousel-overlay {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      background: linear-gradient(to bottom, rgba(11, 13, 19, 0.1) 20%, rgba(11, 13, 19, 0.9));
+      background: linear-gradient(to bottom, rgba(11, 13, 19, 0.1) 20%, rgba(11, 13, 19, 0.9) 100%);
+      pointer-events: none;
     }
-    .day-banner-content {
+    .carousel-caption {
       position: absolute;
       bottom: 16px;
       left: 20px;
       right: 20px;
+      z-index: 5;
     }
-    .day-label {
-      font-size: 0.7rem;
-      font-weight: 700;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: var(--accent-lemon);
-      margin-bottom: 4px;
+    .carousel-dots {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 6px;
+      z-index: 10;
     }
-    .day-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 1.5rem;
-      font-weight: 800;
-      line-height: 1.2;
+    .carousel-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.4);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    .carousel-dot.active {
+      background: #FFFFFF;
+      transform: scale(1.25);
+    }
+
+    /* Carrusel de tarjeta individual */
+    .card-carousel {
+      width: 100%;
+      height: 160px;
+      border-radius: 16px;
+      margin-bottom: 14px;
     }
 
     /* Tarjetas de Contenido */
@@ -389,18 +421,33 @@
     .place-list {
       display: flex;
       flex-direction: column;
-      gap: 14px;
+      gap: 20px;
     }
     .place-item {
       display: flex;
-      gap: 12px;
-      align-items: flex-start;
+      flex-direction: column;
+      background: rgba(255, 255, 255, 0.02);
+      border: 1px solid rgba(255, 255, 255, 0.03);
+      border-radius: 20px;
+      padding: 16px;
+      gap: 10px;
+    }
+    .place-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      width: 100%;
+    }
+    .place-name-wrapper {
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
     .place-marker {
       background: rgba(255, 255, 255, 0.05);
       border: 1px solid var(--card-border);
-      width: 28px;
-      height: 28px;
+      width: 26px;
+      height: 26px;
       border-radius: 50%;
       display: flex;
       align-items: center;
@@ -409,16 +456,6 @@
       font-weight: 700;
       color: var(--accent-terracotta);
       flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .place-info {
-      flex: 1;
-    }
-    .place-header {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 2px;
     }
     .place-name {
       font-size: 0.95rem;
@@ -497,13 +534,16 @@
       border-left: 3px solid var(--accent-lemon);
       border-radius: 0 12px 12px 0;
       padding: 12px 16px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
     }
     .food-title {
       font-size: 0.85rem;
       font-weight: 700;
       text-transform: uppercase;
       color: var(--accent-lemon);
-      margin-bottom: 6px;
+      margin-bottom: 0;
       display: flex;
       align-items: center;
       gap: 6px;
@@ -518,13 +558,14 @@
       font-size: 0.825rem;
       color: var(--text-muted);
       font-weight: 300;
-      margin-bottom: 8px;
-    }
-    .food-box p:last-child {
-      margin-bottom: 0;
     }
     .food-box strong {
       color: var(--text-main);
+    }
+    
+    .food-carousel {
+      height: 150px;
+      border-radius: 12px;
     }
 
     /* Advertencias Cruciales (Vesubio, Vespa, etc) */
@@ -632,7 +673,7 @@
     <header>
       <p class="eyebrow">Italia 2026</p>
       <h1>Buen Viaje, <span>Marian Amor</span></h1>
-      <p class="subtitle">Tu itinerario interactivo personalizado para Roma y la Costa de Campania</p>
+      <p class="subtitle">Tu itinerario interactivo y fotográfico para Roma y la Costa de Campania</p>
       
       <div class="quick-meta">
         <div class="badge badge-dates">
@@ -661,11 +702,11 @@
           <div class="tip-item">
             <span class="tip-item-title" style="color: var(--accent-capri);">
               <svg viewBox="0 0 24 24"><rect x="1" y="3" width="15" height="13" rx="2" ry="2"></rect><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"></polygon><circle cx="5.5" cy="18.5" r="2.5"></circle><circle cx="18.5" cy="18.5" r="2.5"></circle></svg>
-              Transporte Público
+              Transporte Público &amp; Apps
             </span>
-            <p><strong>Roma (Metro/Bus):</strong> Usa tu tarjeta contactless o Apple/Google Pay directo en los torniquetes o validadores amarillos en autobuses. No necesitas comprar boleto físico.</p>
-            <p><strong>¡Clave! Sellar Boletos:</strong> Si usas boletos físicos, regístralos en la máquina al subir. **Sin sellar hay multas costosas (€50+)**.</p>
-            <p><strong>Campania Express:</strong> Tren directo Nápoles-Sorrento con aire acondicionado. Muy recomendado para viajar cómoda y segura con equipaje.</p>
+            <p><strong>Roma (Taxis/Metro):</strong> Para taxi oficial blanco usa <strong>FreeNow</strong> o <strong>itTaxi</strong>. Es lo más seguro y regulado. En metro usa tu tarjeta contactless directo en el validador.</p>
+            <p><strong>Costa Amalfitana (Sin Uber):</strong> Uber **no opera** en la Costa. Para traslados usa ferries (barcos rápidos) o el autobús SITA Sud. Los taxis de calle son sumamente costosos.</p>
+            <p><strong>Campania Express:</strong> Tren Nápoles-Sorrento con aire acondicionado, ideal para moverse cómoda con maleta.</p>
           </div>
           
           <div class="tip-item">
@@ -673,8 +714,8 @@
               <svg viewBox="0 0 24 24"><path d="M12 2v20M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
               Presupuesto &amp; Pagos
             </span>
-            <p><strong>Tarjetas:</strong> Aceptadas en el 98% de lugares. Lleva €50 en efectivo para buses pequeños de la Costa o propinas.</p>
-            <p><strong>Agua Gratis:</strong> Llena tu botella en los *Nasoni* (fuentes públicas) de Roma. El agua está helada y es potable.</p>
+            <p><strong>Tarjetas bancarias:</strong> Aceptadas prácticamente en todos lados. Es bueno tener unos €50 en billetes pequeños para el bus costero o propinas.</p>
+            <p><strong>Nasoni (Roma):</strong> Fuentes públicas de agua fría potable gratuita por todo Roma. Llena tu termo sin costo.</p>
           </div>
 
           <div class="tip-item">
@@ -682,8 +723,8 @@
               <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
               Seguridad &amp; Equipaje
             </span>
-            <p><strong>Cuidado:</strong> Viajas sola, mantente atenta en la Línea A de Roma y en el Bus 64. Cuida tu bolso.</p>
-            <p><strong>Zapatos:</strong> Los adoquines de Roma y las subidas empinadas de Positano requieren calzado plano con buen agarre.</p>
+            <p><strong>Carteristas:</strong> Mucho cuidado en la Línea A de Roma y en el Bus 64. Bolso siempre cerrado y adelante.</p>
+            <p><strong>Calzado de Agarre:</strong> Adoquines en Roma, escalinatas en Positano y polvo volcánico en el Vesubio exigen calzado deportivo.</p>
           </div>
 
           <div class="tip-item">
@@ -726,56 +767,168 @@
 
     <!-- SECCIÓN: DÍAS 1 y 2 (ROMA & VATICANO) -->
     <div id="day-1" class="day-section active">
-      <div class="day-banner">
-        <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=800&q=80" alt="Roma Coliseo">
-        <div class="day-banner-overlay"></div>
-        <div class="day-banner-content">
-          <p class="day-label">6 - 8 Junio • 2 Noches</p>
-          <h2 class="day-title">Roma y El Vaticano</h2>
+      <!-- Carrusel de Destino Principal -->
+      <div class="carousel day-banner" data-interval="4200">
+        <div class="carousel-track">
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=600&q=80" alt="Coliseo de Roma">
+            <div class="carousel-overlay"></div>
+            <div class="carousel-caption">
+              <p class="day-label">Roma Imperial</p>
+              <h2 class="day-title">Coliseo y Foro Romano</h2>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1542820229-081e0c12af0b?auto=format&fit=crop&w=600&q=80" alt="Vaticano">
+            <div class="carousel-overlay"></div>
+            <div class="carousel-caption">
+              <p class="day-label">El Vaticano</p>
+              <h2 class="day-title">Cúpula de San Pedro</h2>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1529260830199-445881452368?auto=format&fit=crop&w=600&q=80" alt="Fontana di Trevi">
+            <div class="carousel-overlay"></div>
+            <div class="carousel-caption">
+              <p class="day-label">Roma Barroca</p>
+              <h2 class="day-title">Fontana di Trevi</h2>
+            </div>
+          </div>
         </div>
+        <div class="carousel-dots"></div>
       </div>
 
       <div class="section-card">
         <h3 class="section-card-title" style="color: var(--accent-terracotta);">
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-          Qué Visitar (Imprescindibles)
+          Qué Visitar (6 Recomendados)
         </h3>
         <div class="place-list">
+          <!-- Lugar 1 -->
           <div class="place-item">
-            <span class="place-marker">1</span>
-            <div class="place-info">
-              <div class="place-header">
+            <!-- Carrusel Interno de Atracción -->
+            <div class="carousel card-carousel" data-interval="4800">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1552832230-c0197dd311b5?auto=format&fit=crop&w=600&q=80" alt="Coliseo Exterior"></div>
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1515542690876-879e0a5ea2ed?auto=format&fit=crop&w=600&q=80" alt="Foro Romano"></div>
+              </div>
+              <div class="carousel-dots"></div>
+            </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">1</span>
                 <span class="place-name">Coliseo y Foro Romano</span>
-                <a href="https://maps.google.com/?q=Colosseum,+Rome" target="_blank" class="place-map-btn">
-                  Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                </a>
               </div>
-              <p class="place-desc">La cuna del Imperio Romano. Requiere comprar entradas online con anticipación.</p>
+              <a href="https://maps.google.com/?q=Colosseum,+Rome" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
             </div>
+            <p class="place-desc">La cuna arqueológica de la civilización romana. Explora el anfiteatro Flavio y las ruinas del centro político del imperio.</p>
           </div>
+
+          <!-- Lugar 2 -->
           <div class="place-item">
-            <span class="place-marker">2</span>
-            <div class="place-info">
-              <div class="place-header">
-                <span class="place-name">Museos Vaticanos y Basílica</span>
-                <a href="https://maps.google.com/?q=Vatican+Museums,+Rome" target="_blank" class="place-map-btn">
-                  Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                </a>
+            <div class="carousel card-carousel" data-interval="5100">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1542820229-081e0c12af0b?auto=format&fit=crop&w=600&q=80" alt="Museos Vaticanos"></div>
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?auto=format&fit=crop&w=600&q=80" alt="Escalera Vaticano"></div>
               </div>
-              <p class="place-desc">Contempla la Capilla Sixtina. Tip: La entrada a la Basílica de San Pedro es gratis, llega a las 7:00 AM para evitar 2 horas de fila.</p>
+              <div class="carousel-dots"></div>
             </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">2</span>
+                <span class="place-name">Museos Vaticanos &amp; Capilla Sixtina</span>
+              </div>
+              <a href="https://maps.google.com/?q=Vatican+Museums,+Rome" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+            <p class="place-desc">Colecciones papales repletas de obras maestras que culminan con la majestuosa bóveda al fresco de Miguel Ángel.</p>
           </div>
+
+          <!-- Lugar 3 -->
           <div class="place-item">
-            <span class="place-marker">3</span>
-            <div class="place-info">
-              <div class="place-header">
-                <span class="place-name">Fontana di Trevi y Panteón</span>
-                <a href="https://maps.google.com/?q=Trevi+Fountain,+Rome" target="_blank" class="place-map-btn">
-                  Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                </a>
+            <div class="carousel card-carousel" data-interval="4500">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1531572753322-ad063cecc140?auto=format&fit=crop&w=600&q=80" alt="Basílica de San Pedro"></div>
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?auto=format&fit=crop&w=600&q=80" alt="Plaza San Pedro"></div>
               </div>
-              <p class="place-desc">Tira una moneda para volver a Roma. Para verla vacía, visítala muy temprano por la mañana o pasada la medianoche.</p>
+              <div class="carousel-dots"></div>
             </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">3</span>
+                <span class="place-name">Basílica de San Pedro</span>
+              </div>
+              <a href="https://maps.google.com/?q=St.+Peter's+Basilica,+Rome" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+            <p class="place-desc">El centro espiritual más impresionante. Sube a la cúpula para disfrutar de la mejor perspectiva de la Plaza San Pedro.</p>
+          </div>
+
+          <!-- Lugar 4 -->
+          <div class="place-item">
+            <div class="carousel card-carousel" data-interval="4700">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1529260830199-445881452368?auto=format&fit=crop&w=600&q=80" alt="Fontana di Trevi"></div>
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=600&q=80" alt="Trevi Noche"></div>
+              </div>
+              <div class="carousel-dots"></div>
+            </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">4</span>
+                <span class="place-name">Fontana di Trevi</span>
+              </div>
+              <a href="https://maps.google.com/?q=Trevi+Fountain,+Rome" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+            <p class="place-desc">Lanza una moneda para volver a Roma. Visítala a altas horas de la noche para un ambiente íntimo y mágico.</p>
+          </div>
+
+          <!-- Lugar 5 -->
+          <div class="place-item">
+            <div class="carousel card-carousel" data-interval="5300">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1515542690876-879e0a5ea2ed?auto=format&fit=crop&w=600&q=80" alt="Panteón de Roma"></div>
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1525874684015-58379d421a52?auto=format&fit=crop&w=600&q=80" alt="Panteón Interior"></div>
+              </div>
+              <div class="carousel-dots"></div>
+            </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">5</span>
+                <span class="place-name">Panteón de Roma</span>
+              </div>
+              <a href="https://maps.google.com/?q=Pantheon,+Rome" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+            <p class="place-desc">Templo romano con más de 1,900 años de antigüedad. Su óculo central genera un haz de luz solar espectacular en su interior.</p>
+          </div>
+
+          <!-- Lugar 6 -->
+          <div class="place-item">
+            <div class="carousel card-carousel" data-interval="4900">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1525874684015-58379d421a52?auto=format&fit=crop&w=600&q=80" alt="Plaza de España"></div>
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1515542690876-879e0a5ea2ed?auto=format&fit=crop&w=600&q=80" alt="Escalinata España"></div>
+              </div>
+              <div class="carousel-dots"></div>
+            </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">6</span>
+                <span class="place-name">Plaza de España</span>
+              </div>
+              <a href="https://maps.google.com/?q=Piazza+di+Spagna,+Rome" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+            <p class="place-desc">Su icónica escalinata y la Fontana de la Barcaccia de Bernini marcan un punto de encuentro clásico de la moda romana.</p>
           </div>
         </div>
       </div>
@@ -805,209 +958,471 @@
         <div class="warning-box">
           <span class="warning-title">
             <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-            Advertencia: ¿Renta de Vespa?
+            Vespa en Roma
           </span>
-          <p>Solo hazlo **si tienes experiencia previa conduciendo motos**. El tráfico romano es salvaje, caótico y los adoquines resbalan. Si te sientes cómoda, renta en **Bici &amp; Baci** (cerca de Termini). Si no, el Metro A te conecta excelente.</p>
+          <p>En Roma **no te recomendamos rentar Vespa** por el tráfico sumamente pesado y desordenado. Renta mejor en Sorrento para recorrer la Costa Amalfitana.</p>
         </div>
       </div>
 
       <div class="section-card">
         <h3 class="section-card-title" style="color: var(--accent-lemon);">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 8l-4 4h8z"></path></svg>
-          Gastronomía del Día
+          Gastronomía (De la vista nace el apetito)
         </h3>
         <div class="food-box">
           <span class="food-title">Gastronomía Romana</span>
           <p>🍝 **Plato Fuerte:** Pasta Carbonara o Cacio e Pepe. Disfrútala en el bohemio barrio de **Trastevere** por la noche.</p>
-          <p>🍰 **Postre:** Tiramisú de **Pompi** (el rey del tiramisú, delicioso y económico).</p>
-          <p>🍦 **Gelato:** Prueba el helado de **Frigidarium**; pide que le pongan cobertura de chocolate crujiente (¡es gratis!).</p>
+          <p>🍰 **Postre:** Tiramisú de **Pompi** (cerca de Plaza de España) o un Gelato en **Frigidarium**.</p>
+          
+          <!-- Carrusel de fotos de comida de Roma -->
+          <div class="carousel food-carousel" data-interval="3800">
+            <div class="carousel-track">
+              <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1612874742237-6526221588e3?auto=format&fit=crop&w=600&q=80" alt="Carbonara">
+                <div class="carousel-overlay"></div>
+                <div class="carousel-caption">Pasta Carbonara Tradicional</div>
+              </div>
+              <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1571877227200-a0d98ea607e9?auto=format&fit=crop&w=600&q=80" alt="Tiramisú">
+                <div class="carousel-overlay"></div>
+                <div class="carousel-caption">Tiramisú Cremoso</div>
+              </div>
+              <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?auto=format&fit=crop&w=600&q=80" alt="Gelato">
+                <div class="carousel-overlay"></div>
+                <div class="carousel-caption">Auténtico Gelato Italiano</div>
+              </div>
+            </div>
+            <div class="carousel-dots"></div>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- SECCIÓN: DÍA 3 (TRAYECTO A SORRENTO) -->
     <div id="day-3" class="day-section">
-      <div class="day-banner">
-        <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=800&q=80" alt="Sorrento">
-        <div class="day-banner-overlay"></div>
-        <div class="day-banner-content">
-          <p class="day-label">8 Junio • Día de Traslado</p>
-          <h2 class="day-title">Camino a Sorrento</h2>
+      <div class="carousel day-banner" data-interval="4300">
+        <div class="carousel-track">
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=600&q=80" alt="Marina de Sorrento">
+            <div class="carousel-overlay"></div>
+            <div class="carousel-caption">
+              <p class="day-label">Golfo de Nápoles</p>
+              <h2 class="day-title">Mirador de Sorrento</h2>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1599814421111-9a74c204fe44?auto=format&fit=crop&w=600&q=80" alt="Marina Grande">
+            <div class="carousel-overlay"></div>
+            <div class="carousel-caption">
+              <p class="day-label">Marina Grande</p>
+              <h2 class="day-title">Casitas de Pescadores</h2>
+            </div>
+          </div>
         </div>
+        <div class="carousel-dots"></div>
       </div>
 
       <div class="section-card">
         <h3 class="section-card-title" style="color: var(--accent-capri);">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-          Cómo llegar (Paso a Paso)
+          Cómo llegar &amp; Apps locales
         </h3>
         <div class="logistics-box">
           <span class="logistics-title">
             <svg viewBox="0 0 24 24"><polygon points="5 3 19 12 5 21 5 3"></polygon></svg>
             Instrucciones de Ruta
           </span>
-          <p>1. **Roma ➔ Nápoles:** Toma el tren de alta velocidad (**Italo** o **Frecciarossa**) desde Roma Termini hasta Napoli Centrale (1h 10m).</p>
-          <p>2. En Nápoles, desciende al nivel subterráneo y sigue los letreros de **"Circumvesuviana"**.</p>
-          <p>3. **Nápoles ➔ Sorrento:** Compra el boleto para el **Campania Express** (tiene aire acondicionado y maletero, €8-10, viaje rápido de 50 minutos) o el tren regional Circumvesuviana (más económico, sin aire acondicionado y suele ir muy lleno).</p>
-          <p>4. **¡Muy importante!** Valida tu billete físico en los torniquetes de Nápoles antes de abordar.</p>
+          <p>1. **Roma ➔ Nápoles:** Tren de alta velocidad (**Italo** o **Frecciarossa**) a Napoli Centrale (1h 10m).</p>
+          <p>2. **Nápoles ➔ Sorrento:** En la planta baja, toma el **Campania Express** (€8-10, con AC, ideal con maleta) o el tren Circumvesuviana regional.</p>
+          <p>3. **Movilidad en la Costa (Sin Uber):** Recuerda que **Uber no opera en Sorrento ni la Costa**. Usa la app de ferries o el autobús SITA. Un taxi normal cuesta caro (hasta €100 entre pueblos).</p>
         </div>
       </div>
 
       <div class="section-card">
         <h3 class="section-card-title" style="color: var(--accent-terracotta);">
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-          Qué Visitar en Sorrento
+          Qué Visitar en Sorrento (6 Recomendados)
         </h3>
         <div class="place-list">
           <div class="place-item">
-            <span class="place-marker">1</span>
-            <div class="place-info">
-              <div class="place-header">
+            <div class="carousel card-carousel" data-interval="4600">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=600&q=80" alt="Piazza Tasso"></div>
+              </div>
+              <div class="carousel-dots"></div>
+            </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">1</span>
                 <span class="place-name">Piazza Tasso</span>
-                <a href="https://maps.google.com/?q=Piazza+Tasso,+Sorrento" target="_blank" class="place-map-btn">
-                  Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                </a>
               </div>
-              <p class="place-desc">El centro neurálgico de Sorrento. Llena de cafeterías al aire libre y tiendas pintorescas.</p>
+              <a href="https://maps.google.com/?q=Piazza+Tasso,+Sorrento" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
             </div>
+            <p class="place-desc">La plaza central de Sorrento, llena de cafés elegantes y callejones comerciales a su alrededor.</p>
           </div>
+
           <div class="place-item">
-            <span class="place-marker">2</span>
-            <div class="place-info">
-              <div class="place-header">
-                <span class="place-name">Villa Comunale</span>
-                <a href="https://maps.google.com/?q=Villa+Comunale,+Sorrento" target="_blank" class="place-map-btn">
-                  Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                </a>
+            <div class="carousel card-carousel" data-interval="5400">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1561706692-7f9754f9a3e6?auto=format&fit=crop&w=600&q=80" alt="Villa Comunale"></div>
               </div>
-              <p class="place-desc">Un parque precioso con vistas inmejorables al Golfo de Nápoles y al Vesubio. El mejor punto para el atardecer.</p>
+              <div class="carousel-dots"></div>
             </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">2</span>
+                <span class="place-name">Villa Comunale (Mirador)</span>
+              </div>
+              <a href="https://maps.google.com/?q=Villa+Comunale,+Sorrento" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+            <p class="place-desc">Los acantilados más hermosos con vistas directas al Monte Vesubio y al mar Tirreno.</p>
           </div>
+
           <div class="place-item">
-            <span class="place-marker">3</span>
-            <div class="place-info">
-              <div class="place-header">
+            <div class="carousel card-carousel" data-interval="4900">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1599814421111-9a74c204fe44?auto=format&fit=crop&w=600&q=80" alt="Marina Grande"></div>
+              </div>
+              <div class="carousel-dots"></div>
+            </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">3</span>
                 <span class="place-name">Marina Grande</span>
-                <a href="https://maps.google.com/?q=Marina+Grande,+Sorrento" target="_blank" class="place-map-btn">
-                  Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                </a>
               </div>
-              <p class="place-desc">Un puerto de pescadores tradicional, perfecto para comer pasta con mariscos frescos al borde del agua.</p>
+              <a href="https://maps.google.com/?q=Marina+Grande,+Sorrento" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
             </div>
+            <p class="place-desc">Puerto antiguo con botes de colores y deliciosas trattorias de mariscos junto a la orilla.</p>
           </div>
+
+          <div class="place-item">
+            <div class="carousel card-carousel" data-interval="5100">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1621259182978-f011d508fda0?auto=format&fit=crop&w=600&q=80" alt="Claustro San Francisco"></div>
+              </div>
+              <div class="carousel-dots"></div>
+            </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">4</span>
+                <span class="place-name">Claustro de San Francisco</span>
+              </div>
+              <a href="https://maps.google.com/?q=Chiostro+di+San+Francesco,+Sorrento" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+            <p class="place-desc">Un rincón medieval cubierto de bugambilias y enredaderas, muy romántico y pacífico.</p>
+          </div>
+
+          <div class="place-item">
+            <div class="carousel card-carousel" data-interval="4700">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?auto=format&fit=crop&w=600&q=80" alt="Valle de los Molinos"></div>
+              </div>
+              <div class="carousel-dots"></div>
+            </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">5</span>
+                <span class="place-name">Vallone dei Mulini</span>
+              </div>
+              <a href="https://maps.google.com/?q=Vallone+dei+Mulini,+Sorrento" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+            <p class="place-desc">Ruinas arqueológicas de molinos antiguos devorados por una vegetación selvática en el centro de Sorrento.</p>
+          </div>
+
+          <div class="place-item">
+            <div class="carousel card-carousel" data-interval="5200">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=600&q=80" alt="Piscina Natural"></div>
+              </div>
+              <div class="carousel-dots"></div>
+            </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">6</span>
+                <span class="place-name">Bagni Regina Giovanna</span>
+              </div>
+              <a href="https://maps.google.com/?q=Bagni+Regina+Giovanna,+Sorrento" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+            <p class="place-desc">Piscina de agua esmeralda rodeada de ruinas romanas. **Tip: Súper recomendado llegar en scooter desde Sorrento.**</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h3 class="section-card-title" style="color: var(--accent-olive);">
+          <svg viewBox="0 0 24 24"><polygon points="12 2 2 22 22 22 12 2"></polygon></svg>
+          Movilidad en Scooter / Vespa
+        </h3>
+        <div class="logistics-box" style="border-left-color: var(--accent-olive);">
+          <p>🛵 **Renta en la Costa:** Este es el lugar ideal para rentar moto. Te permitirá ir de Sorrento a Positano sintiendo la brisa de la costa y sorteando el pesado tráfico de verano.</p>
+          <p>📍 **Agencias recomendadas:** Puedes rentar por día en **Jolly Rent** o **Sorrento Rent** cerca de la estación de tren.</p>
+          <p>⚠️ **Advertencia:** La carretera *Amalfi Drive (SS163)* es sumamente angosta, con curvas ciegas y autobuses grandes de frente. Conduce con prudencia.</p>
         </div>
       </div>
 
       <div class="section-card">
         <h3 class="section-card-title" style="color: var(--accent-lemon);">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 8l-4 4h8z"></path></svg>
-          Gastronomía del Día
+          Gastronomía (De la vista nace el apetito)
         </h3>
         <div class="food-box">
           <span class="food-title">Sabor a Sorrento</span>
-          <p>🍝 **Plato Fuerte:** Gnocchi alla Sorrentina (tomate, albahaca y mozzarella fresca fundida al horno).</p>
-          <p>🍋 **Bebida:** Limoncello (licor helado de limón). Al terminar de cenar es cortesía de la casa.</p>
-          <p>🍰 **Postre:** *Delizia al Limone* (pastelito esponjoso bañado en crema suave de limón).</p>
+          <p>🍝 **Plato Fuerte:** Gnocchi alla Sorrentina gratinados.</p>
+          <p>🍰 **Postre:** *Delizia al Limone* y licor de *Limoncello* helado.</p>
+          
+          <div class="carousel food-carousel" data-interval="3900">
+            <div class="carousel-track">
+              <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1589301760014-d929f3979dbc?auto=format&fit=crop&w=600&q=80" alt="Gnocchi">
+                <div class="carousel-overlay"></div>
+                <div class="carousel-caption">Gnocchi alla Sorrentina</div>
+              </div>
+              <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1517093602195-b40af9688b46?auto=format&fit=crop&w=600&q=80" alt="Limoncello">
+                <div class="carousel-overlay"></div>
+                <div class="carousel-caption">Limoncello Helado Local</div>
+              </div>
+            </div>
+            <div class="carousel-dots"></div>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- SECCIÓN: DÍA 4 (POSITANO & CAPRI) -->
     <div id="day-4" class="day-section">
-      <div class="day-banner">
-        <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=800&q=80" alt="Capri y Positano">
-        <div class="day-banner-overlay"></div>
-        <div class="day-banner-content">
-          <p class="day-label">9 Junio • Costa y Mar</p>
-          <h2 class="day-title">Capri y Positano</h2>
+      <div class="carousel day-banner" data-interval="4100">
+        <div class="carousel-track">
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=600&q=80" alt="Ferry Costa">
+            <div class="carousel-overlay"></div>
+            <div class="carousel-caption">
+              <p class="day-label">Costa Amalfitana</p>
+              <h2 class="day-title">Positano Vertical</h2>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=600&q=80" alt="Capri Faraglioni">
+            <div class="carousel-overlay"></div>
+            <div class="carousel-caption">
+              <p class="day-label">Isla de Capri</p>
+              <h2 class="day-title">Los Faraglioni</h2>
+            </div>
+          </div>
         </div>
+        <div class="carousel-dots"></div>
       </div>
 
       <div class="section-card">
         <h3 class="section-card-title" style="color: var(--accent-capri);">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
-          Logística del Día (Logística Marina)
+          Movilidad Marina &amp; Ferries
         </h3>
         <div class="logistics-box">
           <span class="logistics-title">Ruta del Día</span>
-          <p>🚢 **Mañana (Ferry Sorrento ➔ Capri):** Toma un ferry temprano (aprox. 8:30 AM) en el puerto de Sorrento hacia Capri (20 min). Compra boletos online en *Ferryhopper*.</p>
-          <p>🚢 **Tarde (Ferry Capri ➔ Positano):** A la 1:30 PM aprox, aborda un ferry directo de Capri a Positano (40 min). Tendrás vistas hermosas del acantilado.</p>
-          <p>🚌 / 🚢 **Regreso (Positano ➔ Sorrento):** Al final de la tarde, regresa a Sorrento. Lo mejor es tomar otro ferry (rápido y cómodo) o, si buscas ahorrar, toma el autobús **SITA Bus** (compra el boleto en el pueblo, ¡nunca a bordo!).</p>
+          <p>🚢 **Ferry Sorrento ➔ Capri:** Toma el primer ferry (Hydrofoil) por la mañana (20 min). Compra tu boleto por la app **Ferryhopper**.</p>
+          <p>🚢 **Ferry Capri ➔ Positano:** A mediodía, navega directo hacia Positano (40 min). Entrarás por el mar con una panorámica inolvidable.</p>
+          <p>🚢 / 🚌 **Positano ➔ Sorrento:** Regresa en ferry (cómodo) o en autobús SITA (económico, pero fila y tráfico).</p>
         </div>
       </div>
 
       <div class="section-card">
         <h3 class="section-card-title" style="color: var(--accent-terracotta);">
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-          Actividades Recomendadas
+          Qué Visitar (6 Recomendados)
         </h3>
         <div class="place-list">
           <div class="place-item">
-            <span class="place-marker">C</span>
-            <div class="place-info">
-              <div class="place-header">
+            <div class="carousel card-carousel" data-interval="4700">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1563841927376-79ba51893c83?auto=format&fit=crop&w=600&q=80" alt="Monte Solaro"></div>
+              </div>
+              <div class="carousel-dots"></div>
+            </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">1</span>
                 <span class="place-name">Capri: Telesilla Monte Solaro</span>
-                <a href="https://maps.google.com/?q=Monte+Solaro+Chairlift,+Anacapri" target="_blank" class="place-map-btn">
-                  Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                </a>
               </div>
-              <p class="place-desc">Toma un bus pequeño desde el puerto hacia Anacapri y sube a la telesilla individual (*Seggiovia*) hacia el Monte Solaro. **La mejor panorámica de tu viaje.** Cuesta €12.</p>
+              <a href="https://maps.google.com/?q=Monte+Solaro+Chairlift,+Anacapri" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
             </div>
+            <p class="place-desc">Telesilla individual que sube al punto más alto de la isla. Vista completa de toda la Costa Amalfitana.</p>
           </div>
-          <div class="place-item">
-            <span class="place-marker">P</span>
-            <div class="place-info">
-              <div class="place-header">
-                <span class="place-name">Positano: Descenso al Mar</span>
-                <a href="https://maps.google.com/?q=Spiaggia+Grande,+Positano" target="_blank" class="place-map-btn">
-                  Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                </a>
-              </div>
-              <p class="place-desc">Piérdete en las empinadas callejuelas llenas de flores de Positano bajando hasta la **Spiaggia Grande**. Usa zapatos cómodos y con buen agarre.</p>
-            </div>
-          </div>
-        </div>
-        
-        <div class="warning-box">
-          <span class="warning-title">
-            <svg viewBox="0 0 24 24"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
-            Para el mareo
-          </span>
-          <p>Si eres propensa a marearte en barco, toma una pastilla de biodramina o similar antes de subir a los ferries, el oleaje del mar Tirreno puede ser movido en ocasiones.</p>
-        </div>
 
-        <div class="logistics-box" style="margin-top: 12px; border-left-color: var(--accent-olive);">
-          <span class="logistics-title" style="color: var(--accent-olive);">
-            <svg viewBox="0 0 24 24"><polygon points="12 2 2 22 22 22 12 2"></polygon></svg>
-            Desafío de Senderismo en la Costa
-          </span>
-          <p>⛰️ **Scala Fenicia (Capri):** Si quieres un reto con toda tu energía, sube desde Marina Grande hasta Anacapri por los **921 escalones antiguos** de piedra tallada. Un esfuerzo físico alto, pero histórico y sumamente gratificante.</p>
-          <p>🥾 **Sentiero degli Dei (Positano):** Si te queda tiempo en Positano y quieres una caminata de montaña épica de 3 horas, el *Sendero de los Dioses* (entre Bomerano y Nocelle) ofrece las vistas más espectaculares de los acantilados sobre el mar. Termina bajando unos 1,500 escalones hacia Positano.</p>
+          <div class="place-item">
+            <div class="carousel card-carousel" data-interval="4900">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1506973035872-a4ec16b8e8d9?auto=format&fit=crop&w=600&q=80" alt="Faraglioni"></div>
+              </div>
+              <div class="carousel-dots"></div>
+            </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">2</span>
+                <span class="place-name">Capri: Los Faraglioni</span>
+              </div>
+              <a href="https://maps.google.com/?q=Faraglioni,+Capri" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+            <p class="place-desc">Monolitos icónicos de Capri. Contrata un paseo en bote de 1 hora en la Marina para cruzar por el arco de piedra.</p>
+          </div>
+
+          <div class="place-item">
+            <div class="carousel card-carousel" data-interval="5200">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=600&q=80" alt="Augusto Jardines"></div>
+              </div>
+              <div class="carousel-dots"></div>
+            </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">3</span>
+                <span class="place-name">Capri: Jardines de Augusto</span>
+              </div>
+              <a href="https://maps.google.com/?q=Giardini+di+Augusto,+Capri" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+            <p class="place-desc">Hermosas terrazas con flores, con la vista más limpia a la Via Krupp y los Faraglioni.</p>
+          </div>
+
+          <div class="place-item">
+            <div class="carousel card-carousel" data-interval="4800">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1533105079780-92b9be482077?auto=format&fit=crop&w=600&q=80" alt="Positano Playa"></div>
+              </div>
+              <div class="carousel-dots"></div>
+            </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">4</span>
+                <span class="place-name">Positano: Spiaggia Grande</span>
+              </div>
+              <a href="https://maps.google.com/?q=Spiaggia+Grande,+Positano" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+            <p class="place-desc">La mítica playa costera. El punto perfecto para la mejor foto con las casas apiladas en la ladera.</p>
+          </div>
+
+          <div class="place-item">
+            <div class="carousel card-carousel" data-interval="5300">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1561266858-a66dbdc9de94?auto=format&fit=crop&w=600&q=80" alt="Iglesia Positano"></div>
+              </div>
+              <div class="carousel-dots"></div>
+            </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">5</span>
+                <span class="place-name">Positano: Iglesia de Santa Maria Assunta</span>
+              </div>
+              <a href="https://maps.google.com/?q=Santa+Maria+Assunta,+Positano" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+            <p class="place-desc">Su cúpula brillante de cerámica mayólica es el faro histórico que corona a todo Positano.</p>
+          </div>
+
+          <div class="place-item">
+            <div class="carousel card-carousel" data-interval="5000">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1498503182468-3b51cbb6cb24?auto=format&fit=crop&w=600&q=80" alt="Furore"></div>
+              </div>
+              <div class="carousel-dots"></div>
+            </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">6</span>
+                <span class="place-name">Furore: El Fiordo Oculto</span>
+              </div>
+              <a href="https://maps.google.com/?q=Fiordo+di+Furore,+Italy" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+            <p class="place-desc">Garganta natural espectacular entre montañas con un puente alto y una playa secreta. **Tip: Rápido de visitar si rentaste Vespa en Sorrento.**</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="section-card">
+        <h3 class="section-card-title" style="color: var(--accent-olive);">
+          <svg viewBox="0 0 24 24"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+          Senderos Peatonales (A Pie)
+        </h3>
+        <div class="logistics-box" style="border-left-color: var(--accent-olive);">
+          <p>⛰️ **Scala Fenicia (Capri):** Sube desde Marina Grande a Anacapri a pie. Son **921 escalones** tallados sobre la pared del acantilado. Vistas imponentes del puerto.</p>
+          <p>🥾 **Sentiero degli Dei (Positano):** Increíble ruta de montaña de 3 horas. Te recomiendo tomar un bus a Bomerano, hacer el camino silvestre colgado de los acantilados sobre el mar, y descender a Positano por sus famosas escaleras.</p>
         </div>
       </div>
 
       <div class="section-card">
         <h3 class="section-card-title" style="color: var(--accent-lemon);">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 8l-4 4h8z"></path></svg>
-          Gastronomía del Día
+          Gastronomía (De la vista nace el apetito)
         </h3>
         <div class="food-box">
-          <span class="food-title">Sabores Marinos</span>
-          <p>🥗 **Comida:** Ensalada Caprese (mozzarella di bufala, tomate de temporada, albahaca y aceite de oliva virgen extra).</p>
-          <p>🍋 **Postre:** Lemon Sorbet servido dentro de un limón gigante fresco, ideal para refrescarte del calor veraniego de la playa.</p>
+          <span class="food-title">Menú de la Costa</span>
+          <p>🍝 **Comida:** Ensalada Caprese con albahaca y mozzarella fresca local.</p>
+          <p>🍋 **Postre:** Refrescante *Lemon Sorbet* servido en un limón gigante de Amalfi.</p>
+          
+          <div class="carousel food-carousel" data-interval="4100">
+            <div class="carousel-track">
+              <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1592417817098-8f3d6eb19675?auto=format&fit=crop&w=600&q=80" alt="Caprese">
+                <div class="carousel-overlay"></div>
+                <div class="carousel-caption">Ensalada Caprese Fresca</div>
+              </div>
+              <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1517093602195-b40af9688b46?auto=format&fit=crop&w=600&q=80" alt="Sorbete Limón">
+                <div class="carousel-overlay"></div>
+                <div class="carousel-caption">Sorbete en Limón Gigante</div>
+              </div>
+            </div>
+            <div class="carousel-dots"></div>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- SECCIÓN: DÍA 5 (POMPEYA & VESUBIO) -->
     <div id="day-5" class="day-section">
-      <div class="day-banner">
-        <img src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=800&q=80" alt="Pompeya y Vesubio">
-        <div class="day-banner-overlay"></div>
-        <div class="day-banner-content">
-          <p class="day-label">10 Junio • Arqueología y Volcán</p>
-          <h2 class="day-title">Pompeya y Vesubio</h2>
+      <div class="carousel day-banner" data-interval="4500">
+        <div class="carousel-track">
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=600&q=80" alt="Pompeya Foro">
+            <div class="carousel-overlay"></div>
+            <div class="carousel-caption">
+              <p class="day-label">Arqueología Romana</p>
+              <h2 class="day-title">Foro de Pompeya</h2>
+            </div>
+          </div>
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?auto=format&fit=crop&w=600&q=80" alt="Monte Vesubio">
+            <div class="carousel-overlay"></div>
+            <div class="carousel-caption">
+              <p class="day-label">El Volcán Activo</p>
+              <h2 class="day-title">Cráter del Monte Vesubio</h2>
+            </div>
+          </div>
         </div>
+        <div class="carousel-dots"></div>
       </div>
 
       <div class="section-card">
@@ -1017,41 +1432,130 @@
         </h3>
         <div class="logistics-box">
           <span class="logistics-title">Cómo Moverse</span>
-          <p>1. **Sorrento ➔ Pompeya:** Toma el tren **Circumvesuviana** desde la estación de Sorrento hasta **Pompei Scavi - Villa dei Misteri** (25 minutos). La entrada arqueológica está junto a la estación.</p>
-          <p>2. **Pompeya ➔ Vesubio:** Fuera de la estación de tren, toma el autobús **EAV** o la lanzadera **Vesuvius Express** que sube directamente a la base del volcán (40 minutos).</p>
-          <p>3. **Vesubio ➔ Sorrento:** Regresa en el mismo autobús a Pompeya y de ahí el tren Circumvesuviana a Sorrento.</p>
+          <p>1. **Sorrento ➔ Pompeya:** Tren regional **Circumvesuviana** hasta **Pompei Scavi** (25 min). Muy cómodo, te deja a pasos del sitio.</p>
+          <p>2. **Pompeya ➔ Vesubio:** Toma el autobús **EAV** oficial o la lanzadera **Vesuvius Express** al exterior de la estación (40 min de subida).</p>
+          <p>3. Regresa en bus a la estación y de vuelta en el tren Circumvesuviana a Sorrento.</p>
         </div>
       </div>
 
       <div class="section-card">
         <h3 class="section-card-title" style="color: var(--accent-terracotta);">
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-          Consejos del Día
+          Qué Visitar (6 Recomendados)
         </h3>
         <div class="place-list">
           <div class="place-item">
-            <span class="place-marker">1</span>
-            <div class="place-info">
-              <div class="place-header">
-                <span class="place-name">Ruinas de Pompeya</span>
-                <a href="https://maps.google.com/?q=Pompeii+Archaeological+Park" target="_blank" class="place-map-btn">
-                  Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                </a>
+            <div class="carousel card-carousel" data-interval="4800">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1504198453319-5ce911bafcde?auto=format&fit=crop&w=600&q=80" alt="Foro de Pompeya"></div>
               </div>
-              <p class="place-desc">Ciudad sepultada en el año 79 d.C. Recomiendo contratar un guía local oficial en la entrada (aprox €20-25 en grupo) para entender la historia.</p>
+              <div class="carousel-dots"></div>
             </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">1</span>
+                <span class="place-name">Foro de Pompeya</span>
+              </div>
+              <a href="https://maps.google.com/?q=Forum+of+Pompeii" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+            <p class="place-desc">El antiguo centro comercial y religioso de la ciudad. Con el monte Vesubio de fondo, es una foto imperdible.</p>
           </div>
+
           <div class="place-item">
-            <span class="place-marker">2</span>
-            <div class="place-info">
-              <div class="place-header">
-                <span class="place-name">Cráter del Monte Vesubio</span>
-                <a href="https://maps.google.com/?q=Mount+Vesuvius" target="_blank" class="place-map-btn">
-                  Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                </a>
+            <div class="carousel card-carousel" data-interval="5100">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?auto=format&fit=crop&w=600&q=80" alt="Teatro Pompeya"></div>
               </div>
-              <p class="place-desc">Caminata de 25 min cuesta arriba sobre ceniza volcánica (necesitas zapatos cerrados y ropa cómoda). Vistas impresionantes del cráter activo.</p>
+              <div class="carousel-dots"></div>
             </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">2</span>
+                <span class="place-name">Teatro Grande de Pompeya</span>
+              </div>
+              <a href="https://maps.google.com/?q=Teatro+Grande,+Pompeii" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+            <p class="place-desc">Teatro excavado en piedra para 5,000 espectadores. De una acústica asombrosa.</p>
+          </div>
+
+          <div class="place-item">
+            <div class="carousel card-carousel" data-interval="4600">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1525874684015-58379d421a52?auto=format&fit=crop&w=600&q=80" alt="Villa Misterios"></div>
+              </div>
+              <div class="carousel-dots"></div>
+            </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">3</span>
+                <span class="place-name">Villa de los Misterios</span>
+              </div>
+              <a href="https://maps.google.com/?q=Villa+dei+Misteri,+Pompeii" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+            <p class="place-desc">Palacio romano con frescos de fondo rojo hermosamente conservados que muestran antiguos rituales.</p>
+          </div>
+
+          <div class="place-item">
+            <div class="carousel card-carousel" data-interval="5300">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1601004890684-d8cbf643f5f2?auto=format&fit=crop&w=600&q=80" alt="Lupanar"></div>
+              </div>
+              <div class="carousel-dots"></div>
+            </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">4</span>
+                <span class="place-name">El Lupanar Antiguo</span>
+              </div>
+              <a href="https://maps.google.com/?q=Lupanar,+Pompeii" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+            <p class="place-desc">Antiguo burdel de Pompeya, decorado con frescos que ilustraban el menú de servicios.</p>
+          </div>
+
+          <div class="place-item">
+            <div class="carousel card-carousel" data-interval="4900">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1568515045052-f9a854d70bfd?auto=format&fit=crop&w=600&q=80" alt="Cráter Volcán"></div>
+              </div>
+              <div class="carousel-dots"></div>
+            </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">5</span>
+                <span class="place-name">El Cráter del Monte Vesubio</span>
+              </div>
+              <a href="https://maps.google.com/?q=Mount+Vesuvius,+Cratere" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+            <p class="place-desc">La ascensión a pie te llevará directo al borde del cráter del gigante dormido. Vistas espectaculares.</p>
+          </div>
+
+          <div class="place-item">
+            <div class="carousel card-carousel" data-interval="5400">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1569336415962-a4bd9f69cd83?auto=format&fit=crop&w=600&q=80" alt="Apolo Templo"></div>
+              </div>
+              <div class="carousel-dots"></div>
+            </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">6</span>
+                <span class="place-name">Templo de Apolo</span>
+              </div>
+              <a href="https://maps.google.com/?q=Temple+of+Apollo,+Pompeii" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+            <p class="place-desc">Uno de los santuarios más antiguos de la zona arqueológica, presidido por estatuas de bronce.</p>
           </div>
         </div>
 
@@ -1067,24 +1571,40 @@
       <div class="section-card">
         <h3 class="section-card-title" style="color: var(--accent-lemon);">
           <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M12 8l-4 4h8z"></path></svg>
-          Postre Recomendado
+          Gastronomía (De la vista nace el apetito)
         </h3>
         <div class="food-box">
           <span class="food-title">Dulce Campano</span>
-          <p>🍰 **Postre:** Sfogliatella (hojaldre dulce crujiente relleno de crema de sémola y requesón aromatizado con naranja) o un **Babà al rum** (bizcocho esponjoso borracho de licor de ron).</p>
+          <p>🍰 **Postre:** Hojaldre crujiente *Sfogliatella* o un *Babà al rum*.</p>
+          
+          <div class="carousel food-carousel" data-interval="4300">
+            <div class="carousel-track">
+              <div class="carousel-slide">
+                <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&w=600&q=80" alt="Sfogliatella">
+                <div class="carousel-overlay"></div>
+                <div class="carousel-caption">Sfogliatella Caliente</div>
+              </div>
+            </div>
+            <div class="carousel-dots"></div>
+          </div>
         </div>
       </div>
     </div>
 
     <!-- SECCIÓN: DÍA 6 (REGRESO A ROMA) -->
     <div id="day-6" class="day-section">
-      <div class="day-banner">
-        <img src="https://images.unsplash.com/photo-1542820229-081e0c12af0b?auto=format&fit=crop&w=800&q=80" alt="Regreso a Roma">
-        <div class="day-banner-overlay"></div>
-        <div class="day-banner-content">
-          <p class="day-label">11 Junio • Regreso</p>
-          <h2 class="day-title">Retorno a Roma</h2>
+      <div class="carousel day-banner" data-interval="4400">
+        <div class="carousel-track">
+          <div class="carousel-slide">
+            <img src="https://images.unsplash.com/photo-1542820229-081e0c12af0b?auto=format&fit=crop&w=600&q=80" alt="Roma Techos">
+            <div class="carousel-overlay"></div>
+            <div class="carousel-caption">
+              <p class="day-label">Cierre de Viaje</p>
+              <h2 class="day-title">Despedida en Roma</h2>
+            </div>
+          </div>
         </div>
+        <div class="carousel-dots"></div>
       </div>
 
       <div class="section-card">
@@ -1094,28 +1614,111 @@
         </h3>
         <div class="logistics-box">
           <span class="logistics-title">Sorrento ➔ Roma</span>
-          <p>1. Toma el tren **Circumvesuviana** o el **Campania Express** de Sorrento a Napoli Centrale (aprox 1 hora).</p>
-          <p>2. Transborda al tren de alta velocidad (**Italo** o **Frecciarossa**) rumbo a **Roma Termini** (1h 10m).</p>
+          <p>1. Tren **Campania Express** o regional Circumvesuviana a Napoli Centrale (1 hora).</p>
+          <p>2. Tren de alta velocidad a **Roma Termini** (1h 10m).</p>
+          <p>3. En Roma, usa la app **FreeNow** para pedir un taxi oficial blanco directo a tu Airbnb/hotel.</p>
         </div>
       </div>
 
       <div class="section-card">
         <h3 class="section-card-title" style="color: var(--accent-terracotta);">
           <svg viewBox="0 0 24 24"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon></svg>
-          Tarde de Despedida en Roma
+          Tarde de Despedida (5 Recomendados)
         </h3>
         <div class="place-list">
           <div class="place-item">
-            <span class="place-marker">📍</span>
-            <div class="place-info">
-              <div class="place-header">
-                <span class="place-name">Giardino degli Aranci</span>
-                <a href="https://maps.google.com/?q=Orange+Garden,+Rome" target="_blank" class="place-map-btn">
-                  Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
-                </a>
+            <div class="carousel card-carousel" data-interval="4900">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1542820229-081e0c12af0b?auto=format&fit=crop&w=600&q=80" alt="Jardín Naranjos"></div>
               </div>
-              <p class="place-desc">Hermoso y romántico jardín de naranjos con una vista panorámica espectacular de los tejados de Roma. Cerca puedes ver el "ojo de la cerradura" de la Orden de Malta para ver la cúpula de San Pedro perfectamente enmarcada.</p>
+              <div class="carousel-dots"></div>
             </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">1</span>
+                <span class="place-name">Giardino degli Aranci</span>
+              </div>
+              <a href="https://maps.google.com/?q=Orange+Garden,+Rome" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+            <p class="place-desc">Romántico jardín de naranjos sobre la colina del Aventino, con mirador inmejorable.</p>
+          </div>
+
+          <div class="place-item">
+            <div class="carousel card-carousel" data-interval="5200">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1531572753322-ad063cecc140?auto=format&fit=crop&w=600&q=80" alt="Cerradura de Malta"></div>
+              </div>
+              <div class="carousel-dots"></div>
+            </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">2</span>
+                <span class="place-name">Cerradura de los Caballeros de Malta</span>
+              </div>
+              <a href="https://maps.google.com/?q=Keyhole+Aventine+Hill,+Rome" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+            <p class="place-desc">Asómate por el ojo de la cerradura para ver la cúpula del Vaticano enmarcada de forma natural.</p>
+          </div>
+
+          <div class="place-item">
+            <div class="carousel card-carousel" data-interval="4600">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1542820229-081e0c12af0b?auto=format&fit=crop&w=600&q=80" alt="Castillo SantAngelo"></div>
+              </div>
+              <div class="carousel-dots"></div>
+            </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">3</span>
+                <span class="place-name">Castel Sant'Angelo</span>
+              </div>
+              <a href="https://maps.google.com/?q=Castel+Sant'Angelo,+Rome" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+            <p class="place-desc">La fortificación histórica a orillas del Tíber, ideal para caminar al atardecer por su puente.</p>
+          </div>
+
+          <div class="place-item">
+            <div class="carousel card-carousel" data-interval="5300">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1515542690876-879e0a5ea2ed?auto=format&fit=crop&w=600&q=80" alt="Trastevere Calles"></div>
+              </div>
+              <div class="carousel-dots"></div>
+            </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">4</span>
+                <span class="place-name">Barrio de Trastevere</span>
+              </div>
+              <a href="https://maps.google.com/?q=Trastevere,+Rome" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+            <p class="place-desc">Callejones de adoquines cubiertos de hiedra y un ambiente gastronómico romano sin comparación.</p>
+          </div>
+
+          <div class="place-item">
+            <div class="carousel card-carousel" data-interval="4800">
+              <div class="carousel-track">
+                <div class="carousel-slide"><img src="https://images.unsplash.com/photo-1529260830199-445881452368?auto=format&fit=crop&w=600&q=80" alt="Piazza Navona"></div>
+              </div>
+              <div class="carousel-dots"></div>
+            </div>
+            <div class="place-header">
+              <div class="place-name-wrapper">
+                <span class="place-marker">5</span>
+                <span class="place-name">Piazza Navona</span>
+              </div>
+              <a href="https://maps.google.com/?q=Piazza+Navona,+Rome" target="_blank" class="place-map-btn">
+                Mapa <svg viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"></path><polyline points="15 3 21 3 21 9"></polyline><line x1="10" y1="14" x2="21" y2="3"></line></svg>
+              </a>
+            </div>
+            <p class="place-desc">Gran plaza barroca de tres fuentes monumentales rodeada de artistas y cafeterías urbanas.</p>
           </div>
         </div>
       </div>
@@ -1174,11 +1777,9 @@
       // Actualizar estado activo en la barra superior de botones
       const tabButtons = document.querySelectorAll('.tab-btn');
       tabButtons.forEach((btn, index) => {
-        // Mapeo índice de botón a día
         const dayMap = [1, 3, 4, 5, 6];
         if (dayMap[index] === dayNum) {
           btn.classList.add('active');
-          // Centrar el botón activo en el scroller si es móvil
           btn.scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
         } else {
           btn.classList.remove('active');
@@ -1195,7 +1796,128 @@
 
       // Scroll arriba al cambiar de pestaña
       window.scrollTo({ top: 0, behavior: 'smooth' });
+
+      // Reiniciar y recalcular carruseles visibles
+      setTimeout(() => {
+        window.dispatchEvent(new Event('resize'));
+      }, 100);
     }
+
+    // Clase para controlar los Carruseles de Fotos
+    class SlideShow {
+      constructor(element) {
+        this.carousel = element;
+        this.track = element.querySelector('.carousel-track');
+        this.slides = Array.from(element.querySelectorAll('.carousel-slide'));
+        this.dotsContainer = element.querySelector('.carousel-dots');
+        this.currentIndex = 0;
+        this.timer = null;
+        this.startX = 0;
+        this.endX = 0;
+
+        // Leer intervalo personalizado o dar uno aleatorio entre 3.8s y 5.5s para escalonar
+        const defaultInterval = 3800 + Math.floor(Math.random() * 1700);
+        this.intervalTime = parseInt(element.getAttribute('data-interval')) || defaultInterval;
+
+        this.init();
+      }
+
+      init() {
+        if (this.slides.length <= 1) return;
+
+        // Crear botones de indicador (dots) si el contenedor existe y está vacío
+        if (this.dotsContainer && this.dotsContainer.children.length === 0) {
+          this.slides.forEach((_, idx) => {
+            const dot = document.createElement('span');
+            dot.className = `carousel-dot ${idx === 0 ? 'active' : ''}`;
+            dot.addEventListener('click', (e) => {
+              e.stopPropagation();
+              this.goTo(idx);
+            });
+            this.dotsContainer.appendChild(dot);
+          });
+        }
+        this.dots = Array.from(this.carousel.querySelectorAll('.carousel-dot'));
+
+        // Arrancar rotación automática
+        this.startAutoPlay();
+
+        // Soporte de gestos táctiles (Swipe) para smartphones
+        this.carousel.addEventListener('touchstart', (e) => {
+          this.startX = e.touches[0].clientX;
+          this.pauseAutoPlay();
+        }, { passive: true });
+
+        this.carousel.addEventListener('touchend', (e) => {
+          this.endX = e.changedTouches[0].clientX;
+          this.handleSwipe();
+          this.startAutoPlay();
+        }, { passive: true });
+
+        // Pausar al pasar el ratón (desktop)
+        this.carousel.addEventListener('mouseenter', () => this.pauseAutoPlay());
+        this.carousel.addEventListener('mouseleave', () => this.startAutoPlay());
+      }
+
+      goTo(index) {
+        this.currentIndex = index;
+        if (this.currentIndex >= this.slides.length) this.currentIndex = 0;
+        if (this.currentIndex < 0) this.currentIndex = this.slides.length - 1;
+
+        // Desplazar el track de fotos
+        this.track.style.transform = `translateX(-${this.currentIndex * 100}%)`;
+
+        // Actualizar dots
+        if (this.dots) {
+          this.dots.forEach((dot, idx) => {
+            if (idx === this.currentIndex) {
+              dot.classList.add('active');
+            } else {
+              dot.classList.remove('active');
+            }
+          });
+        }
+      }
+
+      next() {
+        this.goTo(this.currentIndex + 1);
+      }
+
+      prev() {
+        this.goTo(this.currentIndex - 1);
+      }
+
+      startAutoPlay() {
+        this.pauseAutoPlay();
+        this.timer = setInterval(() => this.next(), this.intervalTime);
+      }
+
+      pauseAutoPlay() {
+        if (this.timer) {
+          clearInterval(this.timer);
+          this.timer = null;
+        }
+      }
+
+      handleSwipe() {
+        const diff = this.startX - this.endX;
+        const threshold = 35; // Distancia mínima para swipe
+        if (Math.abs(diff) > threshold) {
+          if (diff > 0) {
+            this.next(); // swipe izquierda
+          } else {
+            this.prev(); // swipe derecha
+          }
+        }
+      }
+    }
+
+    // Inicializar carruseles al cargar el DOM
+    document.addEventListener('DOMContentLoaded', () => {
+      document.querySelectorAll('.carousel').forEach(el => {
+        new SlideShow(el);
+      });
+    });
   </script>
 </body>
 </html>
