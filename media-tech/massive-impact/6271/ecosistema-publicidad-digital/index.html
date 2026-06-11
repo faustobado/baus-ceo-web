@@ -2243,18 +2243,18 @@
         </div>
 
         <div class="sim-selector">
-          <button class="sim-btn active" onclick="loadSimProfile('cpg')">
+          <button class="sim-btn active" onclick="loadSimProfile('cpg', event)">
             CPG (Consumo Masivo) & Retail
           </button>
-          <button class="sim-btn" onclick="loadSimProfile('dtc')">
+          <button class="sim-btn" onclick="loadSimProfile('dtc', event)">
             DTC (Venta Directa) / E-commerce
           </button>
-          <button class="sim-btn" onclick="loadSimProfile('b2b')">
+          <button class="sim-btn" onclick="loadSimProfile('b2b', event)">
             Servicios Corporativos B2B
           </button>
           <button
             class="sim-btn massive-impact-btn-glow"
-            onclick="loadSimProfile('massive-impact')"
+            onclick="loadSimProfile('massive-impact', event)"
           >
             Massive Impact Unified Stack
           </button>
@@ -2902,11 +2902,17 @@
       };
 
       // CARGAR PERFIL DEL SIMULADOR
-      function loadSimProfile(profileKey) {
+      function loadSimProfile(profileKey, evt) {
         // Activar botón del selector
         const buttons = document.querySelectorAll(".sim-btn");
         buttons.forEach((btn) => btn.classList.remove("active"));
-        event.currentTarget.classList.add("active");
+        
+        if (evt && evt.currentTarget) {
+          evt.currentTarget.classList.add("active");
+        } else {
+          const btn = Array.from(buttons).find(b => b.getAttribute('onclick') && b.getAttribute('onclick').includes(`'${profileKey}'`));
+          if (btn) btn.classList.add("active");
+        }
 
         const data = simProfiles[profileKey];
         const container = document.getElementById("diagram-row");
