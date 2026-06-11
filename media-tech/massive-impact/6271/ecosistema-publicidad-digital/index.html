@@ -39,6 +39,14 @@
         --spacing-base: 8px;
       }
 
+      html {
+        scroll-behavior: smooth;
+      }
+
+      section {
+        scroll-margin-top: 100px;
+      }
+
       * {
         box-sizing: border-box;
         margin: 0;
@@ -107,6 +115,8 @@
         display: flex;
         align-items: center;
         gap: calc(var(--spacing-base) * 1.5);
+        text-decoration: none;
+        cursor: pointer;
       }
 
       .nav-logo span {
@@ -137,6 +147,12 @@
 
       .nav-links a:hover {
         color: #fff;
+      }
+
+      .nav-links a.active {
+        color: #fff;
+        border-bottom: 2px solid var(--accent-violet);
+        padding-bottom: 4px;
       }
 
       /* HEADER */
@@ -916,7 +932,7 @@
     <div class="container">
       <!-- Barra de Navegación -->
       <nav class="navbar animate-fade-up">
-        <div class="nav-logo">
+        <a href="#" class="nav-logo">
           <svg
             class="icon-svg"
             style="color: var(--accent-violet)"
@@ -925,7 +941,7 @@
             <path d="M12 2L2 22h20L12 2zm0 3.99L19.53 19H4.47L12 5.99z" />
           </svg>
           <span>Cockpit AdTech (Tecnología Publicitaria)</span>
-        </div>
+        </a>
         <ul class="nav-links">
           <li><a href="#visual-funnel">El Funnel (Embudo)</a></li>
           <li><a href="#6-verticals">Verticales y Plataformas</a></li>
@@ -2983,6 +2999,49 @@
           }
         });
       }
+
+      // NAVEGACIÓN ACTIVA Y TRÁNSITO
+      const navLinks = document.querySelectorAll(".nav-links a");
+      const sections = document.querySelectorAll("section");
+
+      // Función para actualizar el link activo
+      function updateActiveNav(activeId) {
+        navLinks.forEach((link) => {
+          link.classList.remove("active");
+          if (link.getAttribute("href") === `#${activeId}`) {
+            link.classList.add("active");
+          }
+        });
+      }
+
+      // 1. Manejo de clicks en links de navegación
+      navLinks.forEach((link) => {
+        link.addEventListener("click", (e) => {
+          const targetId = link.getAttribute("href").substring(1);
+          updateActiveNav(targetId);
+        });
+      });
+
+      // 2. Manejo de scroll para actualizar nav activo dinámicamente
+      window.addEventListener("scroll", () => {
+        let currentSectionId = "";
+        const scrollPosition = window.scrollY + 150; // Offset para mayor naturalidad
+
+        sections.forEach((section) => {
+          const sectionTop = section.offsetTop;
+          const sectionHeight = section.offsetHeight;
+          if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            currentSectionId = section.getAttribute("id");
+          }
+        });
+
+        if (currentSectionId) {
+          updateActiveNav(currentSectionId);
+        } else if (window.scrollY < 100) {
+          // Si estamos al tope de la página
+          navLinks.forEach((link) => link.classList.remove("active"));
+        }
+      });
 
       // Inicializar simulador en CPG por defecto
       window.onload = function () {
