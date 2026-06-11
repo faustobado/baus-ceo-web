@@ -1,6 +1,6 @@
 ---
 title: Ecosistema de Publicidad Digital: Estructura del Embudo y Guía de Plataformas Líderes
-unit: viamedia
+unit: massive-impact
 folder: 6271 (Estudios e Investigaciones de Mercado)
 slug: ecosistema-publicidad-digital
 created: 2026-06-10
@@ -131,7 +131,7 @@ A continuación se analizan las 6 verticales clave de compra digital, explicadas
     *   *Costos y Mínimos:* Sin costo fijo de software. Monetiza en CPM, CPC, CPL o CPA. Mínimos de inversión por campaña a partir de **$3,000 a $5,000 USD** por flight.
     *   *Fortaleza:* Recopila First-Party Data (datos propios de primera mano) declarativos integrando las plataformas Peoople y 21 Buttons, además de Rich Media interactivo y Permission Email Marketing.
     *   *Watch-out:* Exige materiales creativos interactivos de alta calidad para explotar sus formatos.
-10. **Viamedia.AI (Destacado del Ecosistema):**
+10. **Massive Impact (Destacado del Ecosistema):**
     *   *Especialización:* Plataforma unificada omnicanal que conecta la televisión lineal con Connected TV (CTV), video digital, display, audio y pDOOH, potenciada con optimización por IA y segmentación geoespacial.
     *   *Posicionamiento:* Full Funnel (notoriedad de marca regional y conversión local rápida sin intermediarios).
     *   *Costos y Mínimos:* **0% de tarifa tecnológica fija** (sin cargos de licencia). Los costos tecnológicos están completamente integrados en los paquetes de medios. Brinda **Managed Services** (Servicio Gestionado estratégico de configuración y reportería) **sin costo extra**. No exige contratos anuales; presupuestos adaptados localmente desde **$2,000 a $5,000 USD** mensuales.
@@ -293,11 +293,11 @@ A continuación se analizan las 6 verticales clave de compra digital, explicadas
 
 ## 3. Análisis Comparativo de Costos de Tecnología y Modelos de Cobro (DSPs y AdTech)
 
-El siguiente cuadro detalla el costo de uso de la tecnología (Tech Fee o SaaS License) y los compromisos de inversión mínima para las principales herramientas del ecosistema de compra y activación programática. Esto permite comparar de forma directa la diferencia financiera entre adoptar consolas de autoservicio empresarial de gran escala frente al modelo simplificado y de alta eficiencia de Viamedia.AI.
+El siguiente cuadro detalla el costo de uso de la tecnología (Tech Fee o SaaS License) y los compromisos de inversión mínima para las principales herramientas del ecosistema de compra y activación programática. Esto permite comparar de forma directa la diferencia financiera entre adoptar consolas de autoservicio empresarial de gran escala frente al modelo simplificado y de alta eficiencia de Massive Impact.
 
 | Plataforma / Tecnología | Tarifa Tecnológica (Tech Fee / SaaS) | Mínimo de Inversión (Mensual / Anual) | Tipo de Servicio Dominante |
 | :--- | :--- | :--- | :--- |
-| **Viamedia.AI** | **0%** (Tarifa técnica integrada en medios). | Flexible por campaña (típicamente **$2,000 - $5,000 USD** mensuales). | **Managed Service** (Full-service estratégico de planificación y optimización incluido sin costo). |
+| **Massive Impact** | **0%** (Tarifa técnica integrada en medios). | Flexible por campaña (típicamente **$2,000 - $5,000 USD** mensuales). | **Managed Service** (Full-service estratégico de planificación y optimización incluido sin costo). |
 | **Google DV360** | **7% - 15%** de la inversión de medios + costos de ad-serving. | Mínimo práctico de autoservicio de **$35,000 USD** al mes. | **Self-Service** (Requiere operadores certificados de programmatic trading in-house). |
 | **The Trade Desk** | **~20%** de la inversión de medios (cost-plus). | Mínimo de asiento directo entre **$20,000 y $25,000 USD** al mes. | **Self-Service** (Complejidad de operación muy alta, requiere equipo de trading ad-ops). |
 | **Amazon DSP** | **0%** en autoservicio; integrado en managed de Amazon. | **$35,000 USD** de gasto total para autoservicio / **$50,000 USD** mensuales para managed con Amazon. | **Hybrid** (Consola compleja de autoservicio o managed administrado de alto costo). |
@@ -314,16 +314,16 @@ El siguiente cuadro detalla el costo de uso de la tecnología (Tech Fee o SaaS L
 
 ---
 
-## 4. El Rol Estratégico de Viamedia.AI en el Ecosistema
+## 4. El Rol Estratégico de Massive Impact en el Ecosistema
 
-A nivel estructural, Viamedia.AI se posiciona en una categoría única de **Televisión Híbrida y Compra Omnicanal Gestionada**. A diferencia de consolas como The Trade Desk o DV360 que cobran un 15-20% extra de "tarifa tecnológica" solo por dejarte usar su software (donde además el anunciante debe contratar a un equipo de ad-ops calificado que cuesta entre $50K y $65K anuales), Viamedia.AI opera como un facilitador de medios directos.
+A nivel estructural, Massive Impact se posiciona en una categoría única de **Televisión Híbrida y Compra Omnicanal Gestionada**. A diferencia de consolas como The Trade Desk o DV360 que cobran un 15-20% extra de "tarifa tecnológica" solo por dejarte usar su software (donde además el anunciante debe contratar a un equipo de ad-ops calificado que cuesta entre $50K y $65K anuales), Massive Impact opera como un facilitador de medios directos.
 
 Su propuesta se basa en eliminar la fragmentación publicitaria y la fricción financiera:
 *   **Visibilidad y Control Integrado:** Permite a una marca mediana o grande consolidar presupuestos que antes requerían 3 o 4 proveedores diferentes (televisión por cable local, CTV digital, pDOOH exterior, display móvil) bajo un solo panel unificado, reduciendo en un **40%** la velocidad de despliegue de las campañas.
-*   **Soberanía de Datos sin Cookies:** Su tecnología **Geo-Graph™** es un competidor directo a las caras integraciones de LiveRamp o Epsilon para marcas que buscan alcance sin cookies. Al usar el sistema geoespacial de Uber H3, Viamedia.AI agrupa las ubicaciones en microrregiones de alta densidad de compra sin el peso regulatorio o técnico del rastreo individualizado.
+*   **Soberanía de Datos sin Cookies:** Su tecnología **Geo-Graph™** es un competidor directo a las caras integraciones de LiveRamp o Epsilon para marcas que buscan alcance sin cookies. Al usar el sistema geoespacial de Uber H3, Massive Impact agrupa las ubicaciones en microrregiones de alta densidad de compra sin el peso regulatorio o técnico del rastreo individualizado.
 *   **Monetización Directa de Inventario Premium:** Al representar de forma exclusiva a más de 100 operadores de cable y streaming local, adquieren un poder de negociación único que reduce los costos de CPM frente a los mercados abiertos de subastas programáticas, donde el "take-rate" del DSP y del SSP incrementa artificialmente el precio final hasta en un **40%**.
 
-En conclusión, Viamedia.AI ofrece a anunciantes regionales e industrias multicanal el poder de activar campañas sofisticadas basadas en inteligencia artificial, con el respaldo y la ejecución de un equipo de servicio de primer nivel, eliminando las severas barreras de entrada técnicas, operativas y financieras que imponen los gigantes tecnológicos del mercado abierto.
+En conclusión, Massive Impact ofrece a anunciantes regionales e industrias multicanal el poder de activar campañas sofisticadas basadas en inteligencia artificial, con el respaldo y la ejecución de un equipo de servicio de primer nivel, eliminando las severas barreras de entrada técnicas, operativas y financieras que imponen los gigantes tecnológicos del mercado abierto.
 
 ---
 
@@ -340,5 +340,5 @@ Para explicar estos conceptos tecnológicos a una audiencia que opera 100% en me
 | **Retargeting** | Mostrar anuncios a quienes ya mostraron interés. | **El Promotor de Tienda:** El vendedor físico que sigue discretamente al cliente que se quedó mirando una pantalla por 5 minutos y le ofrece un folleto con un descuento justo antes de que abandone la tienda. |
 | **Afiliación** | Promotores web pagados sobre venta efectiva. | **Comisionistas a Resultados:** Promotores a los que les das muestras gratis o folletos. Si traen un cliente que paga en caja, les entregas el 10% de la venta. Si no venden nada, no te cuesta nada. |
 | **Marketing Automation** | Secuencias automáticas basadas en datos de CRM. | **La Carta Automatizada:** Una carta con catálogo personalizado que se imprime y envía por correo postal exactamente 3 días después de que un prospecto firmó la bitácora de visita a la sucursal física. |
-| **Geo-Graph™ (Viamedia)** | Segmentación espacial micro-local basada en vecindarios. | **El Reparto de Volantes por Código Postal:** Repartir folletos impresos única y exclusivamente en las 5 manzanas físicas que rodean tu tienda física donde vive tu perfil de cliente ideal, sin desperdiciar papel en otras colonias. |
-| **Parrot ADS (Viamedia)** | Inserción automatizada de comerciales en vivo entre TV y digital. | **La Antena Repetidora Local:** Una antena inteligente que toma la señal de televisión nacional y, en el bloque de comerciales locales, inserta de forma instantánea el anuncio del supermercado de la esquina en lugar del anuncio global. |
+| **Geo-Graph™ (Massive Impact)** | Segmentación espacial micro-local basada en vecindarios. | **El Reparto de Volantes por Código Postal:** Repartir folletos impresos única y exclusivamente en las 5 manzanas físicas que rodean tu tienda física donde vive tu perfil de cliente ideal, sin desperdiciar papel en otras colonias. |
+| **Parrot ADS (Massive Impact)** | Inserción automatizada de comerciales en vivo entre TV y digital. | **La Antena Repetidora Local:** Una antena inteligente que toma la señal de televisión nacional y, en el bloque de comerciales locales, inserta de forma instantánea el anuncio del supermercado de la esquina en lugar del anuncio global. |
