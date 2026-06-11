@@ -1,0 +1,2992 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ecosistema Publicitario Digital — Cockpit Ejecutivo BAUS</title>
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      /* VARIABLES Y PALETA DE COLORES MAESTRA */
+      :root {
+        --bg-dark: #080c14;
+        --bg-card: rgba(13, 20, 35, 0.75);
+        --bg-card-hover: rgba(20, 30, 55, 0.9);
+        --border-color: rgba(255, 255, 255, 0.07);
+        --border-glow: rgba(99, 102, 241, 0.25);
+        --text-primary: #f8fafc;
+        --text-secondary: #94a3b8;
+
+        --accent-violet: #6366f1;
+        --accent-violet-glow: rgba(99, 102, 241, 0.15);
+        --accent-teal: #0ea5e9;
+        --accent-teal-glow: rgba(14, 165, 233, 0.15);
+        --accent-emerald: #10b981;
+        --accent-emerald-glow: rgba(16, 185, 129, 0.15);
+        --accent-gold: #f59e0b;
+        --accent-gold-glow: rgba(245, 158, 11, 0.15);
+
+        --funnel-upper: #0ea5e9;
+        --funnel-mid: #6366f1;
+        --funnel-lower: #10b981;
+
+        --spacing-base: 8px;
+      }
+
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      body {
+        font-family: "Inter", sans-serif;
+        background-color: var(--bg-dark);
+        background-image:
+          radial-gradient(
+            at 0% 0%,
+            rgba(99, 102, 241, 0.1) 0px,
+            transparent 40%
+          ),
+          radial-gradient(
+            at 100% 0%,
+            rgba(14, 165, 233, 0.08) 0px,
+            transparent 40%
+          ),
+          radial-gradient(
+            at 50% 100%,
+            rgba(16, 185, 129, 0.06) 0px,
+            transparent 40%
+          );
+        background-attachment: fixed;
+        color: var(--text-primary);
+        line-height: 1.6;
+        padding: calc(var(--spacing-base) * 4) calc(var(--spacing-base) * 2);
+        -webkit-font-smoothing: antialiased;
+      }
+
+      h1,
+      h2,
+      h3,
+      h4,
+      .outfit-font {
+        font-family: "Outfit", sans-serif;
+        font-weight: 700;
+        letter-spacing: -0.02em;
+      }
+
+      .container {
+        max-width: 1280px;
+        margin: 0 auto;
+      }
+
+      /* BARRA DE NAVEGACION FLOTANTE */
+      nav.navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: rgba(13, 20, 35, 0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        border: 1px solid var(--border-color);
+        padding: calc(var(--spacing-base) * 2) calc(var(--spacing-base) * 4);
+        border-radius: 9999px;
+        margin-bottom: calc(var(--spacing-base) * 4);
+        position: sticky;
+        top: 16px;
+        z-index: 100;
+      }
+
+      .nav-logo {
+        display: flex;
+        align-items: center;
+        gap: calc(var(--spacing-base) * 1.5);
+      }
+
+      .nav-logo span {
+        font-size: 1.1rem;
+        font-weight: 800;
+        letter-spacing: 0.05em;
+        text-transform: uppercase;
+        background: linear-gradient(to right, #fff, #94a3b8);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: calc(var(--spacing-base) * 3);
+        list-style: none;
+      }
+
+      .nav-links a {
+        color: var(--text-secondary);
+        text-decoration: none;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        transition: color 0.2s ease;
+      }
+
+      .nav-links a:hover {
+        color: #fff;
+      }
+
+      /* HEADER */
+      header {
+        margin-bottom: calc(var(--spacing-base) * 5);
+        text-align: center;
+        padding: calc(var(--spacing-base) * 4) 0;
+        position: relative;
+      }
+
+      .brand-tag {
+        display: inline-flex;
+        background: rgba(99, 102, 241, 0.08);
+        border: 1px solid rgba(99, 102, 241, 0.25);
+        color: var(--accent-violet);
+        padding: 6px 14px;
+        border-radius: 9999px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+        margin-bottom: calc(var(--spacing-base) * 2);
+      }
+
+      header h1 {
+        font-size: 3rem;
+        background: linear-gradient(to right, #ffffff, #cbd5e1);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: calc(var(--spacing-base) * 1.5);
+      }
+
+      header p {
+        color: var(--text-secondary);
+        font-size: 1.15rem;
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      /* GRID PRINCIPAL: FUNNEL VISUAL & DETALLES */
+      .dashboard-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: calc(var(--spacing-base) * 4);
+        margin-bottom: calc(var(--spacing-base) * 6);
+      }
+
+      @media (min-width: 992px) {
+        .dashboard-grid {
+          grid-template-columns: 450px 1fr;
+        }
+      }
+
+      /* PANEL DEL EMBUDO INTERACTIVO */
+      .funnel-panel {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        padding: calc(var(--spacing-base) * 4);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .funnel-panel h3 {
+        font-size: 1.25rem;
+        margin-bottom: calc(var(--spacing-base) * 3);
+        text-align: center;
+      }
+
+      .funnel-svg-container {
+        width: 100%;
+        max-width: 320px;
+        margin: 0 auto;
+      }
+
+      /* Estilos del embudo SVG interactivo */
+      .funnel-stage {
+        cursor: pointer;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        fill-opacity: 0.75;
+        stroke: var(--border-color);
+        stroke-width: 2;
+      }
+
+      .funnel-stage:hover {
+        fill-opacity: 0.95;
+        filter: drop-shadow(0 0 12px var(--stage-color));
+        transform: scale(1.02);
+        transform-origin: center;
+      }
+
+      .funnel-stage.active {
+        fill-opacity: 1;
+        stroke: #fff;
+        stroke-width: 3;
+        filter: drop-shadow(0 0 16px var(--stage-color));
+      }
+
+      .stage-text {
+        font-family: "Outfit", sans-serif;
+        font-weight: 700;
+        fill: #ffffff;
+        font-size: 11px;
+        pointer-events: none;
+        letter-spacing: 0.05em;
+      }
+
+      /* PANEL DETALLES DEL EMBUDO SELECCIONADO */
+      .stage-details-panel {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        padding: calc(var(--spacing-base) * 4);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        min-height: 450px;
+      }
+
+      .stage-details-header {
+        border-bottom: 1px solid var(--border-color);
+        padding-bottom: calc(var(--spacing-base) * 2);
+        margin-bottom: calc(var(--spacing-base) * 3);
+      }
+
+      .details-badge {
+        display: inline-block;
+        padding: 4px 10px;
+        border-radius: 4px;
+        font-size: 0.75rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: calc(var(--spacing-base) * 1);
+      }
+
+      .stage-details-header h2 {
+        font-size: 2rem;
+      }
+
+      .stage-description {
+        color: var(--text-secondary);
+        font-size: 1rem;
+        margin-bottom: calc(var(--spacing-base) * 3);
+      }
+
+      .funnel-attributes {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: calc(var(--spacing-base) * 2);
+        margin-bottom: calc(var(--spacing-base) * 3);
+      }
+
+      .attribute-box {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border-color);
+        padding: calc(var(--spacing-base) * 2);
+        border-radius: 12px;
+      }
+
+      .attribute-label {
+        font-size: 0.7rem;
+        text-transform: uppercase;
+        color: var(--text-secondary);
+        letter-spacing: 0.05em;
+        margin-bottom: 4px;
+      }
+
+      .attribute-value {
+        font-family: "Outfit", sans-serif;
+        font-size: 1.25rem;
+        font-weight: 700;
+      }
+
+      .channel-chips {
+        margin-bottom: calc(var(--spacing-base) * 2);
+      }
+
+      .channel-chips h4 {
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        color: var(--text-secondary);
+        margin-bottom: calc(var(--spacing-base) * 1.5);
+      }
+
+      .chip-container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: calc(var(--spacing-base) * 1);
+      }
+
+      .chip {
+        background: rgba(255, 255, 255, 0.05);
+        border: 1px solid var(--border-color);
+        padding: 6px 12px;
+        border-radius: 8px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      /* SECCION VERTICALES Y PLATAFORMAS */
+      .verticals-section {
+        margin-bottom: calc(var(--spacing-base) * 6);
+      }
+
+      .section-title {
+        font-size: 2rem;
+        margin-bottom: calc(var(--spacing-base) * 4);
+        display: flex;
+        align-items: center;
+        gap: 16px;
+      }
+
+      .verticals-nav {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: calc(var(--spacing-base) * 1.5);
+        margin-bottom: calc(var(--spacing-base) * 4);
+      }
+
+      @media (min-width: 992px) {
+        .verticals-nav {
+          grid-template-columns: repeat(6, 1fr);
+        }
+      }
+
+      .v-tab-btn {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        color: var(--text-secondary);
+        padding: calc(var(--spacing-base) * 2) calc(var(--spacing-base) * 1.5);
+        border-radius: 14px;
+        cursor: pointer;
+        font-family: "Outfit", sans-serif;
+        font-size: 0.85rem;
+        font-weight: 600;
+        text-align: center;
+        transition: all 0.25s ease;
+        min-height: 60px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .v-tab-btn:hover {
+        background: rgba(255, 255, 255, 0.05);
+        color: #fff;
+      }
+
+      .v-tab-btn.active {
+        background: var(--accent-violet-glow);
+        border-color: var(--accent-violet);
+        color: #fff;
+        box-shadow: 0 0 20px var(--accent-violet-glow);
+      }
+
+      .vertical-content {
+        display: none;
+        animation: fadeUp 0.5s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      }
+
+      .vertical-content.active {
+        display: block;
+      }
+
+      .v-intro {
+        background: rgba(255, 255, 255, 0.02);
+        border-left: 3px solid var(--accent-violet);
+        padding: calc(var(--spacing-base) * 2) calc(var(--spacing-base) * 3);
+        border-radius: 0 10px 10px 0;
+        margin-bottom: calc(var(--spacing-base) * 4);
+        color: var(--text-secondary);
+      }
+
+      /* TARJETAS DE PLATAFORMAS (GRID) */
+      .cards-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: calc(var(--spacing-base) * 3);
+      }
+
+      @media (min-width: 992px) {
+        .cards-grid {
+          grid-template-columns: repeat(5, 1fr);
+        }
+        .cards-grid.has-6 {
+          grid-template-columns: repeat(6, 1fr);
+        }
+      }
+
+      .company-card {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        padding: calc(var(--spacing-base) * 3);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        position: relative;
+      }
+
+      .company-card:hover {
+        transform: translateY(-6px);
+        border-color: rgba(99, 102, 241, 0.35);
+        box-shadow: 0 20px 40px -15px rgba(99, 102, 241, 0.2);
+      }
+
+      /* Tarjeta destacada Viamedia.AI */
+      .company-card.featured-viamedia {
+        background: linear-gradient(
+          135deg,
+          rgba(13, 20, 35, 0.95) 0%,
+          rgba(99, 102, 241, 0.08) 100%
+        );
+        border: 2px solid var(--accent-violet);
+        box-shadow: 0 10px 30px rgba(99, 102, 241, 0.15);
+      }
+
+      .company-card.featured-viamedia:hover {
+        border-color: #818cf8;
+        box-shadow: 0 20px 40px -10px rgba(99, 102, 241, 0.3);
+      }
+
+      .card-top {
+        margin-bottom: calc(var(--spacing-base) * 2);
+      }
+
+      .card-num {
+        font-size: 0.7rem;
+        font-weight: 700;
+        color: var(--accent-teal);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+      }
+
+      .featured-viamedia .card-num {
+        color: var(--accent-gold);
+      }
+
+      .card-name {
+        font-size: 1.35rem;
+        font-weight: 700;
+        color: #fff;
+      }
+
+      .card-sub {
+        font-size: 0.75rem;
+        background: rgba(255, 255, 255, 0.05);
+        border-radius: 4px;
+        padding: 2px 6px;
+        display: inline-block;
+        margin-top: 4px;
+        color: var(--text-secondary);
+      }
+
+      .featured-viamedia .card-sub {
+        background: rgba(99, 102, 241, 0.2);
+        color: #fff;
+      }
+
+      .card-desc {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        margin-bottom: calc(var(--spacing-base) * 3);
+      }
+
+      .card-meta {
+        border-top: 1px solid rgba(255, 255, 255, 0.05);
+        padding-top: calc(var(--spacing-base) * 2);
+      }
+
+      .meta-row {
+        margin-bottom: 10px;
+      }
+
+      .meta-row:last-child {
+        margin-bottom: 0;
+      }
+
+      .meta-title {
+        font-size: 0.65rem;
+        text-transform: uppercase;
+        font-weight: 700;
+        color: var(--text-secondary);
+        letter-spacing: 0.05em;
+      }
+
+      .meta-value {
+        font-size: 0.8rem;
+        color: #fff;
+        font-weight: 500;
+      }
+
+      /* SECCION DE COMPARATIVA DE COSTOS ADTECH (TABLA) */
+      .costs-section {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        padding: calc(var(--spacing-base) * 4);
+        margin-bottom: calc(var(--spacing-base) * 6);
+      }
+
+      .costs-table-wrapper {
+        overflow-x: auto;
+        margin-top: calc(var(--spacing-base) * 3);
+      }
+
+      .costs-table {
+        width: 100%;
+        border-collapse: collapse;
+        text-align: left;
+        font-size: 0.9rem;
+      }
+
+      .costs-table th {
+        padding: calc(var(--spacing-base) * 2);
+        border-bottom: 2px solid var(--border-color);
+        color: var(--text-secondary);
+        font-family: "Outfit", sans-serif;
+        font-weight: 600;
+        text-transform: uppercase;
+        font-size: 0.75rem;
+        letter-spacing: 0.05em;
+      }
+
+      .costs-table td {
+        padding: calc(var(--spacing-base) * 2.5) calc(var(--spacing-base) * 2);
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .costs-table tr.highlight-row {
+        background: rgba(99, 102, 241, 0.06);
+        border: 1px solid var(--accent-violet);
+      }
+
+      .costs-table tr.highlight-row td {
+        font-weight: 600;
+        border-bottom: 1px solid rgba(99, 102, 241, 0.2);
+      }
+
+      /* SECCION SIMULADOR DE FLUJO OMNICANAL (WOW FACTOR) */
+      .simulator-section {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 24px;
+        padding: calc(var(--spacing-base) * 4);
+        margin-bottom: calc(var(--spacing-base) * 6);
+      }
+
+      .sim-header {
+        text-align: center;
+        margin-bottom: calc(var(--spacing-base) * 4);
+      }
+
+      .sim-header h2 {
+        font-size: 2rem;
+        margin-bottom: 8px;
+      }
+
+      .sim-selector {
+        display: flex;
+        justify-content: center;
+        flex-wrap: wrap;
+        gap: calc(var(--spacing-base) * 2);
+        margin-bottom: calc(var(--spacing-base) * 4);
+      }
+
+      .sim-btn {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border-color);
+        color: var(--text-secondary);
+        padding: 12px 24px;
+        border-radius: 12px;
+        cursor: pointer;
+        font-family: "Outfit", sans-serif;
+        font-size: 0.95rem;
+        font-weight: 600;
+        transition: all 0.2s ease;
+      }
+
+      .sim-btn:hover {
+        background: rgba(255, 255, 255, 0.07);
+        color: #fff;
+      }
+
+      .sim-btn.active {
+        background: var(--accent-teal-glow);
+        border-color: var(--accent-teal);
+        color: #fff;
+        box-shadow: 0 0 16px var(--accent-teal-glow);
+      }
+
+      .sim-btn.viamedia-btn-glow.active {
+        background: var(--accent-violet-glow);
+        border-color: var(--accent-violet);
+        box-shadow: 0 0 16px var(--accent-violet-glow);
+      }
+
+      /* Diagrama de nodos dinámicos */
+      .flow-diagram-container {
+        position: relative;
+        background: rgba(8, 12, 20, 0.8);
+        border: 1px solid var(--border-color);
+        border-radius: 16px;
+        padding: 40px 20px;
+        overflow-x: auto;
+        min-height: 250px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .flow-nodes {
+        display: flex;
+        align-items: center;
+        gap: 60px;
+        position: relative;
+      }
+
+      .flow-node {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 12px;
+        padding: 16px 20px;
+        text-align: center;
+        min-width: 170px;
+        position: relative;
+        z-index: 2;
+        transition: all 0.3s ease;
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+      }
+
+      .flow-node.active {
+        border-color: var(--accent-teal);
+        box-shadow: 0 0 20px var(--accent-teal-glow);
+        transform: scale(1.05);
+      }
+
+      .flow-node.viamedia-node-active.active {
+        border-color: var(--accent-violet);
+        box-shadow: 0 0 20px var(--accent-violet-glow);
+      }
+
+      .node-step {
+        font-size: 0.65rem;
+        color: var(--accent-teal);
+        font-weight: 700;
+        text-transform: uppercase;
+        margin-bottom: 4px;
+      }
+
+      .viamedia-node-active .node-step {
+        color: var(--accent-gold);
+      }
+
+      .node-title {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #fff;
+        margin-bottom: 2px;
+      }
+
+      .node-subtitle {
+        font-size: 0.75rem;
+        color: var(--text-secondary);
+      }
+
+      /* Flechas y animaciones del flujo */
+      .flow-arrow {
+        position: absolute;
+        width: 40px;
+        height: 2px;
+        background: var(--border-color);
+        z-index: 1;
+      }
+
+      .flow-arrow::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        top: -4px;
+        width: 8px;
+        height: 8px;
+        border-top: 2px solid var(--border-color);
+        border-right: 2px solid var(--border-color);
+        transform: rotate(45deg);
+      }
+
+      .flow-arrow.active {
+        background: linear-gradient(
+          to right,
+          var(--accent-teal),
+          var(--accent-violet)
+        );
+      }
+
+      .flow-arrow.active::after {
+        border-color: var(--accent-violet);
+      }
+
+      .sim-explanation-box {
+        margin-top: calc(var(--spacing-base) * 4);
+        background: rgba(255, 255, 255, 0.02);
+        border-radius: 12px;
+        padding: calc(var(--spacing-base) * 2.5) calc(var(--spacing-base) * 3);
+        border: 1px solid var(--border-color);
+        font-size: 0.95rem;
+        color: var(--text-secondary);
+      }
+
+      /* SECCION TRADUCCION OFFLINE */
+      .glossary-section {
+        background: var(--bg-card);
+        border: 1px solid var(--border-color);
+        border-radius: 20px;
+        padding: calc(var(--spacing-base) * 4);
+        margin-bottom: calc(var(--spacing-base) * 6);
+      }
+
+      .glossary-header {
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+        margin-bottom: calc(var(--spacing-base) * 4);
+      }
+
+      @media (min-width: 768px) {
+        .glossary-header {
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+        }
+      }
+
+      .search-container {
+        position: relative;
+        width: 100%;
+        max-width: 400px;
+      }
+
+      .search-input {
+        width: 100%;
+        background: rgba(8, 12, 20, 0.8);
+        border: 1px solid var(--border-color);
+        color: #fff;
+        padding: 12px 18px;
+        border-radius: 10px;
+        font-family: inherit;
+        outline: none;
+        transition: all 0.25s ease;
+        font-size: 0.9rem;
+      }
+
+      .search-input:focus {
+        border-color: var(--accent-teal);
+        box-shadow: 0 0 12px rgba(14, 165, 233, 0.2);
+      }
+
+      .glossary-grid {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: calc(var(--spacing-base) * 2.5);
+      }
+
+      @media (min-width: 768px) {
+        .glossary-grid {
+          grid-template-columns: 1fr 1fr;
+        }
+      }
+
+      .glossary-card {
+        background: rgba(255, 255, 255, 0.02);
+        border: 1px solid var(--border-color);
+        border-radius: 14px;
+        padding: calc(var(--spacing-base) * 3);
+        display: flex;
+        flex-direction: column;
+        gap: 12px;
+        transition: all 0.25s ease;
+      }
+
+      .glossary-card:hover {
+        background: rgba(255, 255, 255, 0.04);
+        border-color: rgba(255, 255, 255, 0.15);
+      }
+
+      .g-digital-side {
+        display: flex;
+        align-items: baseline;
+        gap: 10px;
+      }
+
+      .g-term {
+        font-size: 1.15rem;
+        font-weight: 700;
+        color: #fff;
+      }
+
+      .g-def {
+        font-size: 0.85rem;
+        color: var(--text-secondary);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+        padding-bottom: 8px;
+      }
+
+      .g-analogy-side {
+        display: flex;
+        flex-direction: column;
+        gap: 4px;
+      }
+
+      .g-badge {
+        display: inline-flex;
+        align-items: center;
+        background: rgba(16, 185, 129, 0.08);
+        border: 1px solid rgba(16, 185, 129, 0.2);
+        color: var(--accent-emerald);
+        padding: 4px 8px;
+        border-radius: 6px;
+        font-size: 0.7rem;
+        font-weight: 700;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        width: fit-content;
+      }
+
+      .g-badge.viamedia-badge {
+        background: rgba(99, 102, 241, 0.08);
+        border: 1px solid rgba(99, 102, 241, 0.2);
+        color: var(--accent-violet);
+      }
+
+      .g-analogy {
+        font-size: 0.9rem;
+        color: #e2e8f0;
+      }
+
+      /* FOOTER */
+      footer {
+        text-align: center;
+        color: var(--text-secondary);
+        font-size: 0.85rem;
+        padding-top: calc(var(--spacing-base) * 4);
+        border-top: 1px solid var(--border-color);
+        margin-top: calc(var(--spacing-base) * 6);
+      }
+
+      .icon-svg {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
+        display: inline-block;
+        vertical-align: middle;
+      }
+    </style>
+  </hea  <body>
+    <!-- Sobreescritura de estilos específicos de utilidades para la tabla comparativa -->
+    <style>
+      .value-warning {
+        color: var(--accent-gold) !important;
+        font-weight: 600;
+      }
+      .value-highlight {
+        color: var(--accent-emerald) !important;
+        font-weight: 600;
+      }
+      .viamedia-text-glow {
+        color: var(--accent-gold) !important;
+        font-weight: 700;
+        text-shadow: 0 0 10px rgba(245, 158, 11, 0.2);
+      }
+    </style>
+
+    <div class="container">
+      <!-- Barra de Navegación -->
+      <nav class="navbar animate-fade-up">
+        <div class="nav-logo">
+          <svg
+            class="icon-svg"
+            style="color: var(--accent-violet)"
+            viewBox="0 0 24 24"
+          >
+            <path d="M12 2L2 22h20L12 2zm0 3.99L19.53 19H4.47L12 5.99z" />
+          </svg>
+          <span>Cockpit AdTech (Tecnología Publicitaria)</span>
+        </div>
+        <ul class="nav-links">
+          <li><a href="#visual-funnel">El Funnel (Embudo)</a></li>
+          <li><a href="#6-verticals">Verticales y Plataformas</a></li>
+          <li><a href="#costs-comparison">Costos y Mínimos</a></li>
+          <li><a href="#simulator">Simulador de Pilas</a></li>
+          <li><a href="#glossary">Traductor Offline (Físico)</a></li>
+        </ul>
+      </nav>
+
+      <!-- Header -->
+      <header class="animate-fade-up stagger-1">
+        <div class="brand-tag">BAUS CORPORATE • DIVISION: MEDIA & TECHNOLOGY</div>
+        <h1>El Ecosistema de Publicidad Digital</h1>
+        <p>
+          Entendimiento estratégico de embudos publicitarios, canales y las
+          plataformas líderes globales y locales, con guías de costos reales de
+          licenciamiento y traducciones al mundo físico (offline) para audiencias tradicionales.
+        </p>
+      </header>
+
+      <!-- SECCION INTERACTIVA: FUNNEL Y DETALLES -->
+      <section
+        id="visual-funnel"
+        class="dashboard-grid animate-fade-up stagger-2"
+      >
+        <!-- Embudo SVG -->
+        <div class="funnel-panel">
+          <h3>Estructura Visual del Funnel (Embudo de Ventas)</h3>
+          <p
+            style="
+              font-size: 0.8rem;
+              color: var(--text-secondary);
+              margin-bottom: 24px;
+              text-align: center;
+            "
+          >
+            Haz clic en cada sección del embudo para consultar métricas,
+            objetivos y canales.
+          </p>
+
+          <div class="funnel-svg-container">
+            <svg
+              viewBox="0 0 200 240"
+              width="100%"
+              height="auto"
+              style="overflow: visible"
+            >
+              <!-- Upper stage -->
+              <polygon
+                class="funnel-stage stage-upper active"
+                points="10,20 190,20 160,80 40,80"
+                style="
+                  --stage-color: var(--funnel-upper);
+                  fill: var(--funnel-upper);
+                "
+                onclick="selectFunnelStage('upper', this)"
+              />
+              <text x="100" y="55" class="stage-text" text-anchor="middle">
+                UPPER FUNNEL (AWARENESS / NOTORIEDAD)
+              </text>
+
+              <!-- Mid stage -->
+              <polygon
+                class="funnel-stage stage-mid"
+                points="42,85 158,85 130,145 70,145"
+                style="
+                  --stage-color: var(--funnel-mid);
+                  fill: var(--funnel-mid);
+                "
+                onclick="selectFunnelStage('mid', this)"
+              />
+              <text x="100" y="120" class="stage-text" text-anchor="middle">
+                MID FUNNEL (CONSIDERATION / INTERACCIÓN)
+              </text>
+
+              <!-- Lower stage -->
+              <polygon
+                class="funnel-stage stage-lower"
+                points="72,150 128,150 105,210 95,210"
+                style="
+                  --stage-color: var(--funnel-lower);
+                  fill: var(--funnel-lower);
+                "
+                onclick="selectFunnelStage('lower', this)"
+              />
+              <text x="100" y="185" class="stage-text" text-anchor="middle">
+                LOWER FUNNEL (PERFORMANCE / CONVERSIÓN)
+              </text>
+            </svg>
+          </div>
+        </div>
+
+        <!-- Tarjeta Detalles de la Fase -->
+        <div class="stage-details-panel" id="details-box">
+          <div class="stage-details-header">
+            <span
+              class="details-badge"
+              id="details-stage-badge"
+              style="
+                background: var(--accent-teal-glow);
+                color: var(--accent-teal);
+              "
+              >Upper Funnel (Parte Alta del Embudo)</span
+            >
+            <h2 id="details-stage-title">Notoriedad y Alcance Masivo</h2>
+          </div>
+
+          <div class="stage-description" id="details-stage-desc">
+            Orientado al desarrollo de cobertura, frecuencia y posicionamiento
+            de marca a gran escala. Su objetivo principal es asegurar la
+            disponibilidad mental en el público objetivo para que recuerden tu
+            producto o servicio cuando ocurra la intención de compra. Se enfoca en canales de gran impacto visual y auditivo.
+          </div>
+
+          <div class="funnel-attributes">
+            <div class="attribute-box">
+              <div class="attribute-label">Modelo de Compra</div>
+              <div
+                class="attribute-value"
+                id="details-stage-model"
+                style="color: var(--accent-teal)"
+              >
+                CPM (Costo por Mil Impresiones)
+              </div>
+            </div>
+            <div class="attribute-box">
+              <div class="attribute-label">Métrica de Control</div>
+              <div class="attribute-value" id="details-stage-metric">
+                VCR (Tasa de Video Reproducido Completo) / Reach / Frecuencia
+              </div>
+            </div>
+          </div>
+
+          <div class="channel-chips">
+            <h4>Canales Predominantes</h4>
+            <div class="chip-container" id="details-stage-chips">
+              <span class="chip">Connected TV (CTV - Televisión Conectada a Internet)</span>
+              <span class="chip">Programmatic OOH (pDOOH - Publicidad Exterior Digital Programática)</span>
+              <span class="chip">Online Video (OLV - Video Online)</span>
+              <span class="chip">Display de Alto Impacto (Banners Animados)</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCION DE VERTICALES Y PLATAFORMAS -->
+      <section
+        id="6-verticals"
+        class="verticals-section animate-fade-up stagger-3"
+      >
+        <div class="section-title">
+          <svg
+            class="icon-svg"
+            style="color: var(--accent-teal)"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"
+            />
+          </svg>
+          <h2>Las 6 Verticales de AdTech (Tecnología Publicitaria)</h2>
+        </div>
+
+        <!-- Nav de Pestañas (Verticales) -->
+        <div class="verticals-nav">
+          <button
+            class="v-tab-btn active"
+            onclick="switchVerticalTab(event, 'v-walled')"
+          >
+            Walled Gardens (Jardines Cerrados)
+          </button>
+          <button
+            class="v-tab-btn"
+            onclick="switchVerticalTab(event, 'v-dsps')"
+          >
+            DSPs / Omnicanal (Consolidadoras de Medios)
+          </button>
+          <button
+            class="v-tab-btn"
+            onclick="switchVerticalTab(event, 'v-identity')"
+          >
+            Identidad & Retargeting (Reorientación)
+          </button>
+          <button
+            class="v-tab-btn"
+            onclick="switchVerticalTab(event, 'v-creator')"
+          >
+            Creator Marketing (Creadores de Contenido)
+          </button>
+          <button
+            class="v-tab-btn"
+            onclick="switchVerticalTab(event, 'v-affiliate')"
+          >
+            Afiliación & Socios (Comisionistas Web)
+          </button>
+          <button class="v-tab-btn" onclick="switchVerticalTab(event, 'v-crm')">
+            Lifecycle & CRM (Mensajería Ciclo de Vida)
+          </button>
+        </div>
+
+        <!-- CONTENIDOS DE LAS PESTAÑAS -->
+        
+        <!-- Vertical 1: Walled Gardens -->
+        <div id="v-walled" class="vertical-content active">
+          <div class="v-intro">
+            <p><strong>Definición:</strong> Plataformas de pauta donde el proveedor controla directamente su propio inventario de medios, la tecnología de puja y los datos de identidad. No permiten la participación o medición de redes externas de manera directa.</p>
+            <div style="margin-top: 12px; padding: 12px; background: rgba(245, 158, 11, 0.08); border: 1px dashed rgba(245, 158, 11, 0.3); border-radius: 8px; font-size: 0.9rem; color: #f59e0b;">
+              <strong>Ejemplo del Mundo Físico (Offline):</strong> Es como anunciarse en una gran cadena nacional de televisión o en un centro comercial privado (Mall). Ellos controlan los pasillos, deciden qué comerciales mostrar, te cobran renta y te entregan sus propios reportes de tránsito peatonal sin dejar que auditoras externas entren a verificar las cifras.
+            </div>
+          </div>
+          <div class="cards-grid">
+            <!-- Google Ads -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">01 / Walled Garden</div>
+                <div class="card-name">Google Ads</div>
+                <span class="card-sub">Paid Search (Búsqueda) & Intención</span>
+              </div>
+              <p class="card-desc">
+                Captura intenciones de compra en buscadores en tiempo real. Unifica Search, YouTube, Display y Gmail mediante Performance Max (campañas de automatización total).
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Inversión / Costos</div>
+                  <div class="meta-value value-highlight">
+                    Sin Mínimo (Subasta CPC / CPA)
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    Acceso a la intención de compra activa global
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Meta Ads -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">02 / Walled Garden</div>
+                <div class="card-name">Meta Ads</div>
+                <span class="card-sub">Paid Social (Redes Sociales) e Intereses</span>
+              </div>
+              <p class="card-desc">
+                Segmentación basada en intereses de usuario en Facebook e Instagram. Optimiza audiencias vía algoritmos Advantage+ (automatizaciones avanzadas).
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Inversión / Costos</div>
+                  <div class="meta-value value-highlight">
+                    Sin Mínimo (Autoservicio)
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    Precisión de perfil social e interacciones
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- TikTok Ads -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">03 / Walled Garden</div>
+                <div class="card-name">TikTok Ads</div>
+                <span class="card-sub">Video Vertical & Tendencias</span>
+              </div>
+              <p class="card-desc">
+                Formato nativo de video vertical enfocado en capturar atención masiva en audiencias jóvenes (Gen Z / Millennials) y comercio directo en TikTok Shop.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Inversión / Costos</div>
+                  <div class="meta-value value-highlight">
+                    Mínimo diario sugerido ~$50 USD
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    Tasas de interacción (Engagement) y viralidad
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Amazon Ads -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">04 / Walled Garden</div>
+                <div class="card-name">Amazon Ads</div>
+                <span class="card-sub">Retail Media (Publicidad en Comercio)</span>
+              </div>
+              <p class="card-desc">
+                Posiciona productos directamente en búsquedas dentro del e-commerce (tienda en línea) usando datos transaccionales deterministas de compradores reales.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Inversión / Costos</div>
+                  <div class="meta-value value-highlight">
+                    Sin Mínimo (Sponsored CPC)
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    ROAS (Retorno de Inversión) en conversión directa
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Microsoft Ads -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">05 / Walled Garden</div>
+                <div class="card-name">Microsoft Ads</div>
+                <span class="card-sub">B2B (Negocio a Negocio) & LinkedIn</span>
+              </div>
+              <p class="card-desc">
+                Combina búsquedas en Bing con la pauta corporativa de LinkedIn Ads para segmentar tomadores de decisiones por cargo laboral e industria.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Inversión / Costos</div>
+                  <div class="meta-value value-highlight">
+                    Mínimo diario sugerido ~$10 USD
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    Precisión para el mercado corporativo B2B
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vertical 2: DSPs / Omnicanal -->
+        <div id="v-dsps" class="vertical-content">
+          <div class="v-intro">
+            <p><strong>Definición:</strong> Plataformas de Demanda (DSP - Demand-Side Platforms) y redes programáticas que automatizan la compra de espacios publicitarios en el internet abierto (fuera de Facebook o Google), unificando banners (Display), video online, televisión conectada (CTV), audio y vallas exteriores digitales (pDOOH).</p>
+            <div style="margin-top: 12px; padding: 12px; background: rgba(245, 158, 11, 0.08); border: 1px dashed rgba(245, 158, 11, 0.3); border-radius: 8px; font-size: 0.9rem; color: #f59e0b;">
+              <strong>Ejemplo del Mundo Físico (Offline):</strong> Es como contratar a una Central de Espectaculares e Imprenta Nacional. Un único broker (intermediario) que te vende el espacio, imprime tus carteles y los coloca en pantallas de aeropuertos, vallas viales y parabuses del país desde un solo contrato y panel de control, modificando creatividades al instante según pase la gente.
+            </div>
+          </div>
+          <!-- 10 Platforms (wrapped automatically by CSS cards-grid) -->
+          <div class="cards-grid">
+            <!-- Viamedia.AI (DESTACADO) -->
+            <div class="company-card featured-viamedia">
+              <div class="card-top">
+                <div class="card-num">DESTACADO / UNIFICADO</div>
+                <div class="card-name">Viamedia.AI</div>
+                <span class="card-sub">Omnichannel AdTech & Representación</span>
+              </div>
+              <p class="card-desc">
+                Plataforma unificada (TV Lineal, CTV, Video, Display, Audio, pDOOH). Tecnología **Geo-Graph™** (Uber H3 Geoespacial cookieless) y **Parrot ADS** (TV Lineal y Digital en vivo).
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value viamedia-text-glow">
+                    0% Tech Fee (Tarifa de Software) • Flexible ($2k-$5k/mes)
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Servicio Incluido</div>
+                  <div class="meta-value" style="color: #fff">
+                    Managed Services (Servicio Gestionado) sin costo extra
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Google DV360 -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">01 / DSP</div>
+                <div class="card-name">Google DV360</div>
+                <span class="card-sub">Enterprise Programmatic (Compra Corporativa)</span>
+              </div>
+              <p class="card-desc">
+                Gestión programática a escala enterprise integrada en Google Marketing Platform. Frecuencia cruzada unificada y uso de audiencias Google.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value value-warning">
+                    7%-15% Fee • Mín. $35,000 USD/mes
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Tipo Servicio</div>
+                  <div class="meta-value">Self-Service (AdOps requerido)</div>
+                </div>
+              </div>
+            </div>
+            <!-- The Trade Desk -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">02 / DSP</div>
+                <div class="card-name">The Trade Desk</div>
+                <span class="card-sub">Independent DSP (Plataforma Independiente)</span>
+              </div>
+              <p class="card-desc">
+                DSP independiente líder para web abierta, CTV premium y audio. Principal impulsor del estándar de identidad global unificada UID2.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value value-warning">
+                    ~20% Fee • Mín. $20k-$25k USD/mes
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Tipo Servicio</div>
+                  <div class="meta-value">Self-Service (Alta complejidad)</div>
+                </div>
+              </div>
+            </div>
+            <!-- Amazon DSP -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">03 / DSP</div>
+                <div class="card-name">Amazon DSP</div>
+                <span class="card-sub">Omnichannel Retail Programmatic</span>
+              </div>
+              <p class="card-desc">
+                Activa el comportamiento de intención de Amazon para impactar display y video en toda la web abierta externa fuera de su tienda.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value value-warning">
+                    Min $35k total / $50k/mes managed
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Tipo Servicio</div>
+                  <div class="meta-value">Híbrido / Managed de alto costo</div>
+                </div>
+              </div>
+            </div>
+            <!-- StackAdapt -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">04 / DSP</div>
+                <div class="card-name">StackAdapt</div>
+                <span class="card-sub">Self-Serve MidMarket (Autoservicio)</span>
+              </div>
+              <p class="card-desc">
+                Autoservicio ágil con algoritmos predictivos contextuales. Facilidad de despliegue rápido sin contratos de permanencia a largo plazo.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value value-highlight">
+                    0% Tech Fee • Mín. $5,000 USD/mes
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Tipo Servicio</div>
+                  <div class="meta-value">Self-Service (Soporte rápido)</div>
+                </div>
+              </div>
+            </div>
+            <!-- TapTap Digital -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">05 / DSP</div>
+                <div class="card-name">TapTap Digital</div>
+                <span class="card-sub">Geospatial DSP (Compra Localizada)</span>
+              </div>
+              <p class="card-desc">
+                Sonata conecta pantallas viales pDOOH, CTV y móvil con análisis de visitas físicas in-store mediante movilidad de compradores con Retail Origins.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value value-warning">
+                    Variable CPM • Mín. $5k-$10k USD/mes
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Tipo Servicio</div>
+                  <div class="meta-value">Híbrido (Soporte territorial)</div>
+                </div>
+              </div>
+            </div>
+            <!-- Simpli.fi -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">06 / DSP</div>
+                <div class="card-name">Simpli.fi</div>
+                <span class="card-sub">Hiperlocal & Geofencing (Geocercas)</span>
+              </div>
+              <p class="card-desc">
+                DSP pionero en geocercas hiperlocales de alta precisión y publicidad dirigida a direcciones físicas. Convierte hasta 1 millón de direcciones en polígonos GPS con 90% de coincidencia exacta.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value value-warning">
+                    15%-20% Fee • Mín. $10k-$20k USD/mes
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Tipo Servicio</div>
+                  <div class="meta-value">Híbrido (Pro Self-Serve o Managed)</div>
+                </div>
+              </div>
+            </div>
+            <!-- Seedtag -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">07 / Contextual</div>
+                <div class="card-name">Seedtag</div>
+                <span class="card-sub">Contextual AI (Líder en México)</span>
+              </div>
+              <p class="card-desc">
+                Publicidad contextual e in-image/in-video. Su IA Liz Agent clasifica textos, imágenes y videos de URLs en tiempo real para colocar anuncios sin usar cookies, protegiendo la privacidad.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value value-highlight">
+                    0% Software Fee • Mín. $5k-$10k USD
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Tipo Servicio</div>
+                  <div class="meta-value">Managed / Programmatic (Liz Agent)</div>
+                </div>
+              </div>
+            </div>
+            <!-- Logan -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">08 / Mobile</div>
+                <div class="card-name">Logan.ai</div>
+                <span class="card-sub">Mobile Programmatic & Data</span>
+              </div>
+              <p class="card-desc">
+                Programmatic mobile marketing líder en LatAm y México. Su base Super Small Data (300M+ perfiles) cookieless activa Rich Media interactivo, audio, pDOOH e In-Game Ads.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value value-highlight">
+                    0% SaaS • Mín. $3k-$5k USD/mes
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Tipo Servicio</div>
+                  <div class="meta-value">Managed o Deal IDs (Bajo Consola)</div>
+                </div>
+              </div>
+            </div>
+            <!-- Arkeero -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">09 / Data</div>
+                <div class="card-name">Arkeero</div>
+                <span class="card-sub">Declarative Data & Rich Media</span>
+              </div>
+              <p class="card-desc">
+                Solución publicitaria omnicanal en México y España. Recopila First-Party Data determinista mediante integraciones con Peoople y 21 Buttons, Rich Media interactivo y Permission Email.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value value-highlight">
+                    0% SaaS • Mín. $3k-$5k USD flight
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Tipo Servicio</div>
+                  <div class="meta-value">Managed Service (End-to-End)</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vertical 3: Identidad & Retargeting -->
+        <div id="v-identity" class="vertical-content">
+          <div class="v-intro">
+            <p><strong>Definición:</strong> Herramientas que enlazan las bases de datos de clientes de una empresa con la pauta digital abierta para entregar anuncios altamente personalizados y medir conversiones reales in-store (tiendas físicas) o web.</p>
+            <div style="margin-top: 12px; padding: 12px; background: rgba(245, 158, 11, 0.08); border: 1px dashed rgba(245, 158, 11, 0.3); border-radius: 8px; font-size: 0.9rem; color: #f59e0b;">
+              <strong>Ejemplo del Mundo Físico (Offline):</strong> Piensa en un cliente que entra a una tienda física de electrodomésticos, mira una licuadora premium durante 5 minutos y se retira sin comprar. El "retargeting" es el equivalente a que un promotor de la tienda lo siga discretamente en la calle y, cuando el cliente se detiene a leer una revista en un puesto de periódicos, el promotor le ofrece un volante con un 15% de descuento en esa misma licuadora para convencerlo de regresar a la sucursal.
+            </div>
+          </div>
+          <div class="cards-grid has-6">
+            <!-- Epsilon -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">01 / Identidad</div>
+                <div class="card-name">Epsilon</div>
+                <span class="card-sub">COREid & Persona Resolution</span>
+              </div>
+              <p class="card-desc">
+                Resolución de identidad determinista a nivel de persona física (no cookies o perfiles web efímeros) vinculada a transacciones reales históricas.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value value-warning">
+                    Custom • Mín. $100,000+ USD/año
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    COREid e identidad offline transaccional
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Criteo -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">02 / Identidad</div>
+                <div class="card-name">Criteo</div>
+                <span class="card-sub">Commerce Media Network</span>
+              </div>
+              <p class="card-desc">
+                Colocación de ofertas dinámicas de remarketing personalizado directamente en las tiendas en línea de distribuidores y minoristas premium.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value value-warning">
+                    Margin Markup • Mín. $10,000 USD/mes
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    Retargeting en webs de minoristas (Retail Media)
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- RTB House -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">03 / Identidad</div>
+                <div class="card-name">RTB House</div>
+                <span class="card-sub">Deep Learning Engine (Redes Neuronales)</span>
+              </div>
+              <p class="card-desc">
+                Retargeting dinámico que funciona exclusivamente sobre algoritmos de aprendizaje profundo no lineal. Ideal para optimizar catálogos gigantes (>500 SKUs).
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value value-warning">
+                    Markup integrado • Mín. $10,000 USD/mes
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    Optimización creativa (DCO) por red neuronal
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- LiveRamp -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">04 / Identidad</div>
+                <div class="card-name">LiveRamp</div>
+                <span class="card-sub">Data Collaboration (Conectividad)</span>
+              </div>
+              <p class="card-desc">
+                Traduce registros offline de CRM (Base de Datos) y correos de clientes a identificadores digitales web (RampID) direccionables y seguros sin cookies.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value value-warning">
+                    SaaS anual • Mín. $50k-$100k+ USD
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    Infraestructura neutral en salas limpias (Clean Rooms)
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- AdRoll -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">05 / Identidad</div>
+                <div class="card-name">AdRoll</div>
+                <span class="card-sub">MidMarket Retargeting (Autoservicio)</span>
+              </div>
+              <p class="card-desc">
+                Remarketing dinámico para display y social media de bajo costo, idóneo para comercio electrónico mediano y marcas en crecimiento.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value value-highlight">
+                    SaaS <$1k/mes • Mínimos de pauta libres
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    Despliegue rápido para catálogos pequeños
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Groovinads -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">06 / DCO</div>
+                <div class="card-name">Groovinads</div>
+                <span class="card-sub">DSP & DCO con IA (LatAm)</span>
+              </div>
+              <p class="card-desc">
+                Plataforma que unifica DSP (Consola de Demanda) con un motor de DCO (Personalización de Anuncios) impulsado por IA. Banner/video inteligente y adaptativo en milisegundos.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value value-highlight">
+                    Markup integrado • $0 USD Mínimo (Consola Libre)
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    Producción y segmentación creativa automatizada
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vertical 4: Creator Marketing -->
+        <div id="v-creator" class="vertical-content">
+          <div class="v-intro">
+            <p><strong>Definición:</strong> Programas de software (SaaS - Software como Servicio) que automatizan la búsqueda de influencers, gestionan los briefs (instrucciones creativas), autorizan contenidos, realizan pagos y miden el retorno de inversión (ROI) en ventas.</p>
+            <div style="margin-top: 12px; padding: 12px; background: rgba(245, 158, 11, 0.08); border: 1px dashed rgba(245, 158, 11, 0.3); border-radius: 8px; font-size: 0.9rem; color: #f59e0b;">
+              <strong>Ejemplo del Mundo Físico (Offline):</strong> Es el equivalente moderno de patrocinar a un locutor de radio o a un presentador de televisión local famoso para que use tu producto en vivo y le pida a su audiencia que lo compre. La diferencia digital es que puedes rastrear exactamente cuánta gente recortó el cupón y compró en la tienda usando un código de descuento exclusivo que le asignaste a ese influencer.
+            </div>
+          </div>
+          <div class="cards-grid has-6">
+            <!-- CreatorIQ -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">01 / Creator</div>
+                <div class="card-name">CreatorIQ</div>
+                <span class="card-sub">Enterprise Discovery (Buscador Corporativo)</span>
+              </div>
+              <p class="card-desc">
+                Integración API con redes sociales. Extrae datos demográficos reales de seguidores de creadores. SafeIQ (Seguridad de Marca).
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value value-warning">
+                    SaaS • Mín. $1k-$5k+ USD/mes
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    Métricas auditadas directo de APIs oficiales
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- GRIN -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">02 / Creator</div>
+                <div class="card-name">GRIN</div>
+                <span class="card-sub">DTC Creator CRM (Gestión Logística)</span>
+              </div>
+              <p class="card-desc">
+                CRM de influencers integrado a Shopify. Automatiza envíos de productos físicos (regalos), códigos promocionales únicos y pagos de comisiones.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value value-warning">
+                    SaaS • Mín. $999-$1,500+ USD/mes
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    Integración logística completa para e-commerce
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Aspire -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">03 / Creator</div>
+                <div class="card-name">Aspire</div>
+                <span class="card-sub">Creator Marketplace (Mercado Abierto)</span>
+              </div>
+              <p class="card-desc">
+                Comunidad de embajadores orgánicos y contenido generado por usuarios. Los influencers postulan activamente a briefs de la marca.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value value-highlight">
+                    SaaS base • Mín. ~$500 USD/mes
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    Altas tasas de respuesta de creadores en briefs
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Upfluence -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">04 / Creator</div>
+                <div class="card-name">Upfluence</div>
+                <span class="card-sub">Search Engine & Customer Discovery</span>
+              </div>
+              <p class="card-desc">
+                Identifica creadores escaneando tu base de datos de compradores de e-commerce, localizando clientes influyentes que ya te aman.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value value-highlight">
+                    SaaS anual • Mín. ~$478 USD/mes
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    Convierte a tus clientes de e-commerce en promotores
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Traackr -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">05 / Creator</div>
+                <div class="card-name">Traackr</div>
+                <span class="card-sub">Influencer Analytics (Analítica)</span>
+              </div>
+              <p class="card-desc">
+                Análisis predictivo de Earned Media Value (EMV - Valor Ganado) e inteligencia competitiva para Share of Voice frente a rivales de sector.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value value-warning">
+                    SaaS corporativo personalizado
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    Comparación y auditoría de audiencias falsas
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Fluvip -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">06 / Creator</div>
+                <div class="card-name">Fluvip</div>
+                <span class="card-sub">Influencer Leader (México & LatAm)</span>
+              </div>
+              <p class="card-desc">
+                Líder regional. FLUVIP Platform (IA Advantage) con AI Brief Builder y matchmaking del 90% sobre 80M de perfiles. ROI transaccional en live.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value value-warning">
+                    Managed Services Fee / SaaS Custom
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    Matchmaking de perfiles por IA y auditoría Deloitte
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vertical 5: Afiliación -->
+        <div id="v-affiliate" class="vertical-content">
+          <div class="v-intro">
+            <p><strong>Definición:</strong> Canal de adquisición de clientes basado puramente en resultados (CPA - Costo por Adquisición). Editores, blogs y recomendadores externos promocionan productos mediante enlaces únicos y cobran comisiones tras compras completadas.</p>
+            <div style="margin-top: 12px; padding: 12px; background: rgba(245, 158, 11, 0.08); border: 1px dashed rgba(245, 158, 11, 0.3); border-radius: 8px; font-size: 0.9rem; color: #f59e0b;">
+              <strong>Ejemplo del Mundo Físico (Offline):</strong> Contratar comisionistas a pie de calle. Les entregas volantes impresos con códigos únicos. Si un cliente llega a tu local físico con ese volante y compra en caja, le pagas una comisión del 10% al comisionista. Si el promotor reparte miles de volantes y nadie compra, tu costo es cero.
+            </div>
+          </div>
+          <div class="cards-grid">
+            <!-- Awin -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">01 / Afiliación</div>
+                <div class="card-name">Awin</div>
+                <span class="card-sub">Global Affiliate Network</span>
+              </div>
+              <p class="card-desc">
+                Red global líder con Opportunity Marketplace para negociaciones directas y co-branding entre marcas y editores/Blogs de cupones.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value value-highlight">
+                    20%-30% Markup s/comisión
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    Volumen Masivo (+1M de afiliados mundiales)
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- CJ Affiliate -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">02 / Afiliación</div>
+                <div class="card-name">CJ Affiliate</div>
+                <span class="card-sub">Enterprise Partnerships</span>
+              </div>
+              <p class="card-desc">
+                Estructura corporativa con editores de contenido premium certificados e informes de atribución granular multidisciplpositivo.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value value-warning">
+                    SaaS anual + tarifas de red
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    Content Certification para evitar fraude de tráfico
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Rakuten Advertising -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">03 / Afiliación</div>
+                <div class="card-name">Rakuten Adv.</div>
+                <span class="card-sub">Premium Network (Lujo & Moda)</span>
+              </div>
+              <p class="card-desc">
+                Red selectiva ideal para marcas de alta gama y retail corporativo. La herramienta Conversion Journey recompensa aportes de embudo alto.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value value-warning">
+                    Comisiones de rendimiento & mínimos
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    Sistemas avanzados antifraude incorporados
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- impact.com -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">04 / Afiliación</div>
+                <div class="card-name">impact.com</div>
+                <span class="card-sub">Partnership Cloud SaaS</span>
+              </div>
+              <p class="card-desc">
+                SaaS empresarial para gestionar de forma centralizada alianzas de afiliados, embajadores, alianzas de marca y creadores de contenido.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value value-warning">
+                    SaaS Fee + 2.5% transacción
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    Orquestación del ciclo del socio y contratos
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Partnerize -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">05 / Afiliación</div>
+                <div class="card-name">Partnerize</div>
+                <span class="card-sub">SaaS Enterprise Partnerships</span>
+              </div>
+              <p class="card-desc">
+                Personalización corporativa absoluta con APIs para configurar comisiones dinámicas basadas en datos reales de CRM de clientes.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Tarifa / Mínimos</div>
+                  <div class="meta-value value-warning">
+                    SaaS corporativo anualizado
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    APIs de comisiones variables en tiempo real
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Vertical 6: CRM -->
+        <div id="v-crm" class="vertical-content">
+          <div class="v-intro">
+            <p><strong>Definición:</strong> Plataformas basadas en datos propios (CRM - Gestión de Relaciones con Clientes) para orquestar envíos de correos, SMS (mensajes de texto cortos), WhatsApp y notificaciones de forma automatizada según el comportamiento del cliente.</p>
+            <div style="margin-top: 12px; padding: 12px; background: rgba(245, 158, 11, 0.08); border: 1px dashed rgba(245, 158, 11, 0.3); border-radius: 8px; font-size: 0.9rem; color: #f59e0b;">
+              <strong>Ejemplo del Mundo Físico (Offline):</strong> Piensa en un cliente que visita una sucursal de una concesionaria de autos y deja sus datos anotados en la recepción tras una prueba de manejo. El sistema automatizado es el equivalente a que la secretaria de la concesionaria le envíe una carta de seguimiento personalizada 3 días después de la visita, una tarjeta de felicitación en su cumpleaños y un folleto de servicios automotrices exactamente 6 meses después, de forma autónoma.
+            </div>
+          </div>
+          <div class="cards-grid">
+            <!-- Klaviyo -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">01 / CRM</div>
+                <div class="card-name">Klaviyo</div>
+                <span class="card-sub">CDP & E-commerce Lifecycle</span>
+              </div>
+              <p class="card-desc">
+                Sincronización instantánea de abandonos de carritos Shopify. Calcula predictivamente el valor de vida útil del cliente (CLV) e intenciones de compra.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Operación (TCO 1er año)</div>
+                  <div class="meta-value value-highlight">
+                    ~$42,000 USD (SaaS escala)
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    Conexión live bidireccional de datos e-commerce
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Braze -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">02 / CRM</div>
+                <div class="card-name">Braze</div>
+                <span class="card-sub">App-First Messaging (Push/SMS)</span>
+              </div>
+              <p class="card-desc">
+                Orquesta trayectos de clientes a gran escala en Canvas Flow. Ideal para marcas enfocadas en Apps con millones de notificaciones Push diarias.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Operación (TCO 1er año)</div>
+                  <div class="meta-value value-warning">
+                    ~$310,000 USD (Enterprise)
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    Procesamiento de trillones de eventos móviles en live
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Salesforce MC -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">03 / CRM</div>
+                <div class="card-name">Salesforce MC</div>
+                <span class="card-sub">Enterprise Marketing Cloud</span>
+              </div>
+              <p class="card-desc">
+                Unifica datos a través de Data Cloud de Salesforce. Journey Builder impulsado por Einstein AI para flujos corporativos de alta complejidad.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Operación (TCO 1er año)</div>
+                  <div class="meta-value value-warning">
+                    Desde $50,000 USD base (SaaS)
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    Gobernanza corporativa y cumplimiento bancario
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- Iterable -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">04 / CRM</div>
+                <div class="card-name">Iterable</div>
+                <span class="card-sub">Activation AI (Mercado Medio)</span>
+              </div>
+              <p class="card-desc">
+                Segmentación automatizada de rápida implementación. Recalcula segmentos de millones de perfiles al instante al rastrear su navegación.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Operación (TCO 1er año)</div>
+                  <div class="meta-value value-warning">~$135,000 USD</div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    Velocidad para actualizar bases según comportamiento
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!-- HubSpot -->
+            <div class="company-card">
+              <div class="card-top">
+                <div class="card-num">05 / CRM</div>
+                <div class="card-name">HubSpot Enterprise</div>
+                <span class="card-sub">B2B Nurturing (Venta Comercial)</span>
+              </div>
+              <p class="card-desc">
+                Todo en uno: alineación directa del pipeline (embudo de ventas comercial) con campañas de nurturing (alimentación de leads) sobre CRM común.
+              </p>
+              <div class="card-meta">
+                <div class="meta-row">
+                  <div class="meta-title">Operación (TCO 1er año)</div>
+                  <div class="meta-value value-highlight">
+                    ~$95,000 USD (Enterprise B2B)
+                  </div>
+                </div>
+                <div class="meta-row">
+                  <div class="meta-title">Fortaleza Clave</div>
+                  <div class="meta-value">
+                    CRM compartido nativo entre ventas y marketing
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECCION: COMPARATIVA DE COSTOS ADTECH (TABLA) -->
+      <section id="costs-comparison" class="costs-section animate-fade-up">
+        <div class="section-title">
+          <svg
+            class="icon-svg"
+            style="color: var(--accent-gold)"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 17h-2v-2h2v2zm2.07-7.75l-.9.92C13.45 12.9 13 13.5 13 15h-2v-.5c0-1.1.45-2.1 1.17-2.83l1.24-1.26c.37-.36.59-.86.59-1.41 0-1.1-.9-2-2-2s-2 .9-2 2H7c0-2.76 2.24-5 5-5s5 2.24 5 5c0 1.04-.42 1.99-1.07 2.75z"
+            />
+          </svg>
+          <h2>Comparador de Costos AdTech y Programática</h2>
+        </div>
+        <p style="color: var(--text-secondary); max-width: 800px; margin-bottom: 20px;">
+          Comparativa financiera directa del costo de uso de tecnología (Tech Fee de software o SaaS) y compromisos mínimos obligatorios entre DSPs empresariales y el modelo integrado de Viamedia.AI.
+        </p>
+
+        <div class="costs-table-wrapper">
+          <table class="costs-table">
+            <thead>
+              <tr>
+                <th>Plataforma / Tecnología</th>
+                <th>Tarifa Tecnológica (Tech Fee / SaaS)</th>
+                <th>Mínimo de Inversión (Medios Mensual)</th>
+                <th>Tipo de Servicio Dominante</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr class="highlight-row">
+                <td>Viamedia.AI</td>
+                <td><strong>0%</strong> (Tarifa de software integrada en medios)</td>
+                <td class="value-highlight">Flexible (típicamente $2,000 - $5,000 USD/mes)</td>
+                <td><strong>Managed Service</strong> (Servicios de optimización, trading y AdOps incluidos)</td>
+              </tr>
+              <tr>
+                <td>Google DV360</td>
+                <td><strong>7% - 15%</strong> de la inversión de medios + costos de ad-serving</td>
+                <td class="value-warning">Mínimo práctico de $35,000 USD al mes</td>
+                <td><strong>Self-Service</strong> (Autoservicio; requiere operadores certificados in-house)</td>
+              </tr>
+              <tr>
+                <td>The Trade Desk</td>
+                <td><strong>~20%</strong> de la inversión (cost-plus)</td>
+                <td class="value-warning">Mínimo de asiento de $20,000 - $25,000 USD al mes</td>
+                <td><strong>Self-Service</strong> (Autoservicio; requiere equipo dedicado y experimentado)</td>
+              </tr>
+              <tr>
+                <td>Amazon DSP</td>
+                <td><strong>0%</strong> en autoservicio; integrado en managed de Amazon</td>
+                <td class="value-warning">$35,000 USD total autoservicio / $50,000 USD/mes managed</td>
+                <td><strong>Híbrido</strong> (Consola compleja de autoservicio o managed administrado)</td>
+              </tr>
+              <tr>
+                <td>StackAdapt</td>
+                <td><strong>0%</strong> (Tarifa técnica integrada en CPM dinámico)</td>
+                <td class="value-highlight">Mínimo práctico de $5,000 USD mensuales</td>
+                <td><strong>Self-Service</strong> (Consola simplificada con soporte rápido de autoservicio)</td>
+              </tr>
+              <tr>
+                <td>Simpli.fi</td>
+                <td><strong>15% - 20%</strong> de la inversión de medios (o en CPM)</td>
+                <td class="value-warning">Mínimo de acceso de $10,000 a $20,000 USD mensuales</td>
+                <td><strong>Híbrido</strong> (Self-service manual, Autopilot AI o servicio de Client Success)</td>
+              </tr>
+              <tr>
+                <td>TapTap Digital</td>
+                <td>Variable integrado en el CPM de subasta programática</td>
+                <td class="value-warning">Programas típicos a partir de $5,000 - $10,000 USD/mes</td>
+                <td><strong>Híbrido</strong> (Autoservicio con soporte programático territorial)</td>
+              </tr>
+              <tr>
+                <td>Seedtag</td>
+                <td><strong>0%</strong> (Monetización vía CPM de medios directos)</td>
+                <td class="value-highlight">Mínimo sugerido de $5,000 - $10,000 USD por flight</td>
+                <td><strong>Managed / Programmatic</strong> (Asistencia contextual con Liz Agent)</td>
+              </tr>
+              <tr>
+                <td>Logan</td>
+                <td><strong>0%</strong> (Monetización integrada en CPM/CPC de medios)</td>
+                <td class="value-highlight">Mínimo en servicio gestionado de $3,000 - $5,000 USD/mes</td>
+                <td><strong>Managed o Deal IDs</strong> (Tráfico interactivo con Super Small Data)</td>
+              </tr>
+              <tr>
+                <td>Arkeero</td>
+                <td><strong>0%</strong> (Monetización integrada en CPM/CPC/CPL de medios)</td>
+                <td class="value-highlight">Mínimo por flight publicitario de $3,000 - $5,000 USD</td>
+                <td><strong>Managed Service</strong> (Full-service con datos declarativos y Rich Media)</td>
+              </tr>
+              <tr>
+                <td>Groovinads</td>
+                <td>Variable según volumen / markup integrado en CPM</td>
+                <td class="value-highlight"><strong>$0 USD</strong> (Sin mínimos obligatorios en consola autoservicio)</td>
+                <td><strong>Híbrido</strong> (Consola DSP y DCO integrados operados in-house)</td>
+              </tr>
+              <tr>
+                <td>Epsilon Digital</td>
+                <td>Cotizado de forma personalizada según base de datos</td>
+                <td class="value-warning">Enfoque corporativo de alto presupuesto ($100,000+ USD/año)</td>
+                <td><strong>Managed / Enterprise</strong> (Gestión de COREid y creatividades DCO)</td>
+              </tr>
+              <tr>
+                <td>Criteo</td>
+                <td>Integrado en el CPM/CPC + data fees del minorista</td>
+                <td class="value-warning">Mínimo mensual recomendado de $10,000 USD</td>
+                <td><strong>Híbrido / Managed</strong> (Onboarding técnico gestionado por equipos comerciales)</td>
+              </tr>
+              <tr>
+                <td>RTB House</td>
+                <td>Integrado en el CPM/CPA final de optimización</td>
+                <td class="value-warning">Mínimo mensual obligatorio de $10,000 USD</td>
+                <td><strong>Managed Service</strong> (Algoritmos Deep Learning llave en mano)</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- SECCION INTERACTIVA: SIMULADOR DE FLUJO OMNICANAL -->
+      <section id="simulator" class="simulator-section animate-fade-up">
+        <div class="sim-header">
+          <h2>Simulador de Integración de Pila Tecnológica</h2>
+          <p
+            style="
+              color: var(--text-secondary);
+              max-width: 600px;
+              margin: 0 auto;
+            "
+          >
+            El ecosistema digital es más fuerte cuando las plataformas se
+            conectan entre sí. Selecciona un perfil de negocio para ver cómo
+            fluyen los datos y la pauta publicitaria en cada arquitectura.
+          </p>
+        </div>
+
+        <div class="sim-selector">
+          <button class="sim-btn active" onclick="loadSimProfile('cpg')">
+            CPG (Consumo Masivo) & Retail
+          </button>
+          <button class="sim-btn" onclick="loadSimProfile('dtc')">
+            DTC (Venta Directa) / E-commerce
+          </button>
+          <button class="sim-btn" onclick="loadSimProfile('b2b')">
+            Servicios Corporativos B2B
+          </button>
+          <button
+            class="sim-btn viamedia-btn-glow"
+            onclick="loadSimProfile('viamedia')"
+          >
+            Viamedia.AI Unified Stack
+          </button>
+        </div>
+
+        <!-- Diagrama de Flujo -->
+        <div class="flow-diagram-container">
+          <div class="flow-nodes" id="diagram-row">
+            <!-- Dinámico en JS -->
+          </div>
+        </div>
+
+        <!-- Explicación de la Simulación -->
+        <div class="sim-explanation-box" id="sim-explanation">
+          <!-- Dinámico en JS -->
+        </div>
+      </section>
+
+      <!-- SECCION TRADUCTOR DE TERMINOS OFFLINE -->
+      <section id="glossary" class="glossary-section animate-fade-up">
+        <div class="glossary-header">
+          <div>
+            <h2 style="font-size: 1.75rem; margin-bottom: 6px">
+              Guía de Traducción: Digital a Offline (Físico)
+            </h2>
+            <p style="color: var(--text-secondary); font-size: 0.95rem">
+              Analogías del mundo físico para explicar el funcionamiento técnico
+              a audiencias no digitales u offline.
+            </p>
+          </div>
+          <div class="search-container">
+            <input
+              type="text"
+              class="search-input"
+              id="search-input"
+              placeholder="Buscar concepto o equivalencia..."
+              onkeyup="filterGlossaryCards()"
+            />
+          </div>
+        </div>
+
+        <div class="glossary-grid" id="glossary-container">
+          <!-- Walled Gardens -->
+          <div
+            class="glossary-card"
+            data-search="walled gardens centros comerciales privados meta google ads jardines cerrados"
+          >
+            <div class="g-digital-side">
+              <span class="g-term">Walled Gardens (Jardines Cerrados)</span>
+            </div>
+            <div class="g-def">
+              Redes cerradas con control total de inventario y datos de usuarios (e.g. Meta, Google).
+            </div>
+            <div class="g-analogy-side">
+              <span class="g-badge">Centros Comerciales Privados (Malls)</span>
+              <div class="g-analogy">
+                Espacios cerrados donde los dueños te cobran renta por colocar carteles, controlan quién entra, deciden qué comerciales mostrar en sus pantallas y ellos mismos te auditan los resultados sin permitir que agencias externas verifiquen las cifras.
+              </div>
+            </div>
+          </div>
+
+          <!-- DSPs -->
+          <div
+            class="glossary-card"
+            data-search="dsps programmatic la agencia central de vallas espectaculares programatica plataforma demanda"
+          >
+            <div class="g-digital-side">
+              <span class="g-term">DSPs (Plataformas de Demanda Programática)</span>
+            </div>
+            <div class="g-def">
+              Consolas de software (SaaS) para comprar display, video y pDOOH de forma automatizada en el internet abierto.
+            </div>
+            <div class="g-analogy-side">
+              <span class="g-badge">La Agencia Central de Vallas</span>
+              <div class="g-analogy">
+                Un único broker nacional que te permite contratar, pausar o cambiar piezas en espectaculares físicos, pantallas de centros comerciales y aeropuertos del país con un solo contrato de compra y desde una consola de control.
+              </div>
+            </div>
+          </div>
+
+          <!-- CTV -->
+          <div
+            class="glossary-card"
+            data-search="ctv television conectada streaming netflix youtube tv inteligente"
+          >
+            <div class="g-digital-side">
+              <span class="g-term">CTV (Televisión Conectada a Internet)</span>
+            </div>
+            <div class="g-def">
+              Spots publicitarios de video transmitidos en pantallas de televisión inteligentes conectadas a internet (streaming).
+            </div>
+            <div class="g-analogy-side">
+              <span class="g-badge">Televisión por Cable Segmentada</span>
+              <div class="g-analogy">
+                El comercial de TV de 30 segundos tradicional, pero con la capacidad de mostrarse exclusivamente en los hogares de personas que están activamente buscando comprar un auto familiar.
+              </div>
+            </div>
+          </div>
+
+          <!-- Identity Resolution -->
+          <div
+            class="glossary-card"
+            data-search="identity resolution resolucion de identidad liveramp crm base datos"
+          >
+            <div class="g-digital-side">
+              <span class="g-term">Identity Resolution (Resolución de Identidad)</span>
+            </div>
+            <div class="g-def">
+              Unificación de bases de datos offline (CRM) con comportamiento web de clientes para unificar identidades.
+            </div>
+            <div class="g-analogy-side">
+              <span class="g-badge">Cruce del Padrón de Suscriptores</span>
+              <div class="g-analogy">
+                Cruzar la base física de clientes leales de una tienda con las direcciones de entrega de la revista más leída de la ciudad para enviarle a su domicilio físico una carta con un catálogo de descuento.
+              </div>
+            </div>
+          </div>
+
+          <!-- Retargeting -->
+          <div
+            class="glossary-card"
+            data-search="retargeting remarketing criteo rtb house promotor reorientacion anuncios"
+          >
+            <div class="g-digital-side">
+              <span class="g-term">Retargeting / Remarketing (Reorientación de Anuncios)</span>
+            </div>
+            <div class="g-def">
+              Mostrar anuncios específicos en internet a personas que ya interactuaron o abandonaron un proceso de compra previo.
+            </div>
+            <div class="g-analogy-side">
+              <span class="g-badge">El Promotor de Tienda</span>
+              <div class="g-analogy">
+                El vendedor físico que sigue discretamente al cliente que se quedó observando un producto durante 5 minutos y le ofrece un folleto con un descuento especial justo antes de que salga de la sucursal.
+              </div>
+            </div>
+          </div>
+
+          <!-- Afiliación -->
+          <div
+            class="glossary-card"
+            data-search="afiliacion affiliate awin impact comisionistas redes socios alianzas"
+          >
+            <div class="g-digital-side">
+              <span class="g-term">Afiliación (Redes de Socios / Alianzas)</span>
+            </div>
+            <div class="g-def">
+              Promotores web que dirigen tráfico y cobran comisión únicamente tras venta confirmada.
+            </div>
+            <div class="g-analogy-side">
+              <span class="g-badge">Comisionistas a Resultados</span>
+              <div class="g-analogy">
+                Promotores independientes a quienes les das volantes con códigos únicos. Si un cliente llega a la caja de cobro físico con ese volante y compra, le pagas comisión al promotor. Si no trae clientes, no pagas nada.
+              </div>
+            </div>
+          </div>
+
+          <!-- Geo-Graph -->
+          <div
+            class="glossary-card"
+            data-search="geo-graph viamedia geo-graph uber h3 geoespacial vecindarios segmentacion local"
+          >
+            <div class="g-digital-side">
+              <span class="g-term">Geo-Graph™ (Viamedia - Segmentación Geoespacial)</span>
+            </div>
+            <div class="g-def">
+              Segmentación espacial micro-local basada en cuadrantes Uber H3 sin cookies ni datos personales de rastreo (cookieless e ID-less).
+            </div>
+            <div class="g-analogy-side">
+              <span class="g-badge viamedia-badge"
+                >Reparto de Volantes por Código Postal</span
+              >
+              <div class="g-analogy">
+                Repartir folletos impresos única y exclusivamente en las 5 manzanas físicas que rodean tu tienda física donde vive tu perfil de cliente ideal, sin desperdiciar papel en otras colonias de la ciudad.
+              </div>
+            </div>
+          </div>
+
+          <!-- Parrot ADS -->
+          <div
+            class="glossary-card"
+            data-search="parrot ads viamedia parrot ads antena repetidora cable mvpd fast comerciales"
+          >
+            <div class="g-digital-side">
+              <span class="g-term">Parrot ADS (Viamedia - Inserción Dinámica)</span>
+            </div>
+            <div class="g-def">
+              Tecnología de inserción dinámica en tiempo real entre televisión lineal por cable y streaming digital.
+            </div>
+            <div class="g-analogy-side">
+              <span class="g-badge viamedia-badge"
+                >La Antena Repetidora Local</span
+              >
+              <div class="g-analogy">
+                Una antena inteligente colocada en la estación que detecta el bloque de comerciales nacionales de la cadena de TV e inserta de forma instantánea el comercial de la sucursal local de la esquina en lugar del anuncio corporativo global.
+              </div>
+            </div>
+          </div>
+
+          <!-- CPM -->
+          <div class="glossary-card" data-search="cpm costo por mil impresiones anuncios awareness notoriedad">
+            <div class="g-digital-side">
+              <span class="g-term">CPM (Costo por Mil Impresiones)</span>
+            </div>
+            <div class="g-def">
+              Modelo de compra donde se paga un monto fijo por cada 1,000 veces que se muestra un anuncio, independientemente de la interacción.
+            </div>
+            <div class="g-analogy-side">
+              <span class="g-badge">La Renta del Espectacular Vial</span>
+              <div class="g-analogy">
+                Pagar una renta mensual fija para que tu espectacular esté en una avenida muy transitada. Pagas por la exposición de tu marca, no por cuánta gente entra a tu tienda.
+              </div>
+            </div>
+          </div>
+
+          <!-- CPA -->
+          <div class="glossary-card" data-search="cpa costo por adquisicion compra conversion venta">
+            <div class="g-digital-side">
+              <span class="g-term">CPA (Costo por Adquisición o Venta)</span>
+            </div>
+            <div class="g-def">
+              Modelo de cobro publicitario donde el anunciante paga únicamente cuando el usuario realiza una compra o transacción final.
+            </div>
+            <div class="g-analogy-side">
+              <span class="g-badge">Comisión Directa en Caja</span>
+              <div class="g-analogy">
+                Pagarle al vendedor de piso de venta un porcentaje de comisión únicamente cuando el cliente desliza su tarjeta de crédito y la venta queda registrada en caja.
+              </div>
+            </div>
+          </div>
+
+          <!-- CPL -->
+          <div class="glossary-card" data-search="cpl costo por lead registro prospecto contacto">
+            <div class="g-digital-side">
+              <span class="g-term">CPL (Costo por Lead o Registro)</span>
+            </div>
+            <div class="g-def">
+              Esquema de pago publicitario donde pagas por cada cliente potencial que llena una forma de contacto con datos válidos (correo, teléfono).
+            </div>
+            <div class="g-analogy-side">
+              <span class="g-badge">Pago por Ficha de Registro</span>
+              <div class="g-analogy">
+                Contratar edecanes en un supermercado y pagarles una tarifa fija por cada ficha con datos de contacto de clientes interesados que logren recolectar a mano.
+              </div>
+            </div>
+          </div>
+
+          <!-- CPC -->
+          <div class="glossary-card" data-search="cpc costo por clic transito visitas interes">
+            <div class="g-digital-side">
+              <span class="g-term">CPC (Costo por Clic)</span>
+            </div>
+            <div class="g-def">
+              Modelo publicitario donde pagas únicamente cuando el usuario hace clic sobre tu anuncio para ir a tu sitio web.
+            </div>
+            <div class="g-analogy-side">
+              <span class="g-badge">Costo por Cliente Entrando al Local</span>
+              <div class="g-analogy">
+                Contratar promotores en la puerta del centro comercial, y pagarles un costo fijo únicamente por cada cliente que logren convencer de cruzar la puerta física de tu local.
+              </div>
+            </div>
+          </div>
+
+          <!-- ROAS -->
+          <div class="glossary-card" data-search="roas retorno de la inversion publicitaria retorno retorno inversion ventas publicitaria">
+            <div class="g-digital-side">
+              <span class="g-term">ROAS (Retorno de la Inversión Publicitaria)</span>
+            </div>
+            <div class="g-def">
+              Métrica de rendimiento que indica cuántos pesos o dólares en ventas se generan por cada peso o dólar invertido en publicidad.
+            </div>
+            <div class="g-analogy-side">
+              <span class="g-badge">Retorno Directo de Ventas por Peso</span>
+              <div class="g-analogy">
+                Si gastas $1,000 pesos en imprimir volantes, y los clientes que traen esos volantes compran un total de $5,000 pesos de mercancía, tu retorno en ventas es de 5 a 1 (un ROAS de 500% o 5x).
+              </div>
+            </div>
+          </div>
+
+          <!-- CDP -->
+          <div class="glossary-card" data-search="cdp plataforma de datos de clientes base de datos unificada customer data platform">
+            <div class="g-digital-side">
+              <span class="g-term">CDP (Plataforma de Datos de Clientes)</span>
+            </div>
+            <div class="g-def">
+              Sistema de software centralizado que recopila y unifica datos de clientes desde múltiples fuentes para crear un perfil único digital.
+            </div>
+            <div class="g-analogy-side">
+              <span class="g-badge">La Bitácora Maestra del Cliente</span>
+              <div class="g-analogy">
+                Un libro contable gigante donde registras de forma manual cada visita de un cliente, qué productos ha comprado, qué quejas ha reportado, su correo y si prefiere que le llames por la mañana o la tarde.
+              </div>
+            </div>
+          </div>
+
+          <!-- DCO -->
+          <div class="glossary-card" data-search="dco optimizacion creativa dinamica banners creatividades dinamicas personalizacion">
+            <div class="g-digital-side">
+              <span class="g-term">DCO (Optimización Creativa Dinámica)</span>
+            </div>
+            <div class="g-def">
+              Tecnología que automatiza la creación de banners o anuncios, combinando imágenes y textos en tiempo real para adaptarlos a cada usuario.
+            </div>
+            <div class="g-analogy-side">
+              <span class="g-badge">La Vitrina Cambiante Automatizada</span>
+              <div class="g-analogy">
+                Una vitrina de cristal inteligente en la entrada de la tienda que detecta si el cliente que va a cruzar la puerta es un hombre interesado en trajes ejecutivos o una mujer buscando vestidos de gala, y acomoda los maniquís en milisegundos.
+              </div>
+            </div>
+          </div>
+
+          <!-- pDOOH -->
+          <div class="glossary-card" data-search="pdooh publicidad exterior digital programatica espectaculares pantallas digitales">
+            <div class="g-digital-side">
+              <span class="g-term">pDOOH (Publicidad Exterior Digital Programática)</span>
+            </div>
+            <div class="g-def">
+              Anuncios en vallas, espectaculares y pantallas de centros comerciales o aeropuertos que se compran de forma automatizada por internet.
+            </div>
+            <div class="g-analogy-side">
+              <span class="g-badge">El Espectacular Digital Dinámico</span>
+              <div class="g-analogy">
+                Un espectacular vial con pantalla digital en una avenida principal que cambia su comercial automáticamente de un supermercado a las 8 AM (ofreciendo café) a una marca de cerveza a las 7 PM (ofreciendo hora feliz).
+              </div>
+            </div>
+          </div>
+
+          <!-- OLV -->
+          <div class="glossary-card" data-search="olv video online comerciales video internet youtube">
+            <div class="g-digital-side">
+              <span class="g-term">OLV (Video Online / Comerciales en Internet)</span>
+            </div>
+            <div class="g-def">
+              Comerciales en formato de video que se reproducen antes, durante o después de ver contenidos en sitios web de noticias, blogs o redes.
+            </div>
+            <div class="g-analogy-side">
+              <span class="g-badge">Los Comerciales de Cine (Tráilers)</span>
+              <div class="g-analogy">
+                Es el anuncio o spot de 20 segundos que se proyecta en la pantalla grande del cine justo antes de que inicie la película que pagaste por ver, capturando tu atención completa.
+              </div>
+            </div>
+          </div>
+
+          <!-- DTC -->
+          <div class="glossary-card" data-search="dtc direct to consumer venta directa sin intermediarios ecommerce internet">
+            <div class="g-digital-side">
+              <span class="g-term">DTC (Venta Directa al Consumidor)</span>
+            </div>
+            <div class="g-def">
+              Modelo de negocios donde la marca fabrica y vende su producto directamente al cliente final a través de su tienda web, sin intermediarios.
+            </div>
+            <div class="g-analogy-side">
+              <span class="g-badge">El Taller / Fábrica de Venta al Público</span>
+              <div class="g-analogy">
+                Un carpintero que fabrica muebles artesanales en su taller y los vende directamente en su propio local anexo a la calle, sin distribuidores ni tiendas de autoservicio externas que cobren comisión.
+              </div>
+            </div>
+          </div>
+
+          <!-- B2B -->
+          <div class="glossary-card" data-search="b2b business to business venta corporativa negocio a negocio empresas">
+            <div class="g-digital-side">
+              <span class="g-term">B2B (Negocio a Negocio / Venta Corporativa)</span>
+            </div>
+            <div class="g-def">
+              Transacciones comerciales realizadas entre empresas directas (e.g. un fabricante de llantas vendiéndole a una armadora de autos).
+            </div>
+            <div class="g-analogy-side">
+              <span class="g-badge">El Proveedor Industrial</span>
+              <div class="g-analogy">
+                Una distribuidora de harinas al mayoreo que únicamente le vende costales de trigo a panaderías locales y fábricas de galletas, en lugar de vender por kilo en un mostrador al consumidor final.
+              </div>
+            </div>
+          </div>
+
+          <!-- CRM -->
+          <div class="glossary-card" data-search="crm gestion de relaciones con clientes base de datos ventas prospectos">
+            <div class="g-digital-side">
+              <span class="g-term">CRM (Gestión de Relaciones con Clientes)</span>
+            </div>
+            <div class="g-def">
+              Sistema digital para organizar, registrar y dar seguimiento a todos los contactos, llamadas, correos e historial de compras de tus clientes y prospectos.
+            </div>
+            <div class="g-analogy-side">
+              <span class="g-badge">El Archivero de Ventas de la Oficina</span>
+              <div class="g-analogy">
+                Un mueble de archiveros con carpetas individuales de cartón por cada cliente de la empresa, donde guardas copias de sus facturas, minutas de llamadas hechas por tus ejecutivos de venta e información personal de cumpleaños.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer>
+        <p>BAUS Holding © 2026. Documentación Confidencial de Uso Interno.</p>
+      </footer>
+    </div>
+
+    <!-- CODIGO JAVASCRIPT DE INTERACCION -->
+    <script>
+      // DATOS DE LAS ETAPAS DEL EMBUDO
+      const funnelStages = {
+        upper: {
+          badge: "Upper Funnel (Parte Alta del Embudo)",
+          badgeColor: "var(--accent-teal)",
+          badgeBg: "var(--accent-teal-glow)",
+          title: "Notoriedad y Alcance Masivo",
+          desc: "Orientado al desarrollo de cobertura, frecuencia y posicionamiento de marca a gran escala. Su objetivo principal es asegurar la disponibilidad mental en el público objetivo para que recuerden tu producto o servicio cuando ocurra la intención de compra. Se enfoca en canales de gran impacto visual y auditivo.",
+          model: "CPM (Costo por Mil Impresiones)",
+          metric: "VCR (Tasa de Video Reproducido Completo) / Reach / Frecuencia",
+          chips: [
+            "Connected TV (CTV - Televisión Conectada a Internet)",
+            "Programmatic OOH (pDOOH - Publicidad Exterior Digital Programática)",
+            "Online Video (OLV - Video Online)",
+            "Display de Alto Impacto (Banners Animados)",
+          ],
+        },
+        mid: {
+          badge: "Mid Funnel (Parte Media del Embudo)",
+          badgeColor: "var(--accent-violet)",
+          badgeBg: "var(--accent-violet-glow)",
+          title: "Consideración e Interacción",
+          desc: "Fase intermedia enfocada en enganchar activamente al usuario interesado. Busca incentivar interacciones de valor, como clics informados, visualizaciones profundas de videos o la captación de prospectos calificados interesados en recibir más información.",
+          model: "CPC (Costo por Clic) / CPV (Costo por Visualización) / CPL (Costo por Lead / Registro)",
+          metric: "CTR (Tasa de Clics) / VCR (Tasa de Video Completo) / Leads (Contactos)",
+          chips: [
+            "Paid Social (Publicidad Pagada en Redes)",
+            "Video Corto (Reels/TikTok)",
+            "Búsquedas (Search en Bing/Google)",
+            "Creator Marketing (Marketing de Creadores)",
+          ],
+        },
+        lower: {
+          badge: "Lower Funnel (Parte Baja del Embudo)",
+          badgeColor: "var(--accent-emerald)",
+          badgeBg: "var(--accent-emerald-glow)",
+          title: "Rendimiento y Conversión Directa",
+          desc: "Parte final del embudo, orientada a transacciones, ventas o registros finales inmediatos en la tienda en línea. El riesgo de la pauta publicitaria se reduce al optimizar los presupuestos para pagar directamente por conversiones efectivas o prospectos específicos.",
+          model: "CPA (Costo por Adquisición / Venta) / CPL (Costo por Lead / Registro)",
+          metric: "ROAS (Retorno de Inversión en Publicidad) / CPA (Costo por Compra) / CR (Tasa de Conversión)",
+          chips: [
+            "Search Dinámico (Buscadores Google/Bing)",
+            "Retargeting Dinámico (Reorientación de Anuncios)",
+            "Redes de Afiliación (Comisionistas Web)",
+            "CRM (Gestión de Clientes) & Automatización",
+          ],
+        },
+      };
+
+      // FUNCIÓN PARA CAMBIAR DATOS DEL EMBUDO AL HACER CLICK EN EL SVG
+      function selectFunnelStage(stageKey, element) {
+        // Remover clase active de todos los stages
+        const stages = document.querySelectorAll(".funnel-stage");
+        stages.forEach((s) => s.classList.remove("active"));
+
+        // Añadir clase active al seleccionado
+        element.classList.add("active");
+
+        // Cargar datos en el panel
+        const data = funnelStages[stageKey];
+        const badge = document.getElementById("details-stage-badge");
+        badge.textContent = data.badge;
+        badge.style.color = data.badgeColor;
+        badge.style.backgroundColor = data.badgeBg;
+
+        document.getElementById("details-stage-title").textContent = data.title;
+        document.getElementById("details-stage-desc").textContent = data.desc;
+
+        const modelVal = document.getElementById("details-stage-model");
+        modelVal.textContent = data.model;
+        modelVal.style.color = data.badgeColor;
+
+        document.getElementById("details-stage-metric").textContent =
+          data.metric;
+
+        // Actualizar chips
+        const chipsContainer = document.getElementById("details-stage-chips");
+        chipsContainer.innerHTML = "";
+        data.chips.forEach((chipText) => {
+          const span = document.createElement("span");
+          span.className = "chip";
+          span.textContent = chipText;
+          chipsContainer.appendChild(span);
+        });
+      }
+
+      // FUNCIÓN PARA CAMBIAR TABS DE LAS 6 VERTICALES
+      function switchVerticalTab(evt, verticalId) {
+        const contents = document.querySelectorAll(".vertical-content");
+        contents.forEach((c) => c.classList.remove("active"));
+
+        const buttons = document.querySelectorAll(".v-tab-btn");
+        buttons.forEach((b) => b.classList.remove("active"));
+
+        document.getElementById(verticalId).classList.add("active");
+        evt.currentTarget.classList.add("active");
+      }
+
+      // DATOS DE LOS PERFILES PARA EL SIMULADOR
+      const simProfiles = {
+        cpg: {
+          nodes: [
+            {
+              step: "01. CRM (Clientes)",
+              title: "CRM Físico",
+              sub: "Base de Datos de Tiendas",
+              isViamedia: false,
+            },
+            {
+              step: "02. Identidad",
+              title: "LiveRamp",
+              sub: "Resolución de Identidades",
+              isViamedia: false,
+            },
+            {
+              step: "03. Segmentación",
+              title: "TapTap Digital",
+              sub: "Planificación Geoespacial",
+              isViamedia: false,
+            },
+            {
+              step: "04. Geocercas & CTV",
+              title: "Simpli.fi",
+              sub: "Direcciones a Polígonos GPS",
+              isViamedia: false,
+            },
+            {
+              step: "05. Atribución",
+              title: "Epsilon Digital",
+              sub: "Medición Ventas In-Store",
+              isViamedia: false,
+            },
+          ],
+          explanation:
+            "<strong>Flujo CPG (Consumo Masivo) & Retail Multicanal:</strong> Los datos físicos del CRM (Base de Datos de Clientes) se suben a **LiveRamp** (Resolución de Identidad) para convertirlos en identificadores digitales. Posteriormente, **TapTap Digital** los georreferencia para activar pautas de pantallas exteriores (pDOOH). Para la precisión hiperlocal y geofencing a nivel de lote en hogares, se utiliza **Simpli.fi**, dirigiendo la pauta a CTV (Televisión Conectada). Finalmente, la tecnología de **Epsilon Digital** (COREid) recopila tickets de venta físicos en caja para medir la conversión offline. <br><em style='color: var(--accent-gold);'>Inconveniente: Exige gestionar 4 contratos diferentes, tarifas técnicas sumadas de software (SaaS) y una inversión de entrada de seis cifras ($100K+ USD/año).</em>",
+        },
+        dtc: {
+          nodes: [
+            {
+              step: "01. Datos DTC",
+              title: "Klaviyo CDP",
+              sub: "Carritos & Navegación Web",
+              isViamedia: false,
+            },
+            {
+              step: "02. Creadores",
+              title: "Fluvip",
+              sub: "Matchmaking de Influencers",
+              isViamedia: false,
+            },
+            {
+              step: "03. Tránsito",
+              title: "Meta & TikTok Ads",
+              sub: "Publicidad en Redes Sociales",
+              isViamedia: false,
+            },
+            {
+              step: "04. Retargeting DCO",
+              title: "Groovinads",
+              sub: "Producción Dinámica de Banners",
+              isViamedia: false,
+            },
+            {
+              step: "05. Alianzas",
+              title: "impact.com",
+              sub: "Pago Comisiones por CPA",
+              isViamedia: false,
+            },
+          ],
+          explanation:
+            "<strong>Flujo DTC (Venta Directa al Consumidor) / E-commerce:</strong> La base de datos central reside en **Klaviyo** (CDP - Plataforma de Datos de Clientes), que capta abandonos de carritos en tiempo real. Para atraer audiencias, se lanzan briefs a creadores mediante **Fluvip** (Influencer Marketing) en México y LatAm, amplificando el alcance con pauta pagada en **Meta y TikTok Ads**. A los usuarios que abandonan la web, **Groovinads** (motor DCO) los reorienta con banners adaptados automáticamente según intereses. Las ventas referidas por blogs o afiliados son asignadas y pagadas en **impact.com**.",
+        },
+        b2b: {
+          nodes: [
+            {
+              step: "01. Pipeline",
+              title: "HubSpot",
+              sub: "CRM de Ventas & Nurturing",
+              isViamedia: false,
+            },
+            {
+              step: "02. Segmentación",
+              title: "LinkedIn Ads",
+              sub: "Foco por Cargo y Empresa",
+              isViamedia: false,
+            },
+            {
+              step: "03. Móvil & Rich Media",
+              title: "Logan.ai",
+              sub: "Formatos Multimedia",
+              isViamedia: false,
+            },
+            {
+              step: "04. Omnicanalidad",
+              title: "Arkeero",
+              sub: "Email & Declarative Data",
+              isViamedia: false,
+            },
+            {
+              step: "05. ABM Retargeting",
+              title: "AdRoll",
+              sub: "Frecuencia en Cuentas Clave",
+              isViamedia: false,
+            },
+          ],
+          explanation:
+            "<strong>Flujo Servicios Corporativos B2B (Negocio a Negocio):</strong> Todo inicia en **HubSpot**, donde se registran las oportunidades comerciales. Para atraer directores, se configuran pautas en **LinkedIn Ads**. De forma paralela en México, se corre pauta interactiva Rich Media y push móvil con **Logan** y campañas de datos declarativos deterministas con **Arkeero** para calificar prospectos. Finalmente, **AdRoll** realiza un retargeting (ABM - Marketing Basado en Cuentas) de alta frecuencia dirigido exclusivamente a las empresas corporativas que ya visitaron el sitio web.",
+        },
+        viamedia: {
+          nodes: [
+            {
+              step: "01. Data Activa",
+              title: "CRM de Marca",
+              sub: "Bases de Datos en un Clic",
+              isViamedia: true,
+            },
+            {
+              step: "02. Identidad ID-less",
+              title: "Geo-Graph™",
+              sub: "Uber H3 Spatial (Cookies 0%)",
+              isViamedia: true,
+            },
+            {
+              step: "03. TV Lineal & Digital",
+              title: "Parrot ADS",
+              sub: "Inserción en Cable & Streaming",
+              isViamedia: true,
+            },
+            {
+              step: "04. Omnicanalidad",
+              title: "Viamedia Platform",
+              sub: "Display + OLV + pDOOH Unificado",
+              isViamedia: true,
+            },
+            {
+              step: "05. Atribución",
+              title: "Reportería Cerrada",
+              sub: "Managed Services (0% Tech Fee)",
+              isViamedia: true,
+            },
+          ],
+          explanation:
+            "<strong>El Flujo Simplificado y de Alta Eficiencia de Viamedia.AI:</strong> En lugar de contratar 4 o 5 plataformas y pagar licencias de software (SaaS) forzosas, Viamedia.AI actúa como un consolidador de ciclo cerrado. Sube el CRM (Base de Datos) de tu marca y su tecnología **Geo-Graph™** resuelve la localización de vecindarios de alta afinidad (sin cookies y sin pagar los $50,000+ USD anuales de LiveRamp). Luego, **Parrot ADS** inserta anuncios dinámicos de forma automática en televisión lineal local y Connected TV (CTV). El ecosistema unificado gestiona simultáneamente pautas en video digital (OLV), banners interactivos (Attention+) y publicidad exterior (pDOOH) sin cargos tecnológicos de plataforma (<strong>0% Tech Fee</strong>). Todo es operado de forma integral por sus estrategas bajo modelo Managed Service (Servicio Gestionado), ideal para anunciantes que no tienen traders programáticos in-house.",
+        },
+      };
+
+      // CARGAR PERFIL DEL SIMULADOR
+      function loadSimProfile(profileKey) {
+        // Activar botón del selector
+        const buttons = document.querySelectorAll(".sim-btn");
+        buttons.forEach((btn) => btn.classList.remove("active"));
+        event.currentTarget.classList.add("active");
+
+        const data = simProfiles[profileKey];
+        const container = document.getElementById("diagram-row");
+        container.innerHTML = "";
+
+        // Crear nodos y flechas de forma secuencial
+        data.nodes.forEach((node, idx) => {
+          // Crear nodo de flujo
+          const nodeDiv = document.createElement("div");
+          nodeDiv.className = "flow-node";
+          if (node.isViamedia) {
+            nodeDiv.classList.add("viamedia-node-active");
+          }
+          nodeDiv.innerHTML = `
+            <div class="node-step">${node.step}</div>
+            <div class="node-title">${node.title}</div>
+            <div class="node-subtitle">${node.sub}</div>
+          `;
+          container.appendChild(nodeDiv);
+
+          // Crear flecha de flujo si no es el último nodo
+          if (idx < data.nodes.length - 1) {
+            const arrowDiv = document.createElement("div");
+            arrowDiv.className = "flow-arrow";
+            container.appendChild(arrowDiv);
+          }
+        });
+
+        // Actualizar texto explicativo
+        document.getElementById("sim-explanation").innerHTML = data.explanation;
+
+        // Disparar animación secuencial de activación de nodos
+        animateFlowDiagram();
+      }
+
+      // ANIMACIÓN DE NODOS SECUENCIAL DEL SIMULADOR
+      function animateFlowDiagram() {
+        const nodes = document.querySelectorAll(".flow-node");
+        const arrows = document.querySelectorAll(".flow-arrow");
+
+        // Limpiar estados activos anteriores
+        nodes.forEach((n) => n.classList.remove("active"));
+        arrows.forEach((a) => a.classList.remove("active"));
+
+        // Activar de forma retardada secuencial
+        nodes.forEach((node, idx) => {
+          setTimeout(() => {
+            node.classList.add("active");
+            if (idx > 0 && arrows[idx - 1]) {
+              arrows[idx - 1].classList.add("active");
+            }
+          }, idx * 600);
+        });
+      }
+
+      // FILTRO INTERACTIVO DE TARJETAS DE GLOSARIO
+      function filterGlossaryCards() {
+        const query = document
+          .getElementById("search-input")
+          .value.toLowerCase();
+        const cards = document.querySelectorAll(".glossary-card");
+
+        cards.forEach((card) => {
+          const searchContent = card.getAttribute("data-search").toLowerCase();
+          if (searchContent.includes(query)) {
+            card.style.display = "flex";
+          } else {
+            card.style.display = "none";
+          }
+        });
+      }
+
+      // Inicializar simulador en CPG por defecto
+      window.onload = function () {
+        // Simular evento para cargar CPG por defecto
+        const defaultBtn = document.querySelector(".sim-btn");
+        if (defaultBtn) {
+          defaultBtn.click();
+        }
+      };
+    </script>
+  </body>
+</html>
