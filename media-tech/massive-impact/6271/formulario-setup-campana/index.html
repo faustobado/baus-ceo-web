@@ -1,0 +1,1625 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Viamedia.ai — Formulario RFP de Campaña</title>
+  
+  <!-- Google Fonts: DM Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <style>
+    /* VARIABLES Y PALETA DE COLORES PREMIUM BAUS */
+    :root {
+      --bg: #080C14;
+      --surface: rgba(20, 25, 39, 0.7);
+      --surface-elevated: rgba(28, 34, 53, 0.95);
+      --border: rgba(255, 255, 255, 0.08);
+      --border-focus: #FACC15;
+      
+      --text: #F1F5F9;
+      --text-muted: #94A3B8;
+      
+      --accent: #FACC15;
+      --accent-dim: rgba(250, 204, 21, 0.12);
+      --accent-blue: #3B82F6;
+      --accent-violet: #6366F1;
+      
+      --success: #10B981;
+      --success-dim: rgba(16, 185, 129, 0.15);
+      --error: #EF4444;
+      --error-dim: rgba(239, 68, 68, 0.15);
+      
+      --radius-sm: 8px;
+      --radius-md: 12px;
+      --radius-lg: 20px;
+      
+      --transition-fast: 150ms ease;
+      --transition-normal: 250ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      overflow-x: hidden;
+      position: relative;
+    }
+
+    /* Fondo ambiental */
+    .ambient-glow {
+      position: fixed;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+      overflow: hidden;
+    }
+
+    .ambient-glow::before {
+      content: "";
+      position: absolute;
+      top: -10%;
+      left: 10%;
+      width: 45%;
+      height: 45%;
+      background: radial-gradient(circle, rgba(250, 204, 21, 0.04) 0%, rgba(99, 102, 241, 0.02) 50%, transparent 100%);
+      filter: blur(80px);
+    }
+
+    .ambient-glow::after {
+      content: "";
+      position: absolute;
+      bottom: -10%;
+      right: 10%;
+      width: 40%;
+      height: 40%;
+      background: radial-gradient(circle, rgba(16, 185, 129, 0.03) 0%, rgba(59, 130, 246, 0.02) 60%, transparent 100%);
+      filter: blur(80px);
+    }
+
+    /* Grano de textura */
+    .grain {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      pointer-events: none;
+      opacity: 0.025;
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.99' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+    }
+
+    /* Barra Superior Decorativa */
+    .top-gradient-bar {
+      height: 4px;
+      background: linear-gradient(90deg, #FACC15 0%, #F59E0B 35%, #6366F1 70%, #10B981 100%);
+      position: sticky;
+      top: 0;
+      z-index: 102;
+    }
+
+    /* Cabecera Flotante Premium */
+    header {
+      background: rgba(13, 17, 30, 0.8);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--border);
+      padding: 20px 0;
+      position: sticky;
+      top: 4px;
+      z-index: 100;
+      box-shadow: 0 4px 30px rgba(0, 0, 0, 0.2);
+    }
+
+    header .inner {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .brand-group {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .logo-mark {
+      width: 44px;
+      height: 44px;
+      border-radius: var(--radius-md);
+      background: linear-gradient(135deg, #FACC15 0%, #F59E0B 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 700;
+      font-size: 20px;
+      color: #080C14;
+      flex-shrink: 0;
+      box-shadow: 0 4px 12px rgba(250, 204, 21, 0.3);
+    }
+
+    header h1 {
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+
+    header h1 span {
+      color: var(--accent);
+    }
+
+    header p {
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-top: 1px;
+    }
+
+    .division-tag {
+      background: rgba(99, 102, 241, 0.1);
+      border: 1px solid rgba(99, 102, 241, 0.25);
+      color: #818CF8;
+      padding: 4px 10px;
+      border-radius: 9999px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+    }
+
+    /* Contenedor Principal */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 40px 24px 100px;
+      position: relative;
+      z-index: 1;
+    }
+
+    /* Indicador de Progreso Multietapa */
+    .progress-wrapper {
+      margin-bottom: 48px;
+    }
+
+    .progress-bar {
+      display: flex;
+      gap: 8px;
+    }
+
+    .progress-bar .seg {
+      flex: 1;
+      height: 6px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.05);
+      border: 1px solid var(--border);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .progress-bar .seg::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 0;
+      background: var(--accent);
+      transition: width 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .progress-bar .seg.active::after {
+      width: 100%;
+      background: var(--accent);
+    }
+
+    .progress-bar .seg.done::after {
+      width: 100%;
+      background: var(--success);
+    }
+
+    .progress-labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      padding: 0 4px;
+    }
+
+    .progress-labels span {
+      font-size: 11px;
+      font-weight: 600;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      font-family: 'JetBrains Mono', monospace;
+    }
+
+    .progress-labels span.active {
+      color: var(--accent);
+    }
+
+    /* Caja de Contenido del Formulario (Glassmorphism) */
+    .form-card {
+      background: var(--surface);
+      backdrop-filter: blur(20px);
+      -webkit-backdrop-filter: blur(20px);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-lg);
+      padding: 40px;
+      box-shadow: 0 20px 50px rgba(0, 0, 0, 0.3);
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Efecto de luz superior en tarjeta */
+    .form-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.15) 50%, transparent 100%);
+    }
+
+    /* Secciones del Formulario */
+    .form-section {
+      display: none;
+    }
+
+    .form-section.active {
+      display: block;
+      animation: sectionFadeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+
+    @keyframes sectionFadeIn {
+      from {
+        opacity: 0;
+        transform: translateY(16px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .section-header {
+      margin-bottom: 32px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      padding-bottom: 18px;
+    }
+
+    .section-num {
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.15em;
+      margin-bottom: 8px;
+      display: inline-block;
+      font-weight: 600;
+    }
+
+    .section-header h2 {
+      font-size: 24px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      color: var(--text);
+    }
+
+    .section-header p {
+      color: var(--text-muted);
+      font-size: 14px;
+      margin-top: 6px;
+    }
+
+    /* Estructura de Campos */
+    .field {
+      margin-bottom: 24px;
+    }
+
+    .field label {
+      display: block;
+      font-size: 13px;
+      font-weight: 500;
+      margin-bottom: 8px;
+      color: var(--text);
+    }
+
+    .field label .req {
+      color: var(--accent);
+      margin-left: 3px;
+    }
+
+    .field .hint {
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      line-height: 1.4;
+    }
+
+    /* Controles de Formulario */
+    input[type="text"],
+    input[type="email"],
+    input[type="url"],
+    input[type="number"],
+    input[type="date"],
+    select,
+    textarea {
+      width: 100%;
+      padding: 14px 16px;
+      background: rgba(13, 17, 30, 0.6);
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      color: var(--text);
+      font-family: 'DM Sans', sans-serif;
+      font-size: 15px;
+      transition: border-color var(--transition-fast), box-shadow var(--transition-fast), background-color var(--transition-fast);
+      outline: none;
+      min-height: 48px;
+    }
+
+    input:hover,
+    select:hover,
+    textarea:hover {
+      border-color: rgba(255, 255, 255, 0.15);
+      background-color: rgba(13, 17, 30, 0.8);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 3px var(--accent-dim), 0 4px 12px rgba(0, 0, 0, 0.2);
+      background-color: rgba(13, 17, 30, 0.9);
+    }
+
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+      line-height: 1.5;
+    }
+
+    select {
+      cursor: pointer;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath d='M2 4l4 4 4-4' fill='none' stroke='%2394a3b8' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 18px center;
+      padding-right: 40px;
+    }
+
+    /* Filas y Columnas */
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+    }
+
+    @media (max-width: 680px) {
+      .field-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+      }
+    }
+
+    /* Estilos Personalizados para Checkboxes */
+    .checkbox-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 10px;
+    }
+
+    .checkbox-grid label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 14px;
+      border-radius: var(--radius-md);
+      background: rgba(13, 17, 30, 0.4);
+      border: 1px solid var(--border);
+      cursor: pointer;
+      font-size: 13px;
+      margin-bottom: 0;
+      transition: all var(--transition-fast);
+      user-select: none;
+    }
+
+    .checkbox-grid label:hover {
+      border-color: rgba(250, 204, 21, 0.4);
+      background: rgba(13, 17, 30, 0.6);
+    }
+
+    .checkbox-grid input {
+      display: none;
+    }
+
+    .checkbox-grid .checkbox-custom {
+      width: 18px;
+      height: 18px;
+      border: 1.5px solid var(--text-muted);
+      border-radius: 4px;
+      display: inline-block;
+      position: relative;
+      flex-shrink: 0;
+      transition: all var(--transition-fast);
+    }
+
+    .checkbox-grid input:checked + .checkbox-custom {
+      background: var(--accent);
+      border-color: var(--accent);
+    }
+
+    .checkbox-grid input:checked + .checkbox-custom::after {
+      content: "";
+      position: absolute;
+      left: 5px;
+      top: 2px;
+      width: 4px;
+      height: 8px;
+      border: solid #080C14;
+      border-width: 0 2px 2px 0;
+      transform: rotate(45deg);
+    }
+
+    .checkbox-grid input:checked ~ span {
+      color: var(--accent);
+      font-weight: 500;
+    }
+
+    /* Grid de Presupuestos (Dinamizada) */
+    .budget-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 14px;
+      background: rgba(13, 17, 30, 0.3);
+      padding: 20px;
+      border-radius: var(--radius-md);
+      border: 1px solid var(--border);
+      margin-top: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .budget-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .budget-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .budget-item label {
+      font-size: 13px;
+      margin: 0;
+      color: var(--text-muted);
+    }
+
+    .budget-item input {
+      width: 140px;
+      text-align: right;
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 14px;
+      padding: 10px 12px;
+      min-height: auto;
+    }
+
+    /* Validación e Indicadores Visuales */
+    input.field-error,
+    select.field-error,
+    textarea.field-error {
+      border-color: var(--error) !important;
+      box-shadow: 0 0 0 3px var(--error-dim) !important;
+    }
+
+    /* Botones de Navegación */
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .btn {
+      padding: 14px 28px;
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      font-weight: 700;
+      cursor: pointer;
+      border: none;
+      transition: all var(--transition-normal);
+      font-family: 'DM Sans', sans-serif;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      user-select: none;
+    }
+
+    .btn-back {
+      background: transparent;
+      color: var(--text-muted);
+      border: 1px solid var(--border);
+    }
+
+    .btn-back:hover {
+      border-color: var(--text);
+      color: var(--text);
+      background: rgba(255, 255, 255, 0.02);
+    }
+
+    .btn-next {
+      background: var(--accent);
+      color: #080C14;
+      box-shadow: 0 4px 14px rgba(250, 204, 21, 0.2);
+    }
+
+    .btn-next:hover {
+      background: #FDE047;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(250, 204, 21, 0.35);
+    }
+
+    .btn-next:active {
+      transform: translateY(0);
+    }
+
+    .btn-submit {
+      background: linear-gradient(135deg, #10B981 0%, #059669 100%);
+      color: #080C14;
+      box-shadow: 0 4px 14px rgba(16, 185, 129, 0.25);
+    }
+
+    .btn-submit:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.4);
+    }
+
+    /* Pantalla de Éxito */
+    .success-screen {
+      text-align: center;
+      padding: 40px 10px;
+    }
+
+    .success-screen .icon-wrapper {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: var(--success-dim);
+      border: 2px solid var(--success);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      color: var(--success);
+      box-shadow: 0 0 24px var(--success-dim);
+      animation: scaleUpIcon 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+    }
+
+    @keyframes scaleUpIcon {
+      from { transform: scale(0); opacity: 0; }
+      to { transform: scale(1); opacity: 1; }
+    }
+
+    .success-screen .icon-wrapper svg {
+      width: 36px;
+      height: 36px;
+    }
+
+    .success-screen h2 {
+      font-size: 28px;
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin-bottom: 12px;
+    }
+
+    .success-screen p {
+      color: var(--text-muted);
+      max-width: 480px;
+      margin: 0 auto 24px;
+      font-size: 15px;
+    }
+
+    .success-screen .rfp-id-card {
+      background: rgba(250, 204, 21, 0.05);
+      border: 1px dashed var(--accent);
+      padding: 16px 24px;
+      border-radius: var(--radius-md);
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4px;
+      margin-bottom: 32px;
+    }
+
+    .success-screen .rfp-id-card span:first-child {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--text-muted);
+      font-weight: 600;
+    }
+
+    .success-screen .rfp-id-card .rfp-id {
+      font-family: 'JetBrains Mono', monospace;
+      color: var(--accent);
+      font-size: 18px;
+      font-weight: 600;
+    }
+
+    /* Notificación de error */
+    .toast {
+      position: fixed;
+      bottom: 24px;
+      left: 50%;
+      transform: translateX(-50%) translateY(20px);
+      background: var(--error);
+      color: #080C14;
+      padding: 14px 28px;
+      border-radius: var(--radius-md);
+      font-size: 14px;
+      font-weight: 700;
+      z-index: 200;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      opacity: 0;
+      pointer-events: none;
+      transition: all var(--transition-normal);
+    }
+
+    .toast.active {
+      transform: translateX(-50%) translateY(0);
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    /* Overlay de Carga */
+    .loading-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(8, 12, 20, 0.85);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 300;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .loading-overlay.active {
+      display: flex;
+    }
+
+    .spinner {
+      width: 48px;
+      height: 48px;
+      border: 3.5px solid rgba(255, 255, 255, 0.05);
+      border-top-color: var(--accent);
+      border-radius: 50%;
+      animation: spin 0.8s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Elementos de Fondo Visual Premium -->
+  <div class="ambient-glow"></div>
+  <div class="grain"></div>
+  
+  <!-- Barra superior y Header -->
+  <div class="top-gradient-bar"></div>
+  <header>
+    <div class="inner">
+      <div class="brand-group">
+        <div class="logo-mark">V</div>
+        <div>
+          <h1><span>viamedia</span>.ai — Formulario RFP</h1>
+          <p>Solicitud estandarizada de propuesta de campaña</p>
+        </div>
+      </div>
+      <div class="division-tag">Massive Impact</div>
+    </div>
+  </header>
+
+  <main>
+    <!-- Barra de progreso superior -->
+    <div class="progress-wrapper" id="progressWrapper">
+      <div class="progress-bar" id="progress">
+        <div class="seg active"></div>
+        <div class="seg"></div>
+        <div class="seg"></div>
+        <div class="seg"></div>
+        <div class="seg"></div>
+        <div class="seg"></div>
+      </div>
+      <div class="progress-labels">
+        <span class="active">01. General</span>
+        <span>02. Datos</span>
+        <span>03. Targeting</span>
+        <span>04. Estrategia</span>
+        <span>05. KPIs</span>
+        <span>06. Extra</span>
+      </div>
+    </div>
+
+    <!-- Caja contenedora -->
+    <div class="form-card">
+      <form id="rfpForm" novalidate autocomplete="on">
+        
+        <!-- ================= SECCIÓN 1: INFORMACIÓN GENERAL ================= -->
+        <div class="form-section active" data-section="0">
+          <div class="section-header">
+            <span class="section-num">Sección 01 / 06</span>
+            <h2>Información General</h2>
+            <p>Identificación del ejecutivo de cuenta (AE), marca y detalles del deal.</p>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="ae_nombre">Nombre completo del AE <span class="req">*</span></label>
+              <input type="text" id="ae_nombre" name="ae_nombre" required autocomplete="name" placeholder="Ej: Fausto Bado Rocha">
+            </div>
+            <div class="field">
+              <label for="ae_email">Email del AE <span class="req">*</span></label>
+              <input type="email" id="ae_email" name="ae_email" required autocomplete="email" placeholder="nombre@viamedia.ai">
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="lider_ventas">Líder de Ventas <span class="req">*</span></label>
+              <input type="text" id="lider_ventas" name="lider_ventas" required placeholder="Nombre del líder de ventas">
+            </div>
+            <div class="field">
+              <label for="nombre_campana">Nombre de la Campaña <span class="req">*</span></label>
+              <input type="text" id="nombre_campana" name="nombre_campana" required placeholder="Agencia_Marca_Detalle_Fecha">
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="hay_agencia">¿Hay agencia involucrada? <span class="req">*</span></label>
+              <select id="hay_agencia" name="hay_agencia" required>
+                <option value="">Seleccionar...</option>
+                <option>Sí</option>
+                <option>No</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="nombre_agencia">Nombre de la Agencia</label>
+              <input type="text" id="nombre_agencia" name="nombre_agencia" placeholder="Dejar vacío si no aplica">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="trabajo_previo_agencia">¿Hemos trabajado previamente con esta agencia?</label>
+            <select id="trabajo_previo_agencia" name="trabajo_previo_agencia">
+              <option value="">Seleccionar...</option>
+              <option>Sí, trabajado</option>
+              <option>Sí, enviado propuestas</option>
+              <option>No</option>
+            </select>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="marca">Marca / Anunciante <span class="req">*</span></label>
+              <input type="text" id="marca" name="marca" required placeholder="Nombre del anunciante">
+            </div>
+            <div class="field">
+              <label for="sitio_web">Sitio web de la Marca <span class="req">*</span></label>
+              <input type="url" id="sitio_web" name="sitio_web" required autocomplete="url" placeholder="https://ejemplo.com">
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="trabajo_previo_marca">¿Trabajo previo con esta marca? <span class="req">*</span></label>
+              <select id="trabajo_previo_marca" name="trabajo_previo_marca" required>
+                <option value="">Seleccionar...</option>
+                <option>Sí</option>
+                <option>No</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="industria_restringida">Industria restringida</label>
+              <select id="industria_restringida" name="industria_restringida">
+                <option value="N/A">N/A</option>
+                <option>Cannabis</option>
+                <option>Armas de fuego</option>
+                <option>Alcohol</option>
+                <option>Tabaco</option>
+                <option>Otro</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="tipo_servicio">Tipo de Servicio <span class="req">*</span></label>
+              <select id="tipo_servicio" name="tipo_servicio" required>
+                <option value="">Seleccionar...</option>
+                <option>Servicio Gestionado (Managed Service)</option>
+                <option>Autoservicio</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="link_hubspot">Link al Deal en HubSpot</label>
+              <input type="url" id="link_hubspot" name="link_hubspot" placeholder="https://app.hubspot.com/...">
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="entregables">Entregables requeridos <span class="req">*</span></label>
+              <select id="entregables" name="entregables" required>
+                <option value="">Seleccionar...</option>
+                <option>Solo Media Plan (2 días hábiles, $20k+)</option>
+                <option>Media Plan + Propuesta Completa</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="email_adicional">Email adicional para copia</label>
+              <input type="email" id="email_adicional" name="email_adicional" autocomplete="email" placeholder="copia@viamedia.ai">
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="fecha_solicitud">Fecha de solicitud <span class="req">*</span></label>
+              <input type="date" id="fecha_solicitud" name="fecha_solicitud" required>
+            </div>
+            <div class="field">
+              <label for="fecha_entrega">Fecha de entrega requerida <span class="req">*</span></label>
+              <input type="date" id="fecha_entrega" name="fecha_entrega" required>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="por_que_viamedia">¿Por qué Viamedia está siendo considerada? <span class="req">*</span></label>
+            <div class="hint">¿Qué elementos de nuestra oferta (Managed, Geo-Graph, etc.) resonaron con el cliente?</div>
+            <textarea id="por_que_viamedia" name="por_que_viamedia" required placeholder="Ingresa los factores clave de consideración..."></textarea>
+          </div>
+        </div>
+
+        <!-- ================= SECCIÓN 2: DATOS BÁSICOS DE CAMPAÑA ================= -->
+        <div class="form-section" data-section="1">
+          <div class="section-header">
+            <span class="section-num">Sección 02 / 06</span>
+            <h2>Datos Básicos de la Campaña</h2>
+            <p>Definición de fechas, presupuestos generales, assets y propósitos.</p>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="fecha_inicio">Fecha de inicio <span class="req">*</span></label>
+              <input type="date" id="fecha_inicio" name="fecha_inicio" required>
+            </div>
+            <div class="field">
+              <label for="fecha_fin">Fecha de fin <span class="req">*</span></label>
+              <input type="date" id="fecha_fin" name="fecha_fin" required>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="presupuesto_total">Presupuesto total (USD) <span class="req">*</span></label>
+              <input type="number" id="presupuesto_total" name="presupuesto_total" required placeholder="25000" min="1000" step="100" inputmode="numeric">
+            </div>
+            <div class="field">
+              <label for="distribucion_uniforme">¿Distribución uniforme? <span class="req">*</span></label>
+              <select id="distribucion_uniforme" name="distribucion_uniforme" required>
+                <option value="">Seleccionar...</option>
+                <option>Sí</option>
+                <option>No</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="flighting">Solicitudes específicas de flighting</label>
+            <div class="hint">Indica si requiere Heavy-up, períodos oscuros (go dark) o distribución flexible.</div>
+            <textarea id="flighting" name="flighting" placeholder="Detalla los requerimientos especiales..."></textarea>
+          </div>
+
+          <div class="field">
+            <label>Assets creativos disponibles <span class="req">*</span></label>
+            <div class="checkbox-grid">
+              <label>
+                <input type="checkbox" name="assets_creativos" value="Video">
+                <span class="checkbox-custom"></span>
+                <span>Video</span>
+              </label>
+              <label>
+                <input type="checkbox" name="assets_creativos" value="Audio">
+                <span class="checkbox-custom"></span>
+                <span>Audio</span>
+              </label>
+              <label>
+                <input type="checkbox" name="assets_creativos" value="Display">
+                <span class="checkbox-custom"></span>
+                <span>Display</span>
+              </label>
+              <label>
+                <input type="checkbox" name="assets_creativos" value="Social">
+                <span class="checkbox-custom"></span>
+                <span>Social</span>
+              </label>
+              <label>
+                <input type="checkbox" name="assets_creativos" value="Attention+">
+                <span class="checkbox-custom"></span>
+                <span>Attention+</span>
+              </label>
+              <label>
+                <input type="checkbox" name="assets_creativos" value="CTV">
+                <span class="checkbox-custom"></span>
+                <span>CTV</span>
+              </label>
+              <label>
+                <input type="checkbox" name="assets_creativos" value="OTT">
+                <span class="checkbox-custom"></span>
+                <span>OTT</span>
+              </label>
+              <label>
+                <input type="checkbox" name="assets_creativos" value="Otro">
+                <span class="checkbox-custom"></span>
+                <span>Otro</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="otros_assets">Si seleccionó 'Otro', especifique</label>
+              <input type="text" id="otros_assets" name="otros_assets" placeholder="Ej: Material impreso escaneado, newsletter">
+            </div>
+            <div class="field">
+              <label>Duración de video</label>
+              <div class="checkbox-grid">
+                <label>
+                  <input type="checkbox" name="duracion_video" value="6s">
+                  <span class="checkbox-custom"></span>
+                  <span>6s</span>
+                </label>
+                <label>
+                  <input type="checkbox" name="duracion_video" value="15s">
+                  <span class="checkbox-custom"></span>
+                  <span>15s</span>
+                </label>
+                <label>
+                  <input type="checkbox" name="duracion_video" value="30s">
+                  <span class="checkbox-custom"></span>
+                  <span>30s</span>
+                </label>
+                <label>
+                  <input type="checkbox" name="duracion_video" value="60s">
+                  <span class="checkbox-custom"></span>
+                  <span>60s</span>
+                </label>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="proposito">Propósito de la campaña <span class="req">*</span></label>
+            <div class="hint">Contexto del cliente, metas específicas de la marca y retos principales.</div>
+            <textarea id="proposito" name="proposito" required placeholder="¿Cuáles son los objetivos críticos de negocio a resolver?"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="benchmarks">Benchmarks / KPIs objetivo por canal</label>
+            <div class="hint">Ej: OLV VCR 60-70%, Audio LTR >90%, CTV VCR >90%, Attention+ CTR + Viewability.</div>
+            <textarea id="benchmarks" name="benchmarks" placeholder="Indica si el cliente ha establecido límites o requerimientos de rendimiento mínimos..."></textarea>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="pricing">Consideraciones de pricing</label>
+              <input type="text" id="pricing" name="pricing" placeholder="Ej: Rate Card LATAM 2026 aprobada">
+            </div>
+            <div class="field">
+              <label for="aprobacion_tarifas">Referencia de aprobación de tarifas</label>
+              <input type="text" id="aprobacion_tarifas" name="aprobacion_tarifas" placeholder="Nombre de archivo de cotización u orden">
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="viewability">¿Viewability garantizada?</label>
+              <select id="viewability" name="viewability">
+                <option>No</option>
+                <option>Sí</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="medicion">Requisitos de medición</label>
+              <select id="medicion" name="medicion">
+                <option>Ninguno</option>
+                <option>Brand Lift</option>
+                <option>Foot Traffic</option>
+                <option>Conversiones</option>
+                <option>Otro</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="fees_terceros">¿Cubrir fees de terceros?</label>
+              <select id="fees_terceros" name="fees_terceros">
+                <option>Ninguno</option>
+                <option>Sí (especificar en la sección de notas)</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="valor_agregado">Valor agregado solicitado</label>
+              <input type="text" id="valor_agregado" name="valor_agregado" placeholder="Ej: Dashboard personalizado, estudio post-campaña">
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= SECCIÓN 3: TARGETING DE LA CAMPAÑA ================= -->
+        <div class="form-section" data-section="2">
+          <div class="section-header">
+            <span class="section-num">Sección 03 / 06</span>
+            <h2>Targeting de la Campaña</h2>
+            <p>Configuración geográfica y segmentación del público objetivo.</p>
+          </div>
+
+          <div class="field">
+            <label for="targeting_audiencia">Targeting de audiencia <span class="req">*</span></label>
+            <div class="hint">Demográfico, comportamental, audiencias de IA, o splits (ej: 50/50 targets).</div>
+            <textarea id="targeting_audiencia" name="targeting_audiencia" required placeholder="Describe detalladamente el perfil de la audiencia objetivo..."></textarea>
+          </div>
+
+          <div class="field">
+            <label for="tipo_geografia">Tipo de geografía <span class="req">*</span></label>
+            <select id="tipo_geografia" name="tipo_geografia" required>
+              <option value="">Seleccionar...</option>
+              <option>Nacional</option>
+              <option>Regional</option>
+              <option>Ciudades específicas</option>
+              <option>Geo-fencing</option>
+              <option>Otro</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="detalle_geografia">Detalle de la geografía <span class="req">*</span></label>
+            <div class="hint">Ciudades, estados, códigos postales, coordenadas o áreas de influencia física.</div>
+            <textarea id="detalle_geografia" name="detalle_geografia" required placeholder="Detalla las zonas geográficas aplicables..."></textarea>
+          </div>
+        </div>
+
+        <!-- ================= SECCIÓN 4: ESTRATEGIA DE CAMPAÑA ================= -->
+        <div class="form-section" data-section="3">
+          <div class="section-header">
+            <span class="section-num">Sección 04 / 06</span>
+            <h2>Estrategia de Campaña</h2>
+            <p>Productos integrados, exclusiones y presupuestos distribuidos.</p>
+          </div>
+
+          <div class="field">
+            <label>Productos a incluir <span class="req">*</span></label>
+            <div class="checkbox-grid">
+              <label>
+                <input type="checkbox" name="productos_incluir" value="OLV">
+                <span class="checkbox-custom"></span>
+                <span>OLV</span>
+              </label>
+              <label>
+                <input type="checkbox" name="productos_incluir" value="Streaming Audio">
+                <span class="checkbox-custom"></span>
+                <span>Streaming Audio</span>
+              </label>
+              <label>
+                <input type="checkbox" name="productos_incluir" value="Podcast Audio">
+                <span class="checkbox-custom"></span>
+                <span>Podcast Audio</span>
+              </label>
+              <label>
+                <input type="checkbox" name="productos_incluir" value="Attention+ Mobile">
+                <span class="checkbox-custom"></span>
+                <span>Attention+ Mobile</span>
+              </label>
+              <label>
+                <input type="checkbox" name="productos_incluir" value="Attention+ CTV">
+                <span class="checkbox-custom"></span>
+                <span>Attention+ CTV</span>
+              </label>
+              <label>
+                <input type="checkbox" name="productos_incluir" value="CTV Only RON">
+                <span class="checkbox-custom"></span>
+                <span>CTV Only RON</span>
+              </label>
+              <label>
+                <input type="checkbox" name="productos_incluir" value="OTT RON">
+                <span class="checkbox-custom"></span>
+                <span>OTT RON</span>
+              </label>
+              <label>
+                <input type="checkbox" name="productos_incluir" value="Display">
+                <span class="checkbox-custom"></span>
+                <span>Display</span>
+              </label>
+              <label>
+                <input type="checkbox" name="productos_incluir" value="Native">
+                <span class="checkbox-custom"></span>
+                <span>Native</span>
+              </label>
+              <label>
+                <input type="checkbox" name="productos_incluir" value="DOOH">
+                <span class="checkbox-custom"></span>
+                <span>DOOH</span>
+              </label>
+              <label>
+                <input type="checkbox" name="productos_incluir" value="Social">
+                <span class="checkbox-custom"></span>
+                <span>Social</span>
+              </label>
+              <label>
+                <input type="checkbox" name="productos_incluir" value="SEM">
+                <span class="checkbox-custom"></span>
+                <span>SEM</span>
+              </label>
+              <label>
+                <input type="checkbox" name="productos_incluir" value="Email">
+                <span class="checkbox-custom"></span>
+                <span>Email</span>
+              </label>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="toggleBudgets">¿Tiene asignaciones de presupuesto específicas por producto?</label>
+            <select id="toggleBudgets" name="presupuesto_por_producto">
+              <option>No</option>
+              <option>Sí</option>
+            </select>
+          </div>
+
+          <!-- Campos dinámicos de presupuestos -->
+          <div id="budgetSection" style="display:none;">
+            <div class="field">
+              <label>Presupuesto mensual por producto (USD)</label>
+              <div class="budget-grid">
+                <div class="budget-item">
+                  <label for="budget_attention_mobile">Attention+ Mobile</label>
+                  <input type="number" id="budget_attention_mobile" name="budget_attention_mobile" placeholder="0" min="0" step="100" inputmode="numeric">
+                </div>
+                <div class="budget-item">
+                  <label for="budget_attention_ctv">Attention+ CTV</label>
+                  <input type="number" id="budget_attention_ctv" name="budget_attention_ctv" placeholder="0" min="0" step="100" inputmode="numeric">
+                </div>
+                <div class="budget-item">
+                  <label for="budget_ctv_ron">CTV RON</label>
+                  <input type="number" id="budget_ctv_ron" name="budget_ctv_ron" placeholder="0" min="0" step="100" inputmode="numeric">
+                </div>
+                <div class="budget-item">
+                  <label for="budget_ott_ron">OTT RON</label>
+                  <input type="number" id="budget_ott_ron" name="budget_ott_ron" placeholder="0" min="0" step="100" inputmode="numeric">
+                </div>
+                <div class="budget-item">
+                  <label for="budget_olv">OLV</label>
+                  <input type="number" id="budget_olv" name="budget_olv" placeholder="0" min="0" step="100" inputmode="numeric">
+                </div>
+                <div class="budget-item">
+                  <label for="budget_streaming_audio">Streaming Audio</label>
+                  <input type="number" id="budget_streaming_audio" name="budget_streaming_audio" placeholder="0" min="0" step="100" inputmode="numeric">
+                </div>
+                <div class="budget-item">
+                  <label for="budget_podcast_audio">Podcast Audio</label>
+                  <input type="number" id="budget_podcast_audio" name="budget_podcast_audio" placeholder="0" min="0" step="100" inputmode="numeric">
+                </div>
+                <div class="budget-item">
+                  <label for="budget_display">Display</label>
+                  <input type="number" id="budget_display" name="budget_display" placeholder="0" min="0" step="100" inputmode="numeric">
+                </div>
+                <div class="budget-item">
+                  <label for="budget_native">Native</label>
+                  <input type="number" id="budget_native" name="budget_native" placeholder="0" min="0" step="100" inputmode="numeric">
+                </div>
+                <div class="budget-item">
+                  <label for="budget_dooh">DOOH</label>
+                  <input type="number" id="budget_dooh" name="budget_dooh" placeholder="0" min="0" step="100" inputmode="numeric">
+                </div>
+                <div class="budget-item">
+                  <label for="budget_social">Social</label>
+                  <input type="number" id="budget_social" name="budget_social" placeholder="0" min="0" step="100" inputmode="numeric">
+                </div>
+                <div class="budget-item">
+                  <label for="budget_sem">SEM</label>
+                  <input type="number" id="budget_sem" name="budget_sem" placeholder="0" min="0" step="100" inputmode="numeric">
+                </div>
+                <div class="budget-item">
+                  <label for="budget_email">Email</label>
+                  <input type="number" id="budget_email" name="budget_email" placeholder="0" min="0" step="100" inputmode="numeric">
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for="detalles_productos">Detalles adicionales sobre productos</label>
+            <textarea id="detalles_productos" name="detalles_productos" placeholder="Ej: Restricciones de horario de emisión, segmentación en español..."></textarea>
+          </div>
+
+          <div class="field">
+            <label for="productos_excluir">Productos a excluir</label>
+            <input type="text" id="productos_excluir" name="productos_excluir" placeholder="Ej: No incluir Display ni Native">
+          </div>
+        </div>
+
+        <!-- ================= SECCIÓN 5: KPIS Y MEDICIÓN ================= -->
+        <div class="form-section" data-section="4">
+          <div class="section-header">
+            <span class="section-num">Sección 05 / 06</span>
+            <h2>KPIs y Medición de Éxito</h2>
+            <p>Establecimiento de criterios para la renovación de campañas.</p>
+          </div>
+
+          <div class="field">
+            <label for="criterio_exito">¿Cómo se medirá el éxito? ¿Qué se necesita para renovar? <span class="req">*</span></label>
+            <textarea id="criterio_exito" name="criterio_exito" required placeholder="Indica de forma explícita las métricas de negocio o conversión que definen el éxito para el cliente..."></textarea>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="kpi_ott">KPI primario — OTT</label>
+              <select id="kpi_ott" name="kpi_ott">
+                <option value="">N/A</option>
+                <option>VCR</option>
+                <option>CTR</option>
+                <option>Viewability</option>
+                <option>Reach</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="kpi_ctv">KPI primario — CTV</label>
+              <select id="kpi_ctv" name="kpi_ctv">
+                <option value="">N/A</option>
+                <option>VCR</option>
+                <option>CTR</option>
+                <option>Viewability</option>
+                <option>Reach</option>
+              </select>
+            </div>
+          </div>
+          
+          <div class="field-row">
+            <div class="field">
+              <label for="kpi_attention_mobile">KPI primario — Attention+ Mobile</label>
+              <select id="kpi_attention_mobile" name="kpi_attention_mobile">
+                <option value="">N/A</option>
+                <option>CTR</option>
+                <option>Viewability</option>
+                <option>Engagement Rate</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="kpi_olv">KPI primario — OLV</label>
+              <select id="kpi_olv" name="kpi_olv">
+                <option value="">N/A</option>
+                <option>VCR</option>
+                <option>CTR</option>
+                <option>Viewability</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="kpi_audio">KPI primario — Audio</label>
+              <select id="kpi_audio" name="kpi_audio">
+                <option value="">N/A</option>
+                <option>Listen Rate</option>
+                <option>LTR</option>
+                <option>Reach</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="kpi_display">KPI primario — Display</label>
+              <select id="kpi_display" name="kpi_display">
+                <option value="">N/A</option>
+                <option>CTR</option>
+                <option>Viewability</option>
+                <option>CPC</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="field-row">
+            <div class="field">
+              <label for="kpi_dooh">KPI primario — DOOH</label>
+              <select id="kpi_dooh" name="kpi_dooh">
+                <option value="">N/A</option>
+                <option>Reach</option>
+                <option>Foot Traffic</option>
+                <option>Impressions</option>
+              </select>
+            </div>
+            <div class="field">
+              <label for="kpi_social">KPI primario — Social</label>
+              <select id="kpi_social" name="kpi_social">
+                <option value="">N/A</option>
+                <option>CTR</option>
+                <option>Engagement</option>
+                <option>CPC</option>
+                <option>CPM</option>
+              </select>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= SECCIÓN 6: INFORMACIÓN ADICIONAL ================= -->
+        <div class="form-section" data-section="5">
+          <div class="section-header">
+            <span class="section-num">Sección 06 / 06</span>
+            <h2>Información Adicional</h2>
+            <p>Briefs adjuntos, notas de planeación y archivos de soporte.</p>
+          </div>
+
+          <div class="field">
+            <label for="info_adicional">¿Algo más que debamos saber para que esta propuesta esté lista?</label>
+            <textarea id="info_adicional" name="info_adicional" placeholder="Detalles de facturación, condiciones del contrato, etc..."></textarea>
+          </div>
+
+          <div class="field">
+            <label for="archivos_relevantes">Archivos adicionales relevantes</label>
+            <div class="hint">Nombres exactos de briefs, decks o estudios adjuntos.</div>
+            <input type="text" id="archivos_relevantes" name="archivos_relevantes" placeholder="Ej: Brief_Cliente_Campana.pdf, RateCard_Acuerdo_2026.xlsx">
+          </div>
+        </div>
+
+        <!-- Botones de Navegación del Formulario -->
+        <div class="nav-buttons">
+          <button type="button" class="btn btn-back" id="btnBack" style="visibility:hidden" onclick="navigate(-1)">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="19" y1="12" x2="5" y2="12"></line><polyline points="12 19 5 12 12 5"></polyline></svg>
+            Anterior
+          </button>
+          
+          <button type="button" class="btn btn-next" id="btnNext" onclick="navigate(1)">
+            Siguiente
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </button>
+        </div>
+      </form>
+
+      <!-- Pantalla de Éxito -->
+      <div class="success-screen" id="successScreen" style="display:none">
+        <div class="icon-wrapper">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+        </div>
+        <h2>RFP Enviado Exitosamente</h2>
+        <p>Tu solicitud ha sido registrada en el Google Sheet unificado de planeación. El equipo de Media Planning recibirá una alerta automática.</p>
+        
+        <div class="rfp-id-card">
+          <span>ID de Transacción</span>
+          <div class="rfp-id" id="rfpId"></div>
+        </div>
+        <br>
+        <button class="btn btn-next" onclick="location.reload()">
+          Enviar otro RFP
+        </button>
+      </div>
+    </div>
+  </main>
+
+  <!-- Elemento Toast de Alerta -->
+  <div class="toast" id="toast">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="8" x2="12" y2="12"></line><line x1="12" y1="16" x2="12.01" y2="16"></line></svg>
+    <span id="toastMsg">Completa los campos requeridos.</span>
+  </div>
+  
+  <!-- Overlay de carga durante el envío -->
+  <div class="loading-overlay" id="loading">
+    <div class="spinner"></div>
+    <p style="color: var(--text-muted); font-size: 14px; font-weight: 500;">Registrando datos en Google Sheets...</p>
+  </div>
+
+  <script>
+    // URL maestra del script de Google Apps Script
+    const GOOGLE_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbyIR1tN-i5V1orquKSLoQeJrMPo-dGehy_wMC6z2UVuWBJVTIBD3-lr3eGxA-ZgVYtt9A/exec";
+    
+    let currentSection = 0;
+    const totalSections = 6;
+    
+    // Asignar fecha de solicitud predeterminada como hoy
+    document.getElementById('fecha_solicitud').valueAsDate = new Date();
+
+    // Mostrar u ocultar bloque de presupuestos por producto
+    document.getElementById('toggleBudgets').addEventListener('change', function() {
+      const budgetSection = document.getElementById('budgetSection');
+      budgetSection.style.display = this.value === 'Sí' ? 'block' : 'none';
+      
+      // Auto-scrollear levemente si se expande la sección
+      if (this.value === 'Sí') {
+        setTimeout(() => {
+          budgetSection.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }, 100);
+      }
+    });
+
+    // Validar un input específico y manejar estilos visuales
+    function validateField(el) {
+      if (el.hasAttribute('required')) {
+        const value = el.value.trim();
+        if (!value) {
+          el.classList.add('field-error');
+          return false;
+        }
+      }
+      el.classList.remove('field-error');
+      return true;
+    }
+
+    // Agregar listeners de limpieza al escribir/cambiar valor (timing blur/input)
+    document.querySelectorAll('#rfpForm input, #rfpForm select, #rfpForm textarea').forEach(el => {
+      el.addEventListener('blur', () => {
+        validateField(el);
+      });
+      el.addEventListener('input', () => {
+        if (el.value.trim()) {
+          el.classList.remove('field-error');
+        }
+      });
+    });
+
+    // Navegación entre secciones
+    function navigate(dir) {
+      const sections = document.querySelectorAll('.form-section');
+      
+      // Si avanza, validar campos obligatorios de la sección actual
+      if (dir === 1) {
+        const current = sections[currentSection];
+        const requiredFields = current.querySelectorAll('[required]');
+        let sectionValid = true;
+        
+        requiredFields.forEach(el => {
+          if (!validateField(el)) {
+            sectionValid = false;
+          }
+        });
+
+        if (!sectionValid) {
+          showToast('Por favor completa los campos obligatorios marcados con *');
+          return;
+        }
+      }
+
+      // Último paso + siguiente -> Envío del formulario
+      if (dir === 1 && currentSection === totalSections - 1) {
+        submitForm();
+        return;
+      }
+
+      // Cambiar sección activa
+      sections[currentSection].classList.remove('active');
+      currentSection += dir;
+      currentSection = Math.max(0, Math.min(totalSections - 1, currentSection));
+      sections[currentSection].classList.add('active');
+
+      // Actualizar visual de la barra de progreso
+      const progressSegs = document.querySelectorAll('#progress .seg');
+      const progressSpans = document.querySelectorAll('.progress-labels span');
+      
+      progressSegs.forEach((seg, i) => {
+        seg.classList.remove('active', 'done');
+        if (i < currentSection) seg.classList.add('done');
+        if (i === currentSection) seg.classList.add('active');
+      });
+
+      progressSpans.forEach((span, i) => {
+        span.classList.remove('active');
+        if (i <= currentSection) span.classList.add('active');
+      });
+
+      // Actualizar botones
+      document.getElementById('btnBack').style.visibility = currentSection === 0 ? 'hidden' : 'visible';
+      
+      const btnNext = document.getElementById('btnNext');
+      if (currentSection === totalSections - 1) {
+        btnNext.innerHTML = '✓ Enviar RFP';
+        btnNext.className = 'btn btn-submit';
+      } else {
+        btnNext.innerHTML = 'Siguiente <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>';
+        btnNext.className = 'btn btn-next';
+      }
+
+      // Subir foco suave
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Obtener valores de checkboxes agrupados
+    function getCheckboxValues(name) {
+      return Array.from(document.querySelectorAll(`input[name="${name}"]:checked`))
+        .map(el => el.value)
+        .join(', ');
+    }
+
+    // Enviar formulario mediante AJAX Fetch
+    function submitForm() {
+      const form = document.getElementById('rfpForm');
+      const fd = new FormData(form);
+      const data = {};
+
+      // Mapear campos simples omitiendo checkboxes grupales
+      fd.forEach((val, key) => {
+        if (key === 'assets_creativos' || key === 'duracion_video' || key === 'productos_incluir') return;
+        data[key] = val;
+      });
+
+      // Extraer y procesar checkboxes agrupados
+      data.assets_creativos = getCheckboxValues('assets_creativos');
+      data.duracion_video = getCheckboxValues('duracion_video');
+      data.productos_incluir = getCheckboxValues('productos_incluir');
+      data.productos_especificos = data.productos_incluir ? 'Sí' : 'No';
+
+      // Mostrar overlay de carga y deshabilitar re-envíos
+      const btnSubmit = document.getElementById('btnNext');
+      btnSubmit.disabled = true;
+      document.getElementById('loading').classList.add('active');
+
+      fetch(GOOGLE_SCRIPT_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      })
+      .then(() => {
+        // Ocultar elementos de carga y formulario
+        document.getElementById('loading').classList.remove('active');
+        document.getElementById('rfpForm').style.display = 'none';
+        document.getElementById('progressWrapper').style.display = 'none';
+
+        // Generar ID único transaccional (ej: RFP-20260616-XXXXX)
+        const dateStr = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+        const randomStr = Math.random().toString(36).substr(2, 5).toUpperCase();
+        const generatedId = `RFP-${dateStr}-${randomStr}`;
+        
+        document.getElementById('rfpId').textContent = generatedId;
+        document.getElementById('successScreen').style.display = 'block';
+      })
+      .catch(err => {
+        btnSubmit.disabled = false;
+        document.getElementById('loading').classList.remove('active');
+        showToast('Error de conexión. Intenta de nuevo.');
+        console.error(err);
+      });
+    }
+
+    // Mostrar Notificación Toast
+    function showToast(msg) {
+      const toast = document.getElementById('toast');
+      document.getElementById('toastMsg').textContent = msg;
+      
+      toast.classList.add('active');
+      setTimeout(() => {
+        toast.classList.remove('active');
+      }, 4000);
+    }
+  </script>
+</body>
+</html>
