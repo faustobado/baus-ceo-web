@@ -853,28 +853,18 @@
 
           <div class="field-row">
             <div class="field">
-              <label for="tipo_servicio">Tipo de Servicio <span class="req">*</span></label>
-              <select id="tipo_servicio" name="tipo_servicio" required>
-                <option value="">Seleccionar...</option>
-                <option>Servicio Gestionado (Managed Service)</option>
-                <option>Autoservicio</option>
-              </select>
-            </div>
-            <div class="field">
               <label for="fecha_solicitud">Fecha de solicitud <span class="req">*</span></label>
               <input type="date" id="fecha_solicitud" name="fecha_solicitud" required>
             </div>
-          </div>
-
-          <div class="field-row">
             <div class="field">
               <label for="fecha_entrega">Fecha de entrega requerida <span class="req">*</span></label>
               <input type="date" id="fecha_entrega" name="fecha_entrega" required>
             </div>
-            <div class="field">
-              <label for="por_que_massive_impact">¿Por qué MI está siendo considerado? <span class="req">*</span></label>
-              <input type="text" id="por_que_massive_impact" name="por_que_massive_impact" required placeholder="¿Qué elementos de nuestra oferta resonaron con el cliente?">
-            </div>
+          </div>
+
+          <div class="field">
+            <label for="por_que_massive_impact">¿Por qué MI está siendo considerado? <span class="req">*</span></label>
+            <input type="text" id="por_que_massive_impact" name="por_que_massive_impact" required placeholder="¿Qué elementos de nuestra oferta resonaron con el cliente?">
           </div>
         </div>
 
@@ -1027,8 +1017,8 @@
           </div>
 
           <div class="field">
-            <label for="link_google_maps">Link de Google Maps para Geo-fence <span class="req">*</span></label>
-            <input type="url" id="link_google_maps" name="link_google_maps" required placeholder="https://www.google.com/maps/... o https://maps.app.goo.gl/...">
+            <label for="link_google_maps">Link de Google Maps para Geo-fence</label>
+            <input type="url" id="link_google_maps" name="link_google_maps" placeholder="https://www.google.com/maps/... o https://maps.app.goo.gl/... (Opcional)">
           </div>
         </div>
 
@@ -1212,7 +1202,7 @@
               <label for="kpi_display">KPI primario — Display</label>
               <select id="kpi_display" name="kpi_display">
                 <option value="">N/A</option>
-                <option>CTR</option>
+                <option selected>CTR</option>
                 <option>Viewability</option>
                 <option>CPM</option>
               </select>
@@ -1292,8 +1282,19 @@
     let currentSection = 0;
     const totalSections = 6;
     
-    // Asignar fecha de solicitud predeterminada como hoy
-    document.getElementById('fecha_solicitud').valueAsDate = new Date();
+    // Asignar fecha de solicitud predeterminada como hoy y establecer el min de fecha_entrega
+    const fechaSolicitud = document.getElementById('fecha_solicitud');
+    const fechaEntrega = document.getElementById('fecha_entrega');
+    
+    fechaSolicitud.valueAsDate = new Date();
+    fechaEntrega.min = fechaSolicitud.value;
+    
+    fechaSolicitud.addEventListener('change', function() {
+      fechaEntrega.min = this.value;
+      if (fechaEntrega.value && fechaEntrega.value < this.value) {
+        fechaEntrega.value = '';
+      }
+    });
 
     // Mostrar u ocultar bloque de presupuestos por producto
     document.getElementById('toggleBudgets').addEventListener('change', function() {
@@ -1317,6 +1318,17 @@
           return false;
         }
       }
+      
+      // Validar que la fecha de entrega sea posterior o igual a la de solicitud
+      if (el.id === 'fecha_entrega') {
+        const solVal = document.getElementById('fecha_solicitud').value;
+        if (solVal && el.value && el.value < solVal) {
+          el.classList.add('field-error');
+          showToast('La fecha de entrega debe ser posterior a la fecha de solicitud');
+          return false;
+        }
+      }
+      
       el.classList.remove('field-error');
       return true;
     }
