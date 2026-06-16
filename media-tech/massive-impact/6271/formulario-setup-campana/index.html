@@ -778,27 +778,20 @@
 
           <div class="field-row">
             <div class="field">
-              <label for="ae_nombre">Nombre completo del AE <span class="req">*</span></label>
+              <label for="ae_nombre">Nombre completo del Titular de la Cuenta <span class="req">*</span></label>
               <input type="text" id="ae_nombre" name="ae_nombre" required autocomplete="name" placeholder="Ej: Fausto Bado Rocha">
             </div>
             <div class="field">
               <label for="ae_email">Email del AE <span class="req">*</span></label>
-              <input type="email" id="ae_email" name="ae_email" required autocomplete="email" placeholder="nombre@viamedia.ai">
+              <input type="email" id="ae_email" name="ae_email" required autocomplete="email" placeholder="nombre@bemassive.mx">
             </div>
           </div>
 
           <div class="field-row">
-            <div class="field">
-              <label for="lider_ventas">Líder de Ventas <span class="req">*</span></label>
-              <input type="text" id="lider_ventas" name="lider_ventas" required placeholder="Nombre del líder de ventas">
-            </div>
             <div class="field">
               <label for="nombre_campana">Nombre de la Campaña <span class="req">*</span></label>
               <input type="text" id="nombre_campana" name="nombre_campana" required placeholder="Agencia_Marca_Detalle_Fecha">
             </div>
-          </div>
-
-          <div class="field-row">
             <div class="field">
               <label for="hay_agencia">¿Hay agencia involucrada? <span class="req">*</span></label>
               <select id="hay_agencia" name="hay_agencia" required>
@@ -807,30 +800,32 @@
                 <option>No</option>
               </select>
             </div>
+          </div>
+
+          <div class="field-row">
             <div class="field">
               <label for="nombre_agencia">Nombre de la Agencia</label>
               <input type="text" id="nombre_agencia" name="nombre_agencia" placeholder="Dejar vacío si no aplica">
             </div>
-          </div>
-
-          <div class="field">
-            <label for="trabajo_previo_agencia">¿Hemos trabajado previamente con esta agencia?</label>
-            <select id="trabajo_previo_agencia" name="trabajo_previo_agencia">
-              <option value="">Seleccionar...</option>
-              <option>Sí, trabajado</option>
-              <option>Sí, enviado propuestas</option>
-              <option>No</option>
-            </select>
+            <div class="field">
+              <label for="trabajo_previo_agencia">¿Hemos trabajado previamente con esta agencia?</label>
+              <select id="trabajo_previo_agencia" name="trabajo_previo_agencia">
+                <option value="">Seleccionar...</option>
+                <option>Sí, trabajado</option>
+                <option>Sí, enviado propuestas</option>
+                <option>No</option>
+              </select>
+            </div>
           </div>
 
           <div class="field-row">
             <div class="field">
               <label for="marca">Marca / Anunciante <span class="req">*</span></label>
-              <input type="text" id="marca" name="marca" required placeholder="Nombre del anunciante">
+              <input type="text" id="marca" name="marca" required placeholder="Nombre comercial de la marca">
             </div>
             <div class="field">
               <label for="sitio_web">Sitio web de la Marca <span class="req">*</span></label>
-              <input type="url" id="sitio_web" name="sitio_web" required autocomplete="url" placeholder="https://ejemplo.com">
+              <input type="url" id="sitio_web" name="sitio_web" required autocomplete="url" placeholder="https://...">
             </div>
           </div>
 
@@ -866,41 +861,20 @@
               </select>
             </div>
             <div class="field">
-              <label for="link_hubspot">Link al Deal en HubSpot</label>
-              <input type="url" id="link_hubspot" name="link_hubspot" placeholder="https://app.hubspot.com/...">
-            </div>
-          </div>
-
-          <div class="field-row">
-            <div class="field">
-              <label for="entregables">Entregables requeridos <span class="req">*</span></label>
-              <select id="entregables" name="entregables" required>
-                <option value="">Seleccionar...</option>
-                <option>Solo Media Plan (2 días hábiles, $20k+)</option>
-                <option>Media Plan + Propuesta Completa</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="email_adicional">Email adicional para copia</label>
-              <input type="email" id="email_adicional" name="email_adicional" autocomplete="email" placeholder="copia@viamedia.ai">
-            </div>
-          </div>
-
-          <div class="field-row">
-            <div class="field">
               <label for="fecha_solicitud">Fecha de solicitud <span class="req">*</span></label>
               <input type="date" id="fecha_solicitud" name="fecha_solicitud" required>
             </div>
+          </div>
+
+          <div class="field-row">
             <div class="field">
               <label for="fecha_entrega">Fecha de entrega requerida <span class="req">*</span></label>
               <input type="date" id="fecha_entrega" name="fecha_entrega" required>
             </div>
-          </div>
-
-          <div class="field">
-            <label for="por_que_viamedia">¿Por qué Viamedia está siendo considerada? <span class="req">*</span></label>
-            <div class="hint">¿Qué elementos de nuestra oferta (Managed, Geo-Graph, etc.) resonaron con el cliente?</div>
-            <textarea id="por_que_viamedia" name="por_que_viamedia" required placeholder="Ingresa los factores clave de consideración..."></textarea>
+            <div class="field">
+              <label for="por_que_massive_impact">¿Por qué MI está siendo considerado? <span class="req">*</span></label>
+              <input type="text" id="por_que_massive_impact" name="por_que_massive_impact" required placeholder="¿Qué elementos de nuestra oferta resonaron con el cliente?">
+            </div>
           </div>
         </div>
 
@@ -925,8 +899,8 @@
 
           <div class="field-row">
             <div class="field">
-              <label for="presupuesto_total">Presupuesto total (USD) <span class="req">*</span></label>
-              <input type="number" id="presupuesto_total" name="presupuesto_total" required placeholder="25000" min="1000" step="100" inputmode="numeric">
+              <label for="presupuesto_total_costos">Presupuesto total costos (USD) <span class="req">*</span></label>
+              <input type="number" id="presupuesto_total_costos" name="presupuesto_total_costos" required placeholder="25000" min="1000" step="100" inputmode="numeric">
             </div>
             <div class="field">
               <label for="distribucion_uniforme">¿Distribución uniforme? <span class="req">*</span></label>
@@ -939,9 +913,9 @@
           </div>
 
           <div class="field">
-            <label for="flighting">Solicitudes específicas de flighting</label>
-            <div class="hint">Indica si requiere Heavy-up, períodos oscuros (go dark) o distribución flexible.</div>
-            <textarea id="flighting" name="flighting" placeholder="Detalla los requerimientos especiales..."></textarea>
+            <label for="ponderacion_delivery_impresiones">Solicitudes específicas de flighting</label>
+            <div class="hint">Indica si requiere Heavy-up horarios, distribución flexible por geografía, etc.</div>
+            <textarea id="ponderacion_delivery_impresiones" name="ponderacion_delivery_impresiones" placeholder="Detalla los requerimientos especiales..."></textarea>
           </div>
 
           <div class="field">
@@ -963,11 +937,6 @@
                 <span>Display</span>
               </label>
               <label>
-                <input type="checkbox" name="assets_creativos" value="Social">
-                <span class="checkbox-custom"></span>
-                <span>Social</span>
-              </label>
-              <label>
                 <input type="checkbox" name="assets_creativos" value="Attention+">
                 <span class="checkbox-custom"></span>
                 <span>Attention+</span>
@@ -977,32 +946,13 @@
                 <span class="checkbox-custom"></span>
                 <span>CTV</span>
               </label>
-              <label>
-                <input type="checkbox" name="assets_creativos" value="OTT">
-                <span class="checkbox-custom"></span>
-                <span>OTT</span>
-              </label>
-              <label>
-                <input type="checkbox" name="assets_creativos" value="Otro">
-                <span class="checkbox-custom"></span>
-                <span>Otro</span>
-              </label>
             </div>
           </div>
 
           <div class="field-row">
             <div class="field">
-              <label for="otros_assets">Si seleccionó 'Otro', especifique</label>
-              <input type="text" id="otros_assets" name="otros_assets" placeholder="Ej: Material impreso escaneado, newsletter">
-            </div>
-            <div class="field">
               <label>Duración de video</label>
               <div class="checkbox-grid">
-                <label>
-                  <input type="checkbox" name="duracion_video" value="6s">
-                  <span class="checkbox-custom"></span>
-                  <span>6s</span>
-                </label>
                 <label>
                   <input type="checkbox" name="duracion_video" value="15s">
                   <span class="checkbox-custom"></span>
@@ -1020,63 +970,27 @@
                 </label>
               </div>
             </div>
-          </div>
-
-          <div class="field">
-            <label for="proposito">Propósito de la campaña <span class="req">*</span></label>
-            <div class="hint">Contexto del cliente, metas específicas de la marca y retos principales.</div>
-            <textarea id="proposito" name="proposito" required placeholder="¿Cuáles son los objetivos críticos de negocio a resolver?"></textarea>
-          </div>
-
-          <div class="field">
-            <label for="benchmarks">Benchmarks / KPIs objetivo por canal</label>
-            <div class="hint">Ej: OLV VCR 60-70%, Audio LTR >90%, CTV VCR >90%, Attention+ CTR + Viewability.</div>
-            <textarea id="benchmarks" name="benchmarks" placeholder="Indica si el cliente ha establecido límites o requerimientos de rendimiento mínimos..."></textarea>
-          </div>
-
-          <div class="field-row">
-            <div class="field">
-              <label for="pricing">Consideraciones de pricing</label>
-              <input type="text" id="pricing" name="pricing" placeholder="Ej: Rate Card LATAM 2026 aprobada">
-            </div>
-            <div class="field">
-              <label for="aprobacion_tarifas">Referencia de aprobación de tarifas</label>
-              <input type="text" id="aprobacion_tarifas" name="aprobacion_tarifas" placeholder="Nombre de archivo de cotización u orden">
-            </div>
-          </div>
-
-          <div class="field-row">
-            <div class="field">
-              <label for="viewability">¿Viewability garantizada?</label>
-              <select id="viewability" name="viewability">
-                <option>No</option>
-                <option>Sí</option>
-              </select>
-            </div>
             <div class="field">
               <label for="medicion">Requisitos de medición</label>
               <select id="medicion" name="medicion">
                 <option>Ninguno</option>
                 <option>Brand Lift</option>
-                <option>Foot Traffic</option>
                 <option>Conversiones</option>
                 <option>Otro</option>
               </select>
             </div>
           </div>
 
-          <div class="field-row">
-            <div class="field">
-              <label for="fees_terceros">¿Cubrir fees de terceros?</label>
-              <select id="fees_terceros" name="fees_terceros">
-                <option>Ninguno</option>
-                <option>Sí (especificar en la sección de notas)</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="valor_agregado">Valor agregado solicitado</label>
-              <input type="text" id="valor_agregado" name="valor_agregado" placeholder="Ej: Dashboard personalizado, estudio post-campaña">
-            </div>
+          <div class="field">
+            <label for="proposito">Propósito de la campaña <span class="req">*</span></label>
+            <div class="hint">Contexto del cliente, objetivos, challenge, enfoque.</div>
+            <textarea id="proposito" name="proposito" required placeholder="¿Cuáles son los objetivos críticos de negocio a resolver?"></textarea>
+          </div>
+
+          <div class="field">
+            <label for="benchmarks">Benchmarks / KPIs objetivo por canal</label>
+            <div class="hint">Ej: OLV VCR 60-70%, Audio-LTR >90%, CTV-VCR >90%, Attention+ -CTR + Viewability.</div>
+            <textarea id="benchmarks" name="benchmarks" placeholder="Indica si el cliente ha establecido límites o requerimientos de rendimiento mínimos..."></textarea>
           </div>
         </div>
 
@@ -1090,7 +1004,7 @@
 
           <div class="field">
             <label for="targeting_audiencia">Targeting de audiencia <span class="req">*</span></label>
-            <div class="hint">Demográfico, comportamental, audiencias de IA, o splits (ej: 50/50 targets).</div>
+            <div class="hint">Demográfico, comportamental, buyer person, split de audiencia, targeting, etc.</div>
             <textarea id="targeting_audiencia" name="targeting_audiencia" required placeholder="Describe detalladamente el perfil de la audiencia objetivo..."></textarea>
           </div>
 
@@ -1108,8 +1022,13 @@
 
           <div class="field">
             <label for="detalle_geografia">Detalle de la geografía <span class="req">*</span></label>
-            <div class="hint">Ciudades, estados, códigos postales, coordenadas o áreas de influencia física.</div>
+            <div class="hint">Ciudades, estados, zonas de geo-fence, ubicaciones de tiendas, etc.</div>
             <textarea id="detalle_geografia" name="detalle_geografia" required placeholder="Detalla las zonas geográficas aplicables..."></textarea>
+          </div>
+
+          <div class="field">
+            <label for="link_google_maps">Link de Google Maps para Geo-fence <span class="req">*</span></label>
+            <input type="url" id="link_google_maps" name="link_google_maps" required placeholder="https://www.google.com/maps/... o https://maps.app.goo.gl/...">
           </div>
         </div>
 
@@ -1118,7 +1037,7 @@
           <div class="section-header">
             <span class="section-num">Sección 04 / 06</span>
             <h2>Estrategia de Campaña</h2>
-            <p>Productos integrados, exclusiones y presupuestos distribuidos.</p>
+            <p>Productos integrados y presupuestos distribuidos.</p>
           </div>
 
           <div class="field">
@@ -1164,36 +1083,11 @@
                 <span class="checkbox-custom"></span>
                 <span>Display</span>
               </label>
-              <label>
-                <input type="checkbox" name="productos_incluir" value="Native">
-                <span class="checkbox-custom"></span>
-                <span>Native</span>
-              </label>
-              <label>
-                <input type="checkbox" name="productos_incluir" value="DOOH">
-                <span class="checkbox-custom"></span>
-                <span>DOOH</span>
-              </label>
-              <label>
-                <input type="checkbox" name="productos_incluir" value="Social">
-                <span class="checkbox-custom"></span>
-                <span>Social</span>
-              </label>
-              <label>
-                <input type="checkbox" name="productos_incluir" value="SEM">
-                <span class="checkbox-custom"></span>
-                <span>SEM</span>
-              </label>
-              <label>
-                <input type="checkbox" name="productos_incluir" value="Email">
-                <span class="checkbox-custom"></span>
-                <span>Email</span>
-              </label>
             </div>
           </div>
 
           <div class="field">
-            <label for="toggleBudgets">¿Tiene asignaciones de presupuesto específicas por producto?</label>
+            <label for="toggleBudgets">¿Tiene asignaciones de presupuesto por producto?</label>
             <select id="toggleBudgets" name="presupuesto_por_producto">
               <option>No</option>
               <option>Sí</option>
@@ -1237,38 +1131,13 @@
                   <label for="budget_display">Display</label>
                   <input type="number" id="budget_display" name="budget_display" placeholder="0" min="0" step="100" inputmode="numeric">
                 </div>
-                <div class="budget-item">
-                  <label for="budget_native">Native</label>
-                  <input type="number" id="budget_native" name="budget_native" placeholder="0" min="0" step="100" inputmode="numeric">
-                </div>
-                <div class="budget-item">
-                  <label for="budget_dooh">DOOH</label>
-                  <input type="number" id="budget_dooh" name="budget_dooh" placeholder="0" min="0" step="100" inputmode="numeric">
-                </div>
-                <div class="budget-item">
-                  <label for="budget_social">Social</label>
-                  <input type="number" id="budget_social" name="budget_social" placeholder="0" min="0" step="100" inputmode="numeric">
-                </div>
-                <div class="budget-item">
-                  <label for="budget_sem">SEM</label>
-                  <input type="number" id="budget_sem" name="budget_sem" placeholder="0" min="0" step="100" inputmode="numeric">
-                </div>
-                <div class="budget-item">
-                  <label for="budget_email">Email</label>
-                  <input type="number" id="budget_email" name="budget_email" placeholder="0" min="0" step="100" inputmode="numeric">
-                </div>
               </div>
             </div>
           </div>
 
           <div class="field">
-            <label for="detalles_productos">Detalles adicionales sobre productos</label>
-            <textarea id="detalles_productos" name="detalles_productos" placeholder="Ej: Restricciones de horario de emisión, segmentación en español..."></textarea>
-          </div>
-
-          <div class="field">
-            <label for="productos_excluir">Productos a excluir</label>
-            <input type="text" id="productos_excluir" name="productos_excluir" placeholder="Ej: No incluir Display ni Native">
+            <label for="detalles_canales">Detalles adicionales sobre los canales y formatos</label>
+            <textarea id="detalles_canales" name="detalles_canales" placeholder="Ej: Todos los productos deben correr en Geo: México, contenido en español"></textarea>
           </div>
         </div>
 
@@ -1297,7 +1166,7 @@
               </select>
             </div>
             <div class="field">
-              <label for="kpi_ctv">KPI primario — CTV</label>
+              <label' for="kpi_ctv">KPI primario — CTV</label>
               <select id="kpi_ctv" name="kpi_ctv">
                 <option value="">N/A</option>
                 <option>VCR</option>
@@ -1345,28 +1214,6 @@
                 <option value="">N/A</option>
                 <option>CTR</option>
                 <option>Viewability</option>
-                <option>CPC</option>
-              </select>
-            </div>
-          </div>
-
-          <div class="field-row">
-            <div class="field">
-              <label for="kpi_dooh">KPI primario — DOOH</label>
-              <select id="kpi_dooh" name="kpi_dooh">
-                <option value="">N/A</option>
-                <option>Reach</option>
-                <option>Foot Traffic</option>
-                <option>Impressions</option>
-              </select>
-            </div>
-            <div class="field">
-              <label for="kpi_social">KPI primario — Social</label>
-              <select id="kpi_social" name="kpi_social">
-                <option value="">N/A</option>
-                <option>CTR</option>
-                <option>Engagement</option>
-                <option>CPC</option>
                 <option>CPM</option>
               </select>
             </div>
@@ -1378,7 +1225,7 @@
           <div class="section-header">
             <span class="section-num">Sección 06 / 06</span>
             <h2>Información Adicional</h2>
-            <p>Briefs adjuntos, notas de planeación y archivos de soporte.</p>
+            <p>Briefs adjuntos y enlaces de soporte.</p>
           </div>
 
           <div class="field">
@@ -1387,9 +1234,8 @@
           </div>
 
           <div class="field">
-            <label for="archivos_relevantes">Archivos adicionales relevantes</label>
-            <div class="hint">Nombres exactos de briefs, decks o estudios adjuntos.</div>
-            <input type="text" id="archivos_relevantes" name="archivos_relevantes" placeholder="Ej: Brief_Cliente_Campana.pdf, RateCard_Acuerdo_2026.xlsx">
+            <label for="archivos_relevantes">Adjuntar link de Google Drive de archivos relevantes (propuesta, brief, etc.)</label>
+            <input type="url" id="archivos_relevantes" name="archivos_relevantes" placeholder="https://drive.google.com/drive/folders/... o https://drive.google.com/file/...">
           </div>
         </div>
 
